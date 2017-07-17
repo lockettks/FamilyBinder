@@ -86,14 +86,14 @@ class SpoonacularAPIManager {
         debugPrint("Print Random Recipes: \(request)")
     }
     
-//    func fetchRandomRecipes(numberOfRecipes: Int, completionHandler: @escaping (Result<[Recipe]>) -> Void) {
-//        let request = Alamofire.request(RecipeRouter.getRandomRecipes(numberOfRecipes))
-//            .responseJSON { response in
-//                let result = self.randomRecipeArrayFromResponse(response: response)
-//                completionHandler(result)
-//        }
-//        debugPrint("Fetch Random Recipes: \(request)")
-//    }
+    func fetchRandomRecipes(numberOfRecipes: Int, completionHandler: @escaping (Result<[Recipe]>) -> Void) {
+        let request = Alamofire.request(RecipeRouter.getRandomRecipes(numberOfRecipes))
+            .responseJSON { response in
+                let result = self.randomRecipeArrayFromResponse(response: response)
+                completionHandler(result)
+        }
+        debugPrint("Fetch Random Recipes: \(request)")
+    }
     
     private func randomRecipeArrayFromResponse(response: DataResponse<Any>) -> Result<[Recipe]> {
         guard response.result.error == nil else {
@@ -109,25 +109,33 @@ class SpoonacularAPIManager {
 //        }
         
         // make sure...soemthing
-        guard let jsonArray = response.result.value as? [String: Any] else {
-            print("Didn't get array of recipes object as JSON from API")
-            return .failure(SpoonacularAPIManagerError.objectSerialization(reason:
-                "Did not get JSON dictionary in response"))
-        }
+//        guard let jsonResponse = response.result.value as? Any else {
+//            print("Didn't get JSON Recipe Object from API")
+//            return .failure(SpoonacularAPIManagerError.objectSerialization(reason:
+//                "Did not get JSON object in response"))
+//
+//        }
+        
+    
         
         // check for "message" errors in the JSON because this API does that
-        if let jsonDictionary = response.result.value as? [String: Any],
-            let errorMessage = jsonDictionary["message"] as? String {
-            return .failure(SpoonacularAPIManagerError.apiProvidedError(reason: errorMessage))
+        if let jsonDictionary = response.result.value as? [String: Any] {
+            if let errorMessage = jsonDictionary["message"] as? String {
+                return .failure(SpoonacularAPIManagerError.apiProvidedError(reason: errorMessage))
+            }
+            
+            let recipesJSON = jsonDictionary["recipes"] as! [Any]
+            print(recipesJSON)
         }
         
         // turn JSON in to recipes
-        var recipes = [Recipe]()
-        for item in jsonArray {
+    
+        let recipes = [Recipe]()
+//        for item in jsonArray {
 //            if let recipe = Recipe(json: item) {
 //                recipes.append(recipe)
 //            }
-        }
+//        }
         return .success(recipes)
     }
 }

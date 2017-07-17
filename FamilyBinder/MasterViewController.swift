@@ -37,15 +37,14 @@ class MasterViewController: UITableViewController {
         
         //Test
 //        SpoonacularAPIManager.sharedInstance.printPublicRecipes()
-//        SpoonacularAPIManager.sharedInstance.printRandomRecipes()
         SpoonacularAPIManager.sharedInstance.printRandomRecipes(numberOfRecipes: 3)
         //End Test
         
-//        loadRecipes()
+        loadRecipes()
     }
     
     func loadRecipes() {
-        SpoonacularAPIManager.sharedInstance.fetchPublicRecipes(){
+        SpoonacularAPIManager.sharedInstance.fetchRandomRecipes(numberOfRecipes: 3){
             result in
             guard result.error == nil else {
                 self.handleLoadRecipesError(result.error!)
@@ -57,6 +56,7 @@ class MasterViewController: UITableViewController {
             self.tableView.reloadData()
         }
     }
+    
     
     func handleLoadRecipesError(_ error: Error) {
         // TODO: show error
