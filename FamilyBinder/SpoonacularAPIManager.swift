@@ -101,41 +101,29 @@ class SpoonacularAPIManager {
             return .failure(SpoonacularAPIManagerError.network(error: response.result.error!))
         }
         
-        // make sure we got JSON and it's an array
-//        guard let jsonArray = response.result.value as? [[String: Any]] else {
-//            print("Didn't get array of recipes object as JSON from API")
-//            return .failure(SpoonacularAPIManagerError.objectSerialization(reason:
-//                "Did not get JSON dictionary in response"))
-//        }
-        
-        // make sure...soemthing
-//        guard let jsonResponse = response.result.value as? Any else {
-//            print("Didn't get JSON Recipe Object from API")
-//            return .failure(SpoonacularAPIManagerError.objectSerialization(reason:
-//                "Did not get JSON object in response"))
-//
-//        }
-        
-    
-        
-        // check for "message" errors in the JSON because this API does that
-        if let jsonDictionary = response.result.value as? [String: Any] {
-            if let errorMessage = jsonDictionary["message"] as? String {
-                return .failure(SpoonacularAPIManagerError.apiProvidedError(reason: errorMessage))
-            }
-            
-            let recipesJSON = jsonDictionary["recipes"] as! [Any]
-            print(recipesJSON)
+        // make sure we got JSON
+        guard let jsonDictionary = response.result.value as? [String: Any] else {
+            return .failure(SpoonacularAPIManagerError.objectSerialization(reason: "Did not get JSON object in response"))
         }
         
-        // turn JSON in to recipes
-    
-        let recipes = [Recipe]()
-//        for item in jsonArray {
-//            if let recipe = Recipe(json: item) {
-//                recipes.append(recipe)
-//            }
-//        }
+        // check for "message" errors in the JSON because this API does that
+        if let errorMessage = jsonDictionary["message"] as? String {
+            return .failure(SpoonacularAPIManagerError.apiProvidedError(reason: errorMessage))
+        }
+        
+        // make sure the recipe object was in the response
+        guard let recipesArray = jsonDictionary["recipes"] as? [[String: Any]] else {
+            return .failure(SpoonacularAPIManagerError.objectSerialization(reason: "Did not get recipe object in response"))
+        }
+        
+        
+        // turn JSON into recipes
+        var recipes = [Recipe]()
+        for item in recipesArray {
+            if let recipe = Recipe(json: item) {
+                recipes.append(recipe)
+            }
+        }
         return .success(recipes)
     }
 }
