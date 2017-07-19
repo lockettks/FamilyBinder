@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 class Recipe {
     var id: Int?
@@ -22,6 +23,19 @@ class Recipe {
             let idValue = json["id"] as? Int,
             let title = json["title"] as? String,
         let servings = json["servings"] as? Int else {
+                return nil
+        }
+        self.instructions = instructions
+        self.id = idValue
+        self.title = title
+        self.servings = servings
+    }
+    
+    required init?(json: JSON) {
+        guard let instructions = json["instructions"].string,
+            let idValue = json["id"].int,
+            let title = json["title"].string,
+            let servings = json["servings"].int else {
                 return nil
         }
         self.instructions = instructions
