@@ -10,14 +10,23 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
-    @IBOutlet weak var detailDescriptionLabel: UILabel!
-
+    @IBOutlet weak var recipeTitleLabel: UILabel!
+    @IBOutlet weak var servingsLabel: UILabel!
+    @IBOutlet weak var ingredientsLabel: UILabel!
+    @IBOutlet weak var directionsLabel: UILabel!
+    
 
     func configureView() {
         // Update the user interface for the detail item.
         if let detail = self.detailItem {
-            if let label = self.detailDescriptionLabel {
-                label.text = detail.id?.description
+            if let label = self.directionsLabel {
+                label.text = detail.instructions
+            }
+            if let label = self.recipeTitleLabel {
+                label.text = detail.title
+            }
+            if let label = self.servingsLabel {
+                label.text = detail.servings?.description
             }
         }
     }

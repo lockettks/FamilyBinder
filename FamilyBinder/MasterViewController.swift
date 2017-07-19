@@ -43,7 +43,7 @@ class MasterViewController: UITableViewController {
     }
     
     func loadRecipes() {
-        SpoonacularAPIManager.sharedInstance.fetchRandomRecipes(numberOfRecipes: 20){
+        SpoonacularAPIManager.sharedInstance.fetchRandomRecipes(numberOfRecipes: 2){
             result in
             guard result.error == nil else {
                 self.handleLoadRecipesError(result.error!)

@@ -31,7 +31,7 @@
 		954D7AB71F198CB3000480A7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		954D7ABA1F198CB3000480A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		954D7ABC1F198CB3000480A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		954D7AC81F198F66000480A7 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		954D7AC81F198F66000480A7 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		954D7ACA1F199034000480A7 /* SpoonacularAPIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpoonacularAPIManager.swift; sourceTree = "<group>"; };
 		954D7ACC1F19D8AE000480A7 /* RecipeRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeRouter.swift; sourceTree = "<group>"; };
 		954D7ACE1F19DAD8000480A7 /* Recipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
@@ -89,16 +89,16 @@
 		954D7AAD1F198CB3000480A7 /* FamilyBinder */ = {
 			isa = PBXGroup;
 			children = (
-				954D7AAE1F198CB3000480A7 /* AppDelegate.swift */,
 				954D7AB01F198CB3000480A7 /* MasterViewController.swift */,
 				954D7AB21F198CB3000480A7 /* DetailViewController.swift */,
 				954D7AB41F198CB3000480A7 /* Main.storyboard */,
-				954D7AB71F198CB3000480A7 /* Assets.xcassets */,
-				954D7AB91F198CB3000480A7 /* LaunchScreen.storyboard */,
-				954D7ABC1F198CB3000480A7 /* Info.plist */,
+				954D7ACE1F19DAD8000480A7 /* Recipe.swift */,
 				954D7ACA1F199034000480A7 /* SpoonacularAPIManager.swift */,
 				954D7ACC1F19D8AE000480A7 /* RecipeRouter.swift */,
-				954D7ACE1F19DAD8000480A7 /* Recipe.swift */,
+				954D7AAE1F198CB3000480A7 /* AppDelegate.swift */,
+				954D7ABC1F198CB3000480A7 /* Info.plist */,
+				954D7AB71F198CB3000480A7 /* Assets.xcassets */,
+				954D7AB91F198CB3000480A7 /* LaunchScreen.storyboard */,
 			);
 			path = FamilyBinder;
 			sourceTree = "<group>";
