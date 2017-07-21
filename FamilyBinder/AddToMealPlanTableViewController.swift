@@ -17,18 +17,16 @@ class AddToMealPlanTableViewController: UITableViewController {
     
     var selectedValue: Date?
     var datePickerVisible = false
-    let myFormatter = DateFormatter()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        myFormatter.dateStyle = .short
         if let val = selectedValue {
             datePickerVisible = true
             pickerScheduledDate.date = val
         } else {
             datePickerVisible = false
         }
+        lblScheduledDate.text = Date().withoutTime()
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -38,6 +36,7 @@ class AddToMealPlanTableViewController: UITableViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        
         self.pickerScheduledDate.isHidden = true
         self.pickerScheduledDate.translatesAutoresizingMaskIntoConstraints = false
     }
@@ -48,7 +47,7 @@ class AddToMealPlanTableViewController: UITableViewController {
             showScheduledDatePickerCell(containingDatePicker: pickerScheduledDate)
             selectedValue = pickerScheduledDate.date
             if let labelDate = selectedValue {
-                lblScheduledDate.text = myFormatter.string(from: labelDate)
+                lblScheduledDate.text = labelDate.withoutTime()
             }
         }
         else if datePickerVisible {
@@ -60,7 +59,7 @@ class AddToMealPlanTableViewController: UITableViewController {
     
     @IBAction func dateChanged(_ sender: Any) {
         selectedValue = pickerScheduledDate.date
-        lblScheduledDate.text = myFormatter.string(from: pickerScheduledDate.date)
+        lblScheduledDate.text = selectedValue?.withoutTime()
     }
     
     func showScheduledDatePickerCell(containingDatePicker picker:UIDatePicker){

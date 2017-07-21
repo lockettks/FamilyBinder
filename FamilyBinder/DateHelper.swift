@@ -7,3 +7,11 @@
 //
 
 import Foundation
+
+extension Date {
+    func withoutTime() -> String {
+        let myFormatter = DateFormatter()
+        myFormatter.dateStyle = .short
+        return myFormatter.string(from:self)
+    }
+}
