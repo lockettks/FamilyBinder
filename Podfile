@@ -9,5 +9,6 @@ target 'FamilyBinder' do
     pod 'Alamofire', '~> 4.0'
     pod 'SwiftyJSON', '~> 3.1.4'
     pod 'PromiseKit', '~> 4.0'
+    pod 'RealmSwift'
 
 end

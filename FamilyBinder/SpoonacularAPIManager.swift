@@ -66,36 +66,4 @@ class SpoonacularAPIManager {
             debugPrint("Fetch Random Recipes: \(request)")
         }
     }
-    
-//    private func randomRecipeArrayFromResponse(response: DataResponse<Any>) -> Result<[Recipe]> {
-//        guard response.result.error == nil else {
-//            print(response.result.error!)
-//            return .failure(SpoonacularAPIManagerError.network(error: response.result.error!))
-//        }
-//        
-//        // make sure we got JSON
-//        guard let jsonDictionary = response.result.value as? [String: Any] else {
-//            return .failure(SpoonacularAPIManagerError.objectSerialization(reason: "Did not get JSON object in response"))
-//        }
-//        
-//        // check for "message" errors in the JSON because this API does that
-//        if let errorMessage = jsonDictionary["message"] as? String {
-//            return .failure(SpoonacularAPIManagerError.apiProvidedError(reason: errorMessage))
-//        }
-//        
-//        // make sure the recipe object was in the response
-//        guard let recipesArray = jsonDictionary["recipes"] as? [[String: Any]] else {
-//            return .failure(SpoonacularAPIManagerError.objectSerialization(reason: "Did not get recipe object in response"))
-//        }
-//        
-//        
-//        // turn JSON into recipes
-//        var recipes = [Recipe]()
-//        for item in recipesArray {
-//            if let recipe = Recipe(json: item) {
-//                recipes.append(recipe)
-//            }
-//        }
-//        return .success(recipes)
-//    }
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class DetailViewController: UIViewController {
 
@@ -15,6 +16,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var ingredientsLabel: UILabel!
     @IBOutlet weak var directionsLabel: UILabel!
     
+
 
     func configureView() {
         // Update the user interface for the detail item.
@@ -28,13 +30,18 @@ class DetailViewController: UIViewController {
             if let label = self.servingsLabel {
                 label.text = detail.servings?.description
             }
+            self.navigationItem.title = detail.title
         }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
         configureView()
+    }
+    
+    @IBAction func addToMealPlan(_ sender: Any) {
+        
     }
 
     override func didReceiveMemoryWarning() {

@@ -18,6 +18,11 @@
 		954D7ACB1F199034000480A7 /* SpoonacularAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954D7ACA1F199034000480A7 /* SpoonacularAPIManager.swift */; };
 		954D7ACD1F19D8AE000480A7 /* RecipeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954D7ACC1F19D8AE000480A7 /* RecipeRouter.swift */; };
 		954D7ACF1F19DAD8000480A7 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954D7ACE1F19DAD8000480A7 /* Recipe.swift */; };
+		956789941F2146B50070FEEB /* ScheduledMeal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956789931F2146B50070FEEB /* ScheduledMeal.swift */; };
+		956789961F2147D90070FEEB /* MealTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956789951F2147D90070FEEB /* MealTypes.swift */; };
+		956789981F2156190070FEEB /* MealPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956789971F2156190070FEEB /* MealPlan.swift */; };
+		9567899A1F216D330070FEEB /* AddToMealPlanTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956789991F216D330070FEEB /* AddToMealPlanTableViewController.swift */; };
+		9567899D1F226DF10070FEEB /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9567899C1F226DF10070FEEB /* DateHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +40,11 @@
 		954D7ACA1F199034000480A7 /* SpoonacularAPIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpoonacularAPIManager.swift; sourceTree = "<group>"; };
 		954D7ACC1F19D8AE000480A7 /* RecipeRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeRouter.swift; sourceTree = "<group>"; };
 		954D7ACE1F19DAD8000480A7 /* Recipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
+		956789931F2146B50070FEEB /* ScheduledMeal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduledMeal.swift; sourceTree = "<group>"; };
+		956789951F2147D90070FEEB /* MealTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealTypes.swift; sourceTree = "<group>"; };
+		956789971F2156190070FEEB /* MealPlan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealPlan.swift; sourceTree = "<group>"; };
+		956789991F216D330070FEEB /* AddToMealPlanTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddToMealPlanTableViewController.swift; sourceTree = "<group>"; };
+		9567899C1F226DF10070FEEB /* DateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		F183672AF08D8E0DAEAA01C4 /* Pods_FamilyBinder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FamilyBinder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -89,11 +99,16 @@
 		954D7AAD1F198CB3000480A7 /* FamilyBinder */ = {
 			isa = PBXGroup;
 			children = (
+				9567899B1F226DD30070FEEB /* Utils */,
 				954D7AB01F198CB3000480A7 /* MasterViewController.swift */,
 				954D7AB21F198CB3000480A7 /* DetailViewController.swift */,
-				954D7AB41F198CB3000480A7 /* Main.storyboard */,
+				956789971F2156190070FEEB /* MealPlan.swift */,
+				956789931F2146B50070FEEB /* ScheduledMeal.swift */,
 				954D7ACE1F19DAD8000480A7 /* Recipe.swift */,
+				956789951F2147D90070FEEB /* MealTypes.swift */,
 				954D7ACA1F199034000480A7 /* SpoonacularAPIManager.swift */,
+				954D7AB41F198CB3000480A7 /* Main.storyboard */,
+				956789991F216D330070FEEB /* AddToMealPlanTableViewController.swift */,
 				954D7ACC1F19D8AE000480A7 /* RecipeRouter.swift */,
 				954D7AAE1F198CB3000480A7 /* AppDelegate.swift */,
 				954D7ABC1F198CB3000480A7 /* Info.plist */,
@@ -101,6 +116,14 @@
 				954D7AB91F198CB3000480A7 /* LaunchScreen.storyboard */,
 			);
 			path = FamilyBinder;
+			sourceTree = "<group>";
+		};
+		9567899B1F226DD30070FEEB /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				9567899C1F226DF10070FEEB /* DateHelper.swift */,
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,10 +252,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				954D7AB31F198CB3000480A7 /* DetailViewController.swift in Sources */,
+				956789941F2146B50070FEEB /* ScheduledMeal.swift in Sources */,
 				954D7AB11F198CB3000480A7 /* MasterViewController.swift in Sources */,
 				954D7ACB1F199034000480A7 /* SpoonacularAPIManager.swift in Sources */,
 				954D7ACF1F19DAD8000480A7 /* Recipe.swift in Sources */,
 				954D7AAF1F198CB3000480A7 /* AppDelegate.swift in Sources */,
+				9567899A1F216D330070FEEB /* AddToMealPlanTableViewController.swift in Sources */,
+				956789981F2156190070FEEB /* MealPlan.swift in Sources */,
+				956789961F2147D90070FEEB /* MealTypes.swift in Sources */,
+				9567899D1F226DF10070FEEB /* DateHelper.swift in Sources */,
 				954D7ACD1F19D8AE000480A7 /* RecipeRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

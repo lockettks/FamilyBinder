@@ -3,6 +3,34 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "SpoonacularAPIManager.(printPublicRecipes() -&gt; ()).(closure #1):SpoonacularAPIManager.swift">
+      </ContextState>
+      <ContextState
+         contextName = "static SessionManager.(default).(variable initialization expression).(closure #1):SessionManager.swift">
+      </ContextState>
+      <ContextState
+         contextName = "request(URLRequestConvertible) -&gt; DataRequest:Alamofire.swift">
+      </ContextState>
+      <ContextState
+         contextName = "AddToMealPlanTableViewController.tableView(UITableView, didSelectRowAt : IndexPath) -&gt; ():AddToMealPlanTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "selectedValue">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "AddToMealPlanTableViewController.dateChanged(Any) -&gt; ():AddToMealPlanTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "selectedValue">
+            </PersistentString>
+            <PersistentString
+               value = "myFormatter.string(from: picker.date)&#10;myFormatter.string(from: picker.date)&#10;">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "SpoonacularAPIManager.randomRecipeArrayFromResponse(response : DataResponse&lt;Any&gt;) -&gt; Result&lt;[Recipe]&gt;:SpoonacularAPIManager.swift">
          <PersistentStrings>
             <PersistentString
@@ -11,16 +39,7 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "SpoonacularAPIManager.(printPublicRecipes() -&gt; ()).(closure #1):SpoonacularAPIManager.swift">
-      </ContextState>
-      <ContextState
          contextName = "RecipeRouter.asURLRequest() throws -&gt; URLRequest:RecipeRouter.swift">
-      </ContextState>
-      <ContextState
-         contextName = "request(URLRequestConvertible) -&gt; DataRequest:Alamofire.swift">
-      </ContextState>
-      <ContextState
-         contextName = "static SessionManager.(default).(variable initialization expression).(closure #1):SessionManager.swift">
       </ContextState>
    </ContextStates>
 </VariablesViewState>
