@@ -99,6 +99,7 @@
 		954D7AAD1F198CB3000480A7 /* FamilyBinder */ = {
 			isa = PBXGroup;
 			children = (
+				956789AD1F27EEC90070FEEB /* Meal Plan */,
 				9567899B1F226DD30070FEEB /* Utils */,
 				954D7AB01F198CB3000480A7 /* MasterViewController.swift */,
 				954D7AB21F198CB3000480A7 /* DetailViewController.swift */,
@@ -108,7 +109,6 @@
 				956789951F2147D90070FEEB /* MealTypes.swift */,
 				954D7ACA1F199034000480A7 /* SpoonacularAPIManager.swift */,
 				954D7AB41F198CB3000480A7 /* Main.storyboard */,
-				956789991F216D330070FEEB /* AddToMealPlanTableViewController.swift */,
 				954D7ACC1F19D8AE000480A7 /* RecipeRouter.swift */,
 				954D7AAE1F198CB3000480A7 /* AppDelegate.swift */,
 				954D7ABC1F198CB3000480A7 /* Info.plist */,
@@ -124,6 +124,14 @@
 				9567899C1F226DF10070FEEB /* DateHelper.swift */,
 			);
 			name = Utils;
+			sourceTree = "<group>";
+		};
+		956789AD1F27EEC90070FEEB /* Meal Plan */ = {
+			isa = PBXGroup;
+			children = (
+				956789991F216D330070FEEB /* AddToMealPlanTableViewController.swift */,
+			);
+			name = "Meal Plan";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

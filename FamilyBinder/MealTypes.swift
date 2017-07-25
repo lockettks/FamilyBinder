@@ -13,7 +13,7 @@ enum MealType: String {
     case lunch = "lunch"
     case snack = "snack"
     case dinner = "dinner"
-    static let allMealTypes = ["breakfast", "lunch", "snack", "dinner"]
+    static let allTypes = [breakfast, lunch, snack, dinner]
     
     func displayName() -> String {
         switch self {
