@@ -274,6 +274,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="btnAdd" destination="bXJ-PY-VZv" id="kMT-5L-dxk"/>
                         <outlet property="cellBreakfast" destination="VLn-uT-k8I" id="11v-MB-pbT"/>
                         <outlet property="cellDateLabel" destination="Y8s-k7-31c" id="bpi-Ai-jEu"/>
                         <outlet property="cellDatePicker" destination="Nme-hm-XEY" id="czI-uq-wt6"/>

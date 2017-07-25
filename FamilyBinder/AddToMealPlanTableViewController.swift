@@ -12,6 +12,7 @@ import UIKit
 
 class AddToMealPlanTableViewController: UITableViewController {
     
+    @IBOutlet weak var btnAdd: UIBarButtonItem!
     @IBOutlet weak var lblScheduledDate: UILabel!
     @IBOutlet weak var pickerScheduledDate: UIDatePicker!
     @IBOutlet weak var cellDateLabel: UITableViewCell!
@@ -24,8 +25,9 @@ class AddToMealPlanTableViewController: UITableViewController {
     var mealTypeCells = [UITableViewCell]()
     
     
-    var selectedValue: Date?
+    var selectedDate: Date?
     var datePickerVisible = false
+    var selectedMealTypes = [MealType]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +37,7 @@ class AddToMealPlanTableViewController: UITableViewController {
             mealTypeCell.accessoryType = .none
         }
         
-        if let val = selectedValue {
+        if let val = selectedDate {
             datePickerVisible = true
             pickerScheduledDate.date = val
         } else {
@@ -85,16 +87,21 @@ class AddToMealPlanTableViewController: UITableViewController {
                 
                 if (cell.accessoryType == .checkmark){
                     cell.accessoryType = .none;
+                    if let removedIndex = selectedMealTypes.index(of: MealType.allTypes[indexPath.row]) {
+                        selectedMealTypes.remove(at: removedIndex)
+                    }
                 } else{
                     cell.accessoryType = .checkmark
+                    selectedMealTypes.append(MealType.allTypes[indexPath.row])
                 }
             }
+            btnAdd.isEnabled = selectedMealTypes.count > 0
         }
-        selectedValue = nil
+        selectedDate = nil
         if indexPath.section == 0 && indexPath.row == 0 {
             showScheduledDatePickerCell(containingDatePicker: pickerScheduledDate)
-            selectedValue = pickerScheduledDate.date
-            if let labelDate = selectedValue {
+            selectedDate = pickerScheduledDate.date
+            if let labelDate = selectedDate {
                 lblScheduledDate.text = labelDate.withoutTime()
             }
         }
@@ -106,8 +113,8 @@ class AddToMealPlanTableViewController: UITableViewController {
     }
     
     @IBAction func dateChanged(_ sender: Any) {
-        selectedValue = pickerScheduledDate.date
-        lblScheduledDate.text = selectedValue?.withoutTime()
+        selectedDate = pickerScheduledDate.date
+        lblScheduledDate.text = selectedDate?.withoutTime()
     }
     
     func showScheduledDatePickerCell(containingDatePicker picker:UIDatePicker){

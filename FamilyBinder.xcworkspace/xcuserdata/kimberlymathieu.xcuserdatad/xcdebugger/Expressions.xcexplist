@@ -6,6 +6,9 @@
          contextName = "SpoonacularAPIManager.(printPublicRecipes() -&gt; ()).(closure #1):SpoonacularAPIManager.swift">
       </ContextState>
       <ContextState
+         contextName = "MealDatePickerTableViewCell.awakeFromNib() -&gt; ():MealDatePickerTableViewCell.swift">
+      </ContextState>
+      <ContextState
          contextName = "static SessionManager.(default).(variable initialization expression).(closure #1):SessionManager.swift">
       </ContextState>
       <ContextState
@@ -15,7 +18,10 @@
          contextName = "AddToMealPlanTableViewController.tableView(UITableView, didSelectRowAt : IndexPath) -&gt; ():AddToMealPlanTableViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "selectedValue">
+               value = "selectedMealTypes">
+            </PersistentString>
+            <PersistentString
+               value = "datePickerVisible">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -40,6 +46,9 @@
       </ContextState>
       <ContextState
          contextName = "RecipeRouter.asURLRequest() throws -&gt; URLRequest:RecipeRouter.swift">
+      </ContextState>
+      <ContextState
+         contextName = "AddToMealPlanTableViewController.tableView(UITableView, cellForRowAt : IndexPath) -&gt; UITableViewCell:AddToMealPlanTableViewController.swift">
       </ContextState>
    </ContextStates>
 </VariablesViewState>
