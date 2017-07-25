@@ -16,12 +16,25 @@ class AddToMealPlanTableViewController: UITableViewController {
     @IBOutlet weak var pickerScheduledDate: UIDatePicker!
     @IBOutlet weak var cellDateLabel: UITableViewCell!
     @IBOutlet weak var cellDatePicker: UITableViewCell!
+    @IBOutlet weak var cellBreakfast: UITableViewCell!
+    @IBOutlet weak var cellLunch: UITableViewCell!
+    @IBOutlet weak var cellSnack: UITableViewCell!
+    @IBOutlet weak var cellDinner: UITableViewCell!
+    
+    var mealTypeCells = [UITableViewCell]()
+    
     
     var selectedValue: Date?
     var datePickerVisible = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        mealTypeCells = [cellBreakfast, cellLunch, cellSnack, cellDinner]
+        for mealTypeCell in mealTypeCells {
+            mealTypeCell.accessoryType = .none
+        }
+        
         if let val = selectedValue {
             datePickerVisible = true
             pickerScheduledDate.date = val
@@ -29,7 +42,6 @@ class AddToMealPlanTableViewController: UITableViewController {
             datePickerVisible = false
         }
         lblScheduledDate.text = Date().withoutTime()
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -38,7 +50,46 @@ class AddToMealPlanTableViewController: UITableViewController {
         self.pickerScheduledDate.translatesAutoresizingMaskIntoConstraints = false
     }
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        var height:CGFloat = 44 // Default
+        if indexPath.section == 0 && indexPath.row == 1 {
+            height = datePickerVisible ? 216 : 0
+        }
+        return height
+    }
+    
+    
+    // MARK: - Table view data source
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        switch indexPath.section {
+        case 0:
+            switch indexPath.row {
+            case 0:
+                return cellDateLabel
+            default:
+                return cellDatePicker
+            }
+        default:
+            mealTypeCells[indexPath.row].textLabel?.text = MealType.allTypes[indexPath.row].displayName()
+            return mealTypeCells[indexPath.row]
+        }
+    }
+    
+    
+    // MARK: - Action Handling
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 1 {
+            if let cell = tableView.cellForRow(at: indexPath) {
+                
+                if (cell.accessoryType == .checkmark){
+                    cell.accessoryType = .none;
+                } else{
+                    cell.accessoryType = .checkmark
+                }
+            }
+        }
         selectedValue = nil
         if indexPath.section == 0 && indexPath.row == 0 {
             showScheduledDatePickerCell(containingDatePicker: pickerScheduledDate)
@@ -89,15 +140,6 @@ class AddToMealPlanTableViewController: UITableViewController {
         }
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        var height:CGFloat = 44 // Default
-        if indexPath.section == 0 && indexPath.row == 1 {
-            height = datePickerVisible ? 216 : 0
-        }
-        return height
-    }
-    
-    
     @IBAction func cancelTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
@@ -111,30 +153,7 @@ class AddToMealPlanTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    // MARK: - Table view data source
-    
-    //
-    //    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    //        // #warning Incomplete implementation, return the number of rows
-    //        return 0
-    //    }
-    
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.section {
-        case 0:
-            switch indexPath.row {
-            case 0:
-                return cellDateLabel
-            default:
-                return cellDatePicker
-            }
-        default:
-            let cell = UITableViewCell()
-            cell.textLabel?.text = MealType.allTypes[indexPath.row].displayName()
-            return cell
-        }
-    }
+
     
     
 }
