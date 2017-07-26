@@ -11,13 +11,14 @@ import RealmSwift
 
 class RecipeDetailViewController: UIViewController {
 
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var recipeTitleLabel: UILabel!
     @IBOutlet weak var recipeImg: UIImageView!
     @IBOutlet weak var servingsLabel: UILabel!
     @IBOutlet weak var ingredientsLabel: UILabel!
     @IBOutlet weak var directionsLabel: UILabel!
     
-
+    var scrollViewPropertiesInitialized = false
 
     func configureView() {
         // Update the user interface for the detail item.
@@ -42,6 +43,22 @@ class RecipeDetailViewController: UIViewController {
         super.viewDidLoad()
         
         configureView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if !scrollViewPropertiesInitialized {
+            self.automaticallyAdjustsScrollViewInsets = false
+            scrollView.contentInset = .zero
+            scrollView.scrollIndicatorInsets = .zero
+            scrollView.contentOffset = CGPoint(x: 0.0, y: 0.0)
+            scrollViewPropertiesInitialized = true
+        }
+        updateScrollSize()
+    }
+    
+    func updateScrollSize() {
+        let directionsBottomYPos = directionsLabel.frame.origin.y + directionsLabel.frame.size.height
+        scrollView.contentSize.height = directionsBottomYPos + 40.0
     }
     
     @IBAction func addToMealPlan(_ sender: Any) {
