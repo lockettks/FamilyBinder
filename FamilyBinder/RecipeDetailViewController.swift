@@ -47,7 +47,7 @@ class RecipeDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         if !scrollViewPropertiesInitialized {
-            self.automaticallyAdjustsScrollViewInsets = false
+            self.automaticallyAdjustsScrollViewInsets = true
             scrollView.contentInset = .zero
             scrollView.scrollIndicatorInsets = .zero
             scrollView.contentOffset = CGPoint(x: 0.0, y: 0.0)
