@@ -40,6 +40,7 @@ class AddToMealPlanTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        imgRecipe.image = selectedRecipe.image
         lblRecipe.text = selectedRecipe.title
         
         mealTypeCells = [cellBreakfast, cellLunch, cellSnack, cellDinner]

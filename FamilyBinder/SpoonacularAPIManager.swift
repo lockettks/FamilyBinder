@@ -46,7 +46,7 @@ class SpoonacularAPIManager {
                     switch response.result {
                     case .success(let value):
                         let json = JSON(value)
-//                        print("JSON: \(json)")
+                        print("JSON: \(json)")
                         if let recipesJSONArray = json["recipes"].array {
                             var recipes = [Recipe]()
                             for recipeJSON in recipesJSONArray {
