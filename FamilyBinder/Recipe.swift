@@ -13,6 +13,7 @@ class Recipe {
     var id: Int?
     var title: String?
     var analyzedInstructions = [Instruction]()
+    var ingredients = [Ingredient]()
     var instructions: String?
     var servings: Int?
     var imageURL: String?
@@ -43,7 +44,8 @@ class Recipe {
             let title = json["title"].string,
             let servings = json["servings"].int,
             let imageURL = json["image"].string,
-        let instructionsJSONArray = json["analyzedInstructions"][0]["steps"].array
+        let instructionsJSONArray = json["analyzedInstructions"][0]["steps"].array,
+        let ingredientsJSONArray = json["extendedIngredients"].array
             else {
                 return nil
         }
@@ -55,6 +57,11 @@ class Recipe {
         for instructionJSON in instructionsJSONArray {
             if let instruction = Instruction(json: instructionJSON) {
                 analyzedInstructions.append(instruction)
+            }
+        }
+        for ingredientJSON in ingredientsJSONArray {
+            if let ingredient = Ingredient(json: ingredientJSON) {
+                ingredients.append(ingredient)
             }
         }
     }

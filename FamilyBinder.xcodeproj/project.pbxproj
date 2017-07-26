@@ -25,6 +25,7 @@
 		9567899D1F226DF10070FEEB /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9567899C1F226DF10070FEEB /* DateHelper.swift */; };
 		956789B01F290E600070FEEB /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956789AF1F290E600070FEEB /* RecipeTableViewCell.swift */; };
 		956789B31F294F180070FEEB /* Instruction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956789B21F294F180070FEEB /* Instruction.swift */; };
+		956789B51F29560B0070FEEB /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956789B41F29560B0070FEEB /* Ingredient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		9567899C1F226DF10070FEEB /* DateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		956789AF1F290E600070FEEB /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
 		956789B21F294F180070FEEB /* Instruction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Instruction.swift; sourceTree = "<group>"; };
+		956789B41F29560B0070FEEB /* Ingredient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
 		F183672AF08D8E0DAEAA01C4 /* Pods_FamilyBinder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FamilyBinder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -148,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				954D7ACE1F19DAD8000480A7 /* Recipe.swift */,
+				956789B41F29560B0070FEEB /* Ingredient.swift */,
 				956789B21F294F180070FEEB /* Instruction.swift */,
 				954D7AB01F198CB3000480A7 /* RecipesMasterViewController.swift */,
 				956789AF1F290E600070FEEB /* RecipeTableViewCell.swift */,
@@ -283,6 +286,7 @@
 			files = (
 				954D7AB31F198CB3000480A7 /* RecipeDetailViewController.swift in Sources */,
 				956789941F2146B50070FEEB /* ScheduledMeal.swift in Sources */,
+				956789B51F29560B0070FEEB /* Ingredient.swift in Sources */,
 				954D7AB11F198CB3000480A7 /* RecipesMasterViewController.swift in Sources */,
 				956789B01F290E600070FEEB /* RecipeTableViewCell.swift in Sources */,
 				954D7ACB1F199034000480A7 /* SpoonacularAPIManager.swift in Sources */,
