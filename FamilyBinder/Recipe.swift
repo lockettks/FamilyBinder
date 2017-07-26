@@ -15,6 +15,7 @@ class Recipe {
     var instructions: String?
     var servings: Int?
     var imageURL: String?
+    var image: UIImage?
     
     required init() {
     }

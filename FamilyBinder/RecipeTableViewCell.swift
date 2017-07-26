@@ -23,6 +23,7 @@ class RecipeTableViewCell: UITableViewCell {
                     print(error!)
                     return
                 }
+                model.image = image
                 self.recipeImg.image = image // will work fine even if image is nil
                 // need to reload the view, which won't happen otherwise
                 // sincew this is in an async call

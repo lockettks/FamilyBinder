@@ -22,14 +22,17 @@ class RecipeDetailViewController: UIViewController {
     func configureView() {
         // Update the user interface for the detail item.
         if let detail = self.detailItem {
-            if let label = self.directionsLabel {
-                label.text = detail.instructions
-            }
             if let label = self.recipeTitleLabel {
                 label.text = detail.title
             }
+            if let img = self.recipeImg {
+                img.image = detail.image
+            }
             if let label = self.servingsLabel {
                 label.text = detail.servings?.description
+            }
+            if let label = self.directionsLabel {
+                label.text = detail.instructions
             }
             self.navigationItem.title = detail.title
         }
