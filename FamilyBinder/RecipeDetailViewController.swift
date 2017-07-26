@@ -1,5 +1,5 @@
 //
-//  DetailViewController.swift
+//  RecipeDetailViewController.swift
 //  FamilyBinder
 //
 //  Created by Kimberly Mathieu on 7/14/17.
@@ -9,9 +9,10 @@
 import UIKit
 import RealmSwift
 
-class DetailViewController: UIViewController {
+class RecipeDetailViewController: UIViewController {
 
     @IBOutlet weak var recipeTitleLabel: UILabel!
+    @IBOutlet weak var recipeImg: UIImageView!
     @IBOutlet weak var servingsLabel: UILabel!
     @IBOutlet weak var ingredientsLabel: UILabel!
     @IBOutlet weak var directionsLabel: UILabel!

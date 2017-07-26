@@ -1,5 +1,5 @@
 //
-//  MasterViewController.swift
+//  RecipeMasterViewController.swift
 //  FamilyBinder
 //
 //  Created by Kimberly Mathieu on 7/14/17.
@@ -9,9 +9,9 @@
 import UIKit
 import PromiseKit
 
-class MasterViewController: UITableViewController {
+class RecipesMasterViewController: UITableViewController {
     
-    var detailViewController: DetailViewController? = nil
+    var detailViewController: RecipeDetailViewController? = nil
     var recipes = [Recipe]()
     
     
@@ -24,7 +24,7 @@ class MasterViewController: UITableViewController {
         self.navigationItem.rightBarButtonItem = addButton
         if let split = splitViewController {
             let controllers = split.viewControllers
-            detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
+            detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? RecipeDetailViewController
         }
     }
     
@@ -82,7 +82,7 @@ class MasterViewController: UITableViewController {
         if segue.identifier == "showDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 let recipe = recipes[indexPath.row]
-                if let controller = (segue.destination as! UINavigationController).topViewController as? DetailViewController {
+                if let controller = (segue.destination as! UINavigationController).topViewController as? RecipeDetailViewController {
                     controller.detailItem = recipe
                     controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
                     controller.navigationItem.leftItemsSupplementBackButton = true
@@ -102,11 +102,9 @@ class MasterViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         let recipe = recipes[indexPath.row]
-        cell.textLabel?.text = recipe.title
-        cell.detailTextLabel?.text = recipe.id?.description
-        // TODO: set cell.imageView to display image at gist.ownerAvatarURL
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! RecipeTableViewCell
+        cell.initWithModel(model: recipe)
         return cell
     }
     

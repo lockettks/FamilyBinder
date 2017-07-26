@@ -14,6 +14,7 @@ class Recipe {
     var title: String?
     var instructions: String?
     var servings: Int?
+    var imageURL: String?
     
     required init() {
     }
@@ -22,25 +23,31 @@ class Recipe {
         guard let instructions = json["instructions"] as? String,
             let idValue = json["id"] as? Int,
             let title = json["title"] as? String,
-        let servings = json["servings"] as? Int else {
+            let servings = json["servings"] as? Int,
+            let imageURL = json["image"] as? String
+            else {
                 return nil
         }
         self.instructions = instructions
         self.id = idValue
         self.title = title
         self.servings = servings
+        self.imageURL = imageURL
     }
     
     required init?(json: JSON) {
         guard let instructions = json["instructions"].string,
             let idValue = json["id"].int,
             let title = json["title"].string,
-            let servings = json["servings"].int else {
+            let servings = json["servings"].int,
+            let imageURL = json["image"].string
+            else {
                 return nil
         }
         self.instructions = instructions
         self.id = idValue
         self.title = title
         self.servings = servings
+        self.imageURL = imageURL
     }
 }
