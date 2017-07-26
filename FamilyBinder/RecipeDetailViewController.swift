@@ -10,7 +10,7 @@ import UIKit
 import RealmSwift
 
 class RecipeDetailViewController: UIViewController {
-
+    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var recipeTitleLabel: UILabel!
     @IBOutlet weak var recipeImg: UIImageView!
@@ -19,30 +19,99 @@ class RecipeDetailViewController: UIViewController {
     @IBOutlet weak var directionsLabel: UILabel!
     
     var scrollViewPropertiesInitialized = false
-
+    
     func configureView() {
         // Update the user interface for the detail item.
-        if let detail = self.detailItem {
-            if let label = self.recipeTitleLabel {
-                label.text = detail.title
-            }
-            if let img = self.recipeImg {
-                img.image = detail.image
-            }
-            if let label = self.servingsLabel {
-                label.text = detail.servings?.description
-            }
-            if let label = self.directionsLabel {
-                label.text = detail.instructions
-            }
-            self.navigationItem.title = detail.title
-        }
+                if let detail = self.detailItem {
+                    self.navigationItem.title = detail.title
+        
+                    if let label = self.recipeTitleLabel {
+                        label.text = detail.title
+                    }
+                    if let img = self.recipeImg {
+                        img.image = detail.image
+                    }
+                    if let label = self.servingsLabel {
+                        label.text = detail.servings?.description
+                    }
+                    if let label = self.directionsLabel {
+                        label.text = detail.instructions
+                    }
+        
+        
+        //            //try
+        //            self.ingredientsLabel.text = ""
+        //
+        //            let attributesDictionary = [NSFontAttributeName : self.ingredientsLabel.font]
+        //            let fullAttributedString = NSMutableAttributedString(string: "", attributes: attributesDictionary)
+        //            for ingredient in (detail.ingredients) {
+        //                let bulletPoint: String = "\u{2022}"
+        //                let formattedString: String = "\(bulletPoint) \(ingredient.originalString)\n"
+        //                let attributedString: NSMutableAttributedString = NSMutableAttributedString(string: formattedString)
+        //
+        //                let paragraphStyle = createParagraphAttribute()
+        //                attributedString.addAttributes([NSParagraphStyleAttributeName: paragraphStyle], range: NSMakeRange(0, attributedString.length))
+        //                fullAttributedString.append(attributedString)
+        //            }
+        //            ingredientsLabel.attributedText = fullAttributedString
+        //            //end try
+        
+                }
     }
-
+    
+    func createParagraphAttribute() ->NSParagraphStyle {
+        var paragraphStyle: NSMutableParagraphStyle
+        paragraphStyle = NSParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle
+        paragraphStyle.tabStops = [NSTextTab(textAlignment: .left, location: 15, options: NSDictionary() as! [String : AnyObject])]
+        paragraphStyle.defaultTabInterval = 15
+        paragraphStyle.firstLineHeadIndent = 0
+        paragraphStyle.headIndent = 15
+        
+        return paragraphStyle
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureView()
+        
+        
+//        if let detail = self.detailItem {
+//            self.navigationItem.title = detail.title
+//            
+//            if let label = self.recipeTitleLabel {
+//                label.text = detail.title
+//            }
+//            if let img = self.recipeImg {
+//                img.image = detail.image
+//            }
+//            if let label = self.servingsLabel {
+//                label.text = detail.servings?.description
+//            }
+//            if let label = self.directionsLabel {
+//                label.text = detail.instructions
+//            }
+        
+            
+            //try
+//            self.ingredientsLabel.text = ""
+        if let detail = self.detailItem {
+            let attributesDictionary = [NSFontAttributeName : self.ingredientsLabel.font]
+            let fullAttributedString = NSMutableAttributedString(string: "", attributes: attributesDictionary)
+            for ingredient in (detail.ingredients) {
+                let bulletPoint: String = "\u{2022}"
+                let formattedString: String = "\(bulletPoint) \(ingredient.originalString)\n"
+                let attributedString: NSMutableAttributedString = NSMutableAttributedString(string: formattedString)
+                
+                let paragraphStyle = createParagraphAttribute()
+                attributedString.addAttributes([NSParagraphStyleAttributeName: paragraphStyle], range: NSMakeRange(0, attributedString.length))
+                fullAttributedString.append(attributedString)
+            }
+            ingredientsLabel.attributedText = fullAttributedString
+        }
+            //end try
+            
+//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,31 +136,31 @@ class RecipeDetailViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addRecipeToMealPlanSegue" {
-//            if let indexPath = self.tableView.indexPathForSelectedRow {
-//                let recipe = recipes[indexPath.row]
-                if let controller = (segue.destination as! UINavigationController).topViewController as? AddToMealPlanTableViewController {
-                    if let detail = self.detailItem {
-                        controller.selectedRecipe = detail
-                    }
-//                    controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
-//                    controller.navigationItem.leftItemsSupplementBackButton = true
+            //            if let indexPath = self.tableView.indexPathForSelectedRow {
+            //                let recipe = recipes[indexPath.row]
+            if let controller = (segue.destination as! UINavigationController).topViewController as? AddToMealPlanTableViewController {
+                if let detail = self.detailItem {
+                    controller.selectedRecipe = detail
                 }
-//            }
+                //                    controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
+                //                    controller.navigationItem.leftItemsSupplementBackButton = true
+            }
+            //            }
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     var detailItem: Recipe? {
         didSet {
             // Update the view.
             configureView()
         }
     }
-
-
+    
+    
 }
 

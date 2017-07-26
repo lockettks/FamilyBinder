@@ -80,7 +80,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ingredients" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3qJ-sx-tLP" userLabel="LblIngredients">
-                                        <rect key="frame" x="20" y="242" width="339" height="198"/>
+                                        <rect key="frame" x="20" y="242" width="339" height="129"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -114,7 +114,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="directionsLabel" destination="0XM-y9-sOw" id="oBG-lF-ILS"/>
-                        <outlet property="ingredientsLabel" destination="3qJ-sx-tLP" id="5ke-pZ-Yze"/>
+                        <outlet property="ingredientsLabel" destination="3qJ-sx-tLP" id="COv-2i-XTw"/>
                         <outlet property="recipeImg" destination="vq0-5k-8yN" id="LUK-bp-qrF"/>
                         <outlet property="recipeTitleLabel" destination="9bT-Vn-xgO" id="1w7-bS-55P"/>
                         <outlet property="scrollView" destination="ved-Ad-DDW" id="Cmg-f8-RQz"/>
@@ -191,7 +191,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="oF0-JF-S4Z">
-                                                    <rect key="frame" x="-3" y="-8" width="376" height="216"/>
+                                                    <rect key="frame" x="-5" y="-8" width="378" height="216"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                     <date key="date" timeIntervalSinceReferenceDate="522285438.03378499">
                                                         <!--2017-07-20 23:17:18 +0000-->
