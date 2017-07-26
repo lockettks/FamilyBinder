@@ -26,6 +26,9 @@ class RecipesMasterViewController: UITableViewController {
             let controllers = split.viewControllers
             detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? RecipeDetailViewController
         }
+    
+        
+        loadRecipes()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -36,11 +39,11 @@ class RecipesMasterViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        //Test
-        //        SpoonacularAPIManager.sharedInstance.printRandomRecipes(numberOfRecipes: 3)
-        //End Test
-        
-        loadRecipes()
+//        //Test
+//        //        SpoonacularAPIManager.sharedInstance.printRandomRecipes(numberOfRecipes: 3)
+//        //End Test
+//        
+//        loadRecipes()
     }
     
     func loadRecipes() {
