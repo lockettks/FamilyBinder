@@ -22,41 +22,22 @@ class RecipeDetailViewController: UIViewController {
     
     func configureView() {
         // Update the user interface for the detail item.
-                if let detail = self.detailItem {
-                    self.navigationItem.title = detail.title
-        
-                    if let label = self.recipeTitleLabel {
-                        label.text = detail.title
-                    }
-                    if let img = self.recipeImg {
-                        img.image = detail.image
-                    }
-                    if let label = self.servingsLabel {
-                        label.text = detail.servings?.description
-                    }
-                    if let label = self.directionsLabel {
-                        label.text = detail.instructions
-                    }
-        
-        
-        //            //try
-        //            self.ingredientsLabel.text = ""
-        //
-        //            let attributesDictionary = [NSFontAttributeName : self.ingredientsLabel.font]
-        //            let fullAttributedString = NSMutableAttributedString(string: "", attributes: attributesDictionary)
-        //            for ingredient in (detail.ingredients) {
-        //                let bulletPoint: String = "\u{2022}"
-        //                let formattedString: String = "\(bulletPoint) \(ingredient.originalString)\n"
-        //                let attributedString: NSMutableAttributedString = NSMutableAttributedString(string: formattedString)
-        //
-        //                let paragraphStyle = createParagraphAttribute()
-        //                attributedString.addAttributes([NSParagraphStyleAttributeName: paragraphStyle], range: NSMakeRange(0, attributedString.length))
-        //                fullAttributedString.append(attributedString)
-        //            }
-        //            ingredientsLabel.attributedText = fullAttributedString
-        //            //end try
-        
-                }
+        if let detail = self.detailItem {
+            self.navigationItem.title = detail.title
+            
+            if let label = self.recipeTitleLabel {
+                label.text = detail.title
+            }
+            if let img = self.recipeImg {
+                img.image = detail.image
+            }
+            if let label = self.servingsLabel {
+                label.text = detail.servings?.description
+            }
+            if let label = self.directionsLabel {
+                label.text = detail.instructions
+            }
+        }
     }
     
     func createParagraphAttribute() ->NSParagraphStyle {
@@ -108,22 +89,14 @@ class RecipeDetailViewController: UIViewController {
         scrollView.contentSize.height = directionsBottomYPos + 40.0
     }
     
-    @IBAction func addToMealPlan(_ sender: Any) {
-        
-    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addRecipeToMealPlanSegue" {
-            //            if let indexPath = self.tableView.indexPathForSelectedRow {
-            //                let recipe = recipes[indexPath.row]
             if let controller = (segue.destination as! UINavigationController).topViewController as? AddToMealPlanTableViewController {
                 if let detail = self.detailItem {
                     controller.selectedRecipe = detail
                 }
-                //                    controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
-                //                    controller.navigationItem.leftItemsSupplementBackButton = true
             }
-            //            }
         }
     }
     
@@ -138,7 +111,5 @@ class RecipeDetailViewController: UIViewController {
             configureView()
         }
     }
-    
-    
 }
 
