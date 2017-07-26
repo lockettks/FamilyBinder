@@ -100,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				956789AD1F27EEC90070FEEB /* Meal Plan */,
+				956789AE1F28F7AD0070FEEB /* API */,
 				9567899B1F226DD30070FEEB /* Utils */,
 				954D7AB01F198CB3000480A7 /* MasterViewController.swift */,
 				954D7AB21F198CB3000480A7 /* DetailViewController.swift */,
@@ -107,9 +108,7 @@
 				956789931F2146B50070FEEB /* ScheduledMeal.swift */,
 				954D7ACE1F19DAD8000480A7 /* Recipe.swift */,
 				956789951F2147D90070FEEB /* MealTypes.swift */,
-				954D7ACA1F199034000480A7 /* SpoonacularAPIManager.swift */,
 				954D7AB41F198CB3000480A7 /* Main.storyboard */,
-				954D7ACC1F19D8AE000480A7 /* RecipeRouter.swift */,
 				954D7AAE1F198CB3000480A7 /* AppDelegate.swift */,
 				954D7ABC1F198CB3000480A7 /* Info.plist */,
 				954D7AB71F198CB3000480A7 /* Assets.xcassets */,
@@ -132,6 +131,15 @@
 				956789991F216D330070FEEB /* AddToMealPlanTableViewController.swift */,
 			);
 			name = "Meal Plan";
+			sourceTree = "<group>";
+		};
+		956789AE1F28F7AD0070FEEB /* API */ = {
+			isa = PBXGroup;
+			children = (
+				954D7ACA1F199034000480A7 /* SpoonacularAPIManager.swift */,
+				954D7ACC1F19D8AE000480A7 /* RecipeRouter.swift */,
+			);
+			name = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

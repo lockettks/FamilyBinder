@@ -43,6 +43,21 @@ class DetailViewController: UIViewController {
     @IBAction func addToMealPlan(_ sender: Any) {
         
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "addRecipeToMealPlanSegue" {
+//            if let indexPath = self.tableView.indexPathForSelectedRow {
+//                let recipe = recipes[indexPath.row]
+                if let controller = (segue.destination as! UINavigationController).topViewController as? AddToMealPlanTableViewController {
+                    if let detail = self.detailItem {
+                        controller.selectedRecipe = detail
+                    }
+//                    controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
+//                    controller.navigationItem.leftItemsSupplementBackButton = true
+                }
+//            }
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
