@@ -16,7 +16,7 @@ class RecipeDetailViewController: UIViewController {
     @IBOutlet weak var recipeImg: UIImageView!
     @IBOutlet weak var servingsLabel: UILabel!
     @IBOutlet weak var ingredientsLabel: UILabel!
-    @IBOutlet weak var directionsLabel: UILabel!
+    @IBOutlet weak var instructionsLabel: UILabel!
     
     var scrollViewPropertiesInitialized = false
     
@@ -34,42 +34,37 @@ class RecipeDetailViewController: UIViewController {
             if let label = self.servingsLabel {
                 label.text = detail.servings?.description
             }
-            if let label = self.directionsLabel {
+            if let label = self.instructionsLabel {
                 label.text = detail.instructions
             }
         }
     }
     
-    func createParagraphAttribute() ->NSParagraphStyle {
-        var paragraphStyle: NSMutableParagraphStyle
-        paragraphStyle = NSParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle
-        paragraphStyle.tabStops = [NSTextTab(textAlignment: .left, location: 15, options: NSDictionary() as! [String : AnyObject])]
-        paragraphStyle.defaultTabInterval = 15
-        paragraphStyle.firstLineHeadIndent = 0
-        paragraphStyle.headIndent = 15
-        
-        return paragraphStyle
-    }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureView()
         if let detail = self.detailItem {
-            let attributesDictionary = [NSFontAttributeName : self.ingredientsLabel.font]
-            let fullAttributedString = NSMutableAttributedString(string: "", attributes: (attributesDictionary as Any as! [String : Any]))
+            
+            // Format ingredients
+            var attributesDictionary = [NSFontAttributeName : self.ingredientsLabel.font]
+            var fullAttributedString = NSMutableAttributedString(string: "", attributes: (attributesDictionary as Any as! [String : Any]))
             for ingredient in (detail.ingredients) {
                 if let oString = ingredient.originalString {
-                    let bulletPoint: String = "\u{2022}"
-                    let formattedString: String = "\(bulletPoint) \(oString)\n"
-                    let attributedString: NSMutableAttributedString = NSMutableAttributedString(string: formattedString)
-                    
-                    let paragraphStyle = createParagraphAttribute()
-                    attributedString.addAttributes([NSParagraphStyleAttributeName: paragraphStyle], range: NSMakeRange(0, attributedString.length))
-                    fullAttributedString.append(attributedString)
+                    fullAttributedString.append(convertToBulletedItem(textToConvert: oString))
                 }
             }
             ingredientsLabel.attributedText = fullAttributedString
+            
+            // Format instructions
+            attributesDictionary = [NSFontAttributeName : self.instructionsLabel.font]
+            fullAttributedString = NSMutableAttributedString(string: "", attributes: (attributesDictionary as Any as! [String : Any]))
+            detail.analyzedInstructions.sort { $0.stepNumber! < $1.stepNumber!}
+            for instruction in detail.analyzedInstructions {
+                fullAttributedString.append(convertToNumberedItem(instruction: instruction))
+            }
+            instructionsLabel.attributedText = fullAttributedString
         }
     }
     
@@ -84,8 +79,40 @@ class RecipeDetailViewController: UIViewController {
         updateScrollSize()
     }
     
+    func convertToNumberedItem(instruction: Instruction) -> NSMutableAttributedString {
+        let formattedString: String = "\n\(instruction.stepNumber ?? 0). \(instruction.step ?? "")\n"
+        let attributedString: NSMutableAttributedString = NSMutableAttributedString(string: formattedString)
+        
+        let paragraphStyle = createParagraphAttribute()
+        attributedString.addAttributes([NSParagraphStyleAttributeName: paragraphStyle], range: NSMakeRange(0, attributedString.length))
+        return attributedString
+    }
+    
+    func convertToBulletedItem(textToConvert: String) -> NSMutableAttributedString {
+        let bulletPoint: String = "\u{2022}"
+        let formattedString: String = "\(bulletPoint) \(textToConvert)\n"
+        let attributedString: NSMutableAttributedString = NSMutableAttributedString(string: formattedString)
+        
+        let paragraphStyle = createParagraphAttribute()
+        attributedString.addAttributes([NSParagraphStyleAttributeName: paragraphStyle], range: NSMakeRange(0, attributedString.length))
+        return attributedString
+    }
+    
+    
+    // MARK: - Text formatting
+    func createParagraphAttribute() ->NSParagraphStyle {
+        var paragraphStyle: NSMutableParagraphStyle
+        paragraphStyle = NSParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle
+        paragraphStyle.tabStops = [NSTextTab(textAlignment: .left, location: 15, options: NSDictionary() as! [String : AnyObject])]
+        paragraphStyle.defaultTabInterval = 15
+        paragraphStyle.firstLineHeadIndent = 0
+        paragraphStyle.headIndent = 15
+        
+        return paragraphStyle
+    }
+    
     func updateScrollSize() {
-        let directionsBottomYPos = directionsLabel.frame.origin.y + directionsLabel.frame.size.height
+        let directionsBottomYPos = instructionsLabel.frame.origin.y + instructionsLabel.frame.size.height
         scrollView.contentSize.height = directionsBottomYPos + 40.0
     }
     
