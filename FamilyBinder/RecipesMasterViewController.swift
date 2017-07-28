@@ -13,6 +13,7 @@ class RecipesMasterViewController: UITableViewController {
     
     var detailViewController: RecipeDetailViewController? = nil
     var recipes = [Recipe]()
+    var NUMBER_OF_RECIPES = 3
     
     
     override func viewDidLoad() {
@@ -47,7 +48,7 @@ class RecipesMasterViewController: UITableViewController {
     }
     
     func loadRecipes() {
-        SpoonacularAPIManager.sharedInstance.fetchRandomRecipes(numberOfRecipes: 1).then { result -> Void in
+        SpoonacularAPIManager.sharedInstance.fetchRandomRecipes(numberOfRecipes: NUMBER_OF_RECIPES).then { result -> Void in
             self.recipes = result
             self.tableView.reloadData()
         }.catch { error in

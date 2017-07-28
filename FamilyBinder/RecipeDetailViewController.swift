@@ -20,27 +20,18 @@ class RecipeDetailViewController: UIViewController {
     
     var scrollViewPropertiesInitialized = false
     
-    func configureView() {
-        // Update the user interface for the detail item.
-        if let detail = self.detailItem {
-            self.navigationItem.title = detail.title
-            
-            if let label = self.recipeTitleLabel {
-                label.text = detail.title
-            }
-            if let img = self.recipeImg {
-                img.image = detail.image
-            }
-            if let label = self.servingsLabel {
-                label.text = detail.servings?.description
-            }
-            if let label = self.instructionsLabel {
-                label.text = detail.instructions
-            }
-        }
+    // MARK: - View Manipulation
+    override func viewWillAppear(_ animated: Bool) {
+//                if !scrollViewPropertiesInitialized {
+//                    self.automaticallyAdjustsScrollViewInsets = true
+//                    scrollView.contentInset = .zero
+//                    scrollView.scrollIndicatorInsets = .zero
+//                    scrollView.contentOffset = CGPoint(x: 0.0, y: 0.0)
+//                    scrollViewPropertiesInitialized = true
+//                }
+//                updateScrollSize()
     }
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -66,9 +57,7 @@ class RecipeDetailViewController: UIViewController {
             }
             instructionsLabel.attributedText = fullAttributedString
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
+        
         if !scrollViewPropertiesInitialized {
             self.automaticallyAdjustsScrollViewInsets = true
             scrollView.contentInset = .zero
@@ -79,6 +68,52 @@ class RecipeDetailViewController: UIViewController {
         updateScrollSize()
     }
     
+    func configureView() {
+        // Update the user interface for the detail item.
+        if let detail = self.detailItem {
+            self.navigationItem.title = detail.title
+            
+            if let label = self.recipeTitleLabel {
+                label.text = detail.title
+            }
+            if let img = self.recipeImg {
+                img.image = detail.image
+            }
+            if let label = self.servingsLabel {
+                label.text = detail.servings?.description
+            }
+            if let label = self.instructionsLabel {
+                label.text = detail.instructions
+            }
+        }
+    }
+
+    override func viewDidLayoutSubviews() {
+//        if !scrollViewPropertiesInitialized {
+//            self.automaticallyAdjustsScrollViewInsets = true
+//            scrollView.contentInset = .zero
+//            scrollView.scrollIndicatorInsets = .zero
+//            scrollView.contentOffset = CGPoint(x: 0.0, y: 0.0)
+//            scrollViewPropertiesInitialized = true
+//        }
+        recipeTitleLabel.sizeToFit()
+        
+        ingredientsLabel.sizeToFit()
+        instructionsLabel.sizeToFit()
+        updateScrollSize()
+    }
+    
+    
+    
+    func updateScrollSize() {
+        
+        let directionsBottomYPos = instructionsLabel.frame.origin.y + instructionsLabel.frame.size.height
+        scrollView.contentSize.height = directionsBottomYPos + 40.0
+    }
+    
+    
+    
+    // MARK: - Text Formatting
     func convertToNumberedItem(instruction: Instruction) -> NSMutableAttributedString {
         let formattedString: String = "\n\(instruction.stepNumber ?? 0). \(instruction.step ?? "")\n"
         let attributedString: NSMutableAttributedString = NSMutableAttributedString(string: formattedString)
@@ -99,7 +134,6 @@ class RecipeDetailViewController: UIViewController {
     }
     
     
-    // MARK: - Text formatting
     func createParagraphAttribute() ->NSParagraphStyle {
         var paragraphStyle: NSMutableParagraphStyle
         paragraphStyle = NSParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle
@@ -111,10 +145,7 @@ class RecipeDetailViewController: UIViewController {
         return paragraphStyle
     }
     
-    func updateScrollSize() {
-        let directionsBottomYPos = instructionsLabel.frame.origin.y + instructionsLabel.frame.size.height
-        scrollView.contentSize.height = directionsBottomYPos + 40.0
-    }
+
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
