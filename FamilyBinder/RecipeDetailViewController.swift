@@ -58,6 +58,8 @@ class RecipeDetailViewController: UIViewController {
             instructionsLabel.attributedText = fullAttributedString
         }
         
+        
+        
         if !scrollViewPropertiesInitialized {
             self.automaticallyAdjustsScrollViewInsets = true
             scrollView.contentInset = .zero
@@ -97,9 +99,11 @@ class RecipeDetailViewController: UIViewController {
 //            scrollViewPropertiesInitialized = true
 //        }
         recipeTitleLabel.sizeToFit()
-        
+        recipeTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         ingredientsLabel.sizeToFit()
+        ingredientsLabel.translatesAutoresizingMaskIntoConstraints = false
         instructionsLabel.sizeToFit()
+        instructionsLabel.translatesAutoresizingMaskIntoConstraints = false
         updateScrollSize()
     }
     
