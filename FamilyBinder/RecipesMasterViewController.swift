@@ -11,9 +11,9 @@ import PromiseKit
 
 class RecipesMasterViewController: UITableViewController {
     
+    var NUMBER_OF_RECIPES = 1
     var detailViewController: RecipeDetailViewController? = nil
     var recipes = [Recipe]()
-    var NUMBER_OF_RECIPES = 3
     
     
     override func viewDidLoad() {
