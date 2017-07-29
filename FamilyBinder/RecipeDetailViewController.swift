@@ -60,14 +60,14 @@ class RecipeDetailViewController: UIViewController {
         
         
         
-        if !scrollViewPropertiesInitialized {
-            self.automaticallyAdjustsScrollViewInsets = true
-            scrollView.contentInset = .zero
-            scrollView.scrollIndicatorInsets = .zero
-            scrollView.contentOffset = CGPoint(x: 0.0, y: 0.0)
-            scrollViewPropertiesInitialized = true
-        }
-        updateScrollSize()
+//        if !scrollViewPropertiesInitialized {
+//            self.automaticallyAdjustsScrollViewInsets = true
+//            scrollView.contentInset = .zero
+//            scrollView.scrollIndicatorInsets = .zero
+//            scrollView.contentOffset = CGPoint(x: 0.0, y: 0.0)
+//            scrollViewPropertiesInitialized = true
+//        }
+//        updateScrollSize()
     }
     
     func configureView() {
@@ -91,13 +91,13 @@ class RecipeDetailViewController: UIViewController {
     }
 
     override func viewDidLayoutSubviews() {
-//        if !scrollViewPropertiesInitialized {
-//            self.automaticallyAdjustsScrollViewInsets = true
-//            scrollView.contentInset = .zero
-//            scrollView.scrollIndicatorInsets = .zero
-//            scrollView.contentOffset = CGPoint(x: 0.0, y: 0.0)
-//            scrollViewPropertiesInitialized = true
-//        }
+        if !scrollViewPropertiesInitialized {
+            self.automaticallyAdjustsScrollViewInsets = true
+            scrollView.contentInset = .zero
+            scrollView.scrollIndicatorInsets = .zero
+            scrollView.contentOffset = CGPoint(x: 0.0, y: 0.0)
+            scrollViewPropertiesInitialized = true
+        }
         recipeTitleLabel.sizeToFit()
         recipeTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         ingredientsLabel.sizeToFit()
