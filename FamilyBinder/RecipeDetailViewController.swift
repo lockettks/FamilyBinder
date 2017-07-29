@@ -94,16 +94,27 @@ class RecipeDetailViewController: UIViewController {
         if !scrollViewPropertiesInitialized {
             self.automaticallyAdjustsScrollViewInsets = true
             scrollView.contentInset = .zero
+            scrollView.contentInset.bottom = 100
             scrollView.scrollIndicatorInsets = .zero
             scrollView.contentOffset = CGPoint(x: 0.0, y: 0.0)
             scrollViewPropertiesInitialized = true
         }
         recipeTitleLabel.sizeToFit()
         recipeTitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        recipeTitleLabel.setNeedsLayout()
+        recipeTitleLabel.layoutIfNeeded()
+    
+//        -setNeedsLayout
+//        -layoutIfNeeded
         ingredientsLabel.sizeToFit()
         ingredientsLabel.translatesAutoresizingMaskIntoConstraints = false
+        ingredientsLabel.setNeedsLayout()
+        ingredientsLabel.layoutIfNeeded()
+        
         instructionsLabel.sizeToFit()
         instructionsLabel.translatesAutoresizingMaskIntoConstraints = false
+        instructionsLabel.setNeedsLayout()
+        instructionsLabel.layoutIfNeeded()
         updateScrollSize()
     }
     
@@ -112,7 +123,7 @@ class RecipeDetailViewController: UIViewController {
     func updateScrollSize() {
         
         let directionsBottomYPos = instructionsLabel.frame.origin.y + instructionsLabel.frame.size.height
-        scrollView.contentSize.height = directionsBottomYPos + 40.0
+        scrollView.contentSize.height = directionsBottomYPos + 140.0
     }
     
     

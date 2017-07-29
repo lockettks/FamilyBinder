@@ -27,6 +27,33 @@
       </ContextState>
       <ContextState
          contextName = "RecipeRouter.asURLRequest() throws -&gt; URLRequest:RecipeRouter.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "encoding.encode(urlRequest, with: params)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "RecipeDetailViewController.viewDidLoad() -&gt; ():RecipeDetailViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "instructionsLabel.frame.origin.y">
+            </PersistentString>
+            <PersistentString
+               value = "instructionsLabel.frame.size.height">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "RecipeDetailViewController.updateScrollSize() -&gt; ():RecipeDetailViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "instructionsLabel.frame.origin.y">
+            </PersistentString>
+            <PersistentString
+               value = "instructionsLabel.frame.size.height">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "RecipeTableViewCell.initWithModel(model : Recipe) -&gt; ():RecipeTableViewCell.swift">
@@ -42,6 +69,23 @@
             </PersistentString>
             <PersistentString
                value = "ingredientsLabel.font">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "RecipeDetailViewController.viewDidLayoutSubviews() -&gt; ():RecipeDetailViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "instructionsLabel.frame.origin.y">
+            </PersistentString>
+            <PersistentString
+               value = "ingredientsLabel.frame.origin.y">
+            </PersistentString>
+            <PersistentString
+               value = "ingredientsLabel.frame.size.height">
+            </PersistentString>
+            <PersistentString
+               value = "instructionsLabel.frame.size.height">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
