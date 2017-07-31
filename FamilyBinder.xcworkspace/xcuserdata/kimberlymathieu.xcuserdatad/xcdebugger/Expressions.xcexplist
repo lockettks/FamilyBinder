@@ -3,27 +3,15 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "SpoonacularAPIManager.(printPublicRecipes() -&gt; ()).(closure #1):SpoonacularAPIManager.swift">
+         contextName = "static SessionManager.(default).(variable initialization expression).(closure #1):SessionManager.swift">
       </ContextState>
       <ContextState
-         contextName = "AddToMealPlanTableViewController.dateChanged(Any) -&gt; ():AddToMealPlanTableViewController.swift">
+         contextName = "SpoonacularAPIManager.randomRecipeArrayFromResponse(response : DataResponse&lt;Any&gt;) -&gt; Result&lt;[Recipe]&gt;:SpoonacularAPIManager.swift">
          <PersistentStrings>
             <PersistentString
-               value = "selectedValue">
-            </PersistentString>
-            <PersistentString
-               value = "myFormatter.string(from: picker.date)&#10;myFormatter.string(from: picker.date)&#10;">
+               value = "jsonDictionary[&quot;recipes&quot;] as? [[String: Any]]">
             </PersistentString>
          </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "RecipesMasterViewController.(loadRecipes() -&gt; ()).(closure #1):RecipesMasterViewController.swift">
-      </ContextState>
-      <ContextState
-         contextName = "Recipe.init(json : JSON) -&gt; Recipe?:Recipe.swift">
-      </ContextState>
-      <ContextState
-         contextName = "Instruction.init(json : JSON) -&gt; Instruction?:Instruction.swift">
       </ContextState>
       <ContextState
          contextName = "RecipeRouter.asURLRequest() throws -&gt; URLRequest:RecipeRouter.swift">
@@ -34,29 +22,47 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "RecipeDetailViewController.viewDidLoad() -&gt; ():RecipeDetailViewController.swift">
+         contextName = "Recipe.init(json : JSON) -&gt; Recipe?:Recipe.swift">
+      </ContextState>
+      <ContextState
+         contextName = "Instruction.init(json : JSON) -&gt; Instruction?:Instruction.swift">
+      </ContextState>
+      <ContextState
+         contextName = "MealDatePickerTableViewCell.awakeFromNib() -&gt; ():MealDatePickerTableViewCell.swift">
+      </ContextState>
+      <ContextState
+         contextName = "request(URLRequestConvertible) -&gt; DataRequest:Alamofire.swift">
+      </ContextState>
+      <ContextState
+         contextName = "RecipesMasterViewController.(loadRecipes() -&gt; ()).(closure #1):RecipesMasterViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "AddToMealPlanTableViewController.tableView(UITableView, heightForRowAt : IndexPath) -&gt; CGFloat:AddToMealPlanTableViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "instructionsLabel.frame.origin.y">
+               value = "indexPath.row">
             </PersistentString>
             <PersistentString
-               value = "instructionsLabel.frame.size.height">
+               value = "DATE_PICKER_POSITION">
+            </PersistentString>
+            <PersistentString
+               value = "indexPath.section">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "RecipeDetailViewController.updateScrollSize() -&gt; ():RecipeDetailViewController.swift">
+         contextName = "AddToMealPlanTableViewController.tableView(UITableView, cellForRowAt : IndexPath) -&gt; UITableViewCell:AddToMealPlanTableViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "instructionsLabel.frame.origin.y">
+               value = "DATE_LABEL_POSITION.SECTION">
             </PersistentString>
             <PersistentString
-               value = "instructionsLabel.frame.size.height">
+               value = "indexPath.row">
+            </PersistentString>
+            <PersistentString
+               value = "indexPath.section">
             </PersistentString>
          </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "RecipeTableViewCell.initWithModel(model : Recipe) -&gt; ():RecipeTableViewCell.swift">
       </ContextState>
       <ContextState
          contextName = "RecipeDetailViewController.configureView() -&gt; ():RecipeDetailViewController.swift">
@@ -90,13 +96,49 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "request(URLRequestConvertible) -&gt; DataRequest:Alamofire.swift">
+         contextName = "SpoonacularAPIManager.(printPublicRecipes() -&gt; ()).(closure #1):SpoonacularAPIManager.swift">
       </ContextState>
       <ContextState
-         contextName = "MealDatePickerTableViewCell.awakeFromNib() -&gt; ():MealDatePickerTableViewCell.swift">
+         contextName = "RecipesMasterViewController.viewDidLoad() -&gt; ():RecipesMasterViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "(controllers[controllers.count-1] as! UITabBarController)">
+            </PersistentString>
+            <PersistentString
+               value = "controllers[controllers.count-1] as! UINavigationController">
+            </PersistentString>
+            <PersistentString
+               value = "(controllers[controllers.count-1] as! UINavigationController).splitViewController">
+            </PersistentString>
+            <PersistentString
+               value = "detailViewController">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "static SessionManager.(default).(variable initialization expression).(closure #1):SessionManager.swift">
+         contextName = "RecipeTableViewCell.awakeFromNib() -&gt; ():RecipeTableViewCell.swift">
+      </ContextState>
+      <ContextState
+         contextName = "AppDelegate.application(UIApplication, didFinishLaunchingWithOptions : [UIApplicationLaunchOptionsKey : Any]?) -&gt; Bool:AppDelegate.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "tabController.viewControllers">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "RecipeDetailViewController.updateScrollSize() -&gt; ():RecipeDetailViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "instructionsLabel.frame.origin.y">
+            </PersistentString>
+            <PersistentString
+               value = "instructionsLabel.frame.size.height">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "RecipeTableViewCell.initWithModel(model : Recipe) -&gt; ():RecipeTableViewCell.swift">
       </ContextState>
       <ContextState
          contextName = "AddToMealPlanTableViewController.tableView(UITableView, didSelectRowAt : IndexPath) -&gt; ():AddToMealPlanTableViewController.swift">
@@ -110,43 +152,26 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "SpoonacularAPIManager.randomRecipeArrayFromResponse(response : DataResponse&lt;Any&gt;) -&gt; Result&lt;[Recipe]&gt;:SpoonacularAPIManager.swift">
+         contextName = "AddToMealPlanTableViewController.dateChanged(Any) -&gt; ():AddToMealPlanTableViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "jsonDictionary[&quot;recipes&quot;] as? [[String: Any]]">
+               value = "selectedValue">
+            </PersistentString>
+            <PersistentString
+               value = "myFormatter.string(from: picker.date)&#10;myFormatter.string(from: picker.date)&#10;">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "AddToMealPlanTableViewController.tableView(UITableView, cellForRowAt : IndexPath) -&gt; UITableViewCell:AddToMealPlanTableViewController.swift">
+         contextName = "RecipeDetailViewController.viewDidLoad() -&gt; ():RecipeDetailViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "DATE_LABEL_POSITION.SECTION">
+               value = "instructionsLabel.frame.origin.y">
             </PersistentString>
             <PersistentString
-               value = "indexPath.row">
-            </PersistentString>
-            <PersistentString
-               value = "indexPath.section">
+               value = "instructionsLabel.frame.size.height">
             </PersistentString>
          </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "AddToMealPlanTableViewController.tableView(UITableView, heightForRowAt : IndexPath) -&gt; CGFloat:AddToMealPlanTableViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "indexPath.row">
-            </PersistentString>
-            <PersistentString
-               value = "DATE_PICKER_POSITION">
-            </PersistentString>
-            <PersistentString
-               value = "indexPath.section">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "RecipeTableViewCell.awakeFromNib() -&gt; ():RecipeTableViewCell.swift">
       </ContextState>
    </ContextStates>
 </VariablesViewState>

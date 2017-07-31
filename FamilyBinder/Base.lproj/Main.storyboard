@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="H1p-Uh-vWS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="eAF-aV-N69">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -353,10 +353,48 @@
             </objects>
             <point key="canvasLocation" x="1593" y="128"/>
         </scene>
-        <!--Split View Controller-->
+        <!--My Recipes-->
+        <scene sceneID="GPm-J5-uvl">
+            <objects>
+                <viewController id="ELL-f0-KBJ" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1S6-tE-tmH"/>
+                        <viewControllerLayoutGuide type="bottom" id="9Ur-rJ-BQW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pt2-1b-k4F">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="My Recipes" id="qkN-U2-bjF"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FgJ-gs-HPl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1866" y="349"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="jQ7-5d-xcW">
+            <objects>
+                <tabBarController id="eAF-aV-N69" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="vQ8-cY-zg8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="ELL-f0-KBJ" kind="relationship" relationship="viewControllers" id="y0y-OI-6K4"/>
+                        <segue destination="H1p-Uh-vWS" kind="relationship" relationship="viewControllers" id="MMg-6l-ZpS"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sds-uo-xno" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2702" y="-170"/>
+        </scene>
+        <!--Random Recipes-->
         <scene sceneID="Nki-YV-4Qg">
             <objects>
                 <splitViewController id="H1p-Uh-vWS" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Random Recipes" id="JDV-Hu-kRd"/>
                     <toolbarItems/>
                     <connections>
                         <segue destination="RMx-3f-FxP" kind="relationship" relationship="masterViewController" id="BlO-5A-QYV"/>
@@ -434,6 +472,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="6S0-TO-JiA"/>
+        <segue reference="Tll-UG-LXB"/>
     </inferredMetricsTieBreakers>
 </document>
