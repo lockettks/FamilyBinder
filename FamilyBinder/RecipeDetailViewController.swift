@@ -22,7 +22,7 @@ class RecipeDetailViewController: UIViewController {
     
     // MARK: - View Manipulation
     override func viewWillAppear(_ animated: Bool) {
-
+        
     }
     
     override func viewDidLoad() {
@@ -35,8 +35,8 @@ class RecipeDetailViewController: UIViewController {
             var attributesDictionary = [NSFontAttributeName : self.ingredientsLabel.font]
             var fullAttributedString = NSMutableAttributedString(string: "", attributes: (attributesDictionary as Any as! [String : Any]))
             for ingredient in (detail.ingredients) {
-                if let oString = ingredient.originalString {
-                    fullAttributedString.append(convertToBulletedItem(textToConvert: oString))
+                if ingredient.originalString != "" {
+                    fullAttributedString.append(convertToBulletedItem(textToConvert: ingredient.originalString))
                 }
             }
             ingredientsLabel.attributedText = fullAttributedString
@@ -44,7 +44,7 @@ class RecipeDetailViewController: UIViewController {
             // Format instructions
             attributesDictionary = [NSFontAttributeName : self.instructionsLabel.font]
             fullAttributedString = NSMutableAttributedString(string: "", attributes: (attributesDictionary as Any as! [String : Any]))
-            detail.analyzedInstructions.sort { $0.stepNumber! < $1.stepNumber!}
+            detail.analyzedInstructions.sorted { $0.stepNumber < $1.stepNumber}
             for instruction in detail.analyzedInstructions {
                 fullAttributedString.append(convertToNumberedItem(instruction: instruction))
             }
@@ -65,14 +65,14 @@ class RecipeDetailViewController: UIViewController {
                 img.image = detail.image
             }
             if let label = self.servingsLabel {
-                label.text = detail.servings?.description
+                label.text = detail.servings.description
             }
             if let label = self.instructionsLabel {
                 label.text = detail.instructions
             }
         }
     }
-
+    
     override func viewDidLayoutSubviews() {
         if !scrollViewPropertiesInitialized {
             self.automaticallyAdjustsScrollViewInsets = true
@@ -86,7 +86,7 @@ class RecipeDetailViewController: UIViewController {
         recipeTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         recipeTitleLabel.setNeedsLayout()
         recipeTitleLabel.layoutIfNeeded()
-    
+        
         ingredientsLabel.sizeToFit()
         ingredientsLabel.translatesAutoresizingMaskIntoConstraints = false
         ingredientsLabel.setNeedsLayout()
@@ -141,7 +141,37 @@ class RecipeDetailViewController: UIViewController {
         return paragraphStyle
     }
     
+    // MARK: - Action Handlers
+    
+    @IBAction func addRecipeBtnClicked(_ sender: Any) {
+        
+        let optionMenu = UIAlertController(title: nil, message: "Choose Option", preferredStyle: .actionSheet)
+        
+        let addToMyRecipes = UIAlertAction(title: "Add To My Recipes", style: .default, handler: {
+            (alert: UIAlertAction!) -> Void in
+            print("Added to my recipes")
+        })
+        let addToMealPlan = UIAlertAction(title: "Add To Meal Plan", style: .default, handler: {
+            action in self.performSegue(withIdentifier: "addRecipeToMealPlanSegue", sender: self)
+        })
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {
+            (alert: UIAlertAction!) -> Void in
+            print("Cancelled")
+        })
+        
+        optionMenu.addAction(addToMyRecipes)
+        optionMenu.addAction(addToMealPlan)
+        optionMenu.addAction(cancelAction)
+        
+        optionMenu.popoverPresentationController?.barButtonItem = self.navigationItem.rightBarButtonItem
 
+        
+        self.present(optionMenu, animated: true, completion: nil)
+        
+    }
+    
+    
     // MARK: - Segues
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addRecipeToMealPlanSegue" {

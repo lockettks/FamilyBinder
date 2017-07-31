@@ -7,10 +7,11 @@
 //
 
 import Foundation
+import RealmSwift
 
-class MealPlan {
+class MealPlan : Object {
     static let sharedInstance = MealPlan()
-    var mealPlan = [ScheduledMeal]()
+    dynamic var mealPlan = [ScheduledMeal]()
     
     func addToMealPlan(mealToAdd : ScheduledMeal?) {
         if let newMeal = mealToAdd {

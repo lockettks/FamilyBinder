@@ -8,21 +8,21 @@
 
 import Foundation
 import SwiftyJSON
+import RealmSwift
 
-class Recipe {
-    var id: Int?
-    var title: String?
-    var analyzedInstructions = [Instruction]()
-    var ingredients = [Ingredient]()
-    var instructions: String?
-    var servings: Int?
-    var imageURL: String?
+class Recipe : Object {
+    dynamic var id: Int = 0
+    dynamic var title: String = ""
+    var analyzedInstructions = List<Instruction>()
+    var ingredients = List<Ingredient>()
+    dynamic var instructions: String = ""
+    dynamic var servings: Int = 0
+    dynamic var imageURL: String = ""
     var image: UIImage?
     
-    required init() {
-    }
     
-    required init?(json: JSON) {
+    convenience init?(json: JSON) {
+        self.init()
         guard let instructions = json["instructions"].string,
             let idValue = json["id"].int,
             let title = json["title"].string,
@@ -48,5 +48,9 @@ class Recipe {
                 ingredients.append(ingredient)
             }
         }
+    }
+    
+    override static func ignoredProperties() -> [String] {
+        return ["image"]
     }
 }

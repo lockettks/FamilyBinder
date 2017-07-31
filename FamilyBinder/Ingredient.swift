@@ -8,11 +8,13 @@
 
 import Foundation
 import SwiftyJSON
+import RealmSwift
 
-class Ingredient {
-    var originalString: String?
+class Ingredient : Object {
+    dynamic var originalString: String = ""
     
-    required init?(json: JSON){
+    convenience init?(json: JSON){
+        self.init()
         guard let originalString = json["originalString"].string else {
             return nil
         }

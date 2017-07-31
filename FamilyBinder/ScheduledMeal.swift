@@ -7,13 +7,18 @@
 //
 
 import Foundation
+import RealmSwift
 
-class ScheduledMeal {
-    var recipe:Recipe
-    var scheduledDate = Date()
-    var mealType : MealType
+class ScheduledMeal : Object {
+    dynamic var recipe = Recipe()
+    dynamic var scheduledDate = Date()
+    dynamic var mealTypeRaw = ""
+    var mealType : MealType {
+        return MealType(rawValue: mealTypeRaw) ?? .dinner
+    }
     
-    init?(recipe:Recipe?, scheduledDate:Date?, mealType:MealType?){
+    convenience init?(recipe:Recipe?, scheduledDate:Date?, mealType:MealType?){
+        self.init()
         if let newRecipe = recipe {
             self.recipe = newRecipe
         } else {
@@ -27,7 +32,7 @@ class ScheduledMeal {
             return nil
         }
         if let newMealType = mealType {
-            self.mealType = newMealType
+            self.mealTypeRaw = newMealType.rawValue
         } else {
             print("Unable to add recipe to meal plan.  Missing meal type.")
             return nil

@@ -26,6 +26,7 @@
 		956789B01F290E600070FEEB /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956789AF1F290E600070FEEB /* RecipeTableViewCell.swift */; };
 		956789B31F294F180070FEEB /* Instruction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956789B21F294F180070FEEB /* Instruction.swift */; };
 		956789B51F29560B0070FEEB /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956789B41F29560B0070FEEB /* Ingredient.swift */; };
+		956789B91F2FDA660070FEEB /* UserContextCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956789B81F2FDA660070FEEB /* UserContextCache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		956789AF1F290E600070FEEB /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
 		956789B21F294F180070FEEB /* Instruction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Instruction.swift; sourceTree = "<group>"; };
 		956789B41F29560B0070FEEB /* Ingredient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
+		956789B81F2FDA660070FEEB /* UserContextCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserContextCache.swift; sourceTree = "<group>"; };
 		F183672AF08D8E0DAEAA01C4 /* Pods_FamilyBinder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FamilyBinder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -105,6 +107,7 @@
 		954D7AAD1F198CB3000480A7 /* FamilyBinder */ = {
 			isa = PBXGroup;
 			children = (
+				956789BA1F2FDB8E0070FEEB /* Cache */,
 				954D7AB41F198CB3000480A7 /* Main.storyboard */,
 				956789B11F290EC40070FEEB /* Recipes */,
 				956789AD1F27EEC90070FEEB /* Meal Plan */,
@@ -157,6 +160,14 @@
 				954D7AB21F198CB3000480A7 /* RecipeDetailViewController.swift */,
 			);
 			name = Recipes;
+			sourceTree = "<group>";
+		};
+		956789BA1F2FDB8E0070FEEB /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				956789B81F2FDA660070FEEB /* UserContextCache.swift */,
+			);
+			name = Cache;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -293,6 +304,7 @@
 				954D7ACF1F19DAD8000480A7 /* Recipe.swift in Sources */,
 				954D7AAF1F198CB3000480A7 /* AppDelegate.swift in Sources */,
 				9567899A1F216D330070FEEB /* AddToMealPlanTableViewController.swift in Sources */,
+				956789B91F2FDA660070FEEB /* UserContextCache.swift in Sources */,
 				956789981F2156190070FEEB /* MealPlan.swift in Sources */,
 				956789B31F294F180070FEEB /* Instruction.swift in Sources */,
 				956789961F2147D90070FEEB /* MealTypes.swift in Sources */,

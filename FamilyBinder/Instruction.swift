@@ -8,12 +8,14 @@
 
 import Foundation
 import SwiftyJSON
+import RealmSwift
 
-class Instruction {
-    var stepNumber: Int?
-    var step: String?
+class Instruction : Object {
+    dynamic var stepNumber: Int = 0
+    dynamic var step: String = ""
     
-    required init?(json: JSON) {
+    convenience init?(json: JSON) {
+        self.init()
         guard let stepNumber = json["number"].int,
         let step = json["step"].string
             else {
@@ -22,4 +24,5 @@ class Instruction {
         self.stepNumber = stepNumber
         self.step = step
     }
+
 }
