@@ -22,22 +22,6 @@ class Recipe {
     required init() {
     }
     
-//    required init?(json: [String: Any]) {
-//        guard let instructions = json["instructions"] as? String,
-//            let idValue = json["id"] as? Int,
-//            let title = json["title"] as? String,
-//            let servings = json["servings"] as? Int,
-//            let imageURL = json["image"] as? String
-//            else {
-//                return nil
-//        }
-//        self.instructions = instructions
-//        self.id = idValue
-//        self.title = title
-//        self.servings = servings
-//        self.imageURL = imageURL
-//    }
-    
     required init?(json: JSON) {
         guard let instructions = json["instructions"].string,
             let idValue = json["id"].int,
