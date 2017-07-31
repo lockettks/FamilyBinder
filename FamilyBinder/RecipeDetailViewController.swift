@@ -22,14 +22,7 @@ class RecipeDetailViewController: UIViewController {
     
     // MARK: - View Manipulation
     override func viewWillAppear(_ animated: Bool) {
-//                if !scrollViewPropertiesInitialized {
-//                    self.automaticallyAdjustsScrollViewInsets = true
-//                    scrollView.contentInset = .zero
-//                    scrollView.scrollIndicatorInsets = .zero
-//                    scrollView.contentOffset = CGPoint(x: 0.0, y: 0.0)
-//                    scrollViewPropertiesInitialized = true
-//                }
-//                updateScrollSize()
+
     }
     
     override func viewDidLoad() {
@@ -58,16 +51,6 @@ class RecipeDetailViewController: UIViewController {
             instructionsLabel.attributedText = fullAttributedString
         }
         
-        
-        
-//        if !scrollViewPropertiesInitialized {
-//            self.automaticallyAdjustsScrollViewInsets = true
-//            scrollView.contentInset = .zero
-//            scrollView.scrollIndicatorInsets = .zero
-//            scrollView.contentOffset = CGPoint(x: 0.0, y: 0.0)
-//            scrollViewPropertiesInitialized = true
-//        }
-//        updateScrollSize()
     }
     
     func configureView() {
@@ -104,8 +87,6 @@ class RecipeDetailViewController: UIViewController {
         recipeTitleLabel.setNeedsLayout()
         recipeTitleLabel.layoutIfNeeded()
     
-//        -setNeedsLayout
-//        -layoutIfNeeded
         ingredientsLabel.sizeToFit()
         ingredientsLabel.translatesAutoresizingMaskIntoConstraints = false
         ingredientsLabel.setNeedsLayout()
@@ -161,8 +142,7 @@ class RecipeDetailViewController: UIViewController {
     }
     
 
-    
-    
+    // MARK: - Segues
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addRecipeToMealPlanSegue" {
             if let controller = (segue.destination as! UINavigationController).topViewController as? AddToMealPlanTableViewController {
