@@ -19,6 +19,7 @@ class Recipe : Object {
     dynamic var servings: Int = 0
     dynamic var imageURL: String = ""
     var image: UIImage?
+    dynamic var isFavorite: Bool = false
     
     
     convenience init?(json: JSON) {
@@ -48,6 +49,13 @@ class Recipe : Object {
                 ingredients.append(ingredient)
             }
         }
+        
+        self.isFavorite = UserContextCache.current().myRecipes.first(where: { $0.id == idValue}) != nil
+
+    }
+    
+    override static func primaryKey() -> String? {
+        return "id"
     }
     
     override static func ignoredProperties() -> [String] {

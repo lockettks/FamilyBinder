@@ -133,6 +133,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addRecipeBtn" destination="scj-v7-0wW" id="90D-W1-2h5"/>
                         <outlet property="ingredientsLabel" destination="3qJ-sx-tLP" id="COv-2i-XTw"/>
                         <outlet property="instructionsLabel" destination="0XM-y9-sOw" id="uB0-ng-iQE"/>
                         <outlet property="recipeImg" destination="vq0-5k-8yN" id="LUK-bp-qrF"/>

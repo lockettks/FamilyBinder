@@ -17,8 +17,15 @@ class RecipeDetailViewController: UIViewController {
     @IBOutlet weak var servingsLabel: UILabel!
     @IBOutlet weak var ingredientsLabel: UILabel!
     @IBOutlet weak var instructionsLabel: UILabel!
+    @IBOutlet weak var addRecipeBtn: UIBarButtonItem!
     
     var scrollViewPropertiesInitialized = false
+    
+    // Get the default Realm
+    let realm = try! Realm()
+    // You only need to do this once (per thread)
+    // To find Realm File, enter the following when debugger is paused:
+    // po Realm.Configuration.defaultConfiguration.fileURL
     
     // MARK: - View Manipulation
     override func viewWillAppear(_ animated: Bool) {
@@ -27,6 +34,7 @@ class RecipeDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         configureView()
         if let detail = self.detailItem {
@@ -70,6 +78,9 @@ class RecipeDetailViewController: UIViewController {
             if let label = self.instructionsLabel {
                 label.text = detail.instructions
             }
+            addRecipeBtn.isEnabled = true
+        } else {
+            addRecipeBtn.isEnabled = false
         }
     }
     
@@ -148,8 +159,17 @@ class RecipeDetailViewController: UIViewController {
         let optionMenu = UIAlertController(title: nil, message: "Choose Option", preferredStyle: .actionSheet)
         
         let addToMyRecipes = UIAlertAction(title: "Add To My Recipes", style: .default, handler: {
+            _ in
+            try! self.realm.write {
+                self.realm.add(self.detailItem!, update: true)
+                print("Added to my recipes")
+                self.detailItem?.isFavorite = true
+            }
+
+        })
+        let removeFromMyRecipes = UIAlertAction(title: "Remove From My Recipes", style: .default, handler: {
             (alert: UIAlertAction!) -> Void in
-            print("Added to my recipes")
+            print("Remove from my recipes")
         })
         let addToMealPlan = UIAlertAction(title: "Add To Meal Plan", style: .default, handler: {
             action in self.performSegue(withIdentifier: "addRecipeToMealPlanSegue", sender: self)
@@ -159,8 +179,12 @@ class RecipeDetailViewController: UIViewController {
             (alert: UIAlertAction!) -> Void in
             print("Cancelled")
         })
+        if (self.detailItem?.isFavorite)! {
+            optionMenu.addAction(removeFromMyRecipes)
+        } else {
+            optionMenu.addAction(addToMyRecipes)
+        }
         
-        optionMenu.addAction(addToMyRecipes)
         optionMenu.addAction(addToMealPlan)
         optionMenu.addAction(cancelAction)
         
@@ -169,6 +193,15 @@ class RecipeDetailViewController: UIViewController {
         
         self.present(optionMenu, animated: true, completion: nil)
         
+    }
+    
+    func addRecipeToFavorites(recipeToAdd: Recipe) {
+        
+        
+        // Add to the Realm inside a transaction
+        try! realm.write {
+            realm.add(recipeToAdd)
+        }
     }
     
     
