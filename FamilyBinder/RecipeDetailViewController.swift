@@ -52,7 +52,6 @@ class RecipeDetailViewController: UIViewController {
             // Format instructions
             attributesDictionary = [NSFontAttributeName : self.instructionsLabel.font]
             fullAttributedString = NSMutableAttributedString(string: "", attributes: (attributesDictionary as Any as! [String : Any]))
-            detail.analyzedInstructions.sorted { $0.stepNumber < $1.stepNumber}
             for instruction in detail.analyzedInstructions {
                 fullAttributedString.append(convertToNumberedItem(instruction: instruction))
             }
@@ -88,7 +87,7 @@ class RecipeDetailViewController: UIViewController {
         if !scrollViewPropertiesInitialized {
             self.automaticallyAdjustsScrollViewInsets = true
             scrollView.contentInset = .zero
-            scrollView.contentInset.bottom = 100
+            scrollView.contentInset.bottom = 120
             scrollView.scrollIndicatorInsets = .zero
             scrollView.contentOffset = CGPoint(x: 0.0, y: 0.0)
             scrollViewPropertiesInitialized = true
@@ -122,7 +121,7 @@ class RecipeDetailViewController: UIViewController {
     
     // MARK: - Text Formatting
     func convertToNumberedItem(instruction: Instruction) -> NSMutableAttributedString {
-        let formattedString: String = "\n\(instruction.stepNumber ?? 0). \(instruction.step ?? "")\n"
+        let formattedString: String = "\n\(instruction.stepNumber ). \(instruction.step )\n"
         let attributedString: NSMutableAttributedString = NSMutableAttributedString(string: formattedString)
         
         let paragraphStyle = createParagraphAttribute()
