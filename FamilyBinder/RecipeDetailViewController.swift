@@ -18,6 +18,7 @@ class RecipeDetailViewController: UIViewController {
     @IBOutlet weak var ingredientsLabel: UILabel!
     @IBOutlet weak var instructionsLabel: UILabel!
     @IBOutlet weak var addRecipeBtn: UIBarButtonItem!
+    @IBOutlet weak var favoriteBtn: UIButton!
     
     var scrollViewPropertiesInitialized = false
     
@@ -57,7 +58,6 @@ class RecipeDetailViewController: UIViewController {
             }
             instructionsLabel.attributedText = fullAttributedString
         }
-        
     }
     
     func configureView() {
@@ -78,6 +78,7 @@ class RecipeDetailViewController: UIViewController {
                 label.text = detail.instructions
             }
             addRecipeBtn.isEnabled = true
+            updateFavoriteBtn()
         } else {
             addRecipeBtn.isEnabled = false
         }
@@ -159,12 +160,7 @@ class RecipeDetailViewController: UIViewController {
         
         let addToMyRecipes = UIAlertAction(title: "Add To My Recipes", style: .default, handler: {
             _ in
-            try! self.realm.write {
-                self.realm.add(self.detailItem!, update: true)
-                print("Added to my recipes")
-                self.detailItem?.isFavorite = true
-            }
-
+            self.addRecipeToFavorites()
         })
         let removeFromMyRecipes = UIAlertAction(title: "Remove From My Recipes", style: .default, handler: {
             (alert: UIAlertAction!) -> Void in
@@ -194,15 +190,31 @@ class RecipeDetailViewController: UIViewController {
         
     }
     
-    func addRecipeToFavorites(recipeToAdd: Recipe) {
-        
-        
-        // Add to the Realm inside a transaction
-        try! realm.write {
-            realm.add(recipeToAdd)
+    @IBAction func favoriteBtnClicked(_ sender: Any) {
+        addRecipeToFavorites()
+    }
+    
+    // MARK: - Business Logic
+    func addRecipeToFavorites() {
+        try! self.realm.write {
+            self.realm.add(self.detailItem!, update: true)
+            print("Added to my recipes")
+            self.detailItem?.isFavorite = true
+            updateFavoriteBtn()
         }
     }
     
+    func updateFavoriteBtn(){
+        if (self.detailItem?.isFavorite)! {
+            if let btn = self.favoriteBtn {
+                btn.setImage(UIImage(named: "heart_red_filled.png"), for: .normal)
+            }
+        } else {
+            if let btn = self.favoriteBtn {
+                btn.setImage(UIImage(named:"heart_black_empty"), for: .normal)
+            }
+        }
+    }
     
     // MARK: - Segues
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
