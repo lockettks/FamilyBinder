@@ -10,7 +10,7 @@ import Foundation
 import SwiftyJSON
 import RealmSwift
 
-class Recipe : Object {
+class Recipe : Object, NSCopying {
     dynamic var id: Int = 0
     dynamic var title: String = ""
     var analyzedInstructions = List<Instruction>()
@@ -54,11 +54,29 @@ class Recipe : Object {
 
     }
     
+    convenience init(id: Int, title: String, analyzedInstructions: List<Instruction>, ingredients: List<Ingredient>, instructions: String, servings: Int, imageURL: String, image: UIImage, isFavorite: Bool) {
+        self.init()
+        self.id = id
+        self.title = title
+        self.analyzedInstructions = analyzedInstructions
+        self.ingredients = ingredients
+        self.instructions = instructions
+        self.servings = servings
+        self.imageURL = imageURL
+        self.image = image
+        self.isFavorite = isFavorite
+        
+    }
+    
     override static func primaryKey() -> String? {
         return "id"
     }
     
     override static func ignoredProperties() -> [String] {
         return ["image"]
+    }
+    
+    func copy(with zone: NSZone? = nil) -> Any {
+        return Recipe(id: id, title: title, analyzedInstructions: analyzedInstructions, ingredients: ingredients, instructions: instructions, servings: servings, imageURL: imageURL, image: image!, isFavorite: isFavorite)
     }
 }

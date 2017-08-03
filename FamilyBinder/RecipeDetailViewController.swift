@@ -21,6 +21,7 @@ class RecipeDetailViewController: UIViewController {
     @IBOutlet weak var favoriteBtn: UIButton!
     
     var scrollViewPropertiesInitialized = false
+    var favoritedRecipe = Recipe()
     
     // Get the default Realm
     let realm = try! Realm()
@@ -160,11 +161,11 @@ class RecipeDetailViewController: UIViewController {
         
         let addToMyRecipes = UIAlertAction(title: "Add To My Recipes", style: .default, handler: {
             _ in
-            self.addRecipeToFavorites()
+            self.addRemoveRecipeFromFavorites()
         })
         let removeFromMyRecipes = UIAlertAction(title: "Remove From My Recipes", style: .default, handler: {
-            (alert: UIAlertAction!) -> Void in
-            print("Remove from my recipes")
+            _ in
+            self.addRemoveRecipeFromFavorites()
         })
         let addToMealPlan = UIAlertAction(title: "Add To Meal Plan", style: .default, handler: {
             action in self.performSegue(withIdentifier: "addRecipeToMealPlanSegue", sender: self)
@@ -191,8 +192,35 @@ class RecipeDetailViewController: UIViewController {
     }
     
     @IBAction func favoriteBtnClicked(_ sender: Any) {
-        addRecipeToFavorites()
+        addRemoveRecipeFromFavorites()
     }
+    
+    func addRemoveRecipeFromFavorites() {
+        if (self.detailItem?.isFavorite)! {
+            // Remove from favorites
+            try! self.realm.write {
+                self.realm.delete(realm.objects(Recipe.self).filter("id == %@", favoritedRecipe.id))
+                print("Removed \(favoritedRecipe.title) from my recipes")
+                self.detailItem?.isFavorite = false
+                if let btn = self.favoriteBtn {
+                    btn.setImage(UIImage(named:"heart_black_empty"), for: .normal)
+                }
+            }
+        } else {
+            // Add to favorites
+            try! self.realm.write {
+                favoritedRecipe = self.detailItem?.copy() as! Recipe
+                self.realm.create(Recipe.self, value: favoritedRecipe)
+                print("Added \(favoritedRecipe.title) to my recipes")
+                self.detailItem?.isFavorite = true
+                if let btn = self.favoriteBtn {
+                    btn.setImage(UIImage(named: "heart_red_filled.png"), for: .normal)
+                }
+
+            }
+        }
+    }
+    
     
     // MARK: - Business Logic
     func addRecipeToFavorites() {
@@ -200,6 +228,15 @@ class RecipeDetailViewController: UIViewController {
             self.realm.add(self.detailItem!, update: true)
             print("Added to my recipes")
             self.detailItem?.isFavorite = true
+            updateFavoriteBtn()
+        }
+    }
+    
+    func removeRecipeFromFavorites() {
+        try! self.realm.write {
+            self.realm.delete(self.detailItem!)
+            print("Removed from my recipes")
+            self.detailItem?.isFavorite = false
             updateFavoriteBtn()
         }
     }
