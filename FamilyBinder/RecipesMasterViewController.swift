@@ -54,6 +54,7 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
     func loadRecipes() {
         SpoonacularAPIManager.sharedInstance.fetchRandomRecipes(numberOfRecipes: NUMBER_OF_RECIPES).then { result -> Void in
             self.recipes = result
+            self.detailViewController?.detailItem = self.recipes[0] // Default selected recipe
             self.tableView.reloadData()
         }.catch { error in
             print(error)

@@ -30,35 +30,10 @@ class RecipeDetailViewController: UIViewController {
     // po Realm.Configuration.defaultConfiguration.fileURL
     
     // MARK: - View Manipulation
-    override func viewWillAppear(_ animated: Bool) {
-        
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         configureView()
-        if let detail = self.detailItem {
-            
-            // Format ingredients
-            var attributesDictionary = [NSFontAttributeName : self.ingredientsLabel.font]
-            var fullAttributedString = NSMutableAttributedString(string: "", attributes: (attributesDictionary as Any as! [String : Any]))
-            for ingredient in (detail.ingredients) {
-                if ingredient.originalString != "" {
-                    fullAttributedString.append(convertToBulletedItem(textToConvert: ingredient.originalString))
-                }
-            }
-            ingredientsLabel.attributedText = fullAttributedString
-            
-            // Format instructions
-            attributesDictionary = [NSFontAttributeName : self.instructionsLabel.font]
-            fullAttributedString = NSMutableAttributedString(string: "", attributes: (attributesDictionary as Any as! [String : Any]))
-            for instruction in detail.analyzedInstructions {
-                fullAttributedString.append(convertToNumberedItem(instruction: instruction))
-            }
-            instructionsLabel.attributedText = fullAttributedString
-        }
     }
     
     func configureView() {
@@ -75,9 +50,33 @@ class RecipeDetailViewController: UIViewController {
             if let label = self.servingsLabel {
                 label.text = detail.servings.description
             }
-            if let label = self.instructionsLabel {
-                label.text = detail.instructions
+            
+            // Format ingredients
+            if let label = self.ingredientsLabel {
+                let attributesDictionary = [NSFontAttributeName : label.font]
+                let fullAttributedString = NSMutableAttributedString(string: "", attributes: (attributesDictionary as Any as! [String : Any]))
+                for ingredient in (detail.ingredients) {
+                    if ingredient.originalString != "" {
+                        fullAttributedString.append(convertToBulletedItem(textToConvert: ingredient.originalString))
+                    }
+                }
+                
+                label.attributedText = fullAttributedString
             }
+            
+            // Format instructions
+            if let label = instructionsLabel {
+                let attributesDictionary = [NSFontAttributeName : label.font]
+                let fullAttributedString = NSMutableAttributedString(string: "", attributes: (attributesDictionary as Any as! [String : Any]))
+                for instruction in detail.analyzedInstructions {
+                    fullAttributedString.append(convertToNumberedItem(instruction: instruction))
+                }
+                
+                label.attributedText = fullAttributedString
+            }
+            
+            
+            
             addRecipeBtn.isEnabled = true
             updateFavoriteBtn()
         } else {
@@ -185,7 +184,7 @@ class RecipeDetailViewController: UIViewController {
         optionMenu.addAction(cancelAction)
         
         optionMenu.popoverPresentationController?.barButtonItem = self.navigationItem.rightBarButtonItem
-
+        
         
         self.present(optionMenu, animated: true, completion: nil)
         
@@ -216,7 +215,7 @@ class RecipeDetailViewController: UIViewController {
                 if let btn = self.favoriteBtn {
                     btn.setImage(UIImage(named: "heart_red_filled.png"), for: .normal)
                 }
-
+                
             }
         }
     }
