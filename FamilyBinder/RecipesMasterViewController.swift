@@ -9,7 +9,10 @@
 import UIKit
 import PromiseKit
 
-class RecipesMasterViewController: UITableViewController {
+class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var recipesTypeSegCntrl: UISegmentedControl!
     
     var NUMBER_OF_RECIPES = 1
     var detailViewController: RecipeDetailViewController? = nil
@@ -18,6 +21,11 @@ class RecipesMasterViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        
+        
         // Do any additional setup after loading the view, typically from a nib.
         navigationItem.leftBarButtonItem = editButtonItem
         
@@ -33,18 +41,14 @@ class RecipesMasterViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        clearsSelectionOnViewWillAppear = splitViewController!.isCollapsed
         super.viewWillAppear(animated)
+        if let indexPath = tableView.indexPathForSelectedRow{
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-//        //Test
-//        //        SpoonacularAPIManager.sharedInstance.printRandomRecipes(numberOfRecipes: 3)
-//        //End Test
-//        
-//        loadRecipes()
     }
     
     func loadRecipes() {
@@ -97,27 +101,27 @@ class RecipesMasterViewController: UITableViewController {
     
     // MARK: - Table View
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return recipes.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let recipe = recipes[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! RecipeTableViewCell
         cell.initWithModel(model: recipe)
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return false
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             recipes.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
