@@ -16,7 +16,6 @@ class RecipeTableViewCell: UITableViewCell {
         recipeLbl.text = model.title
         
         recipeImg?.image = nil
-//        if let urlString = model.imageURL {
             SpoonacularAPIManager.sharedInstance.imageFrom(urlString: model.imageURL) {
                 (image, error) in
                 guard error == nil else {
@@ -29,7 +28,6 @@ class RecipeTableViewCell: UITableViewCell {
                 // sincew this is in an async call
                 self.setNeedsLayout()
             }
-//        }
     }
     
 
