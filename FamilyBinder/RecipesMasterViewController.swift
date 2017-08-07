@@ -43,19 +43,6 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
             let controllers = split.viewControllers
             detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? RecipeDetailViewController
         }
-        
-//        switch(recipesTypeSegCntrl.selectedSegmentIndex){
-//        case 0:
-//            let test = realm.objects(Recipe.self)
-//            self.recipes = Array(test)
-//            
-//            break
-//        case 1:
-            loadRecipes()
-//            break
-//        default:
-//            break
-//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -88,8 +75,6 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
                 default:
                     break
                 }
-    
-        
     }
     
     
@@ -110,16 +95,18 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
                                       style: .default,
                                       handler: nil))
         self.present(alert, animated: true, completion: nil)
-        
-        //        recipes.insert(NSDate(), at: 0)
-        //        let indexPath = IndexPath(row: 0, section: 0)
-        //        tableView.insertRows(at: [indexPath], with: .automatic)
     }
+    
+    
+    
+    // MARK: - Action Handlers
     
     @IBAction func recipesTypeSegCntrlChanged(_ sender: UISegmentedControl) {
         loadRecipes()
         tableView.reloadData()
     }
+    
+    
     
     // MARK: - Segues
     
@@ -135,6 +122,8 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
             }
         }
     }
+    
+    
     
     // MARK: - Table View
     
@@ -166,7 +155,5 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
     }
-    
-    
 }
 
