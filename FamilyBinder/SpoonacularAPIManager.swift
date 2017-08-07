@@ -74,14 +74,6 @@ class SpoonacularAPIManager {
     
     func imageFrom(urlString: String, completionHandler: @escaping (UIImage?, Error?) -> Void) {
         
-        
-//        Alamofire.request(urlString).responseImage { response in
-//            if let image = response.result.value {
-//                print("image downloaded: \(image)")
-//                
-//            }
-//        }
-///////////
         let _ = Alamofire.request(urlString).response {dataResponse in
             // use the generic response serializer that returns Data
             guard let data = dataResponse.data else {

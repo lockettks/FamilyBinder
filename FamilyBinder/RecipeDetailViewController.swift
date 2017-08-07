@@ -74,9 +74,7 @@ class RecipeDetailViewController: UIViewController {
                 
                 label.attributedText = fullAttributedString
             }
-            
-            
-            
+
             addRecipeBtn.isEnabled = true
             updateFavoriteBtn()
         } else {
@@ -202,7 +200,7 @@ class RecipeDetailViewController: UIViewController {
                 print("Removed \(favoritedRecipe.title) from my recipes")
                 self.detailItem?.isFavorite = false
                 if let btn = self.favoriteBtn {
-                    btn.setImage(UIImage(named:"heart_black_empty"), for: .normal)
+                    btn.setImage(#imageLiteral(resourceName: "heart_black_empty"), for: .normal)
                 }
             }
         } else {
@@ -213,7 +211,7 @@ class RecipeDetailViewController: UIViewController {
                 self.realm.create(Recipe.self, value: favoritedRecipe)
                 print("Added \(favoritedRecipe.title) to my recipes")
                 if let btn = self.favoriteBtn {
-                    btn.setImage(UIImage(named: "heart_red_filled.png"), for: .normal)
+                    btn.setImage(#imageLiteral(resourceName: "heart_red_filled"), for: .normal)
                 }
                 
             }
@@ -243,11 +241,11 @@ class RecipeDetailViewController: UIViewController {
     func updateFavoriteBtn(){
         if (self.detailItem?.isFavorite)! {
             if let btn = self.favoriteBtn {
-                btn.setImage(UIImage(named: "heart_red_filled.png"), for: .normal)
+                btn.setImage(#imageLiteral(resourceName: "heart_red_filled"), for: .normal)
             }
         } else {
             if let btn = self.favoriteBtn {
-                btn.setImage(UIImage(named:"heart_black_empty"), for: .normal)
+                btn.setImage(#imageLiteral(resourceName: "heart_black_empty"), for: .normal)
             }
         }
     }
