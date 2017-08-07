@@ -45,7 +45,11 @@ class RecipeDetailViewController: UIViewController {
                 label.text = detail.title
             }
             if let img = self.recipeImg {
-                img.image = detail.image
+//                img.image = detail.image
+                let placeholderImage = #imageLiteral(resourceName: "dinnerPlate")
+                let url = URL(string: detail.imageURL)
+                img.af_setImage(withURL: url!, placeholderImage: placeholderImage)
+                detail.image = img.image
             }
             if let label = self.servingsLabel {
                 label.text = detail.servings.description
