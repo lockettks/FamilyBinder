@@ -15,16 +15,20 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var recipesTypeSegCntrl: UISegmentedControl!
     
-    var NUMBER_OF_RECIPES = 1
-    var detailViewController: RecipeDetailViewController? = nil
-    var recipes = [Recipe]()
-    //    var recipes = List<Recipe>()
     
-    // Get the default Realm
+    // MARK: - Defaults
+    let NUMBER_OF_RECIPES = 1
+    let DEFAULT_SELECTED_ROW = 0
+    let DEFAULT_SELECTED_TOGGLE = 0
+    
     let realm = try! Realm()
-    // You only need to do this once (per thread)
     // To find Realm File, enter the following when debugger is paused:
     // po Realm.Configuration.defaultConfiguration.fileURL
+    
+    
+    // MARK: - Variables
+    var detailViewController: RecipeDetailViewController? = nil
+    var recipes = [Recipe]()
     
     
     override func viewDidLoad() {
@@ -33,8 +37,6 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
-        
-        // Do any additional setup after loading the view, typically from a nib.
         navigationItem.leftBarButtonItem = editButtonItem
         
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
@@ -43,38 +45,42 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
             let controllers = split.viewControllers
             detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? RecipeDetailViewController
         }
+        
+        recipesTypeSegCntrl.selectedSegmentIndex = DEFAULT_SELECTED_TOGGLE
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if let indexPath = tableView.indexPathForSelectedRow{
-            tableView.deselectRow(at: indexPath, animated: true)
-        }
+        
+        loadRecipes()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        let indexPath = IndexPath(row: DEFAULT_SELECTED_ROW, section: 0)
+        tableView.selectRow(at: indexPath, animated: false, scrollPosition: .top)
     }
     
     func loadRecipes() {
-                switch(recipesTypeSegCntrl.selectedSegmentIndex){
-                case 0:
-                    let test = realm.objects(Recipe.self)
-                    self.recipes = Array(test)
-        
-                    break
-                case 1:
-        SpoonacularAPIManager.sharedInstance.fetchRandomRecipes(numberOfRecipes: NUMBER_OF_RECIPES).then { result -> Void in
-            self.recipes = result
-            self.detailViewController?.detailItem = self.recipes[0] // Default selected recipe
+        switch(recipesTypeSegCntrl.selectedSegmentIndex){
+        case 0:
+            let myRecipes = realm.objects(Recipe.self)
+            self.recipes = Array(myRecipes)
+            self.detailViewController?.detailItem = self.recipes[DEFAULT_SELECTED_ROW] // Default selected recipe
             self.tableView.reloadData()
-            }.catch { error in
-                print(error)
+            break
+        case 1:
+            SpoonacularAPIManager.sharedInstance.fetchRandomRecipes(numberOfRecipes: NUMBER_OF_RECIPES).then { result -> Void in
+                self.recipes = result
+                self.detailViewController?.detailItem = self.recipes[self.DEFAULT_SELECTED_ROW] // Default selected recipe
+                self.tableView.reloadData()
+                }.catch { error in
+                    print(error)
+            }
+            break
+        default:
+            break
         }
-                    break
-                default:
-                    break
-                }
     }
     
     
@@ -103,7 +109,6 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
     
     @IBAction func recipesTypeSegCntrlChanged(_ sender: UISegmentedControl) {
         loadRecipes()
-        tableView.reloadData()
     }
     
     
