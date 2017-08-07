@@ -42,6 +42,9 @@
          contextName = "request(URLRequestConvertible) -&gt; DataRequest:Alamofire.swift">
       </ContextState>
       <ContextState
+         contextName = "RecipesMasterViewController.(loadRecipes() -&gt; ()).(closure #1):RecipesMasterViewController.swift">
+      </ContextState>
+      <ContextState
          contextName = "RecipeDetailViewController.(addRemoveRecipeFromFavorites() -&gt; ()).(closure #1):RecipeDetailViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -88,6 +91,14 @@
             </PersistentString>
             <PersistentString
                value = "DATE_LABEL_POSITION.SECTION">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "RecipesMasterViewController.recipesTypeSegCntrlChanged(UISegmentedControl) -&gt; ():RecipesMasterViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "randomRecipes">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

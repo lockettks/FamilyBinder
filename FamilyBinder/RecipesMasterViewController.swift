@@ -29,7 +29,7 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
     // MARK: - Variables
     var detailViewController: RecipeDetailViewController? = nil
     var recipes = [Recipe]()
-    
+    var myRecipes = [Recipe]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,39 +47,28 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
         }
         
         recipesTypeSegCntrl.selectedSegmentIndex = DEFAULT_SELECTED_TOGGLE
+        
+        myRecipes = Array(realm.objects(Recipe.self))
+        
+        recipes = myRecipes
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        loadRecipes()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let indexPath = IndexPath(row: DEFAULT_SELECTED_ROW, section: 0)
-        tableView.selectRow(at: indexPath, animated: false, scrollPosition: .top)
     }
     
-    func loadRecipes() {
-        switch(recipesTypeSegCntrl.selectedSegmentIndex){
-        case 0:
-            let myRecipes = realm.objects(Recipe.self)
-            self.recipes = Array(myRecipes)
-            self.detailViewController?.detailItem = self.recipes[DEFAULT_SELECTED_ROW] // Default selected recipe
-            self.tableView.reloadData()
-            break
-        case 1:
+    
+    func getRandomRecipes() -> Promise<[Recipe]> {
+        return Promise {fulfill, reject in
             SpoonacularAPIManager.sharedInstance.fetchRandomRecipes(numberOfRecipes: NUMBER_OF_RECIPES).then { result -> Void in
-                self.recipes = result
-                self.detailViewController?.detailItem = self.recipes[self.DEFAULT_SELECTED_ROW] // Default selected recipe
-                self.tableView.reloadData()
-                }.catch { error in
-                    print(error)
+            fulfill(result)
+            }.catch { error in
+                print(error)
             }
-            break
-        default:
-            break
         }
     }
     
@@ -108,7 +97,21 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
     // MARK: - Action Handlers
     
     @IBAction func recipesTypeSegCntrlChanged(_ sender: UISegmentedControl) {
-        loadRecipes()
+        switch(sender.selectedSegmentIndex){
+        case 0:
+            self.recipes = myRecipes
+            self.detailViewController?.detailItem = self.recipes[DEFAULT_SELECTED_ROW] // Default selected recipe
+            self.tableView.reloadData()
+            break
+        case 1:
+            getRandomRecipes().then { recipesReceived -> Void in
+                self.recipes = recipesReceived
+                self.tableView.reloadData()
+            }
+            break
+        default:
+            break
+        }
     }
     
     
