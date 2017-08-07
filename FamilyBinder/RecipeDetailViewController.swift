@@ -23,11 +23,11 @@ class RecipeDetailViewController: UIViewController {
     var scrollViewPropertiesInitialized = false
     var favoritedRecipe = Recipe()
     
-    // Get the default Realm
+//    // Get the default Realm
     let realm = try! Realm()
-    // You only need to do this once (per thread)
-    // To find Realm File, enter the following when debugger is paused:
-    // po Realm.Configuration.defaultConfiguration.fileURL
+//    // You only need to do this once (per thread)
+//    // To find Realm File, enter the following when debugger is paused:
+//    // po Realm.Configuration.defaultConfiguration.fileURL
     
     // MARK: - View Manipulation
     
