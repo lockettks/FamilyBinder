@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import AlamofireImage
 import SwiftyJSON
 import PromiseKit
 
@@ -20,6 +21,8 @@ enum SpoonacularAPIManagerError: Error {
 }
 
 class SpoonacularAPIManager {
+    let DEBUG = false
+    
     static let sharedInstance = SpoonacularAPIManager()
     
     
@@ -46,7 +49,9 @@ class SpoonacularAPIManager {
                     switch response.result {
                     case .success(let value):
                         let json = JSON(value)
-//                        print("JSON: \(json)")
+                        if self.DEBUG {
+                            print("JSON: \(json)")
+                        }
                         if let recipesJSONArray = json["recipes"].array {
                             var recipes = [Recipe]()
                             for recipeJSON in recipesJSONArray {
@@ -68,6 +73,15 @@ class SpoonacularAPIManager {
     }
     
     func imageFrom(urlString: String, completionHandler: @escaping (UIImage?, Error?) -> Void) {
+        
+        
+//        Alamofire.request(urlString).responseImage { response in
+//            if let image = response.result.value {
+//                print("image downloaded: \(image)")
+//                
+//            }
+//        }
+///////////
         let _ = Alamofire.request(urlString).response {dataResponse in
             // use the generic response serializer that returns Data
             guard let data = dataResponse.data else {

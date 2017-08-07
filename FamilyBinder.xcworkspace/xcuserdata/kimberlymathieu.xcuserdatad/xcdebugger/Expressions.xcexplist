@@ -33,9 +33,6 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "Recipe.init(json : JSON) -&gt; Recipe?:Recipe.swift">
-      </ContextState>
-      <ContextState
          contextName = "MealDatePickerTableViewCell.awakeFromNib() -&gt; ():MealDatePickerTableViewCell.swift">
       </ContextState>
       <ContextState
@@ -43,9 +40,6 @@
       </ContextState>
       <ContextState
          contextName = "request(URLRequestConvertible) -&gt; DataRequest:Alamofire.swift">
-      </ContextState>
-      <ContextState
-         contextName = "RecipesMasterViewController.(loadRecipes() -&gt; ()).(closure #1):RecipesMasterViewController.swift">
       </ContextState>
       <ContextState
          contextName = "RecipeDetailViewController.(addRemoveRecipeFromFavorites() -&gt; ()).(closure #1):RecipeDetailViewController.swift">
@@ -172,6 +166,11 @@
       </ContextState>
       <ContextState
          contextName = "RecipeTableViewCell.initWithModel(model : Recipe) -&gt; ():RecipeTableViewCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "dinnerPlate.description">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "AddToMealPlanTableViewController.tableView(UITableView, didSelectRowAt : IndexPath) -&gt; ():AddToMealPlanTableViewController.swift">
