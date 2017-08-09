@@ -30,6 +30,8 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
     var detailViewController: RecipeDetailViewController? = nil
     var recipes = [Recipe]()
     
+    
+    // MARK: - Table Setup
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,43 +46,32 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
             let controllers = split.viewControllers
             detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? RecipeDetailViewController
         }
-        
         recipesTypeSegCntrl.selectedSegmentIndex = DEFAULT_SELECTED_TOGGLE
-        
-//        recipes = Array(realm.objects(Recipe.self)) // loads first
-        
     }
-    //toggling doesn't call any of these 3 methods, only cellForRowAt
-    override func viewWillAppear(_ animated: Bool) { // loads second then cellForRowAt, after back button 1st
-        super.viewWillAppear(animated) //back button: 1, then viewDidAppear.  never calls cellForRowAt
-        
-//        loadRecipes().then { recipesReceived -> Void in
-//            self.recipes = recipesReceived
-//            self.tableView.reloadData()
-//            }.catch { error in
-//                print(error)
-//        }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        // Refresh data if viewing My Recipes to ensure the favorited recipes are updated
         if (recipesTypeSegCntrl.selectedSegmentIndex == 0) {
             self.recipes = Array(realm.objects(Recipe.self))
             self.tableView.reloadData()
         }
-        
     }
     
-    override func viewDidAppear(_ animated: Bool) { // after cellForRowAt, appears after view is displayed, and after back button 2nd
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell { //after viewWillAppear, after toggling
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let recipe = recipes[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! RecipeTableViewCell
         cell.initWithModel(model: recipe)
         return cell
     }
     
-    // MARK: - Action Handlers
     
-    
+    // MARK: - Data
     
     func loadRecipes() -> Promise<[Recipe]> {
         return Promise{fulfill, reject in
@@ -104,15 +95,6 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
         }
     }
     
-    @IBAction func recipesTypeSegCntrlChanged(_ sender: UISegmentedControl) {
-        loadRecipes().then{ recipesReceived -> Void in
-            self.recipes = recipesReceived
-            self.tableView.reloadData()
-            }.catch { error in
-                print(error)
-        }
-    }
-    
     func getRandomRecipes() -> Promise<[Recipe]> {
         return Promise {fulfill, reject in
             SpoonacularAPIManager.sharedInstance.fetchRandomRecipes(numberOfRecipes: NUMBER_OF_RECIPES).then { result -> Void in
@@ -124,30 +106,17 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     
-    func handleLoadRecipesError(_ error: Error) {
-        // TODO: show error
+    // MARK: - Action Handlers
+    
+    @IBAction func recipesTypeSegCntrlChanged(_ sender: UISegmentedControl) {
+        loadRecipes().then{ recipesReceived -> Void in
+            self.recipes = recipesReceived
+            self.tableView.reloadData()
+            }.catch { error in
+                print(error)
+        }
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    func insertNewObject(_ sender: Any) {
-        let alert = UIAlertController(title: "Not Implemented",
-                                      message: "Can't create new recipes yet, will implement later",
-                                      preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK",
-                                      style: .default,
-                                      handler: nil))
-        self.present(alert, animated: true, completion: nil)
-    }
-    
-    
-    
-    
-    
-    
+
     
     // MARK: - Segues
     
@@ -165,7 +134,6 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     
-    
     // MARK: - Table View
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -177,6 +145,17 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     
+    // MARK: - Table Updating
+    
+    func insertNewObject(_ sender: Any) {
+        let alert = UIAlertController(title: "Not Implemented",
+                                      message: "Can't create new recipes yet, will implement later",
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK",
+                                      style: .default,
+                                      handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
@@ -190,6 +169,19 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
+    }
+    
+    
+    
+    // MARK: - Error handling
+    
+    func handleLoadRecipesError(_ error: Error) {
+        // TODO: show error
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
 }
 
