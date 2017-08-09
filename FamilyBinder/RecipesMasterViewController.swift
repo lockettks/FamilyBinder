@@ -70,7 +70,7 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
     
     // MARK: - Action Handlers
     
-
+    
     
     func loadRecipes() -> Promise<[Recipe]> {
         return Promise{fulfill, reject in
@@ -78,15 +78,12 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
             case 0:
                 let myRecipes = Array(realm.objects(Recipe.self))
                 fulfill(myRecipes)
-//                self.recipes = Array(realm.objects(Recipe.self))
-//                self.detailViewController?.detailItem = self.recipes[DEFAULT_SELECTED_ROW] // Default selected recipe
-                //            self.tableView.reloadData()
+                
                 break
             case 1:
                 getRandomRecipes().then { recipesReceived -> Void in
                     fulfill(recipesReceived)
-//                    self.recipes = recipesReceived
-                    //                self.tableView.reloadData()
+                    self.tableView.reloadData()
                     }.catch { error in
                         print(error)
                 }
@@ -98,26 +95,31 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     @IBAction func recipesTypeSegCntrlChanged(_ sender: UISegmentedControl) {
-        loadRecipes().then { recipesReceived -> Void in
-            self.recipes = recipesReceived
-            self.tableView.reloadData()
-        }
-            //        switch(sender.selectedSegmentIndex){
-            //        case 0:
-            //            self.recipes = Array(realm.objects(Recipe.self))
-            //            self.detailViewController?.detailItem = self.recipes[DEFAULT_SELECTED_ROW] // Default selected recipe
-            //            self.tableView.reloadData()
-            //            break
-            //        case 1:
-            //            getRandomRecipes().then { recipesReceived -> Void in
-            //                self.recipes = recipesReceived
-            //                self.tableView.reloadData()
-            //            }
-            //            break
-            //        default:
-            //            break
-            //        }
-        }
+//        loadRecipes().then { recipesReceived -> Void in
+//            self.recipes = recipesReceived
+//            self.tableView.reloadData()
+//        }
+        
+//        return Promise{fulfill, reject in
+            switch(sender.selectedSegmentIndex){
+            case 0:
+                recipes = Array(realm.objects(Recipe.self))
+                tableView.reloadData()
+                
+                break
+            case 1:
+                getRandomRecipes().then { recipesReceived -> Void in
+                    self.recipes = recipesReceived
+                    self.tableView.reloadData()
+                    }.catch { error in
+                        print(error)
+                }
+                break
+            default:
+                break
+            }
+//        }
+    }
     
     func getRandomRecipes() -> Promise<[Recipe]> {
         return Promise {fulfill, reject in
