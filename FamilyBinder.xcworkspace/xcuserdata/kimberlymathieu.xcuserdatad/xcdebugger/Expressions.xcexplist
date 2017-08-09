@@ -81,6 +81,9 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "RecipesMasterViewController.tableView(UITableView, cellForRowAt : IndexPath) -&gt; UITableViewCell:RecipesMasterViewController.swift">
+      </ContextState>
+      <ContextState
          contextName = "AddToMealPlanTableViewController.tableView(UITableView, cellForRowAt : IndexPath) -&gt; UITableViewCell:AddToMealPlanTableViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -119,6 +122,12 @@
       <ContextState
          contextName = "RecipesMasterViewController.viewDidLoad() -&gt; ():RecipesMasterViewController.swift">
          <PersistentStrings>
+            <PersistentString
+               value = "myRecipes">
+            </PersistentString>
+            <PersistentString
+               value = "recipes">
+            </PersistentString>
             <PersistentString
                value = "(controllers[controllers.count-1] as! UINavigationController).splitViewController">
             </PersistentString>
