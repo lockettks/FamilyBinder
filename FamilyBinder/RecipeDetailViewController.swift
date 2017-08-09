@@ -212,7 +212,6 @@ class RecipeDetailViewController: UIViewController {
                 try! self.realm.write {
                     selectedRecipe.isFavorite = true
                     favoritedRecipe = selectedRecipe.copy() as! Recipe
-//                    self.realm.create(Recipe.self, value: favoritedRecipe)
                     self.realm.create(Recipe.self, value: selectedRecipe)
                     print("Added \(favoritedRecipe.title) to my recipes")
                     if let btn = self.favoriteBtn {
@@ -223,26 +222,7 @@ class RecipeDetailViewController: UIViewController {
             }
         }
     }
-    
-    
-    // MARK: - Business Logic
-    //    func addRecipeToFavorites() {
-    //        try! self.realm.write {
-    //            self.realm.add(self.detailItem!, update: true)
-    //            print("Added to my recipes")
-    //            self.detailItem?.isFavorite = true
-    //            updateFavoriteBtn()
-    //        }
-    //    }
-    //
-    //    func removeRecipeFromFavorites() {
-    //        try! self.realm.write {
-    //            self.realm.delete(self.detailItem!)
-    //            print("Removed from my recipes")
-    //            self.detailItem?.isFavorite = false
-    //            updateFavoriteBtn()
-    //        }
-    //    }
+
     
     func updateFavoriteBtn(){
         if (self.detailItem?.isFavorite)! {

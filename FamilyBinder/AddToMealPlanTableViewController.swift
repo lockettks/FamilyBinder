@@ -58,7 +58,7 @@ class AddToMealPlanTableViewController: UITableViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
+        btnAdd.isEnabled = selectedMealTypes.count > 0
         self.pickerScheduledDate.isHidden = true
         self.pickerScheduledDate.translatesAutoresizingMaskIntoConstraints = false
     }
@@ -167,7 +167,7 @@ class AddToMealPlanTableViewController: UITableViewController {
     }
     
     @IBAction func addTapped(_ sender: Any) {
-        
+       print("\(selectedRecipe.title) is added to meal plan for date \(selectedDate?.withoutTime())")
     }
     
     override func didReceiveMemoryWarning() {
