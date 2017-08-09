@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-
+import RealmSwift
 
 class AddToMealPlanTableViewController: UITableViewController {
     
@@ -25,6 +25,7 @@ class AddToMealPlanTableViewController: UITableViewController {
     @IBOutlet weak var cellSnack: UITableViewCell!
     @IBOutlet weak var cellDinner: UITableViewCell!
     
+    let realm = try! Realm()
     var selectedRecipe = Recipe()
     var mealTypeCells = [UITableViewCell]()
     
@@ -159,7 +160,27 @@ class AddToMealPlanTableViewController: UITableViewController {
     }
     
     @IBAction func addTapped(_ sender: Any) {
-        print("\(selectedRecipe.title) is added to meal plan for date \(selectedDate.withoutTime())")
+        
+        var mealTypesStr = ""
+        for mealType in selectedMealTypes {
+            mealTypesStr.append("\(mealType.displayName()), ")
+//            let newScheduledMeal = ScheduledMeal(recipe: selectedRecipe, scheduledDate: selectedDate, mealType: mealType)
+            let newScheduledMeal = ScheduledMeal()
+            
+            let test = realm.objects(Recipe.self).filter("id == %@", selectedRecipe.id)
+            //Array(realm.objects(Recipe.self))
+            newScheduledMeal.recipe = test[0] as Recipe
+            newScheduledMeal.mealTypeRaw = mealType.rawValue
+            newScheduledMeal.scheduledDate = selectedDate
+            // Add newScheduledMeal to meal plan
+//            if let meal = newScheduledMeal {
+                try! self.realm.write {
+                    self.realm.create(ScheduledMeal.self, value: newScheduledMeal)
+                }
+//            }
+        }
+        
+        print("\(selectedRecipe.title) is added to meal plan for date \(selectedDate.withoutTime()) for \(mealTypesStr)")
     }
     
     override func didReceiveMemoryWarning() {
