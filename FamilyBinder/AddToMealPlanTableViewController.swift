@@ -48,12 +48,7 @@ class AddToMealPlanTableViewController: UITableViewController {
             mealTypeCell.accessoryType = .none
         }
         
-//        if let val = selectedDate {
-//            datePickerVisible = true
-//            pickerScheduledDate.date = val
-//        } else {
-            datePickerVisible = false
-//        }
+        datePickerVisible = false
         lblScheduledDate.text = Date().withoutTime()
     }
     
@@ -112,13 +107,10 @@ class AddToMealPlanTableViewController: UITableViewController {
             }
             btnAdd.isEnabled = selectedMealTypes.count > 0
         }
-//        selectedDate = nil
         if indexPath.section == DATE_LABEL_POSITION.SECTION && indexPath.row == DATE_LABEL_POSITION.ROW {
             showScheduledDatePickerCell(containingDatePicker: pickerScheduledDate)
             selectedDate = pickerScheduledDate.date
-//            if let labelDate = selectedDate {
-                lblScheduledDate.text = selectedDate.withoutTime()
-//            }
+            lblScheduledDate.text = selectedDate.withoutTime()
         }
         else if datePickerVisible {
             hideScheduledDatePickerCell(containingDatePicker: pickerScheduledDate)
@@ -167,12 +159,12 @@ class AddToMealPlanTableViewController: UITableViewController {
     }
     
     @IBAction func addTapped(_ sender: Any) {
-       print("\(selectedRecipe.title) is added to meal plan for date \(selectedDate.withoutTime())")
+        print("\(selectedRecipe.title) is added to meal plan for date \(selectedDate.withoutTime())")
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
 }
