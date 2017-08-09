@@ -47,26 +47,27 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
         
         recipesTypeSegCntrl.selectedSegmentIndex = DEFAULT_SELECTED_TOGGLE
         
-        recipes = Array(realm.objects(Recipe.self)) // loads first
+//        recipes = Array(realm.objects(Recipe.self)) // loads first
         
     }
     //toggling doesn't call any of these 3 methods, only cellForRowAt
     override func viewWillAppear(_ animated: Bool) { // loads second then cellForRowAt, after back button 1st
         super.viewWillAppear(animated) //back button: 1, then viewDidAppear.  never calls cellForRowAt
         
-        loadRecipes().then { recipesReceived -> Void in
-            self.recipes = recipesReceived
+//        loadRecipes().then { recipesReceived -> Void in
+//            self.recipes = recipesReceived
+//            self.tableView.reloadData()
+//            }.catch { error in
+//                print(error)
+//        }
+        if (recipesTypeSegCntrl.selectedSegmentIndex == 0) {
+            self.recipes = Array(realm.objects(Recipe.self))
             self.tableView.reloadData()
-            }.catch { error in
-                print(error)
         }
-        
         
     }
     
     override func viewDidAppear(_ animated: Bool) { // after cellForRowAt, appears after view is displayed, and after back button 2nd
-        //tableView.reloadData() //recalls cellForRowAt
-        
         super.viewDidAppear(animated)
     }
     
@@ -92,7 +93,7 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
             case 1:
                 getRandomRecipes().then { recipesReceived -> Void in
                     fulfill(recipesReceived)
-//                    self.tableView.reloadData()
+                    //                    self.tableView.reloadData()
                     }.catch { error in
                         print(error)
                 }
@@ -107,25 +108,9 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
         loadRecipes().then{ recipesReceived -> Void in
             self.recipes = recipesReceived
             self.tableView.reloadData()
-            }.catch{error in
-                print(error)}
-        //        switch(sender.selectedSegmentIndex){
-        //        case 0:
-        //            recipes = Array(realm.objects(Recipe.self))
-        //            tableView.reloadData()
-        //
-        //            break
-        //        case 1:
-        //            getRandomRecipes().then { recipesReceived -> Void in
-        //                self.recipes = recipesReceived
-        //                self.tableView.reloadData()
-        //                }.catch { error in
-        //                    print(error)
-        //            }
-        //            break
-        //        default:
-        //            break
-        //        }
+            }.catch { error in
+                print(error)
+        }
     }
     
     func getRandomRecipes() -> Promise<[Recipe]> {
