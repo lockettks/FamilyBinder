@@ -212,7 +212,8 @@ class RecipeDetailViewController: UIViewController {
                 try! self.realm.write {
                     selectedRecipe.isFavorite = true
                     favoritedRecipe = selectedRecipe.copy() as! Recipe
-                    self.realm.create(Recipe.self, value: favoritedRecipe)
+//                    self.realm.create(Recipe.self, value: favoritedRecipe)
+                    self.realm.create(Recipe.self, value: selectedRecipe)
                     print("Added \(favoritedRecipe.title) to my recipes")
                     if let btn = self.favoriteBtn {
                         btn.setImage(#imageLiteral(resourceName: "heart_red_filled"), for: .normal)

@@ -99,6 +99,11 @@
       </ContextState>
       <ContextState
          contextName = "RecipesMasterViewController.tableView(UITableView, cellForRowAt : IndexPath) -&gt; UITableViewCell:RecipesMasterViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "recipes">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "AddToMealPlanTableViewController.tableView(UITableView, cellForRowAt : IndexPath) -&gt; UITableViewCell:AddToMealPlanTableViewController.swift">
