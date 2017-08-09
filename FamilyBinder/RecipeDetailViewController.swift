@@ -23,11 +23,11 @@ class RecipeDetailViewController: UIViewController {
     var scrollViewPropertiesInitialized = false
     var favoritedRecipe = Recipe()
     
-//    // Get the default Realm
+    //    // Get the default Realm
     let realm = try! Realm()
-//    // You only need to do this once (per thread)
-//    // To find Realm File, enter the following when debugger is paused:
-//    // po Realm.Configuration.defaultConfiguration.fileURL
+    //    // You only need to do this once (per thread)
+    //    // To find Realm File, enter the following when debugger is paused:
+    //    // po Realm.Configuration.defaultConfiguration.fileURL
     
     // MARK: - View Manipulation
     
@@ -77,7 +77,7 @@ class RecipeDetailViewController: UIViewController {
                 
                 label.attributedText = fullAttributedString
             }
-
+            
             addRecipeBtn.isEnabled = true
             updateFavoriteBtn()
         } else {
@@ -196,50 +196,52 @@ class RecipeDetailViewController: UIViewController {
     }
     
     func addRemoveRecipeFromFavorites() {
-        if (self.detailItem?.isFavorite)! {
-            // Remove from favorites
-            try! self.realm.write {
-                self.realm.delete(realm.objects(Recipe.self).filter("id == %@", favoritedRecipe.id))
-                print("Removed \(favoritedRecipe.title) from my recipes")
-                self.detailItem?.isFavorite = false
-                if let btn = self.favoriteBtn {
-                    btn.setImage(#imageLiteral(resourceName: "heart_black_empty"), for: .normal)
+        if let selectedRecipe = self.detailItem {
+            if (selectedRecipe.isFavorite) {
+                // Remove from favorites
+                try! self.realm.write {
+                    self.realm.delete(realm.objects(Recipe.self).filter("id == %@", selectedRecipe.id))
+                    print("Removed \(selectedRecipe.title) from my recipes")
+                    selectedRecipe.isFavorite = false
+                    if let btn = self.favoriteBtn {
+                        btn.setImage(#imageLiteral(resourceName: "heart_black_empty"), for: .normal)
+                    }
                 }
-            }
-        } else {
-            // Add to favorites
-            try! self.realm.write {
-                self.detailItem?.isFavorite = true
-                favoritedRecipe = self.detailItem?.copy() as! Recipe
-                self.realm.create(Recipe.self, value: favoritedRecipe)
-                print("Added \(favoritedRecipe.title) to my recipes")
-                if let btn = self.favoriteBtn {
-                    btn.setImage(#imageLiteral(resourceName: "heart_red_filled"), for: .normal)
+            } else {
+                // Add to favorites
+                try! self.realm.write {
+                    selectedRecipe.isFavorite = true
+                    favoritedRecipe = selectedRecipe.copy() as! Recipe
+                    self.realm.create(Recipe.self, value: favoritedRecipe)
+                    print("Added \(favoritedRecipe.title) to my recipes")
+                    if let btn = self.favoriteBtn {
+                        btn.setImage(#imageLiteral(resourceName: "heart_red_filled"), for: .normal)
+                    }
+                    
                 }
-                
             }
         }
     }
     
     
     // MARK: - Business Logic
-    func addRecipeToFavorites() {
-        try! self.realm.write {
-            self.realm.add(self.detailItem!, update: true)
-            print("Added to my recipes")
-            self.detailItem?.isFavorite = true
-            updateFavoriteBtn()
-        }
-    }
-    
-    func removeRecipeFromFavorites() {
-        try! self.realm.write {
-            self.realm.delete(self.detailItem!)
-            print("Removed from my recipes")
-            self.detailItem?.isFavorite = false
-            updateFavoriteBtn()
-        }
-    }
+    //    func addRecipeToFavorites() {
+    //        try! self.realm.write {
+    //            self.realm.add(self.detailItem!, update: true)
+    //            print("Added to my recipes")
+    //            self.detailItem?.isFavorite = true
+    //            updateFavoriteBtn()
+    //        }
+    //    }
+    //
+    //    func removeRecipeFromFavorites() {
+    //        try! self.realm.write {
+    //            self.realm.delete(self.detailItem!)
+    //            print("Removed from my recipes")
+    //            self.detailItem?.isFavorite = false
+    //            updateFavoriteBtn()
+    //        }
+    //    }
     
     func updateFavoriteBtn(){
         if (self.detailItem?.isFavorite)! {

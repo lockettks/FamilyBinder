@@ -52,7 +52,7 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
     }
     //toggling doesn't call any of these 3 methods, only cellForRowAt
     override func viewWillAppear(_ animated: Bool) { // loads second then cellForRowAt, after back button 1st
-        super.viewWillAppear(animated)
+        super.viewWillAppear(animated) //back button: 1, then viewDidAppear.  never calls cellForRowAt
     }
     
     override func viewDidAppear(_ animated: Bool) { // after cellForRowAt, appears after view is displayed, and after back button 2nd
@@ -72,53 +72,46 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
     
     
     
-    func loadRecipes() -> Promise<[Recipe]> {
-        return Promise{fulfill, reject in
-            switch(recipesTypeSegCntrl.selectedSegmentIndex){
-            case 0:
-                let myRecipes = Array(realm.objects(Recipe.self))
-                fulfill(myRecipes)
-                
-                break
-            case 1:
-                getRandomRecipes().then { recipesReceived -> Void in
-                    fulfill(recipesReceived)
-                    self.tableView.reloadData()
-                    }.catch { error in
-                        print(error)
-                }
-                break
-            default:
-                break
-            }
-        }
-    }
+//    func loadRecipes() -> Promise<[Recipe]> {
+//        return Promise{fulfill, reject in
+//            switch(recipesTypeSegCntrl.selectedSegmentIndex){
+//            case 0:
+//                let myRecipes = Array(realm.objects(Recipe.self))
+//                fulfill(myRecipes)
+//                
+//                break
+//            case 1:
+//                getRandomRecipes().then { recipesReceived -> Void in
+//                    fulfill(recipesReceived)
+//                    self.tableView.reloadData()
+//                    }.catch { error in
+//                        print(error)
+//                }
+//                break
+//            default:
+//                break
+//            }
+//        }
+//    }
     
     @IBAction func recipesTypeSegCntrlChanged(_ sender: UISegmentedControl) {
-//        loadRecipes().then { recipesReceived -> Void in
-//            self.recipes = recipesReceived
-//            self.tableView.reloadData()
-//        }
-        
-//        return Promise{fulfill, reject in
-            switch(sender.selectedSegmentIndex){
-            case 0:
-                recipes = Array(realm.objects(Recipe.self))
-                tableView.reloadData()
-                
-                break
-            case 1:
-                getRandomRecipes().then { recipesReceived -> Void in
-                    self.recipes = recipesReceived
-                    self.tableView.reloadData()
-                    }.catch { error in
-                        print(error)
-                }
-                break
-            default:
-                break
+        switch(sender.selectedSegmentIndex){
+        case 0:
+            recipes = Array(realm.objects(Recipe.self))
+            tableView.reloadData()
+            
+            break
+        case 1:
+            getRandomRecipes().then { recipesReceived -> Void in
+                self.recipes = recipesReceived
+                self.tableView.reloadData()
+                }.catch { error in
+                    print(error)
             }
-//        }
+            break
+        default:
+            break
+        }
     }
     
     func getRandomRecipes() -> Promise<[Recipe]> {
@@ -164,7 +157,7 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 let recipe = recipes[indexPath.row]
                 if let controller = (segue.destination as! UINavigationController).topViewController as? RecipeDetailViewController {
-                    controller.detailItem = recipe
+                    controller.detailItem = recipe.copy() as? Recipe
                     controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
                     controller.navigationItem.leftItemsSupplementBackButton = true
                 }

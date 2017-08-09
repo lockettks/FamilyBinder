@@ -25,12 +25,18 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "RecipesMasterViewController.viewWillAppear(Bool) -&gt; ():RecipesMasterViewController.swift">
+      </ContextState>
+      <ContextState
          contextName = "RecipeRouter.asURLRequest() throws -&gt; URLRequest:RecipeRouter.swift">
          <PersistentStrings>
             <PersistentString
                value = "encoding.encode(urlRequest, with: params)">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "RecipesMasterViewController.viewDidAppear(Bool) -&gt; ():RecipesMasterViewController.swift">
       </ContextState>
       <ContextState
          contextName = "MealDatePickerTableViewCell.awakeFromNib() -&gt; ():MealDatePickerTableViewCell.swift">
@@ -47,6 +53,9 @@
       <ContextState
          contextName = "RecipeDetailViewController.(addRemoveRecipeFromFavorites() -&gt; ()).(closure #1):RecipeDetailViewController.swift">
          <PersistentStrings>
+            <PersistentString
+               value = "self.detailItem?.id">
+            </PersistentString>
             <PersistentString
                value = "self.detailItem">
             </PersistentString>
@@ -81,6 +90,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "RecipesMasterViewController.prepare(for : UIStoryboardSegue, sender : Any?) -&gt; ():RecipesMasterViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "recipes">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "RecipesMasterViewController.tableView(UITableView, cellForRowAt : IndexPath) -&gt; UITableViewCell:RecipesMasterViewController.swift">
       </ContextState>
       <ContextState
@@ -102,6 +119,9 @@
          <PersistentStrings>
             <PersistentString
                value = "randomRecipes">
+            </PersistentString>
+            <PersistentString
+               value = "recipes">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -185,10 +205,42 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "RecipeDetailViewController.addRemoveRecipeFromFavorites() -&gt; ():RecipeDetailViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.detailItem.isFavorite">
+            </PersistentString>
+            <PersistentString
+               value = "favoritedRecipe">
+            </PersistentString>
+            <PersistentString
+               value = "favoritedRecipe.id">
+            </PersistentString>
+            <PersistentString
+               value = "self.detailItem.id">
+            </PersistentString>
+            <PersistentString
+               value = "self.detailItem">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "RecipeTableViewCell.initWithModel(model : Recipe) -&gt; ():RecipeTableViewCell.swift">
          <PersistentStrings>
             <PersistentString
+               value = "model.title">
+            </PersistentString>
+            <PersistentString
                value = "dinnerPlate.description">
+            </PersistentString>
+            <PersistentString
+               value = "model">
+            </PersistentString>
+            <PersistentString
+               value = "recipeLbl.text">
+            </PersistentString>
+            <PersistentString
+               value = "model.id">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

@@ -114,15 +114,31 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FamilyBinder/RecipesMasterViewController.swift"
-            timestampString = "523993379.824599"
+            timestampString = "523994569.035334"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
+            startingLineNumber = "156"
+            endingLineNumber = "156"
+            landmarkName = "prepare(for:sender:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FamilyBinder/RecipesMasterViewController.swift"
+            timestampString = "523994725.926805"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
             landmarkName = "recipesTypeSegCntrlChanged(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -130,177 +146,65 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FamilyBinder/RecipesMasterViewController.swift"
-            timestampString = "523991732.098714"
+            timestampString = "523994729.337102"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
-            landmarkName = "loadRecipes()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "FamilyBinder.RecipesMasterViewController.loadRecipes () -&gt; PromiseKit.Promise&lt;Swift.Array&lt;FamilyBinder.Recipe&gt;&gt;"
-                  moduleName = "FamilyBinder"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kimberlymathieu/Desktop/My%20Projects/FamilyBinder/FamilyBinder/RecipesMasterViewController.swift"
-                  timestampString = "523992166.375863"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "76"
-                  endingLineNumber = "76"
-                  offsetFromSymbolStart = "12">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "FamilyBinder.RecipesMasterViewController.(loadRecipes () -&gt; PromiseKit.Promise&lt;Swift.Array&lt;FamilyBinder.Recipe&gt;&gt;).(closure #1)"
-                  moduleName = "FamilyBinder"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kimberlymathieu/Desktop/My%20Projects/FamilyBinder/FamilyBinder/RecipesMasterViewController.swift"
-                  timestampString = "523992166.377357"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "77"
-                  endingLineNumber = "77"
-                  offsetFromSymbolStart = "38">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FamilyBinder/RecipesMasterViewController.swift"
-            timestampString = "523991732.762178"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
-            landmarkName = "loadRecipes()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FamilyBinder/RecipesMasterViewController.swift"
-            timestampString = "523993379.824599"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
-            landmarkName = "loadRecipes()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "FamilyBinder.RecipesMasterViewController.(loadRecipes () -&gt; PromiseKit.Promise&lt;Swift.Array&lt;FamilyBinder.Recipe&gt;&gt;).(closure #1)"
-                  moduleName = "FamilyBinder"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kimberlymathieu/Desktop/My%20Projects/FamilyBinder/FamilyBinder/RecipesMasterViewController.swift"
-                  timestampString = "523992166.384035"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "86"
-                  endingLineNumber = "86"
-                  offsetFromSymbolStart = "476">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "FamilyBinder.RecipesMasterViewController.(loadRecipes () -&gt; PromiseKit.Promise&lt;Swift.Array&lt;FamilyBinder.Recipe&gt;&gt;).(closure #1).(closure #1)"
-                  moduleName = "FamilyBinder"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kimberlymathieu/Desktop/My%20Projects/FamilyBinder/FamilyBinder/RecipesMasterViewController.swift"
-                  timestampString = "523992166.385317"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "87"
-                  endingLineNumber = "87"
-                  offsetFromSymbolStart = "20">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FamilyBinder/RecipesMasterViewController.swift"
-            timestampString = "523993379.824599"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
-            landmarkName = "loadRecipes()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FamilyBinder/RecipesMasterViewController.swift"
-            timestampString = "523993379.824599"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
             landmarkName = "recipesTypeSegCntrlChanged(_:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "FamilyBinder.RecipesMasterViewController.recipesTypeSegCntrlChanged (__ObjC.UISegmentedControl) -&gt; ()"
-                  moduleName = "FamilyBinder"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kimberlymathieu/Desktop/My%20Projects/FamilyBinder/FamilyBinder/RecipesMasterViewController.swift"
-                  timestampString = "523992166.39164"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "101"
-                  endingLineNumber = "101"
-                  offsetFromSymbolStart = "23">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "FamilyBinder.RecipesMasterViewController.(recipesTypeSegCntrlChanged (__ObjC.UISegmentedControl) -&gt; ()).(closure #1)"
-                  moduleName = "FamilyBinder"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kimberlymathieu/Desktop/My%20Projects/FamilyBinder/FamilyBinder/RecipesMasterViewController.swift"
-                  timestampString = "523992166.392998"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "102"
-                  endingLineNumber = "102"
-                  offsetFromSymbolStart = "16">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FamilyBinder/RecipeTableViewCell.swift"
+            timestampString = "523994843.060663"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "initWithModel(model:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FamilyBinder/RecipeDetailViewController.swift"
+            timestampString = "523997034.095736"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "213"
+            endingLineNumber = "213"
+            landmarkName = "addRemoveRecipeFromFavorites()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FamilyBinder/RecipeDetailViewController.swift"
+            timestampString = "523997105.980804"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "203"
+            endingLineNumber = "203"
+            landmarkName = "addRemoveRecipeFromFavorites()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
