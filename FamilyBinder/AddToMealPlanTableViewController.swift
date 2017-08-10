@@ -165,19 +165,25 @@ class AddToMealPlanTableViewController: UITableViewController {
         for mealType in selectedMealTypes {
             mealTypesStr.append("\(mealType.displayName()), ")
 //            let newScheduledMeal = ScheduledMeal(recipe: selectedRecipe, scheduledDate: selectedDate, mealType: mealType)
-            let newScheduledMeal = ScheduledMeal()
             
-            let test = realm.objects(Recipe.self).filter("id == %@", selectedRecipe.id)
-            //Array(realm.objects(Recipe.self))
-            newScheduledMeal.recipe = test[0] as Recipe
+            
+            
+            let newScheduledMeal = ScheduledMeal()
+            let realmRecipe = realm.objects(Recipe.self).filter("id == %@", selectedRecipe.id)
+            if realmRecipe.count > 0 {
+                newScheduledMeal.recipe = realmRecipe[0] as Recipe
+            } else {
+                newScheduledMeal.recipe = selectedRecipe
+            }
             newScheduledMeal.mealTypeRaw = mealType.rawValue
             newScheduledMeal.scheduledDate = selectedDate
+            
+            
             // Add newScheduledMeal to meal plan
-//            if let meal = newScheduledMeal {
-                try! self.realm.write {
-                    self.realm.create(ScheduledMeal.self, value: newScheduledMeal)
-                }
-//            }
+            try! self.realm.write {
+                self.realm.create(ScheduledMeal.self, value: newScheduledMeal)
+//                self.realm.add(newScheduledMeal!)
+            }
         }
         
         print("\(selectedRecipe.title) is added to meal plan for date \(selectedDate.withoutTime()) for \(mealTypesStr)")
