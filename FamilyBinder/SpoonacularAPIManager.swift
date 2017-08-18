@@ -27,7 +27,7 @@ class SpoonacularAPIManager {
     
     
     // MARK: Get Random Recipes
-    func printRandomRecipes(numberOfRecipes: Int) -> Void {
+    func printRandomRecipes(numberOfRecipes: Int) {
         let request = Alamofire.request(RecipeRouter.getRandomRecipes(numberOfRecipes))
             .responseString { response in
                 guard response.result.error == nil else {
@@ -74,7 +74,7 @@ class SpoonacularAPIManager {
     
     func imageFrom(urlString: String, completionHandler: @escaping (UIImage?, Error?) -> Void) {
         
-        let _ = Alamofire.request(urlString).response {dataResponse in
+        _ = Alamofire.request(urlString).response {dataResponse in
             // use the generic response serializer that returns Data
             guard let data = dataResponse.data else {
                 completionHandler(nil, dataResponse.error)

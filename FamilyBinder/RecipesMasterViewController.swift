@@ -27,7 +27,7 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
     
     
     // MARK: - Variables
-    var detailViewController: RecipeDetailViewController? = nil
+    var detailViewController: RecipeDetailViewController?
     var recipes = [Recipe]()
     
     
@@ -74,7 +74,7 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
     // MARK: - Data
     
     func loadRecipes() -> Promise<[Recipe]> {
-        return Promise{fulfill, reject in
+        return Promise{fulfill, _ in
             switch(recipesTypeSegCntrl.selectedSegmentIndex){
             case 0:
                 let myRecipes = Array(realm.objects(Recipe.self))
@@ -96,7 +96,7 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func getRandomRecipes() -> Promise<[Recipe]> {
-        return Promise {fulfill, reject in
+        return Promise {fulfill, _ in
             SpoonacularAPIManager.sharedInstance.fetchRandomRecipes(numberOfRecipes: NUMBER_OF_RECIPES).then { result -> Void in
                 fulfill(result)
                 }.catch { error in

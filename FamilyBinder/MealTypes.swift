@@ -9,10 +9,10 @@
 import Foundation
 
 enum MealType: String {
-    case breakfast = "breakfast"
-    case lunch = "lunch"
-    case snack = "snack"
-    case dinner = "dinner"
+    case breakfast
+    case lunch
+    case snack
+    case dinner
     static let allTypes = [breakfast, lunch, snack, dinner]
     
     func displayName() -> String {

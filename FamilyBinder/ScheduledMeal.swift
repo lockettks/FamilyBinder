@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 
 class ScheduledMeal : Object {
-    dynamic var recipe: Recipe? = nil
+    dynamic var recipe: Recipe?
     dynamic var scheduledDate = Date()
     dynamic var mealTypeRaw = ""
     var mealType : MealType {

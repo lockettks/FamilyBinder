@@ -27,6 +27,7 @@
 		956789B31F294F180070FEEB /* Instruction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956789B21F294F180070FEEB /* Instruction.swift */; };
 		956789B51F29560B0070FEEB /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956789B41F29560B0070FEEB /* Ingredient.swift */; };
 		956789B91F2FDA660070FEEB /* UserContextCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956789B81F2FDA660070FEEB /* UserContextCache.swift */; };
+		95FA99861F475FAA0057B83F /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 95FA99851F475FAA0057B83F /* .swiftlint.yml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		956789B21F294F180070FEEB /* Instruction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Instruction.swift; sourceTree = "<group>"; };
 		956789B41F29560B0070FEEB /* Ingredient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
 		956789B81F2FDA660070FEEB /* UserContextCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserContextCache.swift; sourceTree = "<group>"; };
+		95FA99851F475FAA0057B83F /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 		F183672AF08D8E0DAEAA01C4 /* Pods_FamilyBinder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FamilyBinder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -88,6 +90,7 @@
 		954D7AA21F198CB3000480A7 = {
 			isa = PBXGroup;
 			children = (
+				95FA99851F475FAA0057B83F /* .swiftlint.yml */,
 				954D7AC81F198F66000480A7 /* Podfile */,
 				954D7AAD1F198CB3000480A7 /* FamilyBinder */,
 				954D7AAC1F198CB3000480A7 /* Products */,
@@ -183,6 +186,7 @@
 				954D7AA91F198CB3000480A7 /* Resources */,
 				E2F61FB33F1B352EA9B1A7BA /* [CP] Embed Pods Frameworks */,
 				C22B99D8E5EDCC8CC4F6F722 /* [CP] Copy Pods Resources */,
+				95FA99841F475DBB0057B83F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -233,6 +237,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95FA99861F475FAA0057B83F /* .swiftlint.yml in Resources */,
 				954D7ABB1F198CB3000480A7 /* LaunchScreen.storyboard in Resources */,
 				954D7AB81F198CB3000480A7 /* Assets.xcassets in Resources */,
 				954D7AC91F198F66000480A7 /* Podfile in Resources */,
@@ -257,6 +262,19 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
+		};
+		95FA99841F475DBB0057B83F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"";
 		};
 		C22B99D8E5EDCC8CC4F6F722 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;

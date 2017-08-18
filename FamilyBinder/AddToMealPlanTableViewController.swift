@@ -150,7 +150,7 @@ class AddToMealPlanTableViewController: UITableViewController {
         
         UIView.animate(withDuration: 0.25, animations: {
             picker.alpha = 0.0
-        }) { (finished) in
+        }) { (_) in
             picker.isHidden = true
         }
     }
@@ -160,13 +160,9 @@ class AddToMealPlanTableViewController: UITableViewController {
     }
     
     @IBAction func addTapped(_ sender: Any) {
-        
         var mealTypesStr = ""
         for mealType in selectedMealTypes {
             mealTypesStr.append("\(mealType.displayName()), ")
-//            let newScheduledMeal = ScheduledMeal(recipe: selectedRecipe, scheduledDate: selectedDate, mealType: mealType)
-            
-            
             
             let newScheduledMeal = ScheduledMeal()
             let realmRecipe = realm.objects(Recipe.self).filter("id == %@", selectedRecipe.id)
@@ -178,15 +174,13 @@ class AddToMealPlanTableViewController: UITableViewController {
             newScheduledMeal.mealTypeRaw = mealType.rawValue
             newScheduledMeal.scheduledDate = selectedDate
             
-            
             // Add newScheduledMeal to meal plan
             try! self.realm.write {
                 self.realm.create(ScheduledMeal.self, value: newScheduledMeal)
-//                self.realm.add(newScheduledMeal!)
+                print("\(selectedRecipe.title) is added to meal plan for date \(selectedDate.withoutTime()) for \(mealTypesStr)")
+                dismiss(animated: true, completion: nil)
             }
         }
-        
-        print("\(selectedRecipe.title) is added to meal plan for date \(selectedDate.withoutTime()) for \(mealTypesStr)")
     }
     
     override func didReceiveMemoryWarning() {

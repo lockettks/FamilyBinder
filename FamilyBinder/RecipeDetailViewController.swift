@@ -58,10 +58,8 @@ class RecipeDetailViewController: UIViewController {
             if let label = self.ingredientsLabel {
                 let attributesDictionary = [NSFontAttributeName : label.font]
                 let fullAttributedString = NSMutableAttributedString(string: "", attributes: (attributesDictionary as Any as! [String : Any]))
-                for ingredient in (detail.ingredients) {
-                    if ingredient.originalString != "" {
-                        fullAttributedString.append(convertToBulletedItem(textToConvert: ingredient.originalString))
-                    }
+                for ingredient in (detail.ingredients) where ingredient.originalString != "" {
+                    fullAttributedString.append(convertToBulletedItem(textToConvert: ingredient.originalString))
                 }
                 
                 label.attributedText = fullAttributedString
@@ -159,20 +157,16 @@ class RecipeDetailViewController: UIViewController {
         
         let optionMenu = UIAlertController(title: nil, message: "Choose Option", preferredStyle: .actionSheet)
         
-        let addToMyRecipes = UIAlertAction(title: "Add To My Recipes", style: .default, handler: {
-            _ in
+        let addToMyRecipes = UIAlertAction(title: "Add To My Recipes", style: .default, handler: {_ in
             self.addRemoveRecipeFromFavorites()
         })
-        let removeFromMyRecipes = UIAlertAction(title: "Remove From My Recipes", style: .default, handler: {
-            _ in
+        let removeFromMyRecipes = UIAlertAction(title: "Remove From My Recipes", style: .default, handler: {_ in
             self.addRemoveRecipeFromFavorites()
         })
-        let addToMealPlan = UIAlertAction(title: "Add To Meal Plan", style: .default, handler: {
-            action in self.performSegue(withIdentifier: "addRecipeToMealPlanSegue", sender: self)
+        let addToMealPlan = UIAlertAction(title: "Add To Meal Plan", style: .default, handler: {_ in self.performSegue(withIdentifier: "addRecipeToMealPlanSegue", sender: self)
         })
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {
-            (alert: UIAlertAction!) -> Void in
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {(_: UIAlertAction!) -> Void in
             print("Cancelled")
         })
         if (self.detailItem?.isFavorite)! {
@@ -222,7 +216,7 @@ class RecipeDetailViewController: UIViewController {
             }
         }
     }
-
+    
     
     func updateFavoriteBtn(){
         if (self.detailItem?.isFavorite)! {

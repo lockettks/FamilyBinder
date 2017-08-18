@@ -33,7 +33,7 @@ class MealDatePickerTableViewCell: UITableViewCell {
     public func hidePicker(){
         UIView.animate(withDuration: 0.25, animations: {
             self.pickerMealDate.alpha = 0.0
-        }) { (finished) in
+        }) { (_) in
             self.pickerMealDate.isHidden = true
         }
     }
