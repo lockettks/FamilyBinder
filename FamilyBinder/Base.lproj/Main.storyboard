@@ -390,6 +390,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" red="0.94901960784313721" green="0.89803921568627454" blue="0.82352941176470584" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="barTintColor" red="0.69411764705882351" green="0.64313725490196072" blue="0.56862745098039214" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="selectedImageTintColor" red="0.94901960784313721" green="0.89803921568627454" blue="0.82352941176470584" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
@@ -402,11 +403,11 @@
             </objects>
             <point key="canvasLocation" x="-1681" y="126"/>
         </scene>
-        <!--Split View Controller-->
+        <!--My Recipes-->
         <scene sceneID="Nki-YV-4Qg">
             <objects>
                 <splitViewController id="H1p-Uh-vWS" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="icon_myRecipes_on" selectedImage="icon_myRecipes_on" id="JDV-Hu-kRd"/>
+                    <tabBarItem key="tabBarItem" title="My Recipes" image="icon_myRecipes_on" id="JDV-Hu-kRd"/>
                     <toolbarItems/>
                     <connections>
                         <segue destination="RMx-3f-FxP" kind="relationship" relationship="masterViewController" id="BlO-5A-QYV"/>
