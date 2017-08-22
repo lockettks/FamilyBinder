@@ -30,6 +30,13 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
     var detailViewController: RecipeDetailViewController?
     var recipes = [Recipe]()
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        // Initialize Tab Bar Item
+//        tabBarItem = UITabBarItem(title: "My Recipes", image: #imageLiteral(resourceName: "tab_myRecipes"), tag: 0)
+        tabBarItem = UITabBarItem(title: "Cover", image: UIImage(named: "icon-cover"), tag: 0)
+    }
     
     // MARK: - Table Setup
     override func viewDidLoad() {
