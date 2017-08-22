@@ -366,7 +366,7 @@
         <!--Meal Plan-->
         <scene sceneID="GPm-J5-uvl">
             <objects>
-                <viewController id="ELL-f0-KBJ" customClass="TempMealPlanViewController" customModule="FamilyBinder" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ELL-f0-KBJ" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1S6-tE-tmH"/>
                         <viewControllerLayoutGuide type="bottom" id="9Ur-rJ-BQW"/>
@@ -376,7 +376,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Meal Plan" image="tab_mealPlanner_on" selectedImage="tab_mealPlanner_on" id="qkN-U2-bjF"/>
+                    <tabBarItem key="tabBarItem" title="Meal Plan" image="icon_mealPlanner_on" selectedImage="icon_mealPlanner_on" id="qkN-U2-bjF"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FgJ-gs-HPl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -406,7 +406,7 @@
         <scene sceneID="Nki-YV-4Qg">
             <objects>
                 <splitViewController id="H1p-Uh-vWS" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="tab_myRecipes" selectedImage="tab_myRecipes" id="JDV-Hu-kRd"/>
+                    <tabBarItem key="tabBarItem" title="" image="icon_myRecipes_on" selectedImage="icon_myRecipes_on" id="JDV-Hu-kRd"/>
                     <toolbarItems/>
                     <connections>
                         <segue destination="RMx-3f-FxP" kind="relationship" relationship="masterViewController" id="BlO-5A-QYV"/>
@@ -509,8 +509,8 @@
     </scenes>
     <resources>
         <image name="heart_off" width="30" height="37"/>
-        <image name="tab_mealPlanner_on" width="94" height="50"/>
-        <image name="tab_myRecipes" width="30" height="30"/>
+        <image name="icon_mealPlanner_on" width="34" height="30"/>
+        <image name="icon_myRecipes_on" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Tll-UG-LXB"/>

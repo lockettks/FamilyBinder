@@ -34,8 +34,7 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
         super.init(coder: aDecoder)
         
         // Initialize Tab Bar Item
-//        tabBarItem = UITabBarItem(title: "My Recipes", image: #imageLiteral(resourceName: "tab_myRecipes"), tag: 0)
-        tabBarItem = UITabBarItem(title: "Cover", image: UIImage(named: "icon-cover"), tag: 0)
+        tabBarItem = UITabBarItem(title: "My Recipes", image: #imageLiteral(resourceName: "icon_myRecipes_on"), tag: 0)
     }
     
     // MARK: - Table Setup
