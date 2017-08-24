@@ -193,13 +193,17 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addRecipeBtn" destination="scj-v7-0wW" id="90D-W1-2h5"/>
+                        <outlet property="contentView" destination="58z-TB-dOe" id="KuF-3c-JgS"/>
                         <outlet property="favoriteBtn" destination="Fg6-dX-sVh" id="TSY-wu-hUJ"/>
                         <outlet property="ingredientsLabel" destination="3qJ-sx-tLP" id="COv-2i-XTw"/>
                         <outlet property="instructionsLabel" destination="0XM-y9-sOw" id="uB0-ng-iQE"/>
+                        <outlet property="recipeDetailsView" destination="osP-Sm-LYO" id="NkS-MP-YBF"/>
                         <outlet property="recipeImg" destination="vq0-5k-8yN" id="LUK-bp-qrF"/>
                         <outlet property="recipeTitleLabel" destination="9bT-Vn-xgO" id="1w7-bS-55P"/>
+                        <outlet property="recipeTitleView" destination="1aL-vW-l1D" id="uxl-8B-dzV"/>
                         <outlet property="scrollView" destination="ved-Ad-DDW" id="Cmg-f8-RQz"/>
                         <outlet property="servingsLabel" destination="jkR-AS-zOC" id="n3R-Qr-73N"/>
+                        <outlet property="shadowBackgroundView" destination="3g5-Ts-Ckb" id="1ga-v2-Tbn"/>
                         <segue destination="Zop-bv-ev8" kind="popoverPresentation" identifier="addRecipeToMealPlanSegue" popoverAnchorBarButtonItem="scj-v7-0wW" id="cZF-5b-rlJ">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                         </segue>

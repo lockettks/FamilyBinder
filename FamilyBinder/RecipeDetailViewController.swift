@@ -11,7 +11,7 @@ import RealmSwift
 
 class RecipeDetailViewController: UIViewController {
     
-    @IBOutlet weak var scrollView: UIScrollView!
+
     @IBOutlet weak var recipeTitleLabel: UILabel!
     @IBOutlet weak var recipeImg: UIImageView!
     @IBOutlet weak var servingsLabel: UILabel!
@@ -19,6 +19,12 @@ class RecipeDetailViewController: UIViewController {
     @IBOutlet weak var instructionsLabel: UILabel!
     @IBOutlet weak var addRecipeBtn: UIBarButtonItem!
     @IBOutlet weak var favoriteBtn: UIButton!
+    
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var recipeTitleView: UIView!
+    @IBOutlet weak var shadowBackgroundView: UIView!
+    @IBOutlet weak var recipeDetailsView: UIView!
     
     var scrollViewPropertiesInitialized = false
     var favoritedRecipe = Recipe()
