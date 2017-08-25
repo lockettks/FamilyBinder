@@ -88,7 +88,7 @@ class RecipeDetailViewController: UIViewController {
             addRecipeBtn.isEnabled = false
         }
     }
-    
+    /*
     override func viewDidLayoutSubviews() {
         if !scrollViewPropertiesInitialized {
             self.automaticallyAdjustsScrollViewInsets = true
@@ -98,30 +98,56 @@ class RecipeDetailViewController: UIViewController {
             scrollView.contentOffset = CGPoint(x: 0.0, y: 0.0)
             scrollViewPropertiesInitialized = true
         }
-        recipeTitleLabel.sizeToFit()
-        recipeTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        recipeTitleLabel.setNeedsLayout()
-        recipeTitleLabel.layoutIfNeeded()
-        
-        ingredientsLabel.sizeToFit()
-        ingredientsLabel.translatesAutoresizingMaskIntoConstraints = false
-        ingredientsLabel.setNeedsLayout()
-        ingredientsLabel.layoutIfNeeded()
-        
-        instructionsLabel.sizeToFit()
-        instructionsLabel.translatesAutoresizingMaskIntoConstraints = false
-        instructionsLabel.setNeedsLayout()
-        instructionsLabel.layoutIfNeeded()
-        updateScrollSize()
+//
+//        
+//        recipeTitleLabel.sizeToFit()
+//        recipeTitleLabel.translatesAutoresizingMaskIntoConstraints = false
+//        recipeTitleLabel.setNeedsLayout()
+//        recipeTitleLabel.layoutIfNeeded()
+//        
+//        recipeTitleView.sizeToFit()
+//        recipeTitleView.translatesAutoresizingMaskIntoConstraints = false
+//        recipeTitleView.setNeedsLayout()
+//        recipeTitleView.layoutIfNeeded()
+//        
+//        ingredientsLabel.sizeToFit()  //updates .frame.size.height
+//        ingredientsLabel.translatesAutoresizingMaskIntoConstraints = false
+//        ingredientsLabel.setNeedsLayout()
+//        ingredientsLabel.layoutIfNeeded()
+//        
+//        instructionsLabel.sizeToFit()
+//        instructionsLabel.translatesAutoresizingMaskIntoConstraints = false
+//        instructionsLabel.setNeedsLayout()
+//        instructionsLabel.layoutIfNeeded()
+//        
+//        recipeDetailsView.sizeToFit()
+//        recipeDetailsView.translatesAutoresizingMaskIntoConstraints = false
+//        recipeDetailsView.setNeedsLayout()
+//        recipeDetailsView.layoutIfNeeded()
+//        
+//        shadowBackgroundView.sizeToFit()
+//        shadowBackgroundView.translatesAutoresizingMaskIntoConstraints = false
+//        shadowBackgroundView.setNeedsLayout()
+//        shadowBackgroundView.layoutIfNeeded()
+//        
+//        contentView.sizeToFit()
+//        contentView.translatesAutoresizingMaskIntoConstraints = false
+//        contentView.setNeedsLayout()
+//        contentView.layoutIfNeeded()
+//        
+//        
+//        updateScrollSize()
     }
+    */
     
     
-    
-    func updateScrollSize() {
-        
-        let directionsBottomYPos = instructionsLabel.frame.origin.y + instructionsLabel.frame.size.height
-        scrollView.contentSize.height = directionsBottomYPos + 140.0
-    }
+//    func updateScrollSize() {
+//        
+//        let directionsBottomYPos = shadowBackgroundView.frame.origin.y + shadowBackgroundView.frame.size.height
+////        let directionsBottomYPos = instructionsLabel.frame.origin.y + instructionsLabel.frame.size.height
+//        contentView.intrinsicContentSize
+//        scrollView.contentSize.height = directionsBottomYPos + 140.0
+//    }
     
     
     

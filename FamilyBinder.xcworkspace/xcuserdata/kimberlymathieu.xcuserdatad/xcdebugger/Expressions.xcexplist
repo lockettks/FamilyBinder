@@ -14,18 +14,15 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "RecipeDetailViewController.viewDidLoad() -&gt; ():RecipeDetailViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "instructionsLabel.frame.origin.y">
-            </PersistentString>
-            <PersistentString
-               value = "instructionsLabel.frame.size.height">
-            </PersistentString>
-         </PersistentStrings>
+         contextName = "static SessionManager.(default).(variable initialization expression).(closure #1):SessionManager.swift">
       </ContextState>
       <ContextState
-         contextName = "RecipesMasterViewController.viewWillAppear(Bool) -&gt; ():RecipesMasterViewController.swift">
+         contextName = "SpoonacularAPIManager.randomRecipeArrayFromResponse(response : DataResponse&lt;Any&gt;) -&gt; Result&lt;[Recipe]&gt;:SpoonacularAPIManager.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "jsonDictionary[&quot;recipes&quot;] as? [[String: Any]]">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "RecipeRouter.asURLRequest() throws -&gt; URLRequest:RecipeRouter.swift">
@@ -62,13 +59,13 @@
          contextName = "RecipeDetailViewController.(addRemoveRecipeFromFavorites() -&gt; ()).(closure #1):RecipeDetailViewController.swift">
          <PersistentStrings>
             <PersistentString
+               value = "favoritedRecipe">
+            </PersistentString>
+            <PersistentString
                value = "self.detailItem?.id">
             </PersistentString>
             <PersistentString
                value = "self.detailItem">
-            </PersistentString>
-            <PersistentString
-               value = "favoritedRecipe">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -84,24 +81,24 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "RecipesMasterViewController.prepare(for : UIStoryboardSegue, sender : Any?) -&gt; ():RecipesMasterViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "recipes">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "AddToMealPlanTableViewController.tableView(UITableView, heightForRowAt : IndexPath) -&gt; CGFloat:AddToMealPlanTableViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "indexPath.section">
+               value = "DATE_PICKER_POSITION">
             </PersistentString>
             <PersistentString
                value = "indexPath.row">
             </PersistentString>
             <PersistentString
-               value = "DATE_PICKER_POSITION">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "RecipesMasterViewController.prepare(for : UIStoryboardSegue, sender : Any?) -&gt; ():RecipesMasterViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "recipes">
+               value = "indexPath.section">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -117,13 +114,13 @@
          contextName = "AddToMealPlanTableViewController.tableView(UITableView, cellForRowAt : IndexPath) -&gt; UITableViewCell:AddToMealPlanTableViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "indexPath.section">
+               value = "DATE_LABEL_POSITION.SECTION">
             </PersistentString>
             <PersistentString
                value = "indexPath.row">
             </PersistentString>
             <PersistentString
-               value = "DATE_LABEL_POSITION.SECTION">
+               value = "indexPath.section">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -142,13 +139,13 @@
          contextName = "RecipeDetailViewController.configureView() -&gt; ():RecipeDetailViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "ingredientsLabel.font">
+               value = "ingredientsLabel">
             </PersistentString>
             <PersistentString
                value = "self.ingredientsLabel">
             </PersistentString>
             <PersistentString
-               value = "ingredientsLabel">
+               value = "ingredientsLabel.font">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -179,16 +176,25 @@
          contextName = "RecipeDetailViewController.viewDidLayoutSubviews() -&gt; ():RecipeDetailViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "instructionsLabel.frame.origin.y">
-            </PersistentString>
-            <PersistentString
-               value = "ingredientsLabel.frame.origin.y">
+               value = "shadowBackgroundView.frame.origin.y">
             </PersistentString>
             <PersistentString
                value = "ingredientsLabel.frame.size.height">
             </PersistentString>
             <PersistentString
+               value = "shadowBackgroundView.frame.size.height">
+            </PersistentString>
+            <PersistentString
+               value = "ingredientsLabel.frame.origin.y">
+            </PersistentString>
+            <PersistentString
                value = "instructionsLabel.frame.size.height">
+            </PersistentString>
+            <PersistentString
+               value = "instructionsLabel.frame.origin.y">
+            </PersistentString>
+            <PersistentString
+               value = "recipeTitleLabel">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -215,14 +221,14 @@
             <PersistentString
                value = "instructionsLabel.frame.size.height">
             </PersistentString>
+            <PersistentString
+               value = "scrollView.contentSize">
+            </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "RecipeDetailViewController.addRemoveRecipeFromFavorites() -&gt; ():RecipeDetailViewController.swift">
          <PersistentStrings>
-            <PersistentString
-               value = "self.detailItem.isFavorite">
-            </PersistentString>
             <PersistentString
                value = "favoritedRecipe">
             </PersistentString>
@@ -230,10 +236,13 @@
                value = "favoritedRecipe.id">
             </PersistentString>
             <PersistentString
-               value = "self.detailItem.id">
+               value = "self.detailItem">
             </PersistentString>
             <PersistentString
-               value = "self.detailItem">
+               value = "self.detailItem.isFavorite">
+            </PersistentString>
+            <PersistentString
+               value = "self.detailItem.id">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -241,13 +250,13 @@
          contextName = "RecipeTableViewCell.initWithModel(model : Recipe) -&gt; ():RecipeTableViewCell.swift">
          <PersistentStrings>
             <PersistentString
+               value = "model">
+            </PersistentString>
+            <PersistentString
                value = "model.title">
             </PersistentString>
             <PersistentString
                value = "dinnerPlate.description">
-            </PersistentString>
-            <PersistentString
-               value = "model">
             </PersistentString>
             <PersistentString
                value = "recipeLbl.text">
@@ -269,15 +278,18 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "static SessionManager.(default).(variable initialization expression).(closure #1):SessionManager.swift">
-      </ContextState>
-      <ContextState
-         contextName = "SpoonacularAPIManager.randomRecipeArrayFromResponse(response : DataResponse&lt;Any&gt;) -&gt; Result&lt;[Recipe]&gt;:SpoonacularAPIManager.swift">
+         contextName = "RecipeDetailViewController.viewDidLoad() -&gt; ():RecipeDetailViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "jsonDictionary[&quot;recipes&quot;] as? [[String: Any]]">
+               value = "instructionsLabel.frame.origin.y">
+            </PersistentString>
+            <PersistentString
+               value = "instructionsLabel.frame.size.height">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "RecipesMasterViewController.viewWillAppear(Bool) -&gt; ():RecipesMasterViewController.swift">
       </ContextState>
    </ContextStates>
 </VariablesViewState>
