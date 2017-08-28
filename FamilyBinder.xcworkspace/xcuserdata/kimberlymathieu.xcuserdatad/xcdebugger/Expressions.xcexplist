@@ -139,13 +139,7 @@
          contextName = "RecipeDetailViewController.configureView() -&gt; ():RecipeDetailViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "ingredientsLabel">
-            </PersistentString>
-            <PersistentString
-               value = "self.ingredientsLabel">
-            </PersistentString>
-            <PersistentString
-               value = "ingredientsLabel.font">
+               value = "recipeTitleView">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

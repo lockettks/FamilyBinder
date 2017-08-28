@@ -28,6 +28,7 @@
 		956789B51F29560B0070FEEB /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956789B41F29560B0070FEEB /* Ingredient.swift */; };
 		956789B91F2FDA660070FEEB /* UserContextCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956789B81F2FDA660070FEEB /* UserContextCache.swift */; };
 		95FA99861F475FAA0057B83F /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 95FA99851F475FAA0057B83F /* .swiftlint.yml */; };
+		95FA99AE1F50CADF0057B83F /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FA99AD1F50CADF0057B83F /* UIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		956789B41F29560B0070FEEB /* Ingredient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
 		956789B81F2FDA660070FEEB /* UserContextCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserContextCache.swift; sourceTree = "<group>"; };
 		95FA99851F475FAA0057B83F /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
+		95FA99AD1F50CADF0057B83F /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		F183672AF08D8E0DAEAA01C4 /* Pods_FamilyBinder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FamilyBinder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -131,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				9567899C1F226DF10070FEEB /* DateHelper.swift */,
+				95FA99AD1F50CADF0057B83F /* UIView.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95FA99AE1F50CADF0057B83F /* UIView.swift in Sources */,
 				954D7AB31F198CB3000480A7 /* RecipeDetailViewController.swift in Sources */,
 				956789941F2146B50070FEEB /* ScheduledMeal.swift in Sources */,
 				956789B51F29560B0070FEEB /* Ingredient.swift in Sources */,
