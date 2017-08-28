@@ -15,6 +15,7 @@ class RecipeDetailViewController: UIViewController {
     @IBOutlet weak var recipeTitleLabel: UILabel!
     @IBOutlet weak var recipeImg: UIImageView!
     @IBOutlet weak var servingsLabel: UILabel!
+    @IBOutlet weak var recipeImgBackground: UIImageView!
     @IBOutlet weak var ingredientsLabel: UILabel!
     @IBOutlet weak var instructionsLabel: UILabel!
     @IBOutlet weak var addRecipeBtn: UIBarButtonItem!
@@ -56,6 +57,14 @@ class RecipeDetailViewController: UIViewController {
                 img.af_setImage(withURL: url!, placeholderImage: placeholderImage)
                 detail.image = img.image
             }
+            if let img = self.recipeImgBackground {
+                let placeholderImage = #imageLiteral(resourceName: "dinnerPlate")
+                let url = URL(string: detail.imageURL)
+                img.af_setImage(withURL: url!, placeholderImage: placeholderImage)
+                detail.image = img.image
+            }
+            
+            
             if let label = self.servingsLabel {
                 label.text = detail.servings.description
             }
