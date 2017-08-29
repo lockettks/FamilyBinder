@@ -55,6 +55,92 @@
                                                     <constraint firstAttribute="height" constant="263" id="fc4-rn-1s1"/>
                                                 </constraints>
                                             </imageView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3g5-Ts-Ckb" userLabel="Shadow Background View">
+                                                <rect key="frame" x="0.0" y="370" width="375" height="143"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="osP-Sm-LYO" userLabel="Recipe Details View">
+                                                        <rect key="frame" x="8" y="0.0" width="359" height="135"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XwO-zQ-Wlh" userLabel="LblServingsLabel">
+                                                                <rect key="frame" x="279" y="12" width="49" height="17"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                <attributedString key="attributedText">
+                                                                    <fragment content="Servings:">
+                                                                        <attributes>
+                                                                            <color key="NSColor" red="0.16470588235294117" green="0.16470588235294117" blue="0.17254901960784313" alpha="1" colorSpace="calibratedRGB"/>
+                                                                            <font key="NSFont" size="14" name="BodoniSvtyTwoOSITCTT-Book"/>
+                                                                        </attributes>
+                                                                    </fragment>
+                                                                </attributedString>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3qJ-sx-tLP" userLabel="LblIngredients">
+                                                                <rect key="frame" x="8" y="28" width="343" height="20"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="B4q-TM-RSG"/>
+                                                                </constraints>
+                                                                <attributedString key="attributedText">
+                                                                    <fragment content="Ingredients">
+                                                                        <attributes>
+                                                                            <color key="NSColor" red="0.16470588235294117" green="0.16470588235294117" blue="0.17254901960784313" alpha="1" colorSpace="calibratedRGB"/>
+                                                                            <font key="NSFont" size="17" name="BodoniSvtyTwoOSITCTT-Book"/>
+                                                                        </attributes>
+                                                                    </fragment>
+                                                                </attributedString>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jkR-AS-zOC" userLabel="LblServings">
+                                                                <rect key="frame" x="343" y="8" width="8" height="21"/>
+                                                                <fontDescription key="fontDescription" name="BodoniSvtyTwoOSITCTT-Book" family="Bodoni 72 Oldstyle" pointSize="17"/>
+                                                                <color key="textColor" red="0.16470588235294117" green="0.16470588235294117" blue="0.17254901960784313" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="0XM-y9-sOw" userLabel="LblDirections">
+                                                                <rect key="frame" x="8" y="56" width="343" height="21"/>
+                                                                <color key="backgroundColor" red="0.98039215686274506" green="0.98431372549019602" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="ZuY-VO-Dr1"/>
+                                                                </constraints>
+                                                                <attributedString key="attributedText">
+                                                                    <fragment content="Directions">
+                                                                        <attributes>
+                                                                            <color key="NSColor" red="0.16470588235294117" green="0.16470588235294117" blue="0.17254901960784313" alpha="1" colorSpace="calibratedRGB"/>
+                                                                            <font key="NSFont" size="17" name="BodoniSvtyTwoOSITCTT-Book"/>
+                                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                        </attributes>
+                                                                    </fragment>
+                                                                </attributedString>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <imageView opaque="NO" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wEO-PB-DCX" userLabel="RecipeBackgroundImg">
+                                                                <rect key="frame" x="0.0" y="0.0" width="359" height="135"/>
+                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            </imageView>
+                                                        </subviews>
+                                                        <color key="backgroundColor" red="0.98039215686274506" green="0.98431372549019602" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="250" constant="135" id="ADF-0c-7We"/>
+                                                            <constraint firstAttribute="trailing" secondItem="0XM-y9-sOw" secondAttribute="trailing" constant="8" id="DhB-FV-TcA"/>
+                                                            <constraint firstItem="3qJ-sx-tLP" firstAttribute="leading" secondItem="osP-Sm-LYO" secondAttribute="leading" constant="8" id="LPh-pE-hj7"/>
+                                                            <constraint firstItem="0XM-y9-sOw" firstAttribute="leading" secondItem="osP-Sm-LYO" secondAttribute="leading" constant="8" id="PpD-bB-1o1"/>
+                                                            <constraint firstItem="jkR-AS-zOC" firstAttribute="top" secondItem="osP-Sm-LYO" secondAttribute="top" constant="8" id="XAI-o8-ysC"/>
+                                                            <constraint firstItem="3qJ-sx-tLP" firstAttribute="top" secondItem="jkR-AS-zOC" secondAttribute="bottom" constant="-1" id="c4Y-P6-lvI"/>
+                                                            <constraint firstAttribute="trailing" secondItem="3qJ-sx-tLP" secondAttribute="trailing" constant="8" id="qTt-gW-HfW"/>
+                                                            <constraint firstAttribute="trailing" secondItem="jkR-AS-zOC" secondAttribute="trailing" constant="8" id="qq4-40-sVd"/>
+                                                            <constraint firstItem="0XM-y9-sOw" firstAttribute="top" secondItem="3qJ-sx-tLP" secondAttribute="bottom" constant="8" id="y5b-RL-bhP"/>
+                                                            <constraint firstAttribute="bottom" secondItem="0XM-y9-sOw" secondAttribute="bottom" constant="58" id="zb8-MB-Wdg"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                                <color key="backgroundColor" red="0.30980392156862746" green="0.36078431372549019" blue="0.39215686274509803" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="osP-Sm-LYO" secondAttribute="trailing" constant="8" id="0Zk-wU-mAa"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="250" constant="270" id="ElX-24-WiE"/>
+                                                    <constraint firstItem="osP-Sm-LYO" firstAttribute="leading" secondItem="3g5-Ts-Ckb" secondAttribute="leading" constant="8" id="JAs-Z8-GYy"/>
+                                                    <constraint firstItem="osP-Sm-LYO" firstAttribute="top" secondItem="3g5-Ts-Ckb" secondAttribute="top" id="Vqp-aA-wih"/>
+                                                    <constraint firstAttribute="bottom" secondItem="osP-Sm-LYO" secondAttribute="bottom" constant="8" id="XdG-ZF-9T3"/>
+                                                </constraints>
+                                            </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1aL-vW-l1D" userLabel="Recipe Title View" customClass="DesignableView" customModule="FamilyBinder" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="325" width="375" height="45"/>
                                                 <subviews>
@@ -90,7 +176,7 @@
                                                         <real key="value" value="2"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                                        <real key="value" value="0.75"/>
+                                                        <real key="value" value="1.8"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
                                                         <size key="value" width="1" height="5"/>
@@ -102,92 +188,6 @@
                                                         <real key="value" value="-6"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3g5-Ts-Ckb" userLabel="Shadow Background View">
-                                                <rect key="frame" x="0.0" y="370" width="375" height="143"/>
-                                                <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="osP-Sm-LYO" userLabel="Recipe Details View">
-                                                        <rect key="frame" x="8" y="8" width="359" height="127"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XwO-zQ-Wlh" userLabel="LblServingsLabel">
-                                                                <rect key="frame" x="279" y="4" width="49" height="17"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <attributedString key="attributedText">
-                                                                    <fragment content="Servings:">
-                                                                        <attributes>
-                                                                            <color key="NSColor" red="0.16470588235294117" green="0.16470588235294117" blue="0.17254901960784313" alpha="1" colorSpace="calibratedRGB"/>
-                                                                            <font key="NSFont" size="14" name="BodoniSvtyTwoOSITCTT-Book"/>
-                                                                        </attributes>
-                                                                    </fragment>
-                                                                </attributedString>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3qJ-sx-tLP" userLabel="LblIngredients">
-                                                                <rect key="frame" x="8" y="28" width="343" height="20"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="B4q-TM-RSG"/>
-                                                                </constraints>
-                                                                <attributedString key="attributedText">
-                                                                    <fragment content="Ingredients">
-                                                                        <attributes>
-                                                                            <color key="NSColor" red="0.16470588235294117" green="0.16470588235294117" blue="0.17254901960784313" alpha="1" colorSpace="calibratedRGB"/>
-                                                                            <font key="NSFont" size="17" name="BodoniSvtyTwoOSITCTT-Book"/>
-                                                                        </attributes>
-                                                                    </fragment>
-                                                                </attributedString>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jkR-AS-zOC" userLabel="LblServings">
-                                                                <rect key="frame" x="343" y="0.0" width="8" height="21"/>
-                                                                <fontDescription key="fontDescription" name="BodoniSvtyTwoOSITCTT-Book" family="Bodoni 72 Oldstyle" pointSize="17"/>
-                                                                <color key="textColor" red="0.16470588235294117" green="0.16470588235294117" blue="0.17254901960784313" alpha="1" colorSpace="calibratedRGB"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="0XM-y9-sOw" userLabel="LblDirections">
-                                                                <rect key="frame" x="8" y="56" width="343" height="21"/>
-                                                                <color key="backgroundColor" red="0.98039215686274506" green="0.98431372549019602" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="ZuY-VO-Dr1"/>
-                                                                </constraints>
-                                                                <attributedString key="attributedText">
-                                                                    <fragment content="Directions">
-                                                                        <attributes>
-                                                                            <color key="NSColor" red="0.16470588235294117" green="0.16470588235294117" blue="0.17254901960784313" alpha="1" colorSpace="calibratedRGB"/>
-                                                                            <font key="NSFont" size="17" name="BodoniSvtyTwoOSITCTT-Book"/>
-                                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                                        </attributes>
-                                                                    </fragment>
-                                                                </attributedString>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <imageView opaque="NO" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wEO-PB-DCX" userLabel="RecipeBackgroundImg">
-                                                                <rect key="frame" x="0.0" y="0.0" width="359" height="127"/>
-                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                            </imageView>
-                                                        </subviews>
-                                                        <color key="backgroundColor" red="0.98039215686274506" green="0.98431372549019602" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="250" constant="256" id="ADF-0c-7We"/>
-                                                            <constraint firstAttribute="trailing" secondItem="0XM-y9-sOw" secondAttribute="trailing" constant="8" id="DhB-FV-TcA"/>
-                                                            <constraint firstItem="3qJ-sx-tLP" firstAttribute="leading" secondItem="osP-Sm-LYO" secondAttribute="leading" constant="8" id="LPh-pE-hj7"/>
-                                                            <constraint firstItem="0XM-y9-sOw" firstAttribute="leading" secondItem="osP-Sm-LYO" secondAttribute="leading" constant="8" id="PpD-bB-1o1"/>
-                                                            <constraint firstItem="jkR-AS-zOC" firstAttribute="top" secondItem="osP-Sm-LYO" secondAttribute="top" id="XAI-o8-ysC"/>
-                                                            <constraint firstItem="3qJ-sx-tLP" firstAttribute="top" secondItem="jkR-AS-zOC" secondAttribute="bottom" constant="7" id="c4Y-P6-lvI"/>
-                                                            <constraint firstAttribute="trailing" secondItem="3qJ-sx-tLP" secondAttribute="trailing" constant="8" id="qTt-gW-HfW"/>
-                                                            <constraint firstAttribute="trailing" secondItem="jkR-AS-zOC" secondAttribute="trailing" constant="8" id="qq4-40-sVd"/>
-                                                            <constraint firstItem="0XM-y9-sOw" firstAttribute="top" secondItem="3qJ-sx-tLP" secondAttribute="bottom" constant="8" id="y5b-RL-bhP"/>
-                                                            <constraint firstAttribute="bottom" secondItem="0XM-y9-sOw" secondAttribute="bottom" constant="50" id="zb8-MB-Wdg"/>
-                                                        </constraints>
-                                                    </view>
-                                                </subviews>
-                                                <color key="backgroundColor" red="0.30980392156862746" green="0.36078431372549019" blue="0.39215686274509803" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="osP-Sm-LYO" secondAttribute="trailing" constant="8" id="0Zk-wU-mAa"/>
-                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="250" constant="270" id="ElX-24-WiE"/>
-                                                    <constraint firstItem="osP-Sm-LYO" firstAttribute="leading" secondItem="3g5-Ts-Ckb" secondAttribute="leading" constant="8" id="JAs-Z8-GYy"/>
-                                                    <constraint firstItem="osP-Sm-LYO" firstAttribute="top" secondItem="3g5-Ts-Ckb" secondAttribute="top" constant="8" id="Vqp-aA-wih"/>
-                                                    <constraint firstAttribute="bottom" secondItem="osP-Sm-LYO" secondAttribute="bottom" constant="8" id="XdG-ZF-9T3"/>
-                                                </constraints>
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -346,11 +346,11 @@
                                         <rect key="frame" x="0.0" y="431" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VLn-uT-k8I" id="4MC-RA-sfO">
-                                            <rect key="frame" x="0.0" y="0.0" width="335" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="336" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="n2l-DR-zJb">
-                                                    <rect key="frame" x="16" y="0.0" width="319" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="321" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="BodoniSvtyTwoOSITCTT-Book" family="Bodoni 72 Oldstyle" pointSize="17"/>
                                                     <color key="textColor" red="0.16470588235294117" green="0.16470588235294117" blue="0.17254901960784313" alpha="1" colorSpace="calibratedRGB"/>
@@ -364,11 +364,11 @@
                                         <rect key="frame" x="0.0" y="475" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eIe-4v-OZK" id="vso-2s-MXe">
-                                            <rect key="frame" x="0.0" y="0.0" width="335" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="336" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4Vt-5z-5WW">
-                                                    <rect key="frame" x="16" y="0.0" width="319" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="321" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="BodoniSvtyTwoOSITCTT-Book" family="Bodoni 72 Oldstyle" pointSize="17"/>
                                                     <color key="textColor" red="0.16470588235294117" green="0.16470588235294117" blue="0.17254901960784313" alpha="1" colorSpace="calibratedRGB"/>
@@ -382,11 +382,11 @@
                                         <rect key="frame" x="0.0" y="519" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hDU-wG-87g" id="QnG-f7-G0l">
-                                            <rect key="frame" x="0.0" y="0.0" width="335" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="336" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iNS-Fm-LYZ">
-                                                    <rect key="frame" x="16" y="0.0" width="319" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="321" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="BodoniSvtyTwoOSITCTT-Book" family="Bodoni 72 Oldstyle" pointSize="17"/>
                                                     <color key="textColor" red="0.16470588235294117" green="0.16470588235294117" blue="0.17254901960784313" alpha="1" colorSpace="calibratedRGB"/>
@@ -400,11 +400,11 @@
                                         <rect key="frame" x="0.0" y="563" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rW2-Af-lgj" id="QmB-9R-5s9">
-                                            <rect key="frame" x="0.0" y="0.0" width="335" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="336" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Gwg-bD-oEr">
-                                                    <rect key="frame" x="16" y="0.0" width="319" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="321" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="BodoniSvtyTwoOSITCTT-Book" family="Bodoni 72 Oldstyle" pointSize="17"/>
                                                     <color key="textColor" red="0.16470588235294117" green="0.16470588235294117" blue="0.17254901960784313" alpha="1" colorSpace="calibratedRGB"/>
