@@ -50,9 +50,6 @@ class RecipeDetailViewController: UIViewController {
             
             if let label = self.recipeTitleLabel {
                 label.text = detail.title
-                
-//                label.setNeedsLayout()
-//                label.layoutIfNeeded()
             }
             if let img = self.recipeImg {
                 let placeholderImage = #imageLiteral(resourceName: "dinnerPlate")
@@ -97,89 +94,12 @@ class RecipeDetailViewController: UIViewController {
             addRecipeBtn.isEnabled = true
             updateFavoriteBtn()
             
-//            if let recipeView = recipeTitleView {
-//                let radius: CGFloat = recipeView.frame.width / 2.0 //change it to .height if you need spread for height
-//                let shadowPath = UIBezierPath(rect: CGRect(x: 0, y: 0, width: 2.1 * radius, height: recipeView.frame.height))
-//                //Change 2.1 to amount of spread you need and for height replace the code for height
-//                
-//                recipeView.layer.cornerRadius = 2
-//                recipeView.layer.shadowColor = UIColor.black.cgColor
-//                recipeView.layer.shadowOffset = CGSize(width: 0.5, height: 0.4)  //Here you control x and y
-//                recipeView.layer.shadowOpacity = 0.5
-//                recipeView.layer.shadowRadius = 5.0 //Here your control your blur
-//                recipeView.layer.masksToBounds =  false
-//                recipeView.layer.shadowPath = shadowPath.cgPath
-//                
-//                recipeView.setNeedsLayout()
-//                recipeView.layoutIfNeeded()
-//            }
-            
         } else {
             addRecipeBtn.isEnabled = false
         }
         
         
     }
-    /*
-    override func viewDidLayoutSubviews() {
-        if !scrollViewPropertiesInitialized {
-            self.automaticallyAdjustsScrollViewInsets = true
-            scrollView.contentInset = .zero
-            scrollView.contentInset.bottom = 120
-            scrollView.scrollIndicatorInsets = .zero
-            scrollView.contentOffset = CGPoint(x: 0.0, y: 0.0)
-            scrollViewPropertiesInitialized = true
-        }
-//
-//        
-//        recipeTitleLabel.sizeToFit()
-//        recipeTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-//        recipeTitleLabel.setNeedsLayout()
-//        recipeTitleLabel.layoutIfNeeded()
-//        
-//        recipeTitleView.sizeToFit()
-//        recipeTitleView.translatesAutoresizingMaskIntoConstraints = false
-//        recipeTitleView.setNeedsLayout()
-//        recipeTitleView.layoutIfNeeded()
-//        
-//        ingredientsLabel.sizeToFit()  //updates .frame.size.height
-//        ingredientsLabel.translatesAutoresizingMaskIntoConstraints = false
-//        ingredientsLabel.setNeedsLayout()
-//        ingredientsLabel.layoutIfNeeded()
-//        
-//        instructionsLabel.sizeToFit()
-//        instructionsLabel.translatesAutoresizingMaskIntoConstraints = false
-//        instructionsLabel.setNeedsLayout()
-//        instructionsLabel.layoutIfNeeded()
-//        
-//        recipeDetailsView.sizeToFit()
-//        recipeDetailsView.translatesAutoresizingMaskIntoConstraints = false
-//        recipeDetailsView.setNeedsLayout()
-//        recipeDetailsView.layoutIfNeeded()
-//        
-//        shadowBackgroundView.sizeToFit()
-//        shadowBackgroundView.translatesAutoresizingMaskIntoConstraints = false
-//        shadowBackgroundView.setNeedsLayout()
-//        shadowBackgroundView.layoutIfNeeded()
-//        
-//        contentView.sizeToFit()
-//        contentView.translatesAutoresizingMaskIntoConstraints = false
-//        contentView.setNeedsLayout()
-//        contentView.layoutIfNeeded()
-//        
-//        
-//        updateScrollSize()
-    }
-    */
-    
-    
-//    func updateScrollSize() {
-//        
-//        let directionsBottomYPos = shadowBackgroundView.frame.origin.y + shadowBackgroundView.frame.size.height
-////        let directionsBottomYPos = instructionsLabel.frame.origin.y + instructionsLabel.frame.size.height
-//        contentView.intrinsicContentSize
-//        scrollView.contentSize.height = directionsBottomYPos + 140.0
-//    }
     
     
     
