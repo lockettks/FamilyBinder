@@ -25,6 +25,9 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "RLMException(NSString*, NSDictionary*):RLMUtil.mm">
+      </ContextState>
+      <ContextState
          contextName = "RecipeRouter.asURLRequest() throws -&gt; URLRequest:RecipeRouter.swift">
          <PersistentStrings>
             <PersistentString
@@ -43,6 +46,17 @@
       </ContextState>
       <ContextState
          contextName = "request(URLRequestConvertible) -&gt; DataRequest:Alamofire.swift">
+      </ContextState>
+      <ContextState
+         contextName = "RecipeDetailViewController.updateFavoriteBtn() -&gt; ():RecipeDetailViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.detailItem">
+            </PersistentString>
+            <PersistentString
+               value = "self.detailItem.isFavorite">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "RecipesMasterViewController.(loadRecipes() -&gt; ()).(closure #1):RecipesMasterViewController.swift">
@@ -65,6 +79,9 @@
                value = "self.detailItem?.id">
             </PersistentString>
             <PersistentString
+               value = "realm">
+            </PersistentString>
+            <PersistentString
                value = "self.detailItem">
             </PersistentString>
          </PersistentStrings>
@@ -73,10 +90,16 @@
          contextName = "RecipeDetailViewController.(addRemoveRecipeFromFavorites() -&gt; ()).(closure #2):RecipeDetailViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "self.detailItem">
+               value = "favoritedRecipe">
             </PersistentString>
             <PersistentString
-               value = "favoritedRecipe">
+               value = "self.realm">
+            </PersistentString>
+            <PersistentString
+               value = "Recipe.self">
+            </PersistentString>
+            <PersistentString
+               value = "self.detailItem">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -221,6 +244,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "RecipeDetailViewController.init(coder : NSCoder) -&gt; RecipeDetailViewController?:RecipeDetailViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.selectedRecipe.isFavorite">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "RecipeDetailViewController.addRemoveRecipeFromFavorites() -&gt; ():RecipeDetailViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -231,6 +262,9 @@
             </PersistentString>
             <PersistentString
                value = "self.detailItem">
+            </PersistentString>
+            <PersistentString
+               value = "self.realm">
             </PersistentString>
             <PersistentString
                value = "self.detailItem.isFavorite">

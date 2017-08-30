@@ -17,7 +17,7 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
     
     
     // MARK: - Defaults
-    let NUMBER_OF_RECIPES = 1
+    let NUMBER_OF_RECIPES = 10
     let DEFAULT_SELECTED_ROW = 0
     let DEFAULT_SELECTED_TOGGLE = 0
     
@@ -131,7 +131,8 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 let recipe = recipes[indexPath.row]
                 if let controller = (segue.destination as! UINavigationController).topViewController as? RecipeDetailViewController {
-                    controller.detailItem = recipe.copy() as? Recipe
+                    controller.detailItem = recipe
+//                    controller.detailItem = recipe.copy() as? Recipe
                     controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
                     controller.navigationItem.leftItemsSupplementBackButton = true
                 }

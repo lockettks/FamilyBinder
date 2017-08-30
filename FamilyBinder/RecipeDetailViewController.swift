@@ -40,6 +40,10 @@ class RecipeDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        configureView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         configureView()
     }
     
@@ -178,26 +182,28 @@ class RecipeDetailViewController: UIViewController {
             if (selectedRecipe.isFavorite) {
                 // Remove from favorites
                 try! self.realm.write {
-                    self.realm.delete(realm.objects(Recipe.self).filter("id == %@", selectedRecipe.id))
+                    let recipeToDelete = realm.objects(Recipe.self).filter("id == %@", selectedRecipe.id)
+                    self.realm.delete(recipeToDelete)
                     print("Removed \(selectedRecipe.title) from my recipes")
                     selectedRecipe.isFavorite = false
-                    if let btn = self.favoriteBtn {
-                        btn.setImage(#imageLiteral(resourceName: "heart_off"), for: .normal)
-                    }
+//                    if let btn = self.favoriteBtn {
+//                        btn.setImage(#imageLiteral(resourceName: "heart_off"), for: .normal)
+//                    }
                 }
             } else {
                 // Add to favorites
                 try! self.realm.write {
                     selectedRecipe.isFavorite = true
                     favoritedRecipe = selectedRecipe.copy() as! Recipe
-                    self.realm.create(Recipe.self, value: selectedRecipe)
+                    self.realm.create(Recipe.self, value: favoritedRecipe, update:true)
                     print("Added \(favoritedRecipe.title) to my recipes")
-                    if let btn = self.favoriteBtn {
-                        btn.setImage(#imageLiteral(resourceName: "heart_on"), for: .normal)
-                    }
+//                    if let btn = self.favoriteBtn {
+//                        btn.setImage(#imageLiteral(resourceName: "heart_on"), for: .normal)
+//                    }
                     
                 }
             }
+            updateFavoriteBtn()
         }
     }
     
