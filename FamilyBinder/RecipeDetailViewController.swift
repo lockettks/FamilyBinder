@@ -44,7 +44,7 @@ class RecipeDetailViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        //        configureView()
+
     }
     
     func configureView() {
@@ -173,50 +173,14 @@ class RecipeDetailViewController: UIViewController {
         optionMenu.addAction(cancelAction)
         
         optionMenu.popoverPresentationController?.barButtonItem = self.navigationItem.rightBarButtonItem
-        
-        
+
         self.present(optionMenu, animated: true, completion: nil)
-        
     }
     
     @IBAction func favoriteBtnClicked(_ sender: Any) {
-        //        addRemoveRecipeFromFavorites()
-        //                if let detail = self.detailItem {
-        //                    try! self.realm.write {
-        //                        self.detailItem?.isFavorite = !(detail.isFavorite)
-        //                    }
         updateFavoriteStatus()
-        //                }
     }
     
-    //    func addRemoveRecipeFromFavorites() {
-    //        if let copiedRecipe = self.detailItem?.copy() as? Recipe{
-    //            if (copiedRecipe.isFavorite) {
-    //                // Remove from favorites
-    //                try! self.realm.write {
-    //                    let recipeToDelete = realm.objects(Recipe.self).filter("id == %@", copiedRecipe.id)
-    //                    if (!recipeToDelete.isInvalidated) {
-    //                        self.realm.delete(recipeToDelete)
-    //                    }
-    //                }
-    //                print("Removed \(copiedRecipe.title) from my recipes")
-    //                self.detailItem?.isFavorite = false
-    //                copiedRecipe.isFavorite = false
-    //            } else {
-    //                // Add to favorites
-    //                self.detailItem?.isFavorite = true
-    //                copiedRecipe.isFavorite = true
-    //                copiedRecipe.title = "Realm copy"
-    //                var copyCopy = copiedRecipe.copy() as! Recipe
-    //                copyCopy.title = "Copy Copy"
-    //                try! self.realm.write {
-    //                    self.realm.create(Recipe.self, value: copyCopy, update:true)
-    //                }
-    //                print("Added \(copiedRecipe.title) to my recipes")
-    //            }
-    //            updateFavoriteBtn()
-    //        }
-    //    }
     
     override func viewDidDisappear(_ animated: Bool) {
         if let thisRecipe = self.detailItem {
@@ -232,10 +196,9 @@ class RecipeDetailViewController: UIViewController {
                 // Add to favorites
                 if (realm.objects(Recipe.self).filter("id == %@", thisRecipe.id).count == 0) {
                     //TODO:  try this: if let repo = realm.object(ofType: Repo.self, forPrimaryKey: id) {
-                    //update - we'll add this later
                 
                     try! self.realm.write {
-                        //                    self.realm.create(Recipe.self, value: thisRecipe, update:true) 
+                        // self.realm.create(Recipe.self, value: thisRecipe, update:true)
                         //TODO:  add linkingObjects prop to ingredients and directions to cascade delete/re-add
                         self.realm.add(thisRecipe, update:true)
                         print("Added \(thisRecipe.title) to my recipes")
@@ -289,7 +252,6 @@ class RecipeDetailViewController: UIViewController {
     var detailItem: Recipe? {
         didSet {
             // Update the view.
-            configureView()
         }
     }
 }

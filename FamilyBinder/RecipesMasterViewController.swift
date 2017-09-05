@@ -21,7 +21,6 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
     let DEFAULT_SELECTED_ROW = 0
     let DEFAULT_SELECTED_TOGGLE = 0
     
-//    let realm = try! Realm()
     // To find Realm File, enter the following when debugger is paused:
     // po Realm.Configuration.defaultConfiguration.fileURL
     
@@ -66,26 +65,19 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        // Refresh data if viewing My Recipes to ensure the favorited recipes are updated
+        // Get notified if My Recipes change and update table accordingly
         if (recipesTypeSegCntrl.selectedSegmentIndex == 0) {
-            //            self.recipes = Array(realm.objects(Recipe.self))
-            //            self.recipes = Array(myFavoriteRecipes)
-            //            self.tableView.reloadData()
-            
-            
-            
             token = myFavoriteRecipes.addNotificationBlock{[weak self] (changes: RealmCollectionChange) in
                 if (self?.recipesTypeSegCntrl.selectedSegmentIndex == 0) {
                     if let test = self?.myFavoriteRecipes {
                         self?.recipes = Array(test)
                     }
-//                    self?.recipes = Array(self?.myFavoriteRecipes)
                     
                     switch changes {
                     case .initial:
                         self?.tableView.reloadData()
                         break
-                    //                    case .update(let results, let deletions, let insertions, let modifications):
+                    //case .update(let results, let deletions, let insertions, let modifications):
                     case .update( _, let deletions, let insertions, _):
                         self?.tableView.beginUpdates()
                         self?.tableView.insertRows(at: insertions.map {IndexPath(row: $0, section: 0) }, with: .automatic)
@@ -98,12 +90,6 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
                     }
                 }
             }
-            
-            
-//            self.recipes = Array(myFavoriteRecipes)
-//            self.tableView.reloadData()
-            
-            
         }
     }
     
@@ -126,14 +112,12 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
             switch(recipesTypeSegCntrl.selectedSegmentIndex){
             case 0:
                 let myRecipes = Array(myFavoriteRecipes)
-//                let myRecipes = Array(realm.objects(Recipe.self))
                 fulfill(myRecipes)
                 
                 break
             case 1:
                 getRandomRecipes().then { recipesReceived -> Void in
                     fulfill(recipesReceived)
-                    //                    self.tableView.reloadData()
                     }.catch { error in
                         print(error)
                 }
