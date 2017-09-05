@@ -15,9 +15,13 @@ class RecipeTableViewCell: UITableViewCell {
     func initWithModel(model: Recipe){
         recipeLbl.text = model.title
         let placeholderImage = #imageLiteral(resourceName: "dinnerPlate")
-        let url = URL(string: model.imageURL)
-        recipeImg.af_setImage(withURL: url!, placeholderImage: placeholderImage)
-        model.image = recipeImg.image
+        model.image = placeholderImage
+        if let url = URL(string: model.imageURL) {
+        
+            recipeImg.af_setImage(withURL: url, placeholderImage: placeholderImage)
+            model.image = recipeImg.image
+        }
+        
     }
     
 

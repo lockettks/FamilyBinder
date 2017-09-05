@@ -17,11 +17,11 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
     
     
     // MARK: - Defaults
-    let NUMBER_OF_RECIPES = 10
+    let NUMBER_OF_RECIPES = 4
     let DEFAULT_SELECTED_ROW = 0
     let DEFAULT_SELECTED_TOGGLE = 0
     
-    let realm = try! Realm()
+//    let realm = try! Realm()
     // To find Realm File, enter the following when debugger is paused:
     // po Realm.Configuration.defaultConfiguration.fileURL
     
@@ -29,6 +29,12 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
     // MARK: - Variables
     var detailViewController: RecipeDetailViewController?
     var recipes = [Recipe]()
+    
+    let myFavoriteRecipes: Results<Recipe> = {
+        let realm = try! Realm()
+        return realm.objects(Recipe.self)
+    }()
+    var token: NotificationToken?
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -53,15 +59,51 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
             detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? RecipeDetailViewController
         }
         recipesTypeSegCntrl.selectedSegmentIndex = DEFAULT_SELECTED_TOGGLE
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        
         // Refresh data if viewing My Recipes to ensure the favorited recipes are updated
         if (recipesTypeSegCntrl.selectedSegmentIndex == 0) {
-            self.recipes = Array(realm.objects(Recipe.self))
-            self.tableView.reloadData()
+            //            self.recipes = Array(realm.objects(Recipe.self))
+            //            self.recipes = Array(myFavoriteRecipes)
+            //            self.tableView.reloadData()
+            
+            
+            
+            token = myFavoriteRecipes.addNotificationBlock{[weak self] (changes: RealmCollectionChange) in
+                if (self?.recipesTypeSegCntrl.selectedSegmentIndex == 0) {
+                    if let test = self?.myFavoriteRecipes {
+                        self?.recipes = Array(test)
+                    }
+//                    self?.recipes = Array(self?.myFavoriteRecipes)
+                    
+                    switch changes {
+                    case .initial:
+                        self?.tableView.reloadData()
+                        break
+                    //                    case .update(let results, let deletions, let insertions, let modifications):
+                    case .update( _, let deletions, let insertions, _):
+                        self?.tableView.beginUpdates()
+                        self?.tableView.insertRows(at: insertions.map {IndexPath(row: $0, section: 0) }, with: .automatic)
+                        self?.tableView.deleteRows(at: deletions.map {IndexPath(row: $0, section: 0)}, with: .automatic)
+                        self?.tableView.endUpdates()
+                        break
+                    case .error(let error):
+                        print(error)
+                        break
+                    }
+                }
+            }
+            
+            
+//            self.recipes = Array(myFavoriteRecipes)
+//            self.tableView.reloadData()
+            
+            
         }
     }
     
@@ -83,7 +125,8 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
         return Promise{fulfill, _ in
             switch(recipesTypeSegCntrl.selectedSegmentIndex){
             case 0:
-                let myRecipes = Array(realm.objects(Recipe.self))
+                let myRecipes = Array(myFavoriteRecipes)
+//                let myRecipes = Array(realm.objects(Recipe.self))
                 fulfill(myRecipes)
                 
                 break
@@ -122,7 +165,7 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
                 print(error)
         }
     }
-
+    
     
     // MARK: - Segues
     
@@ -131,8 +174,8 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 let recipe = recipes[indexPath.row]
                 if let controller = (segue.destination as! UINavigationController).topViewController as? RecipeDetailViewController {
-                    controller.detailItem = recipe
-//                    controller.detailItem = recipe.copy() as? Recipe
+                    //                   controller.detailItem = recipe
+                    controller.detailItem = recipe.copy() as? Recipe
                     controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
                     controller.navigationItem.leftItemsSupplementBackButton = true
                 }

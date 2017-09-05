@@ -11,7 +11,7 @@ import RealmSwift
 
 class RecipeDetailViewController: UIViewController {
     
-
+    
     @IBOutlet weak var recipeTitleLabel: UILabel!
     @IBOutlet weak var recipeImg: UIImageView!
     @IBOutlet weak var servingsLabel: UILabel!
@@ -40,11 +40,11 @@ class RecipeDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        configureView()
+        configureView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        configureView()
+        //        configureView()
     }
     
     func configureView() {
@@ -57,15 +57,18 @@ class RecipeDetailViewController: UIViewController {
             }
             if let img = self.recipeImg {
                 let placeholderImage = #imageLiteral(resourceName: "dinnerPlate")
-                let url = URL(string: detail.imageURL)
-                img.af_setImage(withURL: url!, placeholderImage: placeholderImage)
-                detail.image = img.image
+                if let url = URL(string: detail.imageURL) {
+                    img.af_setImage(withURL: url, placeholderImage: placeholderImage)
+                    detail.image = img.image
+                }
+                
             }
             if let img = self.recipeImgBackground {
                 let placeholderImage = #imageLiteral(resourceName: "dinnerPlate")
-                let url = URL(string: detail.imageURL)
-                img.af_setImage(withURL: url!, placeholderImage: placeholderImage)
-                detail.image = img.image
+                if let url = URL(string: detail.imageURL) {
+                    img.af_setImage(withURL: url, placeholderImage: placeholderImage)
+                    detail.image = img.image
+                }
             }
             
             
@@ -80,8 +83,8 @@ class RecipeDetailViewController: UIViewController {
                 for ingredient in (detail.ingredients) where ingredient.originalString != "" {
                     fullAttributedString.append(convertToBulletedItem(textToConvert: ingredient.originalString))
                 }
-                
                 label.attributedText = fullAttributedString
+                //                print("fullAttributedString: \(fullAttributedString)")
             }
             
             // Format instructions
@@ -96,13 +99,16 @@ class RecipeDetailViewController: UIViewController {
             }
             
             addRecipeBtn.isEnabled = true
-            updateFavoriteBtn()
+            
+            if realm.objects(Recipe.self).filter("id == %@", detail.id).first != nil {
+                detail.isFavorite = true
+                setFavoriteIconImg()
+            }
+            
             
         } else {
             addRecipeBtn.isEnabled = false
         }
-        
-        
     }
     
     
@@ -146,10 +152,10 @@ class RecipeDetailViewController: UIViewController {
         let optionMenu = UIAlertController(title: nil, message: "Choose Option", preferredStyle: .actionSheet)
         
         let addToMyRecipes = UIAlertAction(title: "Add To My Recipes", style: .default, handler: {_ in
-            self.addRemoveRecipeFromFavorites()
+            self.updateFavoriteStatus()
         })
         let removeFromMyRecipes = UIAlertAction(title: "Remove From My Recipes", style: .default, handler: {_ in
-            self.addRemoveRecipeFromFavorites()
+            self.updateFavoriteStatus()
         })
         let addToMealPlan = UIAlertAction(title: "Add To Meal Plan", style: .default, handler: {_ in self.performSegue(withIdentifier: "addRecipeToMealPlanSegue", sender: self)
         })
@@ -174,48 +180,92 @@ class RecipeDetailViewController: UIViewController {
     }
     
     @IBAction func favoriteBtnClicked(_ sender: Any) {
-        addRemoveRecipeFromFavorites()
+        //        addRemoveRecipeFromFavorites()
+        //                if let detail = self.detailItem {
+        //                    try! self.realm.write {
+        //                        self.detailItem?.isFavorite = !(detail.isFavorite)
+        //                    }
+        updateFavoriteStatus()
+        //                }
     }
     
-    func addRemoveRecipeFromFavorites() {
-        if let selectedRecipe = self.detailItem {
-            if (selectedRecipe.isFavorite) {
+    //    func addRemoveRecipeFromFavorites() {
+    //        if let copiedRecipe = self.detailItem?.copy() as? Recipe{
+    //            if (copiedRecipe.isFavorite) {
+    //                // Remove from favorites
+    //                try! self.realm.write {
+    //                    let recipeToDelete = realm.objects(Recipe.self).filter("id == %@", copiedRecipe.id)
+    //                    if (!recipeToDelete.isInvalidated) {
+    //                        self.realm.delete(recipeToDelete)
+    //                    }
+    //                }
+    //                print("Removed \(copiedRecipe.title) from my recipes")
+    //                self.detailItem?.isFavorite = false
+    //                copiedRecipe.isFavorite = false
+    //            } else {
+    //                // Add to favorites
+    //                self.detailItem?.isFavorite = true
+    //                copiedRecipe.isFavorite = true
+    //                copiedRecipe.title = "Realm copy"
+    //                var copyCopy = copiedRecipe.copy() as! Recipe
+    //                copyCopy.title = "Copy Copy"
+    //                try! self.realm.write {
+    //                    self.realm.create(Recipe.self, value: copyCopy, update:true)
+    //                }
+    //                print("Added \(copiedRecipe.title) to my recipes")
+    //            }
+    //            updateFavoriteBtn()
+    //        }
+    //    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        if let thisRecipe = self.detailItem {
+            if (!(thisRecipe.isFavorite)) {
                 // Remove from favorites
                 try! self.realm.write {
-                    let recipeToDelete = realm.objects(Recipe.self).filter("id == %@", selectedRecipe.id)
-                    self.realm.delete(recipeToDelete)
-                    print("Removed \(selectedRecipe.title) from my recipes")
-                    selectedRecipe.isFavorite = false
-//                    if let btn = self.favoriteBtn {
-//                        btn.setImage(#imageLiteral(resourceName: "heart_off"), for: .normal)
-//                    }
+                    let recipeToDelete = realm.objects(Recipe.self).filter("id == %@", thisRecipe.id)
+                    if (!recipeToDelete.isInvalidated) {
+                        self.realm.delete(recipeToDelete)
+                    }
                 }
             } else {
                 // Add to favorites
-                try! self.realm.write {
-                    selectedRecipe.isFavorite = true
-                    favoritedRecipe = selectedRecipe.copy() as! Recipe
-                    self.realm.create(Recipe.self, value: favoritedRecipe, update:true)
-                    print("Added \(favoritedRecipe.title) to my recipes")
-//                    if let btn = self.favoriteBtn {
-//                        btn.setImage(#imageLiteral(resourceName: "heart_on"), for: .normal)
-//                    }
-                    
+                if (realm.objects(Recipe.self).filter("id == %@", thisRecipe.id).count == 0) {
+                    //TODO:  try this: if let repo = realm.object(ofType: Repo.self, forPrimaryKey: id) {
+                    //update - we'll add this later
+                
+                    try! self.realm.write {
+                        //                    self.realm.create(Recipe.self, value: thisRecipe, update:true) 
+                        //TODO:  add linkingObjects prop to ingredients and directions to cascade delete/re-add
+                        self.realm.add(thisRecipe, update:true)
+                        print("Added \(thisRecipe.title) to my recipes")
+                    }
                 }
             }
-            updateFavoriteBtn()
         }
     }
     
     
-    func updateFavoriteBtn(){
-        if (self.detailItem?.isFavorite)! {
-            if let btn = self.favoriteBtn {
-                btn.setImage(#imageLiteral(resourceName: "heart_on"), for: .normal)
+    
+    func updateFavoriteStatus(){
+        if let detailItem = self.detailItem {
+            try! self.realm.write {
+                detailItem.isFavorite = !detailItem.isFavorite
+                setFavoriteIconImg()
             }
-        } else {
-            if let btn = self.favoriteBtn {
-                btn.setImage(#imageLiteral(resourceName: "heart_off"), for: .normal)
+        }
+    }
+    
+    func setFavoriteIconImg(){
+        if let detailItem = self.detailItem {
+            if (detailItem.isFavorite) {
+                if let btn = self.favoriteBtn {
+                    btn.setImage(#imageLiteral(resourceName: "heart_on"), for: .normal)
+                }
+            } else {
+                if let btn = self.favoriteBtn {
+                    btn.setImage(#imageLiteral(resourceName: "heart_off"), for: .normal)
+                }
             }
         }
     }

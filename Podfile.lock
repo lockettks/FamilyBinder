@@ -2,22 +2,22 @@ PODS:
   - Alamofire (4.5.0)
   - AlamofireImage (3.2.0):
     - Alamofire (~> 4.1)
-  - PromiseKit (4.3.1):
-    - PromiseKit/Foundation (= 4.3.1)
-    - PromiseKit/QuartzCore (= 4.3.1)
-    - PromiseKit/UIKit (= 4.3.1)
-  - PromiseKit/CorePromise (4.3.1)
-  - PromiseKit/Foundation (4.3.1):
+  - PromiseKit (4.4.0):
+    - PromiseKit/Foundation (= 4.4.0)
+    - PromiseKit/QuartzCore (= 4.4.0)
+    - PromiseKit/UIKit (= 4.4.0)
+  - PromiseKit/CorePromise (4.4.0)
+  - PromiseKit/Foundation (4.4.0):
     - PromiseKit/CorePromise
-  - PromiseKit/QuartzCore (4.3.1):
+  - PromiseKit/QuartzCore (4.4.0):
     - PromiseKit/CorePromise
-  - PromiseKit/UIKit (4.3.1):
+  - PromiseKit/UIKit (4.4.0):
     - PromiseKit/CorePromise
-  - Realm (2.9.1):
-    - Realm/Headers (= 2.9.1)
-  - Realm/Headers (2.9.1)
-  - RealmSwift (2.9.1):
-    - Realm (= 2.9.1)
+  - Realm (2.10.0):
+    - Realm/Headers (= 2.10.0)
+  - Realm/Headers (2.10.0)
+  - RealmSwift (2.10.0):
+    - Realm (= 2.10.0)
   - SwiftLint (0.21.0)
   - SwiftyJSON (3.1.4)
 
@@ -32,9 +32,9 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
   AlamofireImage: 157ed682cc81d3b9db4fb90c1f12180ac552d93b
-  PromiseKit: 25a114b90b932ec8169b5736bd0881fe0efa93b5
-  Realm: f91fb43bd474c4f731a116ebf7392c75dd015920
-  RealmSwift: 207f12a4a36b696c5183c60a1c06d70234a23e56
+  PromiseKit: ecf5fe92275d57ee77c9ede858af47a162e9b97e
+  Realm: 98b3a25643cf6b3e07d2b99fb43fe0eb9c801dec
+  RealmSwift: 34073ad3a31232bbaf7c0db898c037940284cba2
   SwiftLint: 6de8b2d15f43c482bdec2953b8cfd696faa876e8
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 

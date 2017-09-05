@@ -54,7 +54,7 @@ class Recipe : Object, NSCopying {
 
     }
     
-    convenience init(id: Int, title: String, analyzedInstructions: List<Instruction>, ingredients: List<Ingredient>, instructions: String, servings: Int, imageURL: String, image: UIImage, isFavorite: Bool) {
+    convenience init(id: Int, title: String, analyzedInstructions: List<Instruction>, ingredients: List<Ingredient>, instructions: String, servings: Int, imageURL: String, image: UIImage?, isFavorite: Bool) {
         self.init()
         self.id = id
         self.title = title
@@ -77,6 +77,6 @@ class Recipe : Object, NSCopying {
     }
     
     func copy(with zone: NSZone? = nil) -> Any {
-        return Recipe(id: id, title: title, analyzedInstructions: analyzedInstructions, ingredients: ingredients, instructions: instructions, servings: servings, imageURL: imageURL, image: image!, isFavorite: isFavorite)
+        return Recipe(id: id, title: title, analyzedInstructions: analyzedInstructions, ingredients: ingredients, instructions: instructions, servings: servings, imageURL: imageURL, image: image, isFavorite: isFavorite)
     }
 }

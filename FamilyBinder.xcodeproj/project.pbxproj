@@ -162,8 +162,8 @@
 				956789B41F29560B0070FEEB /* Ingredient.swift */,
 				956789B21F294F180070FEEB /* Instruction.swift */,
 				954D7AB01F198CB3000480A7 /* RecipesMasterViewController.swift */,
-				956789AF1F290E600070FEEB /* RecipeTableViewCell.swift */,
 				954D7AB21F198CB3000480A7 /* RecipeDetailViewController.swift */,
+				956789AF1F290E600070FEEB /* RecipeTableViewCell.swift */,
 			);
 			name = Recipes;
 			sourceTree = "<group>";
