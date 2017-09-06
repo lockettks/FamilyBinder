@@ -23,7 +23,6 @@ disabled_rules:
 - closing_brace
 - statement_position
 - type_body_length
-- todo
 - legacy_constructor
 - valid_docs
 - missing_docs

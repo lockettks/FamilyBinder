@@ -44,7 +44,7 @@ class RecipeDetailViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-
+        
     }
     
     func configureView() {
@@ -173,7 +173,7 @@ class RecipeDetailViewController: UIViewController {
         optionMenu.addAction(cancelAction)
         
         optionMenu.popoverPresentationController?.barButtonItem = self.navigationItem.rightBarButtonItem
-
+        
         self.present(optionMenu, animated: true, completion: nil)
     }
     
@@ -187,16 +187,13 @@ class RecipeDetailViewController: UIViewController {
             if (!(thisRecipe.isFavorite)) {
                 // Remove from favorites
                 try! self.realm.write {
-                    let recipeToDelete = realm.objects(Recipe.self).filter("id == %@", thisRecipe.id)
-                    if (!recipeToDelete.isInvalidated) {
+                    if let recipeToDelete = realm.object(ofType: Recipe.self, forPrimaryKey: thisRecipe.id) {
                         self.realm.delete(recipeToDelete)
                     }
                 }
             } else {
                 // Add to favorites
-                if (realm.objects(Recipe.self).filter("id == %@", thisRecipe.id).count == 0) {
-                    //TODO:  try this: if let repo = realm.object(ofType: Repo.self, forPrimaryKey: id) {
-                
+                if realm.object(ofType: Recipe.self, forPrimaryKey: thisRecipe.id) == nil {
                     try! self.realm.write {
                         // self.realm.create(Recipe.self, value: thisRecipe, update:true)
                         //TODO:  add linkingObjects prop to ingredients and directions to cascade delete/re-add

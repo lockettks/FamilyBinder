@@ -44,7 +44,9 @@ class SpoonacularAPIManager {
     
     func fetchRandomRecipes(numberOfRecipes: Int) -> Promise<[Recipe]> {
         return Promise { fulfill, reject in
-            let request = Alamofire.request(RecipeRouter.getRandomRecipes(numberOfRecipes)).validate()
+            let request = Alamofire.request(RecipeRouter.getRandomRecipes(numberOfRecipes))
+                .validate(statusCode: 200..<600)
+                .validate(contentType: ["application/json"])
                 .responseJSON { response in
                     switch response.result {
                     case .success(let value):
