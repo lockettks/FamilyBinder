@@ -51,8 +51,8 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
         
         navigationItem.leftBarButtonItem = editButtonItem
         
-        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
-        self.navigationItem.rightBarButtonItem = addButton
+//        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
+//        self.navigationItem.rightBarButtonItem = addButton
         if let split = splitViewController {
             let controllers = split.viewControllers
             detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? RecipeDetailViewController
@@ -158,7 +158,7 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 let recipe = recipes[indexPath.row]
                 if let controller = (segue.destination as! UINavigationController).topViewController as? RecipeDetailViewController {
-                    //                   controller.detailItem = recipe
+                    //                   controller.detailItem = recipe TODO
                     controller.detailItem = recipe.copy() as? Recipe
                     controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
                     controller.navigationItem.leftItemsSupplementBackButton = true
@@ -181,19 +181,19 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
     
     // MARK: - Table Updating
     
-    func insertNewObject(_ sender: Any) {
-        let alert = UIAlertController(title: "Not Implemented",
-                                      message: "Can't create new recipes yet, will implement later",
-                                      preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK",
-                                      style: .default,
-                                      handler: nil))
-        self.present(alert, animated: true, completion: nil)
-    }
+//    func insertNewObject(_ sender: Any) {
+//        let alert = UIAlertController(title: "Not Implemented",
+//                                      message: "Can't create new recipes yet, will implement later",
+//                                      preferredStyle: .alert)
+//        alert.addAction(UIAlertAction(title: "OK",
+//                                      style: .default,
+//                                      handler: nil))
+//        self.present(alert, animated: true, completion: nil)
+//    }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
-        return false
+        return true
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -205,12 +205,25 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
         }
     }
     
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        let status = navigationItem.leftBarButtonItem?.title
+        if status == "Edit" {
+            tableView.isEditing = true
+            navigationItem.leftBarButtonItem?.title = "Done"
+        }
+        else {
+            tableView.isEditing = false
+            navigationItem.leftBarButtonItem?.title = "Edit"
+        }
+    }
+    
     
     
     // MARK: - Error handling
     
     func handleLoadRecipesError(_ error: Error) {
         // TODO: show error
+        print("***TODO****:  Show Error")
     }
     
     override func didReceiveMemoryWarning() {

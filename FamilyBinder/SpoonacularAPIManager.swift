@@ -63,7 +63,10 @@ class SpoonacularAPIManager {
                             }
                             fulfill(recipes)
                         } else {
-                            reject((response.error!))
+                            print("SpoonacularAPIManager error: \(json.rawString()!.description)")
+                            if let responseError = response.error {
+                                reject(responseError)
+                            }
                         }
                         
                     case .failure(let error):

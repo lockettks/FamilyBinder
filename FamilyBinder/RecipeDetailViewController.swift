@@ -84,7 +84,6 @@ class RecipeDetailViewController: UIViewController {
                     fullAttributedString.append(convertToBulletedItem(textToConvert: ingredient.originalString))
                 }
                 label.attributedText = fullAttributedString
-                //                print("fullAttributedString: \(fullAttributedString)")
             }
             
             // Format instructions
@@ -188,6 +187,8 @@ class RecipeDetailViewController: UIViewController {
                 // Remove from favorites
                 try! self.realm.write {
                     if let recipeToDelete = realm.object(ofType: Recipe.self, forPrimaryKey: thisRecipe.id) {
+                        self.realm.delete(recipeToDelete.analyzedInstructions)
+                        self.realm.delete(recipeToDelete.ingredients)
                         self.realm.delete(recipeToDelete)
                     }
                 }
@@ -196,7 +197,6 @@ class RecipeDetailViewController: UIViewController {
                 if realm.object(ofType: Recipe.self, forPrimaryKey: thisRecipe.id) == nil {
                     try! self.realm.write {
                         // self.realm.create(Recipe.self, value: thisRecipe, update:true)
-                        //TODO:  add linkingObjects prop to ingredients and directions to cascade delete/re-add
                         self.realm.add(thisRecipe, update:true)
                         print("Added \(thisRecipe.title) to my recipes")
                     }

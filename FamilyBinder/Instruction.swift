@@ -13,6 +13,7 @@ import RealmSwift
 class Instruction : Object {
     dynamic var stepNumber: Int = 0
     dynamic var step: String = ""
+    let recipes = LinkingObjects(fromType: Recipe.self, property: "analyzedInstructions")
     
     convenience init?(json: JSON) {
         self.init()
