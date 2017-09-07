@@ -158,7 +158,6 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 let recipe = recipes[indexPath.row]
                 if let controller = (segue.destination as! UINavigationController).topViewController as? RecipeDetailViewController {
-                    //                   controller.detailItem = recipe TODO
                     controller.detailItem = recipe.copy() as? Recipe
                     controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
                     controller.navigationItem.leftItemsSupplementBackButton = true
