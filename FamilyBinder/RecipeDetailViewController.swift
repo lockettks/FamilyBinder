@@ -220,11 +220,11 @@ class RecipeDetailViewController: UIViewController {
         if let detailItem = self.detailItem {
             if (detailItem.isFavorite) {
                 if let btn = self.favoriteBtn {
-                    btn.setImage(#imageLiteral(resourceName: "heart_on"), for: .normal)
+                    btn.setImage(#imageLiteral(resourceName: "pin_Checkmark_On"), for: .normal)
                 }
             } else {
                 if let btn = self.favoriteBtn {
-                    btn.setImage(#imageLiteral(resourceName: "heart_off"), for: .normal)
+                    btn.setImage(#imageLiteral(resourceName: "pin"), for: .normal)
                 }
             }
         }
