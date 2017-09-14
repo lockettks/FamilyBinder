@@ -37,9 +37,6 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
-        // Initialize Tab Bar Item
-        tabBarItem = UITabBarItem(title: "My Recipes", image: #imageLiteral(resourceName: "icon_myRecipes_on"), tag: 0)
     }
     
     // MARK: - Table Setup
