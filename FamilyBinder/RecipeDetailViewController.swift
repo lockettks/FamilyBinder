@@ -45,6 +45,13 @@ class RecipeDetailViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         
+        self.navigationController?.isNavigationBarHidden = true
+        /*
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = .clear
+        */
     }
     
     func configureView() {

@@ -46,13 +46,14 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
-        navigationItem.leftBarButtonItem = editButtonItem
+        //navigationItem.leftBarButtonItem = editButtonItem
         
 //        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
 //        self.navigationItem.rightBarButtonItem = addButton
         if let split = splitViewController {
             let controllers = split.viewControllers
             detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? RecipeDetailViewController
+            
         }
         recipesTypeSegCntrl.selectedSegmentIndex = DEFAULT_SELECTED_TOGGLE
         
@@ -92,6 +93,19 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        
+        //self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        //self.navigationController?.navigationBar.shadowImage = UIImage()
+        //self.navigationController?.navigationBar.isTranslucent = true
+        //self.navigationController?.view.backgroundColor = .clear
+        
+        
+        //let navController = controllers[controllers.count-1] as! UINavigationController
+        //navController.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        //navController.navigationBar.shadowImage = UIImage()
+        //navController.navigationBar.isTranslucent = true
+        //navController.view.backgroundColor = .green
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -209,7 +223,7 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
         }
         else {
             tableView.isEditing = false
-            navigationItem.leftBarButtonItem?.title = "Edit"
+            //navigationItem.leftBarButtonItem?.title = "Edit"
         }
     }
     

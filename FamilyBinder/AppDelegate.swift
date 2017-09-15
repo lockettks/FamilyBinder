@@ -19,9 +19,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         // Override point for customization after application launch.
         let tabController = window!.rootViewController as! UITabBarController
         let splitViewController = tabController.viewControllers?.first as! UISplitViewController
-        let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as! UINavigationController
+        //let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as! UINavigationController
+        let navigationController = splitViewController.viewControllers[0] as! UINavigationController
         navigationController.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
         splitViewController.delegate = self
+        
+        let navController2 = splitViewController.viewControllers[1] as! UINavigationController
+        navController2.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navController2.navigationBar.shadowImage = UIImage()
+        navController2.navigationBar.isTranslucent = true
+        navController2.view.backgroundColor = .clear
         
         print("po Realm.Configuration.defaultConfiguration.fileURL")
         return true
