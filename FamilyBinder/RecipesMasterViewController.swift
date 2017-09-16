@@ -93,20 +93,10 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        
-        //self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        //self.navigationController?.navigationBar.shadowImage = UIImage()
-        //self.navigationController?.navigationBar.isTranslucent = true
-        //self.navigationController?.view.backgroundColor = .clear
-        
-        
-        //let navController = controllers[controllers.count-1] as! UINavigationController
-        //navController.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        //navController.navigationBar.shadowImage = UIImage()
-        //navController.navigationBar.isTranslucent = true
-        //navController.view.backgroundColor = .green
     }
+    
+//    @IBAction func cancelToRecipesMasterViewController(_ segue: UIStoryboardSegue) {
+  //  }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let recipe = recipes[indexPath.row]

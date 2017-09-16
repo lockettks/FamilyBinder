@@ -11,6 +11,7 @@ import RealmSwift
 
 class RecipeDetailViewController: UIViewController {
     
+    @IBOutlet weak var backBtn: UIButton!
     
     @IBOutlet weak var recipeTitleLabel: UILabel!
     @IBOutlet weak var recipeImg: UIImageView!
@@ -44,15 +45,38 @@ class RecipeDetailViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
-        self.navigationController?.isNavigationBarHidden = true
-        /*
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.isTranslucent = true
-        self.navigationController?.view.backgroundColor = .clear
-        */
+
+
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if let split = splitViewController {
+            if split.isCollapsed {
+                // Hide the navigation bar on iphones
+                self.navigationController?.setNavigationBarHidden(true, animated: animated)
+                backBtn.isHidden = false
+            } else {
+                // Show the nav bar and hide the back button on ipads
+                backBtn.isHidden = true
+            }
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // Show the navigation bar on other view controllers
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
+    
+    @IBAction func backBtnPressed(_ sender: Any) {
+        //performSegue(withIdentifier: "unwindSegueToMasterRecipes", sender: self)
+        
+        self.navigationController?.popToRootViewController(animated: true)
+        self.navigationController?.navigationController?.popToRootViewController(animated: true)
+    }
+    
     
     func configureView() {
         // Update the user interface for the detail item.
