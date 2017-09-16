@@ -42,22 +42,13 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
     // MARK: - Table Setup
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        
-        //navigationItem.leftBarButtonItem = editButtonItem
-        
-//        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
-//        self.navigationItem.rightBarButtonItem = addButton
         if let split = splitViewController {
             let controllers = split.viewControllers
             detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? RecipeDetailViewController
-            
         }
         recipesTypeSegCntrl.selectedSegmentIndex = DEFAULT_SELECTED_TOGGLE
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -95,8 +86,6 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
         super.viewDidAppear(animated)
     }
     
-//    @IBAction func cancelToRecipesMasterViewController(_ segue: UIStoryboardSegue) {
-  //  }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let recipe = recipes[indexPath.row]
@@ -180,16 +169,6 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
     
     
     // MARK: - Table Updating
-    
-//    func insertNewObject(_ sender: Any) {
-//        let alert = UIAlertController(title: "Not Implemented",
-//                                      message: "Can't create new recipes yet, will implement later",
-//                                      preferredStyle: .alert)
-//        alert.addAction(UIAlertAction(title: "OK",
-//                                      style: .default,
-//                                      handler: nil))
-//        self.present(alert, animated: true, completion: nil)
-//    }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.

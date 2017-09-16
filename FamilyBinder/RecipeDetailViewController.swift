@@ -45,8 +45,6 @@ class RecipeDetailViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -71,8 +69,6 @@ class RecipeDetailViewController: UIViewController {
     
     
     @IBAction func backBtnPressed(_ sender: Any) {
-        //performSegue(withIdentifier: "unwindSegueToMasterRecipes", sender: self)
-        
         self.navigationController?.popToRootViewController(animated: true)
         self.navigationController?.navigationController?.popToRootViewController(animated: true)
     }
@@ -134,8 +130,7 @@ class RecipeDetailViewController: UIViewController {
                 detail.isFavorite = true
                 setFavoriteIconImg()
             }
-            
-            
+
         } else {
             addRecipeBtn.isEnabled = false
         }
