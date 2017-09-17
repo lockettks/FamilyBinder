@@ -49,9 +49,6 @@ class Recipe : Object, NSCopying {
                 ingredients.append(ingredient)
             }
         }
-        
-        self.isFavorite = UserContextCache.current().myRecipes.first(where: { $0.id == idValue}) != nil
-
     }
     
     convenience init(id: Int, title: String, analyzedInstructions: List<Instruction>, ingredients: List<Ingredient>, instructions: String, servings: Int, imageURL: String, image: UIImage?, isFavorite: Bool) {

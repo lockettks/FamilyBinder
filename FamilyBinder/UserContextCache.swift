@@ -12,7 +12,8 @@ import RealmSwift
 
 class UserContextCache: Object {
     var myRecipes = List<Recipe>()
-    
+
+ 
     static func current() -> UserContextCache {
         let appDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate
         if appDelegate.userContextCache == nil {

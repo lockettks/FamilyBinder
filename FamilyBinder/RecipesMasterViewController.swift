@@ -58,13 +58,18 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
         if (recipesTypeSegCntrl.selectedSegmentIndex == 0) {
             token = myFavoriteRecipes.addNotificationBlock{[weak self] (changes: RealmCollectionChange) in
                 if (self?.recipesTypeSegCntrl.selectedSegmentIndex == 0) {
-                    if let test = self?.myFavoriteRecipes {
-                        self?.recipes = Array(test)
+                    if let mfr = self?.myFavoriteRecipes {
+                        self?.recipes = Array(mfr)
                     }
                     
                     switch changes {
                     case .initial:
                         self?.tableView.reloadData()
+                        let initialIndexPath = IndexPath(row: 0, section: 0)
+                        self?.tableView.selectRow(at: initialIndexPath, animated: true, scrollPosition: UITableViewScrollPosition.none)
+                        if (self?.recipes.count)! > 0 {
+                            self?.detailViewController?.detailItem = self?.recipes[0]
+                        }
                         break
                     //case .update(let results, let deletions, let insertions, let modifications):
                     case .update( _, let deletions, let insertions, _):

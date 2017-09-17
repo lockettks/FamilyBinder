@@ -41,6 +41,11 @@ class RecipeDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if self.detailItem == nil {
+            if let firstRecipe = realm.objects(Recipe.self).first {
+                self.detailItem = firstRecipe
+            }
+        }
         configureView()
     }
     
@@ -127,12 +132,11 @@ class RecipeDetailViewController: UIViewController {
             addRecipeBtn.isEnabled = true
             
             if realm.objects(Recipe.self).filter("id == %@", detail.id).first != nil {
-                detail.isFavorite = true
+                try! self.realm.write {
+                    detail.isFavorite = true
+                }
                 setFavoriteIconImg()
             }
-
-        } else {
-            addRecipeBtn.isEnabled = false
         }
     }
     
@@ -275,6 +279,7 @@ class RecipeDetailViewController: UIViewController {
     var detailItem: Recipe? {
         didSet {
             // Update the view.
+            //configureView()
         }
     }
 }
