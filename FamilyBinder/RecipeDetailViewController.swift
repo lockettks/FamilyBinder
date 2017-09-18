@@ -13,7 +13,11 @@ class RecipeDetailViewController: UIViewController {
     
     @IBOutlet weak var backBtn: UIButton!
     
+    @IBOutlet weak var timeToCookLabel: UILabel!
+    @IBOutlet weak var spoonacularLabel: UILabel!
+    @IBOutlet weak var likesLabel: UILabel!
     @IBOutlet weak var recipeTitleLabel: UILabel!
+    @IBOutlet weak var creditLabel: UILabel!
     @IBOutlet weak var recipeImg: UIImageView!
     @IBOutlet weak var servingsLabel: UILabel!
     @IBOutlet weak var recipeImgBackground: UIImageView!
@@ -21,7 +25,11 @@ class RecipeDetailViewController: UIViewController {
     @IBOutlet weak var instructionsLabel: UILabel!
     @IBOutlet weak var addRecipeBtn: UIBarButtonItem!
     @IBOutlet weak var favoriteBtn: UIButton!
+    @IBOutlet weak var shoppingCartBtn: UIButton!
+    @IBOutlet weak var mealPlanBtn: UIButton!
     
+    @IBOutlet weak var ingredientsTab: UIButton!
+    @IBOutlet weak var directionsTab: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var recipeTitleView: UIView!
@@ -46,7 +54,14 @@ class RecipeDetailViewController: UIViewController {
                 self.detailItem = firstRecipe
             }
         }
+
+        ingredientsTab.setBackgroundColor(color: UIColor(hex: "DAE0E1"), forState: .normal)
+        ingredientsTab.setBackgroundColor(color: UIColor(hex: "C1212E"), forState: .selected)
+        directionsTab.setBackgroundColor(color: UIColor(hex: "DAE0E1"), forState: .normal)
+        directionsTab.setBackgroundColor(color: UIColor(hex: "C1212E"), forState: .selected)
+        
         configureView()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -85,8 +100,8 @@ class RecipeDetailViewController: UIViewController {
         if let detail = self.detailItem {
             self.navigationItem.title = detail.title
             
-            if let label = self.recipeTitleLabel {
-                label.text = detail.title
+            if let recipeTitleLabel = self.recipeTitleLabel {
+                recipeTitleLabel.text = detail.title
             }
             if let img = self.recipeImg {
                 let placeholderImage = #imageLiteral(resourceName: "dinnerPlate")
@@ -129,6 +144,23 @@ class RecipeDetailViewController: UIViewController {
                 
                 label.attributedText = fullAttributedString
             }
+            
+            if let cookTimeLabel = self.timeToCookLabel {
+                cookTimeLabel.text = "\(detail.readyInMinutes) min"
+            }
+            
+            if let spoonacularLabel = self.spoonacularLabel {
+                spoonacularLabel.text = detail.spoonacularScore.description
+            }
+            
+            if let likesLabel = self.likesLabel {
+                likesLabel.text = detail.likes.description
+            }
+            
+            creditLabel?.text = detail.creditText
+            
+            ingredientsTab.isSelected = true
+            directionsTab.isSelected = false
             
             addRecipeBtn.isEnabled = true
             
@@ -210,7 +242,22 @@ class RecipeDetailViewController: UIViewController {
     @IBAction func favoriteBtnClicked(_ sender: Any) {
         updateFavoriteStatus()
     }
+    @IBAction func shoppingCartBtnPressed(_ sender: Any) {
+    }
     
+    @IBAction func mealPlanBtnPressed(_ sender: Any) {
+    }
+    
+    @IBAction func ingredientsTabPressed(_ sender: Any) {
+        ingredientsTab.isSelected = true
+        directionsTab.isSelected = false
+    }
+    
+    @IBAction func directionsTabPressed(_ sender: Any) {
+        ingredientsTab.isSelected = false
+        directionsTab.isSelected = true
+    }
+
     
     override func viewDidDisappear(_ animated: Bool) {
         if let thisRecipe = self.detailItem {

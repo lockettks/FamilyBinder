@@ -9,8 +9,6 @@
 import Foundation
 import UIKit
 
-import UIKit
-
 @IBDesignable
 class DesignableView: UIView {
 }
