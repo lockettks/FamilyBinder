@@ -53,6 +53,7 @@ class RecipeDetailViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         if let split = splitViewController {
             if split.isCollapsed {
                 // Hide the navigation bar on iphones
