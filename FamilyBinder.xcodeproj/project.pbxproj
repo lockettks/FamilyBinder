@@ -18,6 +18,7 @@
 		954D7ACB1F199034000480A7 /* SpoonacularAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954D7ACA1F199034000480A7 /* SpoonacularAPIManager.swift */; };
 		954D7ACD1F19D8AE000480A7 /* RecipeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954D7ACC1F19D8AE000480A7 /* RecipeRouter.swift */; };
 		954D7ACF1F19DAD8000480A7 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954D7ACE1F19DAD8000480A7 /* Recipe.swift */; };
+		95628D6A1F70596A00566EF1 /* RealmString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95628D691F70596A00566EF1 /* RealmString.swift */; };
 		956789941F2146B50070FEEB /* ScheduledMeal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956789931F2146B50070FEEB /* ScheduledMeal.swift */; };
 		956789961F2147D90070FEEB /* MealTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956789951F2147D90070FEEB /* MealTypes.swift */; };
 		956789981F2156190070FEEB /* MealPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956789971F2156190070FEEB /* MealPlan.swift */; };
@@ -46,6 +47,7 @@
 		954D7ACA1F199034000480A7 /* SpoonacularAPIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpoonacularAPIManager.swift; sourceTree = "<group>"; };
 		954D7ACC1F19D8AE000480A7 /* RecipeRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeRouter.swift; sourceTree = "<group>"; };
 		954D7ACE1F19DAD8000480A7 /* Recipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
+		95628D691F70596A00566EF1 /* RealmString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmString.swift; sourceTree = "<group>"; };
 		956789931F2146B50070FEEB /* ScheduledMeal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduledMeal.swift; sourceTree = "<group>"; };
 		956789951F2147D90070FEEB /* MealTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealTypes.swift; sourceTree = "<group>"; };
 		956789971F2156190070FEEB /* MealPlan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealPlan.swift; sourceTree = "<group>"; };
@@ -114,19 +116,31 @@
 			children = (
 				954D7AB41F198CB3000480A7 /* Main.storyboard */,
 				956789BA1F2FDB8E0070FEEB /* Cache */,
+				95628D681F70586300566EF1 /* Models */,
 				956789B11F290EC40070FEEB /* Recipes */,
 				956789AD1F27EEC90070FEEB /* Meal Plan */,
 				956789AE1F28F7AD0070FEEB /* APIs */,
 				9567899B1F226DD30070FEEB /* Utils */,
-				956789971F2156190070FEEB /* MealPlan.swift */,
-				956789931F2146B50070FEEB /* ScheduledMeal.swift */,
-				956789951F2147D90070FEEB /* MealTypes.swift */,
 				954D7AAE1F198CB3000480A7 /* AppDelegate.swift */,
 				954D7ABC1F198CB3000480A7 /* Info.plist */,
 				954D7AB71F198CB3000480A7 /* Assets.xcassets */,
 				954D7AB91F198CB3000480A7 /* LaunchScreen.storyboard */,
 			);
 			path = FamilyBinder;
+			sourceTree = "<group>";
+		};
+		95628D681F70586300566EF1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				954D7ACE1F19DAD8000480A7 /* Recipe.swift */,
+				956789B41F29560B0070FEEB /* Ingredient.swift */,
+				956789B21F294F180070FEEB /* Instruction.swift */,
+				956789971F2156190070FEEB /* MealPlan.swift */,
+				956789931F2146B50070FEEB /* ScheduledMeal.swift */,
+				956789951F2147D90070FEEB /* MealTypes.swift */,
+				95628D691F70596A00566EF1 /* RealmString.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		9567899B1F226DD30070FEEB /* Utils */ = {
@@ -158,9 +172,6 @@
 		956789B11F290EC40070FEEB /* Recipes */ = {
 			isa = PBXGroup;
 			children = (
-				954D7ACE1F19DAD8000480A7 /* Recipe.swift */,
-				956789B41F29560B0070FEEB /* Ingredient.swift */,
-				956789B21F294F180070FEEB /* Instruction.swift */,
 				954D7AB01F198CB3000480A7 /* RecipesMasterViewController.swift */,
 				954D7AB21F198CB3000480A7 /* RecipeDetailViewController.swift */,
 				956789AF1F290E600070FEEB /* RecipeTableViewCell.swift */,
@@ -325,6 +336,7 @@
 				954D7ACB1F199034000480A7 /* SpoonacularAPIManager.swift in Sources */,
 				954D7ACF1F19DAD8000480A7 /* Recipe.swift in Sources */,
 				954D7AAF1F198CB3000480A7 /* AppDelegate.swift in Sources */,
+				95628D6A1F70596A00566EF1 /* RealmString.swift in Sources */,
 				9567899A1F216D330070FEEB /* AddToMealPlanTableViewController.swift in Sources */,
 				956789B91F2FDA660070FEEB /* UserContextCache.swift in Sources */,
 				956789981F2156190070FEEB /* MealPlan.swift in Sources */,

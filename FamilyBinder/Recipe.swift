@@ -20,6 +20,7 @@ class Recipe : Object, NSCopying {
     dynamic var imageURL: String = ""
     var image: UIImage?
     dynamic var isFavorite: Bool = false
+    var dishTypes = List<RealmString>()
     
     
     convenience init?(json: JSON) {
@@ -29,8 +30,9 @@ class Recipe : Object, NSCopying {
             let title = json["title"].string,
             let servings = json["servings"].int,
             let imageURL = json["image"].string,
-        let instructionsJSONArray = json["analyzedInstructions"][0]["steps"].array,
-        let ingredientsJSONArray = json["extendedIngredients"].array
+            let instructionsJSONArray = json["analyzedInstructions"][0]["steps"].array,
+            let ingredientsJSONArray = json["extendedIngredients"].array,
+            let dishTypesJSONArray = json["dishTypes"].array
             else {
                 return nil
         }
@@ -49,9 +51,16 @@ class Recipe : Object, NSCopying {
                 ingredients.append(ingredient)
             }
         }
+        for dishTypesJSON in dishTypesJSONArray {
+            if let dishTypeString = dishTypesJSON.string {
+                if let dishType = RealmString(theString: dishTypeString) {
+                    dishTypes.append(dishType)
+                }
+            }
+        }
     }
     
-    convenience init(id: Int, title: String, analyzedInstructions: List<Instruction>, ingredients: List<Ingredient>, instructions: String, servings: Int, imageURL: String, image: UIImage?, isFavorite: Bool) {
+    convenience init(id: Int, title: String, analyzedInstructions: List<Instruction>, ingredients: List<Ingredient>, instructions: String, servings: Int, imageURL: String, image: UIImage?, isFavorite: Bool, dishTypes: List<RealmString>) {
         self.init()
         self.id = id
         self.title = title
@@ -62,6 +71,7 @@ class Recipe : Object, NSCopying {
         self.imageURL = imageURL
         self.image = image
         self.isFavorite = isFavorite
+        self.dishTypes = dishTypes
         
     }
     
@@ -74,6 +84,6 @@ class Recipe : Object, NSCopying {
     }
     
     func copy(with zone: NSZone? = nil) -> Any {
-        return Recipe(id: id, title: title, analyzedInstructions: analyzedInstructions, ingredients: ingredients, instructions: instructions, servings: servings, imageURL: imageURL, image: image, isFavorite: isFavorite)
+        return Recipe(id: id, title: title, analyzedInstructions: analyzedInstructions, ingredients: ingredients, instructions: instructions, servings: servings, imageURL: imageURL, image: image, isFavorite: isFavorite, dishTypes: dishTypes)
     }
 }
