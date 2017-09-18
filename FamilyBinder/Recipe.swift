@@ -21,7 +21,10 @@ class Recipe : Object, NSCopying {
     var image: UIImage?
     dynamic var isFavorite: Bool = false
     var dishTypes = List<RealmString>()
-    
+    dynamic var readyInMinutes: Int = 0
+    dynamic var likes: Int = 0
+    dynamic var spoonacularScore: Int = 0
+    dynamic var creditText: String = ""
     
     convenience init?(json: JSON) {
         self.init()
@@ -32,7 +35,11 @@ class Recipe : Object, NSCopying {
             let imageURL = json["image"].string,
             let instructionsJSONArray = json["analyzedInstructions"][0]["steps"].array,
             let ingredientsJSONArray = json["extendedIngredients"].array,
-            let dishTypesJSONArray = json["dishTypes"].array
+            let dishTypesJSONArray = json["dishTypes"].array,
+            let readyInMinutes = json["readyInMinutes"].int,
+            let likes = json["aggregateLikes"].int,
+            let spoonacularScore = json["spoonacularScore"].int,
+            let creditText = json["creditText"].string
             else {
                 return nil
         }
@@ -58,9 +65,13 @@ class Recipe : Object, NSCopying {
                 }
             }
         }
+        self.readyInMinutes = readyInMinutes
+        self.likes = likes
+        self.spoonacularScore = spoonacularScore
+        self.creditText = creditText
     }
     
-    convenience init(id: Int, title: String, analyzedInstructions: List<Instruction>, ingredients: List<Ingredient>, instructions: String, servings: Int, imageURL: String, image: UIImage?, isFavorite: Bool, dishTypes: List<RealmString>) {
+    convenience init(id: Int, title: String, analyzedInstructions: List<Instruction>, ingredients: List<Ingredient>, instructions: String, servings: Int, imageURL: String, image: UIImage?, isFavorite: Bool, dishTypes: List<RealmString>, readyInMinutes: Int, likes: Int, spoonacularScore: Int, creditText: String) {
         self.init()
         self.id = id
         self.title = title
@@ -72,7 +83,10 @@ class Recipe : Object, NSCopying {
         self.image = image
         self.isFavorite = isFavorite
         self.dishTypes = dishTypes
-        
+        self.readyInMinutes = readyInMinutes
+        self.likes = likes
+        self.spoonacularScore = spoonacularScore
+        self.creditText = creditText
     }
     
     override static func primaryKey() -> String? {
@@ -84,6 +98,6 @@ class Recipe : Object, NSCopying {
     }
     
     func copy(with zone: NSZone? = nil) -> Any {
-        return Recipe(id: id, title: title, analyzedInstructions: analyzedInstructions, ingredients: ingredients, instructions: instructions, servings: servings, imageURL: imageURL, image: image, isFavorite: isFavorite, dishTypes: dishTypes)
+        return Recipe(id: id, title: title, analyzedInstructions: analyzedInstructions, ingredients: ingredients, instructions: instructions, servings: servings, imageURL: imageURL, image: image, isFavorite: isFavorite, dishTypes: dishTypes, readyInMinutes: readyInMinutes, likes: likes, spoonacularScore: spoonacularScore, creditText: creditText)
     }
 }

@@ -117,7 +117,7 @@
 				954D7AB41F198CB3000480A7 /* Main.storyboard */,
 				956789BA1F2FDB8E0070FEEB /* Cache */,
 				95628D681F70586300566EF1 /* Models */,
-				956789B11F290EC40070FEEB /* Recipes */,
+				956789B11F290EC40070FEEB /* View Controllers */,
 				956789AD1F27EEC90070FEEB /* Meal Plan */,
 				956789AE1F28F7AD0070FEEB /* APIs */,
 				9567899B1F226DD30070FEEB /* Utils */,
@@ -169,14 +169,14 @@
 			name = APIs;
 			sourceTree = "<group>";
 		};
-		956789B11F290EC40070FEEB /* Recipes */ = {
+		956789B11F290EC40070FEEB /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				954D7AB01F198CB3000480A7 /* RecipesMasterViewController.swift */,
 				954D7AB21F198CB3000480A7 /* RecipeDetailViewController.swift */,
 				956789AF1F290E600070FEEB /* RecipeTableViewCell.swift */,
 			);
-			name = Recipes;
+			name = "View Controllers";
 			sourceTree = "<group>";
 		};
 		956789BA1F2FDB8E0070FEEB /* Cache */ = {
