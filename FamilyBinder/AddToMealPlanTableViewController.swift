@@ -180,6 +180,10 @@ class AddToMealPlanTableViewController: UITableViewController {
                 self.realm.create(ScheduledMeal.self, value: newScheduledMeal)
                 print("\(selectedRecipe.title) is added to meal plan for date \(selectedDate.withoutTime()) for \(mealTypesStr)")
                 dismiss(animated: true, completion: nil)
+                
+                if let recipeOnMealPlan = realm.object(ofType: Recipe.self, forPrimaryKey: selectedRecipe.id) {
+                    recipeOnMealPlan.isOnMealPlan = true
+                }//TODO:  check this
             }
         }
     }

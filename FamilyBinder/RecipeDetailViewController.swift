@@ -10,34 +10,41 @@ import UIKit
 import RealmSwift
 
 class RecipeDetailViewController: UIViewController {
+    // MARK: - Outlets
     
     @IBOutlet weak var backBtn: UIButton!
     
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var contentView: UIView!
+    
+    @IBOutlet weak var recipeImg: UIImageView!
     @IBOutlet weak var timeToCookLabel: UILabel!
     @IBOutlet weak var spoonacularLabel: UILabel!
     @IBOutlet weak var likesLabel: UILabel!
     @IBOutlet weak var recipeTitleLabel: UILabel!
     @IBOutlet weak var creditLabel: UILabel!
-    @IBOutlet weak var recipeImg: UIImageView!
+
     @IBOutlet weak var servingsLabel: UILabel!
-    @IBOutlet weak var recipeImgBackground: UIImageView!
-    @IBOutlet weak var ingredientsLabel: UILabel!
-    @IBOutlet weak var instructionsLabel: UILabel!
     @IBOutlet weak var addRecipeBtn: UIBarButtonItem!
     @IBOutlet weak var favoriteBtn: UIButton!
     @IBOutlet weak var shoppingCartBtn: UIButton!
     @IBOutlet weak var mealPlanBtn: UIButton!
     
-    @IBOutlet weak var ingredientsTab: UIButton!
-    @IBOutlet weak var directionsTab: UIButton!
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var recipeTitleView: UIView!
-    @IBOutlet weak var shadowBackgroundView: UIView!
     @IBOutlet weak var recipeDetailsView: UIView!
     
+    @IBOutlet weak var ingredientsTab: UIButton!
+    @IBOutlet weak var ingredientsViewContainer: UIView!
+    @IBOutlet weak var directionsTab: UIButton!
+    @IBOutlet weak var directionsViewContainer: UIView!
+    @IBOutlet weak var recipeImgBackground: UIImageView!
+
+
+    // MARK: View Controller Variables
     var scrollViewPropertiesInitialized = false
     var favoritedRecipe = Recipe()
+    var ingredientsViewController:IngredientsViewController?
+    var directionsViewController:DirectionsViewController?
     
     //    // Get the default Realm
     let realm = try! Realm()
@@ -124,6 +131,8 @@ class RecipeDetailViewController: UIViewController {
                 label.text = detail.servings.description
             }
             
+            
+            /*
             // Format ingredients
             if let label = self.ingredientsLabel {
                 let attributesDictionary = [NSFontAttributeName : label.font]
@@ -133,7 +142,8 @@ class RecipeDetailViewController: UIViewController {
                 }
                 label.attributedText = fullAttributedString
             }
-            
+ */
+            /*
             // Format instructions
             if let label = instructionsLabel {
                 let attributesDictionary = [NSFontAttributeName : label.font]
@@ -144,6 +154,13 @@ class RecipeDetailViewController: UIViewController {
                 
                 label.attributedText = fullAttributedString
             }
+ */
+            
+            ingredientsTab.isSelected = true
+            ingredientsViewContainer.isHidden = false
+            
+            directionsTab.isSelected = false
+            directionsViewContainer.isHidden = true
             
             if let cookTimeLabel = self.timeToCookLabel {
                 cookTimeLabel.text = "\(detail.readyInMinutes) min"
@@ -159,9 +176,6 @@ class RecipeDetailViewController: UIViewController {
             
             creditLabel?.text = detail.creditText
             
-            ingredientsTab.isSelected = true
-            directionsTab.isSelected = false
-            
             addRecipeBtn.isEnabled = true
             
             if realm.objects(Recipe.self).filter("id == %@", detail.id).first != nil {
@@ -174,7 +188,7 @@ class RecipeDetailViewController: UIViewController {
     }
     
     
-    
+    /*
     // MARK: - Text Formatting
     func convertToNumberedItem(instruction: Instruction) -> NSMutableAttributedString {
         let formattedString: String = "\n\(instruction.stepNumber ). \(instruction.step )\n"
@@ -206,6 +220,7 @@ class RecipeDetailViewController: UIViewController {
         
         return paragraphStyle
     }
+ */
     
     // MARK: - Action Handlers
     
@@ -251,11 +266,27 @@ class RecipeDetailViewController: UIViewController {
     @IBAction func ingredientsTabPressed(_ sender: Any) {
         ingredientsTab.isSelected = true
         directionsTab.isSelected = false
+        ingredientsViewContainer.isHidden = false
+        directionsViewContainer.isHidden = true
+        
+        if let vc = ingredientsViewController {
+            if let currentRecipe = self.detailItem {
+                vc.updateView(currentRecipe: currentRecipe)
+            }
+        }
     }
     
     @IBAction func directionsTabPressed(_ sender: Any) {
         ingredientsTab.isSelected = false
         directionsTab.isSelected = true
+        ingredientsViewContainer.isHidden = true
+        directionsViewContainer.isHidden = false
+        
+        if let vc = directionsViewController {
+            if let currentRecipe = self.detailItem {
+                vc.updateView(currentRecipe: currentRecipe)
+            }
+        }
     }
 
     
@@ -316,7 +347,13 @@ class RecipeDetailViewController: UIViewController {
                     controller.selectedRecipe = detail
                 }
             }
+        } else if segue.identifier == "ingredientsSegue" {
+            ingredientsViewController = segue.destination as? IngredientsViewController
+            
+        } else if segue.identifier == "directionsSegue" {
+            directionsViewController = segue.destination as? DirectionsViewController
         }
+    
     }
     
     override func didReceiveMemoryWarning() {
