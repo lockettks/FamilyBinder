@@ -19,12 +19,9 @@ class DirectionsViewController: UIViewController {
             let fullAttributedString = NSMutableAttributedString(string: "", attributes: (attributesDictionary as Any as! [String : Any]))
             for instruction in currentRecipe.analyzedInstructions {
                 fullAttributedString.append(stringHelper.convertToNumberedItem(textToConvert: instruction.step, textNumber: instruction.stepNumber.description))
-                //convertToNumberedItem(instruction: instruction))
             }
             
             label.text = fullAttributedString.string
-            print(fullAttributedString.string)
-            //label.text = "hey"
         }
     }
     

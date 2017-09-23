@@ -25,7 +25,6 @@ class IngredientsViewController: UIViewController {
             let fullAttributedString = NSMutableAttributedString(string: "", attributes: (attributesDictionary as Any as! [String : Any]))
             for ingredient in (currentRecipe.ingredients) where ingredient.originalString != "" {
                 fullAttributedString.append(stringHelper.convertToBulletedItem(textToConvert: ingredient.originalString))
-                //fullAttributedString.append(convertToBulletedItem(textToConvert: ingredient.originalString))
             }
             label.attributedText = fullAttributedString
         }
