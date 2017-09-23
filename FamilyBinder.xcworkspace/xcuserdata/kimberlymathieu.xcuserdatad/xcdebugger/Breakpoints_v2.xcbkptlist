@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FamilyBinder/IngredientsViewController.swift"
-            timestampString = "527797658.412292"
+            timestampString = "527867547.224194"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
             landmarkName = "updateView(currentRecipe:)"
             landmarkType = "7">
          </BreakpointContent>
