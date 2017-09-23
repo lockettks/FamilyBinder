@@ -22,7 +22,9 @@ class DirectionsViewController: UIViewController {
                 //convertToNumberedItem(instruction: instruction))
             }
             
-            label.attributedText = fullAttributedString
+            label.text = fullAttributedString.string
+            print(fullAttributedString.string)
+            //label.text = "hey"
         }
     }
     

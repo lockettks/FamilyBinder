@@ -23,7 +23,7 @@ class StringHelper {
     
     
     func convertToNumberedItem(textToConvert: String, textNumber: String) -> NSMutableAttributedString {
-        let formattedString: String = "\n\(textNumber). \(textToConvert)\n"
+        let formattedString: String = "\(textNumber). \(textToConvert)\n"
         let attributedString: NSMutableAttributedString = NSMutableAttributedString(string: formattedString)
         
         let paragraphStyle = createParagraphAttribute()
