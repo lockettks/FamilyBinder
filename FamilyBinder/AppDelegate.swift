@@ -19,6 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         // Override point for customization after application launch.
         let tabController = window!.rootViewController as! UITabBarController
         let splitViewController = tabController.viewControllers?.first as! UISplitViewController
+        
+        //splitViewController.extendedLayoutIncludesOpaqueBars = true
+        
         //let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as! UINavigationController
         let navigationController = splitViewController.viewControllers[0] as! UINavigationController
         navigationController.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
