@@ -51,13 +51,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ved-Ad-DDW">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ved-Ad-DDW">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="58z-TB-dOe" userLabel="Content View">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="58z-TB-dOe" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vq0-5k-8yN">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="325"/>
@@ -263,8 +261,18 @@
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="667" id="RYy-AI-bw1"/>
+                                            <constraint firstAttribute="width" constant="375" id="sPS-Xh-xMm"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="58z-TB-dOe" firstAttribute="top" secondItem="ved-Ad-DDW" secondAttribute="top" id="BqH-uA-wnK"/>
+                                    <constraint firstItem="58z-TB-dOe" firstAttribute="leading" secondItem="ved-Ad-DDW" secondAttribute="leading" id="VyV-du-52V"/>
+                                    <constraint firstAttribute="trailing" secondItem="58z-TB-dOe" secondAttribute="trailing" id="rAs-gq-C8s"/>
+                                    <constraint firstAttribute="bottom" secondItem="58z-TB-dOe" secondAttribute="bottom" id="xlt-kq-PZU"/>
+                                </constraints>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JiU-1R-hKD">
                                 <rect key="frame" x="15" y="20" width="40" height="30"/>
@@ -276,6 +284,12 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="ved-Ad-DDW" firstAttribute="top" secondItem="svH-Pt-448" secondAttribute="top" id="Owh-BR-RmR"/>
+                            <constraint firstItem="ved-Ad-DDW" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leading" id="T5O-wp-vKy"/>
+                            <constraint firstItem="GAO-Cl-Wes" firstAttribute="top" secondItem="ved-Ad-DDW" secondAttribute="bottom" id="ire-e6-p9m"/>
+                            <constraint firstAttribute="trailing" secondItem="ved-Ad-DDW" secondAttribute="trailing" id="mwH-sl-uRb"/>
+                        </constraints>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Recipe Detail" id="mOI-FS-AaM">
