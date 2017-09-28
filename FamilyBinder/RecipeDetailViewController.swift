@@ -156,6 +156,10 @@ class RecipeDetailViewController: UIViewController {
                 likesLabel.text = detail.likes.description
             }
             
+            if let favoriteBtn = self.favoriteBtn {
+                favoriteBtn.imageView?.contentMode = UIViewContentMode.scaleAspectFit
+            }
+            
             creditLabel?.text = detail.creditText
             
             addRecipeBtn.isEnabled = true
