@@ -18,6 +18,9 @@
                value = "ingredientsViewContainer.subviews[0].frame.size">
             </PersistentString>
             <PersistentString
+               value = "directionsViewContainer.subviews[0].frame.size.height">
+            </PersistentString>
+            <PersistentString
                value = "contentView.frame.size">
             </PersistentString>
             <PersistentString

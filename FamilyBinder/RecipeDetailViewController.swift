@@ -73,16 +73,8 @@ class RecipeDetailViewController: UIViewController {
         directionsTab.setBackgroundColor(color: UIColor(hex: "DAE0E1"), forState: .normal)
         directionsTab.setBackgroundColor(color: UIColor(hex: "C1212E"), forState: .selected)
         
-//        ingredientsViewContainer.translatesAutoresizingMaskIntoConstraints = false
-//        ingredientsViewContainer.subviews[0].translatesAutoresizingMaskIntoConstraints = false
-//        directionsViewContainer.translatesAutoresizingMaskIntoConstraints = false
-//        directionsViewContainer.subviews[0].translatesAutoresizingMaskIntoConstraints = false
-        
-        
         configureView()
-        
     }
-    
     
     
     override func viewDidAppear(_ animated: Bool) {
@@ -130,7 +122,6 @@ class RecipeDetailViewController: UIViewController {
                     img.af_setImage(withURL: url, placeholderImage: placeholderImage)
                     detail.image = img.image
                 }
-                
             }
             if let img = self.recipeImgBackground {
                 let placeholderImage = #imageLiteral(resourceName: "dinnerPlate")
@@ -145,7 +136,6 @@ class RecipeDetailViewController: UIViewController {
                 label.text = detail.servings.description
             }
 
-            
             ingredientsTab.isSelected = true
             ingredientsViewContainer.isHidden = false
             
@@ -201,30 +191,18 @@ class RecipeDetailViewController: UIViewController {
             ingredientsViewContainer.subviews[0].translatesAutoresizingMaskIntoConstraints = false
             directionsViewContainer.subviews[0].translatesAutoresizingMaskIntoConstraints = false
             
-//            let views = ["subview": ingredientsViewContainer.subviews[0]]
-//            let views2 = ["subview": directionsViewContainer.subviews[0]]
-            
-    
-//            ingredientsViewContainerConstraint.constant = ingredientsViewContainer.subviews[0].frame.size.height
-            ingredientsViewContainer.frame.size.height = ingredientsViewContainer.subviews[0].frame.size.height
-            recipeDetailsView.frame.size.height = ingredientsViewContainer.subviews[0].frame.size.height
-            //recipeDetailsConstraint.constant = ingredientsViewContainer.subviews[0].frame.size.height
-//            contentView.frame.size.height = 1000
-            contentViewConstraint.constant = ingredientsViewContainer.subviews[0].frame.size.height + 500
-            contentView.layoutIfNeeded()
-            contentView.setNeedsDisplay()
-            contentView.setNeedsLayout()
-            contentView.layoutSubviews()
-            
-            self.view.setNeedsDisplay()
-            self.view.setNeedsLayout()
-            self.view.layoutIfNeeded()
-            self.view.layoutSubviews()
-            
-//            ingredientsViewContainer.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[subview]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
-//            ingredientsViewContainer.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[subview]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
-//            directionsViewContainer.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[subview]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views2))
-//            directionsViewContainer.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[subview]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views2))
+            let ingredientsContainerHeight = ingredientsViewContainer.subviews[0].frame.size.height
+            ingredientsViewContainer.frame.size.height = ingredientsContainerHeight
+            contentViewConstraint.constant = recipeImg.frame.size.height + recipeDetailsView.frame.size.height + ingredientsContainerHeight + 64
+//            contentView.layoutIfNeeded()
+//            contentView.setNeedsDisplay()
+//            contentView.setNeedsLayout()
+//            contentView.layoutSubviews()
+//
+//            self.view.setNeedsDisplay()
+//            self.view.setNeedsLayout()
+//            self.view.layoutIfNeeded()
+//            self.view.layoutSubviews()
         }
     }
 

@@ -222,7 +222,7 @@
                                                         <state key="normal" backgroundImage="mealPlan_Add"/>
                                                     </button>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.87652736902236938" green="0.024876734866946696" blue="0.0057716730548720459" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.85490196078431369" green="0.8784313725490196" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="bottom" secondItem="b6c-Hn-mvm" secondAttribute="bottom" id="X4K-hp-jur"/>
                                                     <constraint firstAttribute="trailing" secondItem="b6c-Hn-mvm" secondAttribute="trailing" constant="-33" id="bP5-sK-hFa"/>
@@ -818,7 +818,6 @@
                     <size key="freeformSize" width="375" height="130"/>
                     <connections>
                         <outlet property="ingredientsLbl" destination="3qJ-sx-tLP" id="dMS-ra-n9c"/>
-                        <outlet property="lblIngredientsConstraint" destination="mBv-bL-ZVR" id="Pt2-ns-9dj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uhH-7r-nTM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -856,10 +855,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="0XM-y9-sOw" secondAttribute="bottom" constant="20" id="6ph-kO-4Ta"/>
                             <constraint firstItem="0XM-y9-sOw" firstAttribute="leading" secondItem="OlA-Lc-jaP" secondAttribute="leading" constant="15" id="ajA-iC-17f"/>
                             <constraint firstItem="0XM-y9-sOw" firstAttribute="top" secondItem="OlA-Lc-jaP" secondAttribute="top" constant="20" id="cB4-Bt-inB"/>
                             <constraint firstAttribute="trailing" secondItem="0XM-y9-sOw" secondAttribute="trailing" constant="15" id="eYb-fo-VhG"/>
-                            <constraint firstItem="77B-Q5-UDR" firstAttribute="top" secondItem="0XM-y9-sOw" secondAttribute="bottom" constant="20" id="psx-IG-Y0X"/>
                         </constraints>
                     </view>
                     <size key="freeformSize" width="375" height="130"/>
