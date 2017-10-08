@@ -54,13 +54,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FamilyBinder/IngredientsViewController.swift"
-            timestampString = "528249966.251608"
+            filePath = "FamilyBinder/RecipeDetailViewController.swift"
+            timestampString = "529128962.655307"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20"
-            endingLineNumber = "20"
-            landmarkName = "viewDidLayoutSubviews()"
+            startingLineNumber = "210"
+            endingLineNumber = "210"
+            landmarkName = "initConstraints()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FamilyBinder/RecipeDetailViewController.swift"
+            timestampString = "529128962.655431"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "228"
+            endingLineNumber = "228"
+            landmarkName = "initConstraints()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

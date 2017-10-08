@@ -10,12 +10,30 @@ import UIKit
 
 class IngredientsViewController: UIViewController {
     @IBOutlet weak var ingredientsLbl: UILabel!
+    @IBOutlet weak var lblIngredientsConstraint: NSLayoutConstraint!
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        view.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    override func loadView() {
+        super.loadView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    override func viewDidLayoutSubviews() {
+//        print("ingredients view height before \(view.frame.size.height)")
+//        print("ingredientsLbl height before \(ingredientsLbl.frame.size.height)")
+        preferredContentSize = view.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+//        let test = ingredientsLbl.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+//        ingredientsLbl.setNeedsLayout()
+//        ingredientsLbl.layoutIfNeeded()
+//        view.setNeedsLayout()
+//        view.layoutIfNeeded()
+//        print("ingredients view after \(view.frame.size.height)")
+//        print("ingredientsLbl height after \(ingredientsLbl.frame.size.height)")
     }
     
     func updateView(currentRecipe: Recipe){
@@ -27,8 +45,41 @@ class IngredientsViewController: UIViewController {
                 fullAttributedString.append(stringHelper.convertToBulletedItem(textToConvert: ingredient.originalString))
             }
             label.attributedText = fullAttributedString
+            
+            print("ingredients view height before layout \(view.frame.size.height)")
+            print("ingredientsLbl height before layout \(ingredientsLbl.frame.size.height)")
+            
+//            preferredContentSize = view.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+            let newSize = ingredientsLbl.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+            lblIngredientsConstraint.constant = newSize.height
+            view.frame.size.height = newSize.height + 40
+            ingredientsLbl.frame.size.height = newSize.height
+            
+            print("ingredients view height after layout \(view.frame.size.height)")
+            print("ingredientsLbl height after layout \(ingredientsLbl.frame.size.height)")
+            
+//            ingredientsLbl.setNeedsDisplay()
+//            ingredientsLbl.layoutIfNeeded()
+//            view.setNeedsDisplay()
+//            view.layoutIfNeeded()
+//            view.layoutSubviews()
+            
+//            ingredientsLbl.sizeToFit()
+//            view.sizeToFit()
         }
+
+
+        
     }
+    
+//    override func updateViewConstraints() {
+//        let newSize = ingredientsLbl.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+//        lblIngredientsConstraint.constant = newSize.height
+//        view.frame.size.height = newSize.height + 40
+//        ingredientsLbl.frame.size.height = newSize.height
+//
+//        super.updateViewConstraints()
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -16,11 +16,13 @@ class RecipeDetailViewController: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var contentViewConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var recipeImg: UIImageView!
     @IBOutlet weak var timeToCookLabel: UILabel!
     @IBOutlet weak var spoonacularLabel: UILabel!
     @IBOutlet weak var likesLabel: UILabel!
+    
     @IBOutlet weak var recipeTitleLabel: UILabel!
     @IBOutlet weak var creditLabel: UILabel!
 
@@ -32,11 +34,14 @@ class RecipeDetailViewController: UIViewController {
     
     @IBOutlet weak var recipeTitleView: UIView!
     @IBOutlet weak var recipeDetailsView: UIView!
+    @IBOutlet weak var recipeDetailsConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var ingredientsTab: UIButton!
     @IBOutlet weak var ingredientsViewContainer: UIView!
+    @IBOutlet weak var ingredientsViewContainerConstraint: NSLayoutConstraint!
     @IBOutlet weak var directionsTab: UIButton!
     @IBOutlet weak var directionsViewContainer: UIView!
+    @IBOutlet weak var directionsViewContainerConstraint: NSLayoutConstraint!
     @IBOutlet weak var recipeImgBackground: UIImageView!
 
 
@@ -45,6 +50,7 @@ class RecipeDetailViewController: UIViewController {
     var favoritedRecipe = Recipe()
     var ingredientsViewController:IngredientsViewController?
     var directionsViewController:DirectionsViewController?
+    var didSetConstraints = false
     
     //    // Get the default Realm
     let realm = try! Realm()
@@ -67,9 +73,17 @@ class RecipeDetailViewController: UIViewController {
         directionsTab.setBackgroundColor(color: UIColor(hex: "DAE0E1"), forState: .normal)
         directionsTab.setBackgroundColor(color: UIColor(hex: "C1212E"), forState: .selected)
         
+//        ingredientsViewContainer.translatesAutoresizingMaskIntoConstraints = false
+//        ingredientsViewContainer.subviews[0].translatesAutoresizingMaskIntoConstraints = false
+//        directionsViewContainer.translatesAutoresizingMaskIntoConstraints = false
+//        directionsViewContainer.subviews[0].translatesAutoresizingMaskIntoConstraints = false
+        
+        
         configureView()
         
     }
+    
+    
     
     override func viewDidAppear(_ animated: Bool) {
     }
@@ -170,6 +184,47 @@ class RecipeDetailViewController: UIViewController {
                 }
                 setFavoriteIconImg()
             }
+        }
+    }
+    
+    // MARK: Constraints
+    
+    override func updateViewConstraints() {
+        super.updateViewConstraints()
+        initConstraints()
+    }
+    
+    func initConstraints() {
+        if !didSetConstraints {
+            didSetConstraints = true
+            
+            ingredientsViewContainer.subviews[0].translatesAutoresizingMaskIntoConstraints = false
+            directionsViewContainer.subviews[0].translatesAutoresizingMaskIntoConstraints = false
+            
+//            let views = ["subview": ingredientsViewContainer.subviews[0]]
+//            let views2 = ["subview": directionsViewContainer.subviews[0]]
+            
+    
+//            ingredientsViewContainerConstraint.constant = ingredientsViewContainer.subviews[0].frame.size.height
+            ingredientsViewContainer.frame.size.height = ingredientsViewContainer.subviews[0].frame.size.height
+            recipeDetailsView.frame.size.height = ingredientsViewContainer.subviews[0].frame.size.height
+            //recipeDetailsConstraint.constant = ingredientsViewContainer.subviews[0].frame.size.height
+//            contentView.frame.size.height = 1000
+            contentViewConstraint.constant = ingredientsViewContainer.subviews[0].frame.size.height + 500
+            contentView.layoutIfNeeded()
+            contentView.setNeedsDisplay()
+            contentView.setNeedsLayout()
+            contentView.layoutSubviews()
+            
+            self.view.setNeedsDisplay()
+            self.view.setNeedsLayout()
+            self.view.layoutIfNeeded()
+            self.view.layoutSubviews()
+            
+//            ingredientsViewContainer.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[subview]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
+//            ingredientsViewContainer.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[subview]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
+//            directionsViewContainer.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[subview]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views2))
+//            directionsViewContainer.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[subview]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views2))
         }
     }
 
@@ -301,9 +356,12 @@ class RecipeDetailViewController: UIViewController {
             }
         } else if segue.identifier == "ingredientsSegue" {
             ingredientsViewController = segue.destination as? IngredientsViewController
+            ingredientsViewController?.view.translatesAutoresizingMaskIntoConstraints = false
+            
             
         } else if segue.identifier == "directionsSegue" {
             directionsViewController = segue.destination as? DirectionsViewController
+            directionsViewController?.view.translatesAutoresizingMaskIntoConstraints = false
         }
     
     }
