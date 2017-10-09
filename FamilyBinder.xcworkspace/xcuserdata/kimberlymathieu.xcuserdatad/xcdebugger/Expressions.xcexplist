@@ -80,6 +80,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "RecipeDetailViewController.ingredientsTabPressed(_:):RecipeDetailViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "recipeDetailsView.frame.size.height">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "RLMException(NSString*, NSDictionary*):RLMUtil.mm">
       </ContextState>
       <ContextState
@@ -98,6 +106,29 @@
             </PersistentString>
             <PersistentString
                value = "selectedMealTypes">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "RecipeDetailViewController.directionsTabPressed(_:):RecipeDetailViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "recipeDetailsView.subviews[1].frame.size.height">
+            </PersistentString>
+            <PersistentString
+               value = "recipeTitleView.frame.size.height">
+            </PersistentString>
+            <PersistentString
+               value = "recipeDetailsView.subviews[0].frame.size.height">
+            </PersistentString>
+            <PersistentString
+               value = "ingredientsTab.frame.size.height">
+            </PersistentString>
+            <PersistentString
+               value = "directionsViewContainer.subviews[0].frame.size">
+            </PersistentString>
+            <PersistentString
+               value = "recipeDetailsView.frame.size.height">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

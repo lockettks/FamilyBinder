@@ -42,10 +42,13 @@ class IngredientsViewController: UIViewController {
             
             let newIngredientsLblSize = ingredientsLbl.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
 //            lblIngredientsConstraint.constant = newIngredientsLblSize
+            
             view.frame.size.height = newIngredientsLblSize.height + 50
+            print("label size: \(newIngredientsLblSize.height)")
+            print("ingredients view height \(view.frame.size.height)")
 //            ingredientsLbl.frame.size.height = newIngredientsLblSize
             
-//            print("ingredients view height after layout \(view.frame.size.height)")
+            
 //            print("ingredientsLbl height after layout \(ingredientsLbl.frame.size.height)")
         }
    

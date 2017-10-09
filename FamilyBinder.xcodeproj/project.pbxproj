@@ -177,8 +177,8 @@
 			isa = PBXGroup;
 			children = (
 				954D7AB01F198CB3000480A7 /* RecipesMasterViewController.swift */,
-				954D7AB21F198CB3000480A7 /* RecipeDetailViewController.swift */,
 				956789AF1F290E600070FEEB /* RecipeTableViewCell.swift */,
+				954D7AB21F198CB3000480A7 /* RecipeDetailViewController.swift */,
 				95628D6F1F719C9500566EF1 /* IngredientsViewController.swift */,
 				95628D711F719CC600566EF1 /* DirectionsViewController.swift */,
 				956789991F216D330070FEEB /* AddToMealPlanTableViewController.swift */,

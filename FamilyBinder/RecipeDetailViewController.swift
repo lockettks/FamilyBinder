@@ -188,12 +188,33 @@ class RecipeDetailViewController: UIViewController {
         if !didSetConstraints {
             didSetConstraints = true
             
-            ingredientsViewContainer.subviews[0].translatesAutoresizingMaskIntoConstraints = false
-            directionsViewContainer.subviews[0].translatesAutoresizingMaskIntoConstraints = false
+//            ingredientsViewContainer.subviews[0].translatesAutoresizingMaskIntoConstraints = false
+//            directionsViewContainer.subviews[0].translatesAutoresizingMaskIntoConstraints = false
             
-            let ingredientsContainerHeight = ingredientsViewContainer.subviews[0].frame.size.height
-            ingredientsViewContainer.frame.size.height = ingredientsContainerHeight
-            contentViewConstraint.constant = recipeImg.frame.size.height + recipeDetailsView.frame.size.height + ingredientsContainerHeight + 64
+//            let ingredientsContainerHeight = ingredientsViewContainer.subviews[0].frame.size.height
+//            ingredientsViewContainer.frame.size.height = ingredientsContainerHeight
+//
+//            let directionsContainerHeight = directionsViewContainer.subviews[0].frame.size.height
+//            directionsViewContainer.frame.size.height = directionsContainerHeight
+            
+            updateHeights()
+
+//            if ingredientsTab.isSelected {
+////                recipeDetailsView.frame.size.height = ingredientsContainerHeight + ingredientsTab.frame.size.height + 64
+//            contentViewConstraint.constant = recipeImg.frame.size.height + recipeDetailsView.frame.size.height + ingredientsContainerHeight + 64
+//            } else if directionsTab.isSelected {
+////                recipeDetailsView.frame.size.height = directionsContainerHeight + ingredientsTab.frame.size.height + 64
+//                contentViewConstraint.constant = recipeImg.frame.size.height + recipeDetailsView.frame.size.height + directionsContainerHeight + 64
+//            }
+//
+//
+//            print("original ingredients contentViewConstraint.constant \(contentViewConstraint.constant)")
+//            print("original ingredients recipeDetailsView.frame.size.height \(recipeDetailsView.frame.size.height)")
+//            print("original ingredients recipeDetailsView.subviews[0].frame.size.height \(recipeDetailsView.subviews[0].frame.size.height)")
+//            print("original ingredients recipeDetailsView.subviews[1].frame.size.height \(recipeDetailsView.subviews[1].frame.size.height)")
+//            print("original ingredientsContainerHeight \(ingredientsContainerHeight)\n\n")
+            
+            
 //            contentView.layoutIfNeeded()
 //            contentView.setNeedsDisplay()
 //            contentView.setNeedsLayout()
@@ -204,6 +225,41 @@ class RecipeDetailViewController: UIViewController {
 //            self.view.layoutIfNeeded()
 //            self.view.layoutSubviews()
         }
+    }
+    
+    func updateHeights(){
+        ingredientsViewContainer.subviews[0].translatesAutoresizingMaskIntoConstraints = false
+        directionsViewContainer.subviews[0].translatesAutoresizingMaskIntoConstraints = false
+        
+        let ingredientsContainerHeight = ingredientsViewContainer.subviews[0].frame.size.height
+        ingredientsViewContainer.frame.size.height = ingredientsContainerHeight
+        let directionsContainerHeight = directionsViewContainer.subviews[0].frame.size.height
+        directionsViewContainer.frame.size.height = directionsContainerHeight
+        
+        if ingredientsTab.isSelected {
+            recipeDetailsView.frame.size.height = ingredientsContainerHeight
+            recipeDetailsView.subviews[1].frame.size.height = 0
+            
+            print("INGREDIENTS")
+            print("ingredientsContainerHeight \(ingredientsContainerHeight)")
+            
+        } else if directionsTab.isSelected {
+            recipeDetailsView.frame.size.height = directionsContainerHeight
+            recipeDetailsView.subviews[0].frame.size.height = 0
+            
+            print("DIRECTIONS")
+            print("directionsContainerHeight \(directionsContainerHeight)")
+        }
+        
+        contentViewConstraint.constant = recipeImg.frame.size.height + recipeTitleView.frame.size.height + recipeDetailsView.frame.size.height 
+        
+        print("contentViewConstraint.constant \(contentViewConstraint.constant)")
+//        print("recipeTitleView.frame.size.height \(recipeTitleView.frame.size.height)")
+        print("recipeDetailsView.frame.size.height \(recipeDetailsView.frame.size.height)")
+        print("recipeDetailsView.subviews[0].frame.size.height \(recipeDetailsView.subviews[0].frame.size.height)")
+        print("recipeDetailsView.subviews[1].frame.size.height \(recipeDetailsView.subviews[1].frame.size.height)")
+        print("\n\n")
+        
     }
 
     
@@ -259,6 +315,19 @@ class RecipeDetailViewController: UIViewController {
                 vc.updateView(currentRecipe: currentRecipe)
             }
         }
+        
+        updateHeights()
+////        initConstraints()
+//        let ingredientsContainerHeight = ingredientsViewContainer.subviews[0].frame.size.height
+//        recipeDetailsView.frame.size.height = ingredientsContainerHeight
+//        contentViewConstraint.constant = recipeImg.frame.size.height + recipeTitleView.frame.size.height + ingredientsContainerHeight + 64
+//
+//
+//        print("ingredients contentViewConstraint.constant \(contentViewConstraint.constant) ")
+//        print("ingredients recipeDetailsView.frame.size.height \(recipeDetailsView.frame.size.height)")
+//        print("ingredients recipeDetailsView.subviews[0].frame.size.height \(recipeDetailsView.subviews[0].frame.size.height)")
+//        print("ingredients recipeDetailsView.subviews[1].frame.size.height \(recipeDetailsView.subviews[1].frame.size.height)")
+//        print("ingredientsContainerHeight \(ingredientsContainerHeight)\n\n")
     }
     
     @IBAction func directionsTabPressed(_ sender: Any) {
@@ -272,6 +341,19 @@ class RecipeDetailViewController: UIViewController {
                 vc.updateView(currentRecipe: currentRecipe)
             }
         }
+        
+        updateHeights()
+//        //initConstraints()
+//        let directionsContainerHeight = directionsViewContainer.subviews[0].frame.size.height
+//        recipeDetailsView.frame.size.height = directionsContainerHeight
+//        contentViewConstraint.constant = recipeImg.frame.size.height + recipeTitleView.frame.size.height + directionsContainerHeight + 64
+//
+//
+//        print("directions contentViewConstraint.constant \(contentViewConstraint.constant)")
+//        print("directions recipeDetailsView.frame.size.height \(recipeDetailsView.frame.size.height)")
+//        print("directions recipeDetailsView.subviews[0].frame.size.height \(recipeDetailsView.subviews[0].frame.size.height)")
+//        print("directions recipeDetailsView.subviews[1].frame.size.height \(recipeDetailsView.subviews[1].frame.size.height)")
+//        print("directionsContainerHeight \(directionsContainerHeight)\n\n")
     }
 
     
