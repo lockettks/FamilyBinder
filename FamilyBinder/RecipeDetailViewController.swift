@@ -237,7 +237,7 @@ class RecipeDetailViewController: UIViewController {
         directionsViewContainer.frame.size.height = directionsContainerHeight
         
         if ingredientsTab.isSelected {
-            recipeDetailsView.frame.size.height = ingredientsContainerHeight
+            recipeDetailsView.frame.size.height = ingredientsContainerHeight - 10 //TODO:  Debug why i need to remove - 10
             recipeDetailsView.subviews[1].frame.size.height = 0
             
             print("INGREDIENTS")
