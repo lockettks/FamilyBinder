@@ -10,22 +10,10 @@ import UIKit
 
 class IngredientsViewController: UIViewController {
     @IBOutlet weak var ingredientsLbl: UILabel!
-//    @IBOutlet weak var lblIngredientsConstraint: NSLayoutConstraint!
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        view.translatesAutoresizingMaskIntoConstraints = false
     }
-    
-//    override func loadView() {
-//        super.loadView()
-//        view.translatesAutoresizingMaskIntoConstraints = false
-//    }
-    
-//    override func viewDidLayoutSubviews() {
-//        preferredContentSize = view.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
-//    }
     
     func updateView(currentRecipe: Recipe){
         let stringHelper = StringHelper()
@@ -37,19 +25,11 @@ class IngredientsViewController: UIViewController {
             }
             label.attributedText = fullAttributedString
             
-//            print("ingredients view height before layout \(view.frame.size.height)")
-//            print("ingredientsLbl height before layout \(ingredientsLbl.frame.size.height)")
-            
             let newIngredientsLblSize = ingredientsLbl.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
-//            lblIngredientsConstraint.constant = newIngredientsLblSize
             
             view.frame.size.height = newIngredientsLblSize.height + 50
             print("label size: \(newIngredientsLblSize.height)")
             print("ingredients view height \(view.frame.size.height)")
-//            ingredientsLbl.frame.size.height = newIngredientsLblSize
-            
-            
-//            print("ingredientsLbl height after layout \(ingredientsLbl.frame.size.height)")
         }
    
     }
