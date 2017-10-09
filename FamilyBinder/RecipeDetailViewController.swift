@@ -34,14 +34,11 @@ class RecipeDetailViewController: UIViewController {
     
     @IBOutlet weak var recipeTitleView: UIView!
     @IBOutlet weak var recipeDetailsView: UIView!
-    @IBOutlet weak var recipeDetailsConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var ingredientsTab: UIButton!
     @IBOutlet weak var ingredientsViewContainer: UIView!
-    @IBOutlet weak var ingredientsViewContainerConstraint: NSLayoutConstraint!
     @IBOutlet weak var directionsTab: UIButton!
     @IBOutlet weak var directionsViewContainer: UIView!
-    @IBOutlet weak var directionsViewContainerConstraint: NSLayoutConstraint!
     @IBOutlet weak var recipeImgBackground: UIImageView!
 
 
