@@ -158,7 +158,7 @@ class RecipeDetailViewController: UIViewController {
             }
             
             if let favoriteBtn = self.favoriteBtn {
-                favoriteBtn.imageView?.contentMode = UIViewContentMode.scaleAspectFit
+                favoriteBtn.imageView?.contentMode = UIViewContentMode.scaleAspectFill
             }
             
             creditLabel?.text = detail.creditText
