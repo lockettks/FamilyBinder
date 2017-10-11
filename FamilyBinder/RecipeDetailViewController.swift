@@ -55,6 +55,11 @@ class RecipeDetailViewController: UIViewController {
     //    // To find Realm File, enter the following when debugger is paused:
     //    // po Realm.Configuration.defaultConfiguration.fileURL
     
+    enum DetailTabs: Int {
+        case ingredients = 0
+        case directions
+    }
+    
     // MARK: - View Manipulation
     
     override func viewDidLoad() {
@@ -128,17 +133,13 @@ class RecipeDetailViewController: UIViewController {
                 }
             }
             
-            
             if let label = self.servingsLabel {
                 label.text = detail.servings.description
             }
 
             ingredientsTab.isSelected = true
-            ingredientsViewContainer.isHidden = false
-            
             directionsTab.isSelected = false
-            directionsViewContainer.isHidden = true
-            
+            toggleDetailsPanels()
             
             if let cookTimeLabel = self.timeToCookLabel {
                 cookTimeLabel.text = "\(detail.readyInMinutes) min"
@@ -246,22 +247,24 @@ class RecipeDetailViewController: UIViewController {
     
     @IBAction func mealPlanBtnPressed(_ sender: Any) {
     }
+
     
-    @IBAction func ingredientsTabPressed(_ sender: Any) {
-        ingredientsTab.isSelected = true
-        directionsTab.isSelected = false
-    
-        toggleDetailsPanels()
-        updateHeights()
-    }
-    
-    @IBAction func directionsTabPressed(_ sender: Any) {
-        ingredientsTab.isSelected = false
-        directionsTab.isSelected = true
+    @IBAction func detailTabPressed(_ sender: UIButton) {
+        switch sender.tag {
+        case DetailTabs.ingredients.rawValue:
+            ingredientsTab.isSelected = true
+            directionsTab.isSelected = false
+        case DetailTabs.directions.rawValue:
+            ingredientsTab.isSelected = false
+            directionsTab.isSelected = true
+        default:
+            break
+        }
         
         toggleDetailsPanels()
         updateHeights()
     }
+    
     
     func toggleDetailsPanels(){
         ingredientsViewContainer.isHidden = !ingredientsTab.isSelected
