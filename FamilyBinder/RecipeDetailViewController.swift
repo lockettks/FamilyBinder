@@ -25,7 +25,7 @@ class RecipeDetailViewController: UIViewController {
     
     @IBOutlet weak var recipeTitleLabel: UILabel!
     @IBOutlet weak var creditLabel: UILabel!
-
+    
     @IBOutlet weak var servingsLabel: UILabel!
     @IBOutlet weak var addRecipeBtn: UIBarButtonItem!
     @IBOutlet weak var favoriteBtn: UIButton!
@@ -40,8 +40,8 @@ class RecipeDetailViewController: UIViewController {
     @IBOutlet weak var directionsTab: UIButton!
     @IBOutlet weak var directionsViewContainer: UIView!
     @IBOutlet weak var recipeImgBackground: UIImageView!
-
-
+    
+    
     // MARK: View Controller Variables
     var scrollViewPropertiesInitialized = false
     var favoritedRecipe = Recipe()
@@ -69,7 +69,7 @@ class RecipeDetailViewController: UIViewController {
                 self.detailItem = firstRecipe
             }
         }
-
+        
         ingredientsTab.setBackgroundColor(color: UIColor(hex: "DAE0E1"), forState: .normal)
         ingredientsTab.setBackgroundColor(color: UIColor(hex: "C1212E"), forState: .selected)
         directionsTab.setBackgroundColor(color: UIColor(hex: "DAE0E1"), forState: .normal)
@@ -136,7 +136,7 @@ class RecipeDetailViewController: UIViewController {
             if let label = self.servingsLabel {
                 label.text = detail.servings.description
             }
-
+            
             ingredientsTab.isSelected = true
             directionsTab.isSelected = false
             toggleDetailsPanels()
@@ -168,11 +168,11 @@ class RecipeDetailViewController: UIViewController {
                 setFavoriteIconImg()
             }
             
-                    if let vc = directionsViewController {
-                            vc.configureView(currentRecipe: detail)
-                    }
+            if let vc = directionsViewController {
+                vc.configureView(currentRecipe: detail)
+            }
             if let vc = ingredientsViewController {
-                    vc.configureView(currentRecipe: detail)
+                vc.configureView(currentRecipe: detail)
             }
         }
     }
@@ -183,7 +183,7 @@ class RecipeDetailViewController: UIViewController {
         super.updateViewConstraints()
         updateHeights()
     }
-
+    
     
     func updateHeights(){
         ingredientsViewContainer.subviews[0].translatesAutoresizingMaskIntoConstraints = false
@@ -205,7 +205,7 @@ class RecipeDetailViewController: UIViewController {
         
         contentViewConstraint.constant = recipeImg.frame.size.height + recipeTitleView.frame.size.height + recipeDetailsView.frame.size.height
     }
-
+    
     
     // MARK: - Action Handlers
     
@@ -247,7 +247,7 @@ class RecipeDetailViewController: UIViewController {
     
     @IBAction func mealPlanBtnPressed(_ sender: Any) {
     }
-
+    
     
     @IBAction func detailTabPressed(_ sender: UIButton) {
         switch sender.tag {
@@ -270,7 +270,7 @@ class RecipeDetailViewController: UIViewController {
         ingredientsViewContainer.isHidden = !ingredientsTab.isSelected
         directionsViewContainer.isHidden = !directionsTab.isSelected
     }
-
+    
     
     override func viewDidDisappear(_ animated: Bool) {
         if let thisRecipe = self.detailItem {
@@ -338,7 +338,7 @@ class RecipeDetailViewController: UIViewController {
             directionsViewController = segue.destination as? DirectionsViewController
             directionsViewController?.view.translatesAutoresizingMaskIntoConstraints = false
         }
-    
+        
     }
     
     override func didReceiveMemoryWarning() {
