@@ -178,16 +178,9 @@ class RecipeDetailViewController: UIViewController {
     
     override func updateViewConstraints() {
         super.updateViewConstraints()
-//        initConstraints()
         updateHeights()
     }
-//
-//    func initConstraints() {
-//        if !didSetConstraints {
-//            didSetConstraints = true
-//            updateHeights()
-//        }
-//    }
+
     
     func updateHeights(){
         ingredientsViewContainer.subviews[0].translatesAutoresizingMaskIntoConstraints = false
