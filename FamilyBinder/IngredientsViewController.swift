@@ -15,7 +15,7 @@ class IngredientsViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    func updateView(currentRecipe: Recipe){
+    func configureView(currentRecipe: Recipe){
         let stringHelper = StringHelper()
         if let label = self.ingredientsLbl {
             let attributesDictionary = [NSFontAttributeName : label.font]

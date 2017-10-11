@@ -12,7 +12,7 @@ class DirectionsViewController: UIViewController {
 
     @IBOutlet weak var directionsLbl: UILabel!
     
-    func updateView(currentRecipe: Recipe) {
+    func configureView(currentRecipe: Recipe) {
         let stringHelper = StringHelper()
         if let label = directionsLbl {
             let attributesDictionary = [NSFontAttributeName : label.font]

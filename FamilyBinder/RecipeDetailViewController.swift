@@ -139,11 +139,6 @@ class RecipeDetailViewController: UIViewController {
             directionsTab.isSelected = false
             directionsViewContainer.isHidden = true
             
-            if let vc = ingredientsViewController {
-                if let currentRecipe = self.detailItem {
-                    vc.updateView(currentRecipe: currentRecipe)
-                }
-            }
             
             if let cookTimeLabel = self.timeToCookLabel {
                 cookTimeLabel.text = "\(detail.readyInMinutes) min"
@@ -170,6 +165,13 @@ class RecipeDetailViewController: UIViewController {
                     detail.isFavorite = true
                 }
                 setFavoriteIconImg()
+            }
+            
+                    if let vc = directionsViewController {
+                            vc.configureView(currentRecipe: detail)
+                    }
+            if let vc = ingredientsViewController {
+                    vc.configureView(currentRecipe: detail)
             }
         }
     }
@@ -247,32 +249,23 @@ class RecipeDetailViewController: UIViewController {
     
     @IBAction func ingredientsTabPressed(_ sender: Any) {
         ingredientsTab.isSelected = true
-        ingredientsViewContainer.isHidden = false
         directionsTab.isSelected = false
-        directionsViewContainer.isHidden = true
-        
-        if let vc = ingredientsViewController {
-            if let currentRecipe = self.detailItem {
-                vc.updateView(currentRecipe: currentRecipe)
-            }
-        }
-        
+    
+        toggleDetailsPanels()
         updateHeights()
     }
     
     @IBAction func directionsTabPressed(_ sender: Any) {
         ingredientsTab.isSelected = false
-        ingredientsViewContainer.isHidden = true
         directionsTab.isSelected = true
-        directionsViewContainer.isHidden = false
         
-        if let vc = directionsViewController {
-            if let currentRecipe = self.detailItem {
-                vc.updateView(currentRecipe: currentRecipe)
-            }
-        }
-        
+        toggleDetailsPanels()
         updateHeights()
+    }
+    
+    func toggleDetailsPanels(){
+        ingredientsViewContainer.isHidden = !ingredientsTab.isSelected
+        directionsViewContainer.isHidden = !directionsTab.isSelected
     }
 
     
