@@ -27,7 +27,7 @@ class IngredientsViewController: UIViewController {
             
             let newIngredientsLblSize = ingredientsLbl.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
             
-            view.frame.size.height = newIngredientsLblSize.height + 50
+            view.frame.size.height = newIngredientsLblSize.height + 56
         }
    
     }

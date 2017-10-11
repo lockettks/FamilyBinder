@@ -43,11 +43,9 @@ class RecipeDetailViewController: UIViewController {
     
     
     // MARK: View Controller Variables
-    var scrollViewPropertiesInitialized = false
     var favoritedRecipe = Recipe()
     var ingredientsViewController:IngredientsViewController?
     var directionsViewController:DirectionsViewController?
-    var didSetConstraints = false
     
     //    // Get the default Realm
     let realm = try! Realm()
@@ -202,6 +200,13 @@ class RecipeDetailViewController: UIViewController {
             recipeDetailsView.frame.size.height = directionsContainerHeight
             recipeDetailsView.subviews[0].frame.size.height = 0
         }
+//        contentView.frame.size.height = recipeImg.frame.size.height + recipeTitleView.frame.size.height + recipeDetailsView.frame.size.height + 56
+        
+        
+//        view.setNeedsLayout()
+//        view.layoutIfNeeded()
+//        view.layoutSubviews()
+        
         
         contentViewConstraint.constant = recipeImg.frame.size.height + recipeTitleView.frame.size.height + recipeDetailsView.frame.size.height
     }

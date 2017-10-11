@@ -24,7 +24,7 @@ class DirectionsViewController: UIViewController {
             label.text = fullAttributedString.string
             
             let newDirectionsLblSize = directionsLbl.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
-            view.frame.size.height = newDirectionsLblSize.height + 50
+            view.frame.size.height = newDirectionsLblSize.height + 56
         }
     }
     
