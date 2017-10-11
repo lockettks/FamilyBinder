@@ -200,13 +200,6 @@ class RecipeDetailViewController: UIViewController {
             recipeDetailsView.frame.size.height = directionsContainerHeight
             recipeDetailsView.subviews[0].frame.size.height = 0
         }
-//        contentView.frame.size.height = recipeImg.frame.size.height + recipeTitleView.frame.size.height + recipeDetailsView.frame.size.height + 56
-        
-        
-//        view.setNeedsLayout()
-//        view.layoutIfNeeded()
-//        view.layoutSubviews()
-        
         
         contentViewConstraint.constant = recipeImg.frame.size.height + recipeTitleView.frame.size.height + recipeDetailsView.frame.size.height
     }
