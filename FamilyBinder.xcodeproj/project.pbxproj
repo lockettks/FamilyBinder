@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6CDEA317B4F3B4438B4DA2D9 /* Pods_FamilyBinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F183672AF08D8E0DAEAA01C4 /* Pods_FamilyBinder.framework */; };
+		9521C1F11F8F239300B9CAC1 /* RecipeTitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9521C1F01F8F239300B9CAC1 /* RecipeTitleViewController.swift */; };
+		9521C1F31F8F24B200B9CAC1 /* RecipeTabsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9521C1F21F8F24B200B9CAC1 /* RecipeTabsViewController.swift */; };
 		954D7AAF1F198CB3000480A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954D7AAE1F198CB3000480A7 /* AppDelegate.swift */; };
 		954D7AB11F198CB3000480A7 /* RecipesMasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954D7AB01F198CB3000480A7 /* RecipesMasterViewController.swift */; };
 		954D7AB31F198CB3000480A7 /* RecipeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954D7AB21F198CB3000480A7 /* RecipeDetailViewController.swift */; };
@@ -40,6 +42,8 @@
 /* Begin PBXFileReference section */
 		896135F5E96B65B86C6B8365 /* Pods-FamilyBinder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FamilyBinder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FamilyBinder/Pods-FamilyBinder.debug.xcconfig"; sourceTree = "<group>"; };
 		926518CB44F8297EDDC2ED1D /* Pods-FamilyBinder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FamilyBinder.release.xcconfig"; path = "Pods/Target Support Files/Pods-FamilyBinder/Pods-FamilyBinder.release.xcconfig"; sourceTree = "<group>"; };
+		9521C1F01F8F239300B9CAC1 /* RecipeTitleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTitleViewController.swift; sourceTree = "<group>"; };
+		9521C1F21F8F24B200B9CAC1 /* RecipeTabsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTabsViewController.swift; sourceTree = "<group>"; };
 		954D7AAB1F198CB3000480A7 /* FamilyBinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FamilyBinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		954D7AAE1F198CB3000480A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		954D7AB01F198CB3000480A7 /* RecipesMasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesMasterViewController.swift; sourceTree = "<group>"; };
@@ -178,7 +182,9 @@
 			children = (
 				954D7AB01F198CB3000480A7 /* RecipesMasterViewController.swift */,
 				956789AF1F290E600070FEEB /* RecipeTableViewCell.swift */,
+				9521C1F01F8F239300B9CAC1 /* RecipeTitleViewController.swift */,
 				954D7AB21F198CB3000480A7 /* RecipeDetailViewController.swift */,
+				9521C1F21F8F24B200B9CAC1 /* RecipeTabsViewController.swift */,
 				95628D6F1F719C9500566EF1 /* IngredientsViewController.swift */,
 				95628D711F719CC600566EF1 /* DirectionsViewController.swift */,
 				956789991F216D330070FEEB /* AddToMealPlanTableViewController.swift */,
@@ -351,6 +357,8 @@
 				956789B91F2FDA660070FEEB /* UserContextCache.swift in Sources */,
 				956789981F2156190070FEEB /* MealPlan.swift in Sources */,
 				956789B31F294F180070FEEB /* Instruction.swift in Sources */,
+				9521C1F11F8F239300B9CAC1 /* RecipeTitleViewController.swift in Sources */,
+				9521C1F31F8F24B200B9CAC1 /* RecipeTabsViewController.swift in Sources */,
 				956789961F2147D90070FEEB /* MealTypes.swift in Sources */,
 				9567899D1F226DF10070FEEB /* DateHelper.swift in Sources */,
 				954D7ACD1F19D8AE000480A7 /* RecipeRouter.swift in Sources */,
