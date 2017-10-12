@@ -111,11 +111,7 @@ class RecipeDetailViewController: UIViewController {
     func configureView() {
         // Update the user interface for the detail item.
         if let detail = self.detailItem {
-            self.navigationItem.title = detail.title
             
-            if let recipeTitleLabel = self.recipeTitleLabel {
-                recipeTitleLabel.text = detail.title
-            }
             if let img = self.recipeImg {
                 let placeholderImage = #imageLiteral(resourceName: "dinnerPlate")
                 if let url = URL(string: detail.imageURL) {
@@ -129,6 +125,15 @@ class RecipeDetailViewController: UIViewController {
                     img.af_setImage(withURL: url, placeholderImage: placeholderImage)
                     detail.image = img.image
                 }
+            }
+            
+            self.navigationItem.title = detail.title
+            
+            if let recipeTitleLabel = self.recipeTitleLabel {
+                recipeTitleLabel.text = detail.title
+            }
+            if let creditLabel = self.creditLabel {
+                creditLabel.text = detail.creditText
             }
             
             if let label = self.servingsLabel {
@@ -154,8 +159,6 @@ class RecipeDetailViewController: UIViewController {
             if let favoriteBtn = self.favoriteBtn {
                 favoriteBtn.imageView?.contentMode = UIViewContentMode.scaleAspectFill
             }
-            
-            creditLabel?.text = detail.creditText
             
             addRecipeBtn.isEnabled = true
             
