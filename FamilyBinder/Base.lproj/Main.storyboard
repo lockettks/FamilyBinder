@@ -66,38 +66,6 @@
                                                     <constraint firstAttribute="width" constant="375" id="6zO-Zd-hQl"/>
                                                 </constraints>
                                             </imageView>
-                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="osP-Sm-LYO" userLabel="Recipe Details View">
-                                                <rect key="frame" x="0.0" y="537" width="375" height="130"/>
-                                                <subviews>
-                                                    <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZBK-SM-iqu" userLabel="Ingredients Container View">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="130"/>
-                                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <connections>
-                                                            <segue destination="TL9-DI-dLf" kind="embed" identifier="ingredientsSegue" id="VyI-Ir-XGn"/>
-                                                        </connections>
-                                                    </containerView>
-                                                    <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vzs-LZ-Qdh" userLabel="Directions Container View">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="130"/>
-                                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <connections>
-                                                            <segue destination="8Fr-AF-ew5" kind="embed" identifier="directionsSegue" id="E42-Fy-DVL"/>
-                                                        </connections>
-                                                    </containerView>
-                                                </subviews>
-                                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="vzs-LZ-Qdh" secondAttribute="trailing" id="1uj-ca-s29"/>
-                                                    <constraint firstItem="vzs-LZ-Qdh" firstAttribute="width" secondItem="osP-Sm-LYO" secondAttribute="width" id="Aeg-UJ-w9A"/>
-                                                    <constraint firstAttribute="trailing" secondItem="ZBK-SM-iqu" secondAttribute="trailing" id="Ned-Sm-idO"/>
-                                                    <constraint firstItem="ZBK-SM-iqu" firstAttribute="leading" secondItem="osP-Sm-LYO" secondAttribute="leading" id="POp-gt-VeZ"/>
-                                                    <constraint firstItem="ZBK-SM-iqu" firstAttribute="top" secondItem="osP-Sm-LYO" secondAttribute="top" id="PSJ-OI-DvO"/>
-                                                    <constraint firstAttribute="bottom" secondItem="vzs-LZ-Qdh" secondAttribute="bottom" priority="250" id="ZwG-AX-YI2"/>
-                                                    <constraint firstItem="vzs-LZ-Qdh" firstAttribute="top" secondItem="osP-Sm-LYO" secondAttribute="top" id="kkm-JO-6Ut"/>
-                                                    <constraint firstItem="ZBK-SM-iqu" firstAttribute="width" secondItem="osP-Sm-LYO" secondAttribute="width" id="lUy-SF-vhI"/>
-                                                    <constraint firstAttribute="bottom" secondItem="ZBK-SM-iqu" secondAttribute="bottom" priority="250" id="p6K-Vk-Lj0"/>
-                                                    <constraint firstItem="vzs-LZ-Qdh" firstAttribute="leading" secondItem="osP-Sm-LYO" secondAttribute="leading" id="uld-v2-UFN"/>
-                                                </constraints>
-                                            </view>
                                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pxe-2U-Wjp">
                                                 <rect key="frame" x="0.0" y="325" width="375" height="179"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -106,7 +74,7 @@
                                                 </connections>
                                             </containerView>
                                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vRp-yY-tRC">
-                                                <rect key="frame" x="0.0" y="504" width="375" height="33"/>
+                                                <rect key="frame" x="0.0" y="504" width="375" height="163"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                 <connections>
                                                     <segue destination="vfk-Em-P5W" kind="embed" identifier="tabsSegue" id="IIj-jZ-5VL"/>
@@ -117,23 +85,16 @@
                                             <constraint firstItem="vq0-5k-8yN" firstAttribute="leading" secondItem="58z-TB-dOe" secondAttribute="leading" id="1W9-Bt-Yrd"/>
                                             <constraint firstItem="vq0-5k-8yN" firstAttribute="top" secondItem="58z-TB-dOe" secondAttribute="top" id="6Ox-b6-vK1"/>
                                             <constraint firstItem="vq0-5k-8yN" firstAttribute="leading" secondItem="58z-TB-dOe" secondAttribute="leading" id="6nq-A5-etO"/>
-                                            <constraint firstItem="vq0-5k-8yN" firstAttribute="centerX" secondItem="osP-Sm-LYO" secondAttribute="centerX" id="7BW-He-nmx"/>
-                                            <constraint firstItem="osP-Sm-LYO" firstAttribute="leading" secondItem="58z-TB-dOe" secondAttribute="leading" id="9Q4-Md-aOZ"/>
                                             <constraint firstItem="vq0-5k-8yN" firstAttribute="top" secondItem="58z-TB-dOe" secondAttribute="top" id="KS2-AK-ZEh"/>
                                             <constraint firstAttribute="height" priority="200" constant="667" id="RYy-AI-bw1"/>
                                             <constraint firstItem="vq0-5k-8yN" firstAttribute="leading" secondItem="58z-TB-dOe" secondAttribute="leading" id="TzP-st-HqX"/>
                                             <constraint firstItem="vq0-5k-8yN" firstAttribute="top" secondItem="58z-TB-dOe" secondAttribute="top" id="UCL-A5-5kY"/>
                                             <constraint firstItem="vq0-5k-8yN" firstAttribute="top" secondItem="58z-TB-dOe" secondAttribute="top" id="UNm-BM-Jlf"/>
-                                            <constraint firstAttribute="bottom" secondItem="osP-Sm-LYO" secondAttribute="bottom" id="cTW-SK-vDS"/>
                                             <constraint firstAttribute="trailing" secondItem="vq0-5k-8yN" secondAttribute="trailing" id="dVb-Zd-UvO"/>
                                             <constraint firstItem="vq0-5k-8yN" firstAttribute="centerX" secondItem="58z-TB-dOe" secondAttribute="centerX" id="dfi-V1-8SD"/>
-                                            <constraint firstItem="vq0-5k-8yN" firstAttribute="leading" secondItem="osP-Sm-LYO" secondAttribute="leading" id="nL2-7c-3yf"/>
                                             <constraint firstAttribute="trailing" secondItem="vq0-5k-8yN" secondAttribute="trailing" id="ncL-qa-Vw4"/>
                                             <constraint firstItem="vq0-5k-8yN" firstAttribute="leading" secondItem="58z-TB-dOe" secondAttribute="leading" id="ohY-Ue-W0D"/>
                                             <constraint firstAttribute="width" constant="375" id="sPS-Xh-xMm"/>
-                                            <constraint firstAttribute="trailing" secondItem="osP-Sm-LYO" secondAttribute="trailing" id="umL-UM-816"/>
-                                            <constraint firstItem="vq0-5k-8yN" firstAttribute="trailing" secondItem="osP-Sm-LYO" secondAttribute="trailing" id="vxN-Y7-1b4"/>
-                                            <constraint firstItem="osP-Sm-LYO" firstAttribute="width" secondItem="58z-TB-dOe" secondAttribute="width" id="xA2-y6-pQP"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -177,12 +138,9 @@
                         <outlet property="contentView" destination="58z-TB-dOe" id="KuF-3c-JgS"/>
                         <outlet property="contentViewConstraint" destination="RYy-AI-bw1" id="023-Cj-B6H"/>
                         <outlet property="creditLabel" destination="lRd-1e-oO6" id="2Ql-wv-uNp"/>
-                        <outlet property="directionsViewContainer" destination="vzs-LZ-Qdh" id="kTD-dM-eu6"/>
                         <outlet property="favoriteBtn" destination="Fg6-dX-sVh" id="TSY-wu-hUJ"/>
-                        <outlet property="ingredientsViewContainer" destination="ZBK-SM-iqu" id="ugI-uu-9Uz"/>
                         <outlet property="likesLabel" destination="VhE-R3-X4v" id="JPA-Ze-E9r"/>
                         <outlet property="mealPlanBtn" destination="Jty-0Z-tbb" id="vOh-uh-Zo9"/>
-                        <outlet property="recipeDetailsView" destination="osP-Sm-LYO" id="NkS-MP-YBF"/>
                         <outlet property="recipeImg" destination="vq0-5k-8yN" id="LUK-bp-qrF"/>
                         <outlet property="recipeTitleLabel" destination="9bT-Vn-xgO" id="1w7-bS-55P"/>
                         <outlet property="recipeTitleView" destination="1aL-vW-l1D" id="uxl-8B-dzV"/>
@@ -636,12 +594,12 @@
                     </view>
                     <size key="freeformSize" width="375" height="130"/>
                     <connections>
-                        <outlet property="ingredientsLbl" destination="3qJ-sx-tLP" id="dMS-ra-n9c"/>
+                        <outlet property="ingredientsLbl" destination="3qJ-sx-tLP" id="jpz-ku-gau"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uhH-7r-nTM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="362" y="598"/>
+            <point key="canvasLocation" x="1249" y="613"/>
         </scene>
         <!--Directions View Controller-->
         <scene sceneID="xIF-WH-BVy">
@@ -681,12 +639,12 @@
                     </view>
                     <size key="freeformSize" width="375" height="130"/>
                     <connections>
-                        <outlet property="directionsLbl" destination="0XM-y9-sOw" id="XH0-OK-Fpv"/>
+                        <outlet property="directionsLbl" destination="0XM-y9-sOw" id="JhI-gD-9Km"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xKw-yq-G2P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1031" y="597"/>
+            <point key="canvasLocation" x="1886" y="613"/>
         </scene>
         <!--Recipe Title View Controller-->
         <scene sceneID="VrU-lX-PQi">
@@ -891,7 +849,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aog-Jk-AXk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1612" y="125"/>
+            <point key="canvasLocation" x="1612" y="40"/>
         </scene>
         <!--Recipe Tabs View Controller-->
         <scene sceneID="4te-Cj-fRH">
@@ -902,7 +860,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Lmq-1c-nB2"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="QeB-xJ-eN9">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="33"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="163"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gi9-A6-E2J" userLabel="Ingredients Tab">
@@ -918,7 +876,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="detailTabPressed:" destination="vfk-Em-P5W" eventType="touchUpInside" id="a4H-9x-SK8"/>
+                                    <action selector="detailTabPressed:" destination="vfk-Em-P5W" eventType="touchUpInside" id="rVt-VU-8P8"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" horizontalCompressionResistancePriority="752" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fsf-7g-p9T" userLabel="Directions Tab">
@@ -934,15 +892,41 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="detailTabPressed:" destination="vfk-Em-P5W" eventType="touchUpInside" id="8Xf-H1-Ldf"/>
+                                    <action selector="detailTabPressed:" destination="vfk-Em-P5W" eventType="touchUpInside" id="Okz-qC-Js2"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="osP-Sm-LYO" userLabel="Recipe Details View">
+                                <rect key="frame" x="0.0" y="33" width="375" height="130"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZBK-SM-iqu" userLabel="Ingredients Container View">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="130"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <segue destination="TL9-DI-dLf" kind="embed" identifier="ingredientsSegue" id="VyI-Ir-XGn"/>
+                                        </connections>
+                                    </containerView>
+                                    <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vzs-LZ-Qdh" userLabel="Directions Container View">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="130"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <segue destination="8Fr-AF-ew5" kind="embed" identifier="directionsSegue" id="E42-Fy-DVL"/>
+                                        </connections>
+                                    </containerView>
+                                </subviews>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="detailsView" destination="osP-Sm-LYO" id="t3F-Al-Z6z"/>
                         <outlet property="directionsBtn" destination="fsf-7g-p9T" id="iBe-Dj-WgY"/>
+                        <outlet property="directionsContainer" destination="vzs-LZ-Qdh" id="aAG-wH-igH"/>
                         <outlet property="ingredientsBtn" destination="gi9-A6-E2J" id="iu5-yh-woB"/>
+                        <outlet property="ingredientsContainer" destination="ZBK-SM-iqu" id="5oj-Bs-elI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6bE-rV-xaL" userLabel="First Responder" sceneMemberID="firstResponder"/>

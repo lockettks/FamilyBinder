@@ -9,37 +9,44 @@
 import Foundation
 import UIKit
 
-
+// MARK: Protocols
 protocol TabToggledDelegate: class {
-    func didSelectTab()
+    func updateTabHeights()
 }
 
 class RecipeTabsViewController: UIViewController {
-
+    // MARK: Outlets
     @IBOutlet weak var ingredientsBtn: UIButton!
     @IBOutlet weak var directionsBtn: UIButton!
+    @IBOutlet weak var detailsView: UIView!
+    @IBOutlet weak var ingredientsContainer: UIView!
+    @IBOutlet weak var directionsContainer: UIView!
+    
+    // MARK: Public Properties
     weak var tabToggledDelegate: TabToggledDelegate?
+
+    // MARK: Private Properties
+    private var currentRecipe = Recipe()
     
+    // MARK: View Controller Variables
+    var ingredientsViewController:IngredientsViewController?
+    var directionsViewController:DirectionsViewController?
     
+    // MARK: View Loaders
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    func configureView(currentRecipe: Recipe){
-//        let stringHelper = StringHelper()
-//        if let label = self.ingredientsLbl {
-//            let attributesDictionary = [NSFontAttributeName : label.font]
-//            let fullAttributedString = NSMutableAttributedString(string: "", attributes: (attributesDictionary as Any as! [String : Any]))
-//            for ingredient in (currentRecipe.ingredients) where ingredient.originalString != "" {
-//                fullAttributedString.append(stringHelper.convertToBulletedItem(textToConvert: ingredient.originalString))
-//            }
-//            label.attributedText = fullAttributedString
-//
-//            let newIngredientsLblSize = ingredientsLbl.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
-//
-//            view.frame.size.height = newIngredientsLblSize.height + 56
-//        }
-        
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        configureView()
+    }
+    
+    func setCurrentRecipe(newRecipe: Recipe){
+        self.currentRecipe = newRecipe
+    }
+    
+    func configureView(){
         ingredientsBtn.setBackgroundColor(color: UIColor(hex: "DAE0E1"), forState: .normal)
         ingredientsBtn.setBackgroundColor(color: UIColor(hex: "C1212E"), forState: .selected)
         ingredientsBtn.isSelected = true
@@ -48,24 +55,43 @@ class RecipeTabsViewController: UIViewController {
         directionsBtn.setBackgroundColor(color: UIColor(hex: "C1212E"), forState: .selected)
         directionsBtn.isSelected = false
         
+        if let vc = directionsViewController {
+            vc.configureView(currentRecipe: currentRecipe)
+        }
+        if let vc = ingredientsViewController {
+            vc.configureView(currentRecipe: currentRecipe)
+        }
     }
     
-    
+    // MARK: Actions
     @IBAction func detailTabPressed(_ sender: UIButton) {
-        tabToggledDelegate?.didSelectTab()
-//        switch sender.tag {
-//        case DetailTabs.ingredients.rawValue:
-//            ingredientsTab.isSelected = true
-//            directionsTab.isSelected = false
-//        case DetailTabs.directions.rawValue:
-//            ingredientsTab.isSelected = false
-//            directionsTab.isSelected = true
-//        default:
-//            break
-//        }
-//
-//        toggleDetailsPanels()
-//        updateHeights()
+        
+        switch sender.tag {
+        case DetailTabs.ingredients.rawValue:
+            ingredientsBtn.isSelected = true
+            directionsBtn.isSelected = false
+        case DetailTabs.directions.rawValue:
+            ingredientsBtn.isSelected = false
+            directionsBtn.isSelected = true
+        default:
+            break
+        }
+        
+        ingredientsContainer.isHidden = !ingredientsBtn.isSelected
+        directionsContainer.isHidden = !directionsBtn.isSelected
+        
+        tabToggledDelegate?.updateTabHeights()
     }
     
+    
+    // MARK: - Segues
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ingredientsSegue" {
+            ingredientsViewController = segue.destination as? IngredientsViewController
+            ingredientsViewController?.view.translatesAutoresizingMaskIntoConstraints = false
+        } else if segue.identifier == "directionsSegue" {
+            directionsViewController = segue.destination as? DirectionsViewController
+            directionsViewController?.view.translatesAutoresizingMaskIntoConstraints = false
+        }
+    }
 }

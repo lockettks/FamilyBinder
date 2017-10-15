@@ -9,8 +9,12 @@
 import UIKit
 import RealmSwift
 
-class RecipeDetailViewController: UIViewController, TabToggledDelegate {
+enum DetailTabs: Int {
+    case ingredients = 0
+    case directions
+}
 
+class RecipeDetailViewController: UIViewController, TabToggledDelegate {
     // MARK: - Outlets
     
     @IBOutlet weak var backBtn: UIButton!
@@ -34,20 +38,14 @@ class RecipeDetailViewController: UIViewController, TabToggledDelegate {
     @IBOutlet weak var mealPlanBtn: UIButton!
     
     @IBOutlet weak var recipeTitleView: UIView!
-    @IBOutlet weak var recipeDetailsView: UIView!
     
-    @IBOutlet weak var ingredientsTab: UIButton!
-    @IBOutlet weak var ingredientsViewContainer: UIView!
-    @IBOutlet weak var directionsTab: UIButton!
-    @IBOutlet weak var directionsViewContainer: UIView!
     @IBOutlet weak var recipeImgBackground: UIImageView!
     
     
     // MARK: View Controller Variables
     var favoritedRecipe = Recipe()
     var recipeTabsViewController:RecipeTabsViewController?
-    var ingredientsViewController:IngredientsViewController?
-    var directionsViewController:DirectionsViewController?
+
     
     //    // Get the default Realm
     let realm = try! Realm()
@@ -55,10 +53,7 @@ class RecipeDetailViewController: UIViewController, TabToggledDelegate {
     //    // To find Realm File, enter the following when debugger is paused:
     //    // po Realm.Configuration.defaultConfiguration.fileURL
     
-    enum DetailTabs: Int {
-        case ingredients = 0
-        case directions
-    }
+
     
     // MARK: - View Manipulation
     
@@ -137,10 +132,6 @@ class RecipeDetailViewController: UIViewController, TabToggledDelegate {
                 label.text = detail.servings.description
             }
             
-//            ingredientsTab.isSelected = true
-//            directionsTab.isSelected = false
-//            toggleDetailsPanels()
-            
             if let cookTimeLabel = self.timeToCookLabel {
                 cookTimeLabel.text = "\(detail.readyInMinutes) min"
             }
@@ -167,13 +158,8 @@ class RecipeDetailViewController: UIViewController, TabToggledDelegate {
             }
             
             if let vc = recipeTabsViewController {
-                vc.configureView(currentRecipe: detail)
-            }
-            if let vc = directionsViewController {
-                vc.configureView(currentRecipe: detail)
-            }
-            if let vc = ingredientsViewController {
-                vc.configureView(currentRecipe: detail)
+                vc.setCurrentRecipe(newRecipe: detail)
+                vc.configureView()
             }
         }
     }
@@ -182,19 +168,19 @@ class RecipeDetailViewController: UIViewController, TabToggledDelegate {
     
     override func updateViewConstraints() {
         super.updateViewConstraints()
-        updateHeights()
+//        updateHeights()
     }
     
     
-    func updateHeights(){
-        ingredientsViewContainer.subviews[0].translatesAutoresizingMaskIntoConstraints = false
-        directionsViewContainer.subviews[0].translatesAutoresizingMaskIntoConstraints = false
-        
-        let ingredientsContainerHeight = ingredientsViewContainer.subviews[0].frame.size.height
-        ingredientsViewContainer.frame.size.height = ingredientsContainerHeight
-        let directionsContainerHeight = directionsViewContainer.subviews[0].frame.size.height
-        directionsViewContainer.frame.size.height = directionsContainerHeight
-        
+//    func updateHeights(){
+//        ingredientsViewContainer.subviews[0].translatesAutoresizingMaskIntoConstraints = false
+//        directionsViewContainer.subviews[0].translatesAutoresizingMaskIntoConstraints = false
+//
+//        let ingredientsContainerHeight = ingredientsViewContainer.subviews[0].frame.size.height
+//        ingredientsViewContainer.frame.size.height = ingredientsContainerHeight
+//        let directionsContainerHeight = directionsViewContainer.subviews[0].frame.size.height
+//        directionsViewContainer.frame.size.height = directionsContainerHeight
+    
 //        if ingredientsTab.isSelected {
 //            recipeDetailsView.frame.size.height = ingredientsContainerHeight - 10 //TODO:  Debug why i need to remove - 10
 //            recipeDetailsView.subviews[1].frame.size.height = 0
@@ -205,7 +191,7 @@ class RecipeDetailViewController: UIViewController, TabToggledDelegate {
 //        }
         
 //        contentViewConstraint.constant = recipeImg.frame.size.height + recipeTitleView.frame.size.height + recipeDetailsView.frame.size.height
-    }
+//    }
     
     
     // MARK: - Action Handlers
@@ -251,10 +237,8 @@ class RecipeDetailViewController: UIViewController, TabToggledDelegate {
     
     
     // MARK: Protocol Functions
-    func didSelectTab(){
-        print("it worked")
-//        ingredientsViewContainer.isHidden = !ingredientsTab.isSelected
-//        directionsViewContainer.isHidden = !directionsTab.isSelected
+    func updateTabHeights(){
+        
     }
     
     
@@ -315,14 +299,6 @@ class RecipeDetailViewController: UIViewController, TabToggledDelegate {
                     controller.selectedRecipe = detail
                 }
             }
-        } else if segue.identifier == "ingredientsSegue" {
-            ingredientsViewController = segue.destination as? IngredientsViewController
-            ingredientsViewController?.view.translatesAutoresizingMaskIntoConstraints = false
-            
-            
-        } else if segue.identifier == "directionsSegue" {
-            directionsViewController = segue.destination as? DirectionsViewController
-            directionsViewController?.view.translatesAutoresizingMaskIntoConstraints = false
         } else if segue.identifier == "tabsSegue" {
             recipeTabsViewController = segue.destination as? RecipeTabsViewController
             recipeTabsViewController?.tabToggledDelegate = self
