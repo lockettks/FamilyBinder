@@ -64,38 +64,38 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="325"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="325" id="41l-yO-GXT"/>
-                                                    <constraint firstAttribute="width" constant="375" id="6zO-Zd-hQl"/>
                                                 </constraints>
                                             </imageView>
-                                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pxe-2U-Wjp">
+                                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pxe-2U-Wjp">
                                                 <rect key="frame" x="0.0" y="325" width="375" height="179"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                 <connections>
                                                     <segue destination="aId-Aq-4cR" kind="embed" identifier="titleSegue" id="WZ9-fL-LwQ"/>
                                                 </connections>
                                             </containerView>
-                                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vRp-yY-tRC">
+                                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vRp-yY-tRC">
                                                 <rect key="frame" x="0.0" y="504" width="375" height="163"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                 <connections>
                                                     <segue destination="vfk-Em-P5W" kind="embed" identifier="tabsSegue" id="IIj-jZ-5VL"/>
                                                 </connections>
                                             </containerView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="vq0-5k-8yN" firstAttribute="leading" secondItem="58z-TB-dOe" secondAttribute="leading" id="1W9-Bt-Yrd"/>
-                                            <constraint firstItem="vq0-5k-8yN" firstAttribute="top" secondItem="58z-TB-dOe" secondAttribute="top" id="6Ox-b6-vK1"/>
-                                            <constraint firstItem="vq0-5k-8yN" firstAttribute="leading" secondItem="58z-TB-dOe" secondAttribute="leading" id="6nq-A5-etO"/>
-                                            <constraint firstItem="vq0-5k-8yN" firstAttribute="top" secondItem="58z-TB-dOe" secondAttribute="top" id="KS2-AK-ZEh"/>
+                                            <constraint firstItem="vq0-5k-8yN" firstAttribute="top" secondItem="58z-TB-dOe" secondAttribute="top" id="2Nv-is-p0X"/>
+                                            <constraint firstItem="vRp-yY-tRC" firstAttribute="width" secondItem="58z-TB-dOe" secondAttribute="width" id="4Ck-Zt-e0O"/>
+                                            <constraint firstItem="vRp-yY-tRC" firstAttribute="top" secondItem="pxe-2U-Wjp" secondAttribute="bottom" id="6o5-HK-V8l"/>
+                                            <constraint firstAttribute="trailing" secondItem="vRp-yY-tRC" secondAttribute="trailing" id="7cB-LY-7ue"/>
                                             <constraint firstAttribute="height" priority="200" constant="667" id="RYy-AI-bw1"/>
-                                            <constraint firstItem="vq0-5k-8yN" firstAttribute="leading" secondItem="58z-TB-dOe" secondAttribute="leading" id="TzP-st-HqX"/>
-                                            <constraint firstItem="vq0-5k-8yN" firstAttribute="top" secondItem="58z-TB-dOe" secondAttribute="top" id="UCL-A5-5kY"/>
-                                            <constraint firstItem="vq0-5k-8yN" firstAttribute="top" secondItem="58z-TB-dOe" secondAttribute="top" id="UNm-BM-Jlf"/>
-                                            <constraint firstAttribute="trailing" secondItem="vq0-5k-8yN" secondAttribute="trailing" id="dVb-Zd-UvO"/>
+                                            <constraint firstItem="pxe-2U-Wjp" firstAttribute="top" secondItem="vq0-5k-8yN" secondAttribute="bottom" id="Z84-zu-ay0"/>
+                                            <constraint firstItem="pxe-2U-Wjp" firstAttribute="leading" secondItem="58z-TB-dOe" secondAttribute="leading" id="a7i-mm-qTk"/>
+                                            <constraint firstItem="pxe-2U-Wjp" firstAttribute="width" secondItem="58z-TB-dOe" secondAttribute="width" id="b2z-c3-34r"/>
                                             <constraint firstItem="vq0-5k-8yN" firstAttribute="centerX" secondItem="58z-TB-dOe" secondAttribute="centerX" id="dfi-V1-8SD"/>
                                             <constraint firstAttribute="trailing" secondItem="vq0-5k-8yN" secondAttribute="trailing" id="ncL-qa-Vw4"/>
+                                            <constraint firstAttribute="trailing" secondItem="pxe-2U-Wjp" secondAttribute="trailing" id="njW-k5-ag6"/>
                                             <constraint firstItem="vq0-5k-8yN" firstAttribute="leading" secondItem="58z-TB-dOe" secondAttribute="leading" id="ohY-Ue-W0D"/>
+                                            <constraint firstAttribute="bottom" secondItem="vRp-yY-tRC" secondAttribute="bottom" id="pSf-0g-JS2"/>
                                             <constraint firstAttribute="width" constant="375" id="sPS-Xh-xMm"/>
+                                            <constraint firstItem="vRp-yY-tRC" firstAttribute="leading" secondItem="58z-TB-dOe" secondAttribute="leading" id="ssa-dw-Q7q"/>
+                                            <constraint firstItem="vq0-5k-8yN" firstAttribute="width" secondItem="58z-TB-dOe" secondAttribute="width" id="tEG-Lb-Z81"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -591,7 +591,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uhH-7r-nTM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1249" y="613"/>
+            <point key="canvasLocation" x="1306" y="613"/>
         </scene>
         <!--Directions View Controller-->
         <scene sceneID="xIF-WH-BVy">
@@ -636,7 +636,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xKw-yq-G2P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1886" y="613"/>
+            <point key="canvasLocation" x="1916" y="613"/>
         </scene>
         <!--Recipe Title View Controller-->
         <scene sceneID="VrU-lX-PQi">
