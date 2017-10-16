@@ -11,7 +11,7 @@ import UIKit
 
 // MARK: Protocols
 protocol TabToggledDelegate: class {
-    func updateTabHeights()
+    func updateTabHeights(detailHeight: CGFloat)
 }
 
 class RecipeTabsViewController: UIViewController {
@@ -22,13 +22,9 @@ class RecipeTabsViewController: UIViewController {
     @IBOutlet weak var ingredientsContainer: UIView!
     @IBOutlet weak var directionsContainer: UIView!
     
-    // MARK: Public Properties
+    // MARK: Properties
     weak var tabToggledDelegate: TabToggledDelegate?
-
-    // MARK: Private Properties
     private var currentRecipe = Recipe()
-    
-    // MARK: View Controller Variables
     var ingredientsViewController:IngredientsViewController?
     var directionsViewController:DirectionsViewController?
     
@@ -41,6 +37,8 @@ class RecipeTabsViewController: UIViewController {
         super.viewWillAppear(animated)
         configureView()
     }
+    
+    // MARK: Functions
     
     func setCurrentRecipe(newRecipe: Recipe){
         self.currentRecipe = newRecipe
@@ -65,14 +63,17 @@ class RecipeTabsViewController: UIViewController {
     
     // MARK: Actions
     @IBAction func detailTabPressed(_ sender: UIButton) {
+        var newDetailHeight = self.ingredientsBtn.frame.size.height
         
         switch sender.tag {
         case DetailTabs.ingredients.rawValue:
             ingredientsBtn.isSelected = true
             directionsBtn.isSelected = false
+            newDetailHeight += ingredientsContainer.frame.size.height
         case DetailTabs.directions.rawValue:
             ingredientsBtn.isSelected = false
             directionsBtn.isSelected = true
+            newDetailHeight += directionsContainer.frame.size.height
         default:
             break
         }
@@ -80,7 +81,7 @@ class RecipeTabsViewController: UIViewController {
         ingredientsContainer.isHidden = !ingredientsBtn.isSelected
         directionsContainer.isHidden = !directionsBtn.isSelected
         
-        tabToggledDelegate?.updateTabHeights()
+        tabToggledDelegate?.updateTabHeights(detailHeight: newDetailHeight)
     }
     
     

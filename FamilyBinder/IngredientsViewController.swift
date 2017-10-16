@@ -10,6 +10,9 @@ import UIKit
 
 class IngredientsViewController: UIViewController {
     @IBOutlet weak var ingredientsLbl: UILabel!
+    @IBOutlet weak var recipeImgBackground: UIImageView!
+    
+    private var currentRecipe = Recipe()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,12 +32,22 @@ class IngredientsViewController: UIViewController {
             
             view.frame.size.height = newIngredientsLblSize.height + 56
         }
+        
+        if let img = self.recipeImgBackground {
+            let placeholderImage = #imageLiteral(resourceName: "dinnerPlate")
+            if let url = URL(string: currentRecipe.imageURL) {
+                img.af_setImage(withURL: url, placeholderImage: placeholderImage)
+                //detail.image = img.image
+            }
+        }
    
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    // MARK: Functions
+    
+    func setCurrentRecipe(newRecipe: Recipe){
+        self.currentRecipe = newRecipe
     }
+
 
 }

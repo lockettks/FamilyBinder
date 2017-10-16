@@ -182,8 +182,8 @@
 			children = (
 				954D7AB01F198CB3000480A7 /* RecipesMasterViewController.swift */,
 				956789AF1F290E600070FEEB /* RecipeTableViewCell.swift */,
-				9521C1F01F8F239300B9CAC1 /* RecipeTitleViewController.swift */,
 				954D7AB21F198CB3000480A7 /* RecipeDetailViewController.swift */,
+				9521C1F01F8F239300B9CAC1 /* RecipeTitleViewController.swift */,
 				9521C1F21F8F24B200B9CAC1 /* RecipeTabsViewController.swift */,
 				95628D6F1F719C9500566EF1 /* IngredientsViewController.swift */,
 				95628D711F719CC600566EF1 /* DirectionsViewController.swift */,

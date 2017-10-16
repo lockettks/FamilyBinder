@@ -23,23 +23,13 @@ class RecipeDetailViewController: UIViewController, TabToggledDelegate {
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var contentViewConstraint: NSLayoutConstraint!
     
-    @IBOutlet weak var recipeImg: UIImageView!
-    @IBOutlet weak var timeToCookLabel: UILabel!
-    @IBOutlet weak var spoonacularLabel: UILabel!
-    @IBOutlet weak var likesLabel: UILabel!
-    
-    @IBOutlet weak var recipeTitleLabel: UILabel!
-    @IBOutlet weak var creditLabel: UILabel!
-    
-    @IBOutlet weak var servingsLabel: UILabel!
     @IBOutlet weak var addRecipeBtn: UIBarButtonItem!
-    @IBOutlet weak var favoriteBtn: UIButton!
-    @IBOutlet weak var shoppingCartBtn: UIButton!
-    @IBOutlet weak var mealPlanBtn: UIButton!
+    @IBOutlet weak var recipeImg: UIImageView!
+
     
     @IBOutlet weak var recipeTitleView: UIView!
     
-    @IBOutlet weak var recipeImgBackground: UIImageView!
+    
     
     
     // MARK: View Controller Variables
@@ -68,9 +58,6 @@ class RecipeDetailViewController: UIViewController, TabToggledDelegate {
         configureView()
     }
     
-    
-    override func viewDidAppear(_ animated: Bool) {
-    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -111,51 +98,20 @@ class RecipeDetailViewController: UIViewController, TabToggledDelegate {
                     detail.image = img.image
                 }
             }
-            if let img = self.recipeImgBackground {
-                let placeholderImage = #imageLiteral(resourceName: "dinnerPlate")
-                if let url = URL(string: detail.imageURL) {
-                    img.af_setImage(withURL: url, placeholderImage: placeholderImage)
-                    detail.image = img.image
-                }
-            }
+
             
             self.navigationItem.title = detail.title
             
-            if let recipeTitleLabel = self.recipeTitleLabel {
-                recipeTitleLabel.text = detail.title
-            }
-            if let creditLabel = self.creditLabel {
-                creditLabel.text = detail.creditText
-            }
             
-            if let label = self.servingsLabel {
-                label.text = detail.servings.description
-            }
-            
-            if let cookTimeLabel = self.timeToCookLabel {
-                cookTimeLabel.text = "\(detail.readyInMinutes) min"
-            }
-            
-            if let spoonacularLabel = self.spoonacularLabel {
-                spoonacularLabel.text = detail.spoonacularScore.description
-            }
-            
-            if let likesLabel = self.likesLabel {
-                likesLabel.text = detail.likes.description
-            }
-            
-            if let favoriteBtn = self.favoriteBtn {
-                favoriteBtn.imageView?.contentMode = UIViewContentMode.scaleAspectFill
-            }
             
             addRecipeBtn.isEnabled = true
             
-            if realm.objects(Recipe.self).filter("id == %@", detail.id).first != nil {
-                try! self.realm.write {
-                    detail.isFavorite = true
-                }
-                setFavoriteIconImg()
-            }
+//            if realm.objects(Recipe.self).filter("id == %@", detail.id).first != nil {
+//                try! self.realm.write {
+//                    detail.isFavorite = true
+//                }
+//                setFavoriteIconImg()
+//            }
             
             if let vc = recipeTabsViewController {
                 vc.setCurrentRecipe(newRecipe: detail)
@@ -196,48 +152,48 @@ class RecipeDetailViewController: UIViewController, TabToggledDelegate {
     
     // MARK: - Action Handlers
     
-    @IBAction func addRecipeBtnClicked(_ sender: Any) {
-        
-        let optionMenu = UIAlertController(title: nil, message: "Choose Option", preferredStyle: .actionSheet)
-        
-        let addToMyRecipes = UIAlertAction(title: "Add To My Recipes", style: .default, handler: {_ in
-            self.updateFavoriteStatus()
-        })
-        let removeFromMyRecipes = UIAlertAction(title: "Remove From My Recipes", style: .default, handler: {_ in
-            self.updateFavoriteStatus()
-        })
-        let addToMealPlan = UIAlertAction(title: "Add To Meal Plan", style: .default, handler: {_ in self.performSegue(withIdentifier: "addRecipeToMealPlanSegue", sender: self)
-        })
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {(_: UIAlertAction!) -> Void in
-            print("Cancelled")
-        })
-        if (self.detailItem?.isFavorite)! {
-            optionMenu.addAction(removeFromMyRecipes)
-        } else {
-            optionMenu.addAction(addToMyRecipes)
-        }
-        
-        optionMenu.addAction(addToMealPlan)
-        optionMenu.addAction(cancelAction)
-        
-        optionMenu.popoverPresentationController?.barButtonItem = self.navigationItem.rightBarButtonItem
-        
-        self.present(optionMenu, animated: true, completion: nil)
-    }
+//    @IBAction func addRecipeBtnClicked(_ sender: Any) {
+//
+//        let optionMenu = UIAlertController(title: nil, message: "Choose Option", preferredStyle: .actionSheet)
+//
+//        let addToMyRecipes = UIAlertAction(title: "Add To My Recipes", style: .default, handler: {_ in
+//            self.updateFavoriteStatus()
+//        })
+//        let removeFromMyRecipes = UIAlertAction(title: "Remove From My Recipes", style: .default, handler: {_ in
+//            self.updateFavoriteStatus()
+//        })
+//        let addToMealPlan = UIAlertAction(title: "Add To Meal Plan", style: .default, handler: {_ in self.performSegue(withIdentifier: "addRecipeToMealPlanSegue", sender: self)
+//        })
+//
+//        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {(_: UIAlertAction!) -> Void in
+//            print("Cancelled")
+//        })
+//        if (self.detailItem?.isFavorite)! {
+//            optionMenu.addAction(removeFromMyRecipes)
+//        } else {
+//            optionMenu.addAction(addToMyRecipes)
+//        }
+//
+//        optionMenu.addAction(addToMealPlan)
+//        optionMenu.addAction(cancelAction)
+//
+//        optionMenu.popoverPresentationController?.barButtonItem = self.navigationItem.rightBarButtonItem
+//
+//        self.present(optionMenu, animated: true, completion: nil)
+//    }
     
-    @IBAction func favoriteBtnClicked(_ sender: Any) {
-        updateFavoriteStatus()
-    }
-    @IBAction func shoppingCartBtnPressed(_ sender: Any) {
-    }
-    
-    @IBAction func mealPlanBtnPressed(_ sender: Any) {
-    }
+//    @IBAction func favoriteBtnClicked(_ sender: Any) {
+//        updateFavoriteStatus()
+//    }
+//    @IBAction func shoppingCartBtnPressed(_ sender: Any) {
+//    }
+//    
+//    @IBAction func mealPlanBtnPressed(_ sender: Any) {
+//    }
     
     
     // MARK: Protocol Functions
-    func updateTabHeights(){
+    func updateTabHeights(detailHeight: CGFloat){
         
     }
     
@@ -268,28 +224,7 @@ class RecipeDetailViewController: UIViewController, TabToggledDelegate {
     
     
     
-    func updateFavoriteStatus(){
-        if let detailItem = self.detailItem {
-            try! self.realm.write {
-                detailItem.isFavorite = !detailItem.isFavorite
-                setFavoriteIconImg()
-            }
-        }
-    }
-    
-    func setFavoriteIconImg(){
-        if let detailItem = self.detailItem {
-            if (detailItem.isFavorite) {
-                if let btn = self.favoriteBtn {
-                    btn.setImage(#imageLiteral(resourceName: "pin_Checkmark_On"), for: .normal)
-                }
-            } else {
-                if let btn = self.favoriteBtn {
-                    btn.setImage(#imageLiteral(resourceName: "pin"), for: .normal)
-                }
-            }
-        }
-    }
+
     
     // MARK: - Segues
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

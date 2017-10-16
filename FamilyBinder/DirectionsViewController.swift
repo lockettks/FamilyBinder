@@ -11,6 +11,13 @@ import UIKit
 class DirectionsViewController: UIViewController {
 
     @IBOutlet weak var directionsLbl: UILabel!
+    @IBOutlet weak var recipeImgBackground: UIImageView!
+    
+    private var currentRecipe = Recipe()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
     
     func configureView(currentRecipe: Recipe) {
         let stringHelper = StringHelper()
@@ -29,17 +36,17 @@ class DirectionsViewController: UIViewController {
     }
     
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
+
     
     override func viewDidLayoutSubviews() {
         preferredContentSize = view.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
     }
+    
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    // MARK: Functions
+    
+    func setCurrentRecipe(newRecipe: Recipe){
+        self.currentRecipe = newRecipe
     }
 
 
