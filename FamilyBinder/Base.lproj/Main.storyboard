@@ -70,7 +70,7 @@
                                                 <rect key="frame" x="0.0" y="325" width="375" height="179"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                 <connections>
-                                                    <segue destination="aId-Aq-4cR" kind="embed" id="WZ9-fL-LwQ"/>
+                                                    <segue destination="aId-Aq-4cR" kind="embed" identifier="titleSegue" id="WZ9-fL-LwQ"/>
                                                 </connections>
                                             </containerView>
                                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vRp-yY-tRC">

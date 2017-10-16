@@ -29,20 +29,15 @@ class RecipeDetailViewController: UIViewController, TabToggledDelegate {
     
     @IBOutlet weak var recipeTitleView: UIView!
     
-    
-    
-    
+
     // MARK: View Controller Variables
     var favoritedRecipe = Recipe()
+    var recipeTitleViewController:RecipeTitleViewController?
     var recipeTabsViewController:RecipeTabsViewController?
 
     
     //    // Get the default Realm
     let realm = try! Realm()
-    //    // You only need to do this once (per thread)
-    //    // To find Realm File, enter the following when debugger is paused:
-    //    // po Realm.Configuration.defaultConfiguration.fileURL
-    
 
     
     // MARK: - View Manipulation
@@ -57,6 +52,8 @@ class RecipeDetailViewController: UIViewController, TabToggledDelegate {
         
         configureView()
     }
+    
+    
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -223,9 +220,6 @@ class RecipeDetailViewController: UIViewController, TabToggledDelegate {
     }
     
     
-    
-
-    
     // MARK: - Segues
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addRecipeToMealPlanSegue" {
@@ -234,11 +228,18 @@ class RecipeDetailViewController: UIViewController, TabToggledDelegate {
                     controller.selectedRecipe = detail
                 }
             }
+        } else if segue.identifier == "titleSegue" {
+            recipeTitleViewController = segue.destination as? RecipeTitleViewController
+            if let detail = self.detailItem {
+                recipeTitleViewController?.setCurrentRecipe(newRecipe: detail)
+            }
         } else if segue.identifier == "tabsSegue" {
             recipeTabsViewController = segue.destination as? RecipeTabsViewController
             recipeTabsViewController?.tabToggledDelegate = self
+            if let detail = self.detailItem {
+                recipeTabsViewController?.setCurrentRecipe(newRecipe: detail)
+            }
         }
-        
     }
     
     override func didReceiveMemoryWarning() {
