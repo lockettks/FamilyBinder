@@ -8,6 +8,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -884,10 +885,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="163"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gi9-A6-E2J" userLabel="Ingredients Tab">
+                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gi9-A6-E2J" userLabel="Ingredients Tab">
                                 <rect key="frame" x="0.0" y="0.0" width="188" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.85490196078431369" green="0.8784313725490196" blue="0.88235294117647056" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="33" id="3jv-nN-XOp"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="BodoniSvtyTwoOSITCTT-Book" family="Bodoni 72 Oldstyle" pointSize="17"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Ingredients">
@@ -900,10 +903,12 @@
                                     <action selector="detailTabPressed:" destination="vfk-Em-P5W" eventType="touchUpInside" id="rVt-VU-8P8"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" horizontalCompressionResistancePriority="752" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fsf-7g-p9T" userLabel="Directions Tab">
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" horizontalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fsf-7g-p9T" userLabel="Directions Tab">
                                 <rect key="frame" x="187" y="0.0" width="187.5" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.85490196078431369" green="0.8784313725490196" blue="0.88235294117647056" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="33" id="OBP-vG-a4v"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="BodoniSvtyTwoOSITCTT-Book" family="Bodoni 72 Oldstyle" pointSize="17"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Directions">
@@ -916,21 +921,18 @@
                                     <action selector="detailTabPressed:" destination="vfk-Em-P5W" eventType="touchUpInside" id="Okz-qC-Js2"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="osP-Sm-LYO" userLabel="Recipe Details View">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="osP-Sm-LYO" userLabel="Recipe Details View">
                                 <rect key="frame" x="0.0" y="33" width="375" height="130"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZBK-SM-iqu" userLabel="Ingredients Container View">
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZBK-SM-iqu" userLabel="Ingredients Container View">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="130"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <segue destination="TL9-DI-dLf" kind="embed" identifier="ingredientsSegue" id="VyI-Ir-XGn"/>
                                         </connections>
                                     </containerView>
-                                    <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vzs-LZ-Qdh" userLabel="Directions Container View">
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vzs-LZ-Qdh" userLabel="Directions Container View">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="130"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <segue destination="8Fr-AF-ew5" kind="embed" identifier="directionsSegue" id="E42-Fy-DVL"/>
@@ -938,9 +940,33 @@
                                     </containerView>
                                 </subviews>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="ZBK-SM-iqu" firstAttribute="leading" secondItem="osP-Sm-LYO" secondAttribute="leading" id="I0U-Rx-6aq"/>
+                                    <constraint firstAttribute="trailing" secondItem="vzs-LZ-Qdh" secondAttribute="trailing" id="aiR-rJ-HjJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZBK-SM-iqu" secondAttribute="trailing" id="g1q-YW-3sl"/>
+                                    <constraint firstItem="vzs-LZ-Qdh" firstAttribute="leading" secondItem="osP-Sm-LYO" secondAttribute="leading" id="ned-XU-fa7"/>
+                                    <constraint firstAttribute="bottom" secondItem="vzs-LZ-Qdh" secondAttribute="bottom" id="oPD-9P-7lR"/>
+                                    <constraint firstAttribute="bottom" secondItem="ZBK-SM-iqu" secondAttribute="bottom" id="rlY-nK-awy"/>
+                                    <constraint firstItem="ZBK-SM-iqu" firstAttribute="top" secondItem="osP-Sm-LYO" secondAttribute="top" id="wCD-lf-mDC"/>
+                                    <constraint firstItem="vzs-LZ-Qdh" firstAttribute="top" secondItem="osP-Sm-LYO" secondAttribute="top" id="yJH-JX-WM0"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fsf-7g-p9T" firstAttribute="top" secondItem="JzM-fu-PeW" secondAttribute="bottom" id="201-Hv-7cN"/>
+                            <constraint firstItem="fsf-7g-p9T" firstAttribute="width" secondItem="QeB-xJ-eN9" secondAttribute="width" multiplier="0.5" id="42R-4n-4fI"/>
+                            <constraint firstAttribute="trailing" secondItem="fsf-7g-p9T" secondAttribute="trailing" id="ElH-D0-iRo"/>
+                            <constraint firstItem="osP-Sm-LYO" firstAttribute="top" secondItem="gi9-A6-E2J" secondAttribute="bottom" id="Pin-zg-4gh"/>
+                            <constraint firstItem="osP-Sm-LYO" firstAttribute="top" secondItem="gi9-A6-E2J" secondAttribute="bottom" id="ZH0-j4-FAd"/>
+                            <constraint firstItem="Lmq-1c-nB2" firstAttribute="top" secondItem="osP-Sm-LYO" secondAttribute="bottom" id="ZfE-PB-GKj"/>
+                            <constraint firstItem="gi9-A6-E2J" firstAttribute="top" secondItem="JzM-fu-PeW" secondAttribute="bottom" id="d1V-2Y-8zC"/>
+                            <constraint firstItem="gi9-A6-E2J" firstAttribute="width" secondItem="QeB-xJ-eN9" secondAttribute="width" multiplier="0.5" id="ixT-31-Pcp"/>
+                            <constraint firstItem="gi9-A6-E2J" firstAttribute="leading" secondItem="QeB-xJ-eN9" secondAttribute="leading" id="sDw-Ra-IoB"/>
+                            <constraint firstAttribute="trailing" secondItem="osP-Sm-LYO" secondAttribute="trailing" id="tut-Ce-Bt5"/>
+                            <constraint firstItem="osP-Sm-LYO" firstAttribute="top" secondItem="fsf-7g-p9T" secondAttribute="bottom" id="wyY-YI-CVY"/>
+                            <constraint firstItem="osP-Sm-LYO" firstAttribute="leading" secondItem="QeB-xJ-eN9" secondAttribute="leading" id="xem-0c-HnH"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="detailsView" destination="osP-Sm-LYO" id="t3F-Al-Z6z"/>

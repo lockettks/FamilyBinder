@@ -191,7 +191,7 @@ class RecipeDetailViewController: UIViewController, TabToggledDelegate {
     
     // MARK: Protocol Functions
     func updateTabHeights(detailHeight: CGFloat){
-        
+        print("tab height is \(detailHeight)")
     }
     
     

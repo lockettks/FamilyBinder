@@ -45,9 +45,12 @@ class RecipeTabsViewController: UIViewController {
     }
     
     func configureView(){
+        var detailHeight = self.ingredientsBtn.frame.size.height
         ingredientsBtn.setBackgroundColor(color: UIColor(hex: "DAE0E1"), forState: .normal)
         ingredientsBtn.setBackgroundColor(color: UIColor(hex: "C1212E"), forState: .selected)
         ingredientsBtn.isSelected = true
+        detailHeight += ingredientsContainer.frame.size.height
+        tabToggledDelegate?.updateTabHeights(detailHeight: detailHeight)
         
         directionsBtn.setBackgroundColor(color: UIColor(hex: "DAE0E1"), forState: .normal)
         directionsBtn.setBackgroundColor(color: UIColor(hex: "C1212E"), forState: .selected)
@@ -83,6 +86,7 @@ class RecipeTabsViewController: UIViewController {
         
         tabToggledDelegate?.updateTabHeights(detailHeight: newDetailHeight)
     }
+    
     
     
     // MARK: - Segues
