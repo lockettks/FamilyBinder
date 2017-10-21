@@ -125,84 +125,20 @@ class RecipeDetailViewController: UIViewController, TabToggledDelegate {
 //        recipeTitleContainerView.subviews[0].translatesAutoresizingMaskIntoConstraints = false
 //        recipeTabsContainerView.subviews[0].translatesAutoresizingMaskIntoConstraints = false
         
+        //        titleHeight = recipeTitleContainerView.subviews[0].frame.size.height
+        //        recipeTitleContainerView.frame.size.height = titleHeight
         
-//        print("detail contentViewConstraint before \(contentViewConstraint.constant)")
-        contentViewConstraint.constant = recipeImg.frame.size.height + recipeTitleContainerView.frame.size.height + recipeTabsContainerView.frame.size.height
-//        print("detail contentViewConstraint after \(contentViewConstraint.constant)")
-
-//        titleHeight = recipeTitleContainerView.subviews[0].frame.size.height
-//        print("detail recipeTitleContainerView.frame.size.height \(recipeTitleContainerView.frame.size.height)")
-//        recipeTitleContainerView.frame.size.height = titleHeight
-//        tabsHeight = recipeTabsContainerView.subviews[0].frame.size.height
-//        print("detail recipeTabsContainerView.frame.size.height \(recipeTabsContainerView.frame.size.height)")
-        print("detail recipeTitleContainerView.frame.origin.y \(recipeTitleContainerView.frame.origin.y)")
-        
-        print("detail recipeTabsContainerView.frame.origin.y \(recipeTabsContainerView.frame.origin.y)")
-
-        print("before detail recipeTabsViewController?.view.frame.origin.y \(recipeTabsViewController?.view.frame.origin.y)")
-//        recipeTabsViewController?.view.frame.origin.y = recipeTabsContainerView.frame.origin.y
-        print("after detail recipeTabsViewController?.view.frame.origin.y \(recipeTabsViewController?.view.frame.origin.y)\n")
-//        recipeTabsContainerView.frame.size.height = tabsHeight
-    
-//        if ingredientsTab.isSelected {
-//            recipeDetailsView.frame.size.height = ingredientsContainerHeight - 10 //TODO:  Debug why i need to remove - 10
-//            recipeDetailsView.subviews[1].frame.size.height = 0
-            
-//        } else if directionsTab.isSelected {
-//            recipeDetailsView.frame.size.height = directionsContainerHeight
-//            recipeDetailsView.subviews[0].frame.size.height = 0
-//        }
-        
-//        contentViewConstraint.constant = recipeImg.frame.size.height + recipeTitleView.frame.size.height + recipeDetailsView.frame.size.height
+        //        tabsHeight = recipeTabsContainerView.subviews[0].frame.size.height
+        contentView.frame.size.height = recipeImg.frame.size.height + recipeTitleContainerView.frame.size.height + recipeTabsContainerView.frame.size.height
+        recipeTitleContainerView.frame.origin.y = recipeImg.frame.size.height
+        recipeTabsContainerView.frame.origin.y = recipeTitleContainerView.frame.maxY
+       // contentViewConstraint.constant = recipeImg.frame.size.height + recipeTitleContainerView.frame.size.height + recipeTabsContainerView.frame.size.height
     }
-    
-    
-    // MARK: - Action Handlers
-    
-//    @IBAction func addRecipeBtnClicked(_ sender: Any) {
-//
-//        let optionMenu = UIAlertController(title: nil, message: "Choose Option", preferredStyle: .actionSheet)
-//
-//        let addToMyRecipes = UIAlertAction(title: "Add To My Recipes", style: .default, handler: {_ in
-//            self.updateFavoriteStatus()
-//        })
-//        let removeFromMyRecipes = UIAlertAction(title: "Remove From My Recipes", style: .default, handler: {_ in
-//            self.updateFavoriteStatus()
-//        })
-//        let addToMealPlan = UIAlertAction(title: "Add To Meal Plan", style: .default, handler: {_ in self.performSegue(withIdentifier: "addRecipeToMealPlanSegue", sender: self)
-//        })
-//
-//        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {(_: UIAlertAction!) -> Void in
-//            print("Cancelled")
-//        })
-//        if (self.detailItem?.isFavorite)! {
-//            optionMenu.addAction(removeFromMyRecipes)
-//        } else {
-//            optionMenu.addAction(addToMyRecipes)
-//        }
-//
-//        optionMenu.addAction(addToMealPlan)
-//        optionMenu.addAction(cancelAction)
-//
-//        optionMenu.popoverPresentationController?.barButtonItem = self.navigationItem.rightBarButtonItem
-//
-//        self.present(optionMenu, animated: true, completion: nil)
-//    }
-    
-//    @IBAction func favoriteBtnClicked(_ sender: Any) {
-//        updateFavoriteStatus()
-//    }
-//    @IBAction func shoppingCartBtnPressed(_ sender: Any) {
-//    }
-//    
-//    @IBAction func mealPlanBtnPressed(_ sender: Any) {
-//    }
-    
     
     // MARK: Protocol Functions
     func updateTabHeights(detailHeight: CGFloat){
 //        print("detail protocol function tab height is \(detailHeight)")
-//        recipeTabsContainerView.frame.size.height = detailHeight
+        recipeTabsContainerView.frame.size.height = detailHeight
         updateHeights()
         
     }

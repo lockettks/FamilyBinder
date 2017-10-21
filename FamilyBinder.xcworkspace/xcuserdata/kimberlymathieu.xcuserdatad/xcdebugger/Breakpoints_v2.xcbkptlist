@@ -51,16 +51,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FamilyBinder/RecipeDetailViewController.swift"
-            timestampString = "530252777.444456"
+            timestampString = "530311885.000974"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "206"
-            endingLineNumber = "206"
-            landmarkName = "updateTabHeights(detailHeight:)"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
+            landmarkName = "updateHeights()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
