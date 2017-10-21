@@ -13,6 +13,7 @@ import RealmSwift
 class RecipeTitleViewController: UIViewController {
 
     // MARK: Outlets
+    @IBOutlet weak var recipeTitleView: DesignableView!
     @IBOutlet weak var timeToCookLabel: UILabel!
     @IBOutlet weak var spoonacularLabel: UILabel!
     @IBOutlet weak var likesLabel: UILabel!
@@ -78,7 +79,8 @@ class RecipeTitleViewController: UIViewController {
             setFavoriteIconImg()
         }
         
-        
+        print("title recipeTitleView.frame.origin.y \(recipeTitleView.frame.origin.y)")
+//        print("title recipeTitleView.frame.size.height \(recipeTitleView.frame.size.height)")
         
         
 //        if realm.objects(Recipe.self).filter("id == %@", detail.id).first != nil {

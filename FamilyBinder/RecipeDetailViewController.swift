@@ -16,23 +16,22 @@ enum DetailTabs: Int {
 
 class RecipeDetailViewController: UIViewController, TabToggledDelegate {
     // MARK: - Outlets
-    
     @IBOutlet weak var backBtn: UIButton!
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var contentViewConstraint: NSLayoutConstraint!
     
+    
     @IBOutlet weak var addRecipeBtn: UIBarButtonItem!
     @IBOutlet weak var recipeImg: UIImageView!
-
+    @IBOutlet weak var recipeTabsContainerView: UIView!
+    @IBOutlet weak var recipeTitleContainerView: UIView!
     
-    @IBOutlet weak var recipeTitleView: UIView!
-    
-
-    // MARK: View Controller Variables
     var favoritedRecipe = Recipe()
     var recipeTitleViewController:RecipeTitleViewController?
+    var titleHeight = CGFloat()
+    var tabsHeight = CGFloat()
     var recipeTabsViewController:RecipeTabsViewController?
 
     
@@ -52,8 +51,6 @@ class RecipeDetailViewController: UIViewController, TabToggledDelegate {
         
         configureView()
     }
-    
-    
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -100,7 +97,6 @@ class RecipeDetailViewController: UIViewController, TabToggledDelegate {
             self.navigationItem.title = detail.title
             
             
-            
             addRecipeBtn.isEnabled = true
             
 //            if realm.objects(Recipe.self).filter("id == %@", detail.id).first != nil {
@@ -121,18 +117,32 @@ class RecipeDetailViewController: UIViewController, TabToggledDelegate {
     
     override func updateViewConstraints() {
         super.updateViewConstraints()
-//        updateHeights()
+        updateHeights()
     }
     
     
-//    func updateHeights(){
-//        ingredientsViewContainer.subviews[0].translatesAutoresizingMaskIntoConstraints = false
-//        directionsViewContainer.subviews[0].translatesAutoresizingMaskIntoConstraints = false
-//
-//        let ingredientsContainerHeight = ingredientsViewContainer.subviews[0].frame.size.height
-//        ingredientsViewContainer.frame.size.height = ingredientsContainerHeight
-//        let directionsContainerHeight = directionsViewContainer.subviews[0].frame.size.height
-//        directionsViewContainer.frame.size.height = directionsContainerHeight
+    func updateHeights(){
+//        recipeTitleContainerView.subviews[0].translatesAutoresizingMaskIntoConstraints = false
+//        recipeTabsContainerView.subviews[0].translatesAutoresizingMaskIntoConstraints = false
+        
+        
+//        print("detail contentViewConstraint before \(contentViewConstraint.constant)")
+        contentViewConstraint.constant = recipeImg.frame.size.height + recipeTitleContainerView.frame.size.height + recipeTabsContainerView.frame.size.height
+//        print("detail contentViewConstraint after \(contentViewConstraint.constant)")
+
+//        titleHeight = recipeTitleContainerView.subviews[0].frame.size.height
+//        print("detail recipeTitleContainerView.frame.size.height \(recipeTitleContainerView.frame.size.height)")
+//        recipeTitleContainerView.frame.size.height = titleHeight
+//        tabsHeight = recipeTabsContainerView.subviews[0].frame.size.height
+//        print("detail recipeTabsContainerView.frame.size.height \(recipeTabsContainerView.frame.size.height)")
+        print("detail recipeTitleContainerView.frame.origin.y \(recipeTitleContainerView.frame.origin.y)")
+        
+        print("detail recipeTabsContainerView.frame.origin.y \(recipeTabsContainerView.frame.origin.y)")
+
+        print("before detail recipeTabsViewController?.view.frame.origin.y \(recipeTabsViewController?.view.frame.origin.y)")
+//        recipeTabsViewController?.view.frame.origin.y = recipeTabsContainerView.frame.origin.y
+        print("after detail recipeTabsViewController?.view.frame.origin.y \(recipeTabsViewController?.view.frame.origin.y)\n")
+//        recipeTabsContainerView.frame.size.height = tabsHeight
     
 //        if ingredientsTab.isSelected {
 //            recipeDetailsView.frame.size.height = ingredientsContainerHeight - 10 //TODO:  Debug why i need to remove - 10
@@ -144,7 +154,7 @@ class RecipeDetailViewController: UIViewController, TabToggledDelegate {
 //        }
         
 //        contentViewConstraint.constant = recipeImg.frame.size.height + recipeTitleView.frame.size.height + recipeDetailsView.frame.size.height
-//    }
+    }
     
     
     // MARK: - Action Handlers
@@ -191,7 +201,10 @@ class RecipeDetailViewController: UIViewController, TabToggledDelegate {
     
     // MARK: Protocol Functions
     func updateTabHeights(detailHeight: CGFloat){
-        print("tab height is \(detailHeight)")
+//        print("detail protocol function tab height is \(detailHeight)")
+//        recipeTabsContainerView.frame.size.height = detailHeight
+        updateHeights()
+        
     }
     
     

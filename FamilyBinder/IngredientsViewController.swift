@@ -18,7 +18,7 @@ class IngredientsViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    func configureView(currentRecipe: Recipe){
+    func configureView(){
         let stringHelper = StringHelper()
         if let label = self.ingredientsLbl {
             let attributesDictionary = [NSFontAttributeName : label.font]
@@ -29,7 +29,6 @@ class IngredientsViewController: UIViewController {
             label.attributedText = fullAttributedString
             
             let newIngredientsLblSize = ingredientsLbl.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
-            
             view.frame.size.height = newIngredientsLblSize.height + 56
         }
         

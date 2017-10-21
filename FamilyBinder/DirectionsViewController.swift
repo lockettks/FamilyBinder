@@ -19,7 +19,7 @@ class DirectionsViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    func configureView(currentRecipe: Recipe) {
+    func configureView() {
         let stringHelper = StringHelper()
         if let label = directionsLbl {
             let attributesDictionary = [NSFontAttributeName : label.font]
@@ -40,6 +40,7 @@ class DirectionsViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         preferredContentSize = view.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+        view.frame.size.height = preferredContentSize.height
     }
     
 
