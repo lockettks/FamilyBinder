@@ -518,7 +518,7 @@
          contextName = "RecipeDetailViewController.updateHeights():RecipeDetailViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "titleHeight">
+               value = "scrollView.frame.size.height">
             </PersistentString>
             <PersistentString
                value = "recipeTabsContainerView.subviews[0].frame.size.height">
@@ -527,13 +527,16 @@
                value = "contentView.frame.size.height">
             </PersistentString>
             <PersistentString
+               value = "recipeTitleContainerView.frame.size.height">
+            </PersistentString>
+            <PersistentString
+               value = "titleHeight">
+            </PersistentString>
+            <PersistentString
                value = "recipeTitleContainerView.subviews">
             </PersistentString>
             <PersistentString
                value = "recipeTabsContainerView.frame.size.height">
-            </PersistentString>
-            <PersistentString
-               value = "recipeTitleContainerView.frame.size.height">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

@@ -133,6 +133,7 @@ class RecipeDetailViewController: UIViewController, TabToggledDelegate {
         recipeTitleContainerView.frame.origin.y = recipeImg.frame.size.height
         recipeTabsContainerView.frame.origin.y = recipeTitleContainerView.frame.maxY
        // contentViewConstraint.constant = recipeImg.frame.size.height + recipeTitleContainerView.frame.size.height + recipeTabsContainerView.frame.size.height
+        
     }
     
     // MARK: Protocol Functions
