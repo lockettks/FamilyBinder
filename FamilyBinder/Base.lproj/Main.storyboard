@@ -95,6 +95,7 @@
                                             <constraint firstItem="pxe-2U-Wjp" firstAttribute="leading" secondItem="58z-TB-dOe" secondAttribute="leading" id="ixU-1P-vQG"/>
                                             <constraint firstItem="vRp-yY-tRC" firstAttribute="top" secondItem="pxe-2U-Wjp" secondAttribute="bottom" id="sdm-Vs-ri1"/>
                                             <constraint firstAttribute="trailing" secondItem="vq0-5k-8yN" secondAttribute="trailing" id="vj1-8G-E3Q"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="249" constant="667" id="vza-tG-gEF"/>
                                             <constraint firstAttribute="trailing" secondItem="vRp-yY-tRC" secondAttribute="trailing" id="xng-j0-Niy"/>
                                             <constraint firstItem="vRp-yY-tRC" firstAttribute="leading" secondItem="58z-TB-dOe" secondAttribute="leading" id="zDs-mj-HuB"/>
                                         </constraints>
@@ -118,11 +119,13 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="ved-Ad-DDW" firstAttribute="height" secondItem="svH-Pt-448" secondAttribute="height" id="7cD-Gx-1jj"/>
                             <constraint firstItem="ved-Ad-DDW" firstAttribute="top" secondItem="svH-Pt-448" secondAttribute="top" id="7ug-Bf-U61"/>
                             <constraint firstAttribute="trailing" secondItem="ved-Ad-DDW" secondAttribute="trailing" id="A2L-sw-4LH"/>
                             <constraint firstItem="ved-Ad-DDW" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leading" id="IYK-9R-Q6w"/>
                             <constraint firstItem="58z-TB-dOe" firstAttribute="width" secondItem="svH-Pt-448" secondAttribute="width" id="KQ0-xh-25g"/>
                             <constraint firstItem="GAO-Cl-Wes" firstAttribute="top" secondItem="ved-Ad-DDW" secondAttribute="bottom" id="bfa-q4-BEt"/>
+                            <constraint firstItem="ved-Ad-DDW" firstAttribute="width" secondItem="svH-Pt-448" secondAttribute="width" id="imb-c2-0Sn"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
@@ -137,6 +140,7 @@
                         <outlet property="addRecipeBtn" destination="scj-v7-0wW" id="MSI-e2-HI6"/>
                         <outlet property="backBtn" destination="JiU-1R-hKD" id="d8N-iT-Fx1"/>
                         <outlet property="contentView" destination="58z-TB-dOe" id="KuF-3c-JgS"/>
+                        <outlet property="contentViewConstraint" destination="vza-tG-gEF" id="WEf-rM-bj1"/>
                         <outlet property="recipeImg" destination="vq0-5k-8yN" id="LUK-bp-qrF"/>
                         <outlet property="recipeTabsContainerView" destination="vRp-yY-tRC" id="v3R-Js-bLk"/>
                         <outlet property="recipeTitleContainerView" destination="pxe-2U-Wjp" id="JRr-f2-Igs"/>
@@ -549,90 +553,6 @@
             </objects>
             <point key="canvasLocation" x="-39" y="127"/>
         </scene>
-        <!--Ingredients View Controller-->
-        <scene sceneID="ato-cw-1ni">
-            <objects>
-                <viewController id="TL9-DI-dLf" customClass="IngredientsViewController" customModule="FamilyBinder" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="pnH-yz-ynj"/>
-                        <viewControllerLayoutGuide type="bottom" id="qHS-Gz-jt4"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="p5Q-wK-8GQ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="130"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3qJ-sx-tLP" userLabel="LblIngredients">
-                                <rect key="frame" x="15" y="20" width="345" height="90"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="Ingredients">
-                                        <attributes>
-                                            <color key="NSColor" red="0.16470588235294117" green="0.16470588235294117" blue="0.17254901960784313" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="17" name="BodoniSvtyTwoOSITCTT-Book"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="3qJ-sx-tLP" firstAttribute="top" secondItem="pnH-yz-ynj" secondAttribute="bottom" constant="20" id="EEK-hS-IkW"/>
-                            <constraint firstItem="qHS-Gz-jt4" firstAttribute="top" secondItem="3qJ-sx-tLP" secondAttribute="bottom" constant="20" id="U4N-hx-NOo"/>
-                            <constraint firstItem="3qJ-sx-tLP" firstAttribute="leading" secondItem="p5Q-wK-8GQ" secondAttribute="leading" constant="15" id="hVd-KJ-R7s"/>
-                            <constraint firstAttribute="trailing" secondItem="3qJ-sx-tLP" secondAttribute="trailing" constant="15" id="wrk-qT-s3f"/>
-                        </constraints>
-                    </view>
-                    <size key="freeformSize" width="375" height="130"/>
-                    <connections>
-                        <outlet property="ingredientsLbl" destination="3qJ-sx-tLP" id="jpz-ku-gau"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="uhH-7r-nTM" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1306" y="613"/>
-        </scene>
-        <!--Directions View Controller-->
-        <scene sceneID="xIF-WH-BVy">
-            <objects>
-                <viewController id="8Fr-AF-ew5" customClass="DirectionsViewController" customModule="FamilyBinder" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="gs6-6m-dSp"/>
-                        <viewControllerLayoutGuide type="bottom" id="77B-Q5-UDR"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="OlA-Lc-jaP">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="130"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0XM-y9-sOw" userLabel="LblDirections">
-                                <rect key="frame" x="15" y="20" width="345" height="90"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="Directions">
-                                        <attributes>
-                                            <color key="NSColor" red="0.16470588235294117" green="0.16470588235294117" blue="0.17254901960784313" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="17" name="BodoniSvtyTwoOSITCTT-Book"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <constraints>
-                            <constraint firstItem="77B-Q5-UDR" firstAttribute="top" secondItem="0XM-y9-sOw" secondAttribute="bottom" constant="20" id="JEO-la-Qy3"/>
-                            <constraint firstItem="0XM-y9-sOw" firstAttribute="top" secondItem="gs6-6m-dSp" secondAttribute="bottom" constant="20" id="JIb-7a-rgp"/>
-                            <constraint firstItem="0XM-y9-sOw" firstAttribute="leading" secondItem="OlA-Lc-jaP" secondAttribute="leading" constant="15" id="gZQ-aH-Fvw"/>
-                            <constraint firstAttribute="trailing" secondItem="0XM-y9-sOw" secondAttribute="trailing" constant="15" id="ync-GK-4mP"/>
-                        </constraints>
-                    </view>
-                    <size key="freeformSize" width="375" height="130"/>
-                    <connections>
-                        <outlet property="directionsLbl" destination="0XM-y9-sOw" id="JhI-gD-9Km"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xKw-yq-G2P" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1916" y="613"/>
-        </scene>
         <!--Recipe Title View Controller-->
         <scene sceneID="VrU-lX-PQi">
             <objects>
@@ -851,34 +771,25 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="osP-Sm-LYO" userLabel="Recipe Details View">
                                 <rect key="frame" x="0.0" y="33" width="375" height="130"/>
                                 <subviews>
-                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vzs-LZ-Qdh" userLabel="Directions Container View">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="130"/>
-                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FfB-HE-66a">
+                                        <rect key="frame" x="0.0" y="-4" width="375" height="134"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                         <connections>
-                                            <segue destination="8Fr-AF-ew5" kind="embed" identifier="directionsSegue" id="E42-Fy-DVL"/>
+                                            <segue destination="NoO-Yg-R1o" kind="embed" identifier="ingredientsSegue" id="Dyx-53-6TI"/>
                                         </connections>
                                     </containerView>
-                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZBK-SM-iqu" userLabel="Ingredients Container View">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="130"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="58v-f9-Q3u">
+                                        <rect key="frame" x="0.0" y="-4" width="375" height="134"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                         <connections>
-                                            <segue destination="TL9-DI-dLf" kind="embed" identifier="ingredientsSegue" id="VyI-Ir-XGn"/>
+                                            <segue destination="WW1-tk-E63" kind="embed" identifier="directionsSegue" id="tWX-Fj-Rjh"/>
                                         </connections>
                                     </containerView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="ZBK-SM-iqu" firstAttribute="leading" secondItem="osP-Sm-LYO" secondAttribute="leading" id="S3K-pc-dgf"/>
-                                    <constraint firstItem="ZBK-SM-iqu" firstAttribute="top" secondItem="osP-Sm-LYO" secondAttribute="top" id="XsS-qZ-hCy"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="130" id="YrU-OH-V14"/>
-                                    <constraint firstItem="vzs-LZ-Qdh" firstAttribute="leading" secondItem="osP-Sm-LYO" secondAttribute="leading" id="cIy-yC-GGP"/>
-                                    <constraint firstAttribute="trailing" secondItem="vzs-LZ-Qdh" secondAttribute="trailing" id="fs7-m0-x6x"/>
-                                    <constraint firstAttribute="bottom" secondItem="ZBK-SM-iqu" secondAttribute="bottom" id="i8T-3E-rZW"/>
-                                    <constraint firstAttribute="trailing" secondItem="ZBK-SM-iqu" secondAttribute="trailing" id="nrZ-GQ-gAQ"/>
-                                    <constraint firstItem="vzs-LZ-Qdh" firstAttribute="top" secondItem="osP-Sm-LYO" secondAttribute="top" id="o0Q-RQ-3Da"/>
-                                    <constraint firstAttribute="bottom" secondItem="vzs-LZ-Qdh" secondAttribute="bottom" id="wNs-pE-kpD"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -903,14 +814,79 @@
                     <connections>
                         <outlet property="detailsView" destination="osP-Sm-LYO" id="t3F-Al-Z6z"/>
                         <outlet property="directionsBtn" destination="fsf-7g-p9T" id="iBe-Dj-WgY"/>
-                        <outlet property="directionsContainer" destination="vzs-LZ-Qdh" id="aAG-wH-igH"/>
+                        <outlet property="directionsContainer" destination="58v-f9-Q3u" id="2pi-lE-s3k"/>
                         <outlet property="ingredientsBtn" destination="gi9-A6-E2J" id="iu5-yh-woB"/>
-                        <outlet property="ingredientsContainer" destination="ZBK-SM-iqu" id="5oj-Bs-elI"/>
+                        <outlet property="ingredientsContainer" destination="FfB-HE-66a" id="CMA-7g-9YG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6bE-rV-xaL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1612" y="348"/>
+            <point key="canvasLocation" x="1612" y="347.67616191904051"/>
+        </scene>
+        <!--Ingredients View Controller-->
+        <scene sceneID="P7P-Uy-7vT">
+            <objects>
+                <viewController id="NoO-Yg-R1o" customClass="IngredientsViewController" customModule="FamilyBinder" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="juG-Es-UvV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="134"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z11-Iu-NwK" userLabel="LblIngredients">
+                                <rect key="frame" x="15" y="20" width="345" height="90"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Ingredients">
+                                        <attributes>
+                                            <color key="NSColor" red="0.16470588235294117" green="0.16470588235294117" blue="0.17254901960784313" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="17" name="BodoniSvtyTwoOSITCTT-Book"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="ingredientsLbl" destination="z11-Iu-NwK" id="HQ3-KU-EmW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="knJ-zO-gvH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1414" y="627"/>
+        </scene>
+        <!--Directions View Controller-->
+        <scene sceneID="dp7-fw-dPV">
+            <objects>
+                <viewController id="WW1-tk-E63" customClass="DirectionsViewController" customModule="FamilyBinder" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PH9-QJ-JiC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="134"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ak-T6-kgN" userLabel="LblDirections">
+                                <rect key="frame" x="15" y="21" width="345" height="90"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Directions">
+                                        <attributes>
+                                            <color key="NSColor" red="0.16470588235294117" green="0.16470588235294117" blue="0.17254901960784313" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="17" name="BodoniSvtyTwoOSITCTT-Book"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="directionsLbl" destination="2ak-T6-kgN" id="mE3-Ae-CMU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mwm-Oo-nY7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2134" y="627"/>
         </scene>
     </scenes>
     <resources>

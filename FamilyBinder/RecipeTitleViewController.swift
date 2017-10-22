@@ -79,9 +79,6 @@ class RecipeTitleViewController: UIViewController {
             setFavoriteIconImg()
         }
         
-        print("title recipeTitleView.frame.origin.y \(recipeTitleView.frame.origin.y)")
-//        print("title recipeTitleView.frame.size.height \(recipeTitleView.frame.size.height)")
-        
         
 //        if realm.objects(Recipe.self).filter("id == %@", detail.id).first != nil {
 //            try! self.realm.write {

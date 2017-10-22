@@ -74,12 +74,14 @@ class RecipeTabsViewController: UIViewController {
     
     func updateHeights(){
         var newDetailHeight = self.ingredientsBtn.frame.size.height
+        ingredientsContainer.translatesAutoresizingMaskIntoConstraints = false
+        directionsContainer.translatesAutoresizingMaskIntoConstraints = false
         ingredientsContainer.subviews[0].translatesAutoresizingMaskIntoConstraints = false
         directionsContainer.subviews[0].translatesAutoresizingMaskIntoConstraints = false
         
         let ingredientsContainerHeight = ingredientsContainer.subviews[0].frame.size.height
         ingredientsContainer.frame.size.height = ingredientsContainerHeight
-//        print("tabs ingredientsContainerHeight \(ingredientsContainerHeight)")
+        
         let directionsContainerHeight = directionsContainer.subviews[0].frame.size.height
         directionsContainer.frame.size.height = directionsContainerHeight
         
@@ -91,12 +93,9 @@ class RecipeTabsViewController: UIViewController {
             detailsView.frame.size.height = directionsContainerHeight
             detailsView.subviews[0].frame.size.height = 0
         }
-        print("tabs  self.ingredientsBtn.frame.origin.y \( self.ingredientsBtn.frame.origin.y)")
-        print("tabs directionsContainer.frame.origin.y \( directionsContainer.frame.origin.y)")
-        print("tabs detailsView.frame.origin.y \(detailsView.frame.origin.y)")
-//        print("tabs detailsView.frame.size.height \(detailsView.frame.size.height)")
+
         newDetailHeight += detailsView.frame.size.height
-//        print("tabs newDetailHeight \(newDetailHeight)\n")
+
         tabToggledDelegate?.updateTabHeights(detailHeight: newDetailHeight)
         
 //        contentViewConstraint.constant = recipeImg.frame.size.height + recipeTitleView.frame.size.height + detailsView.frame.size.height

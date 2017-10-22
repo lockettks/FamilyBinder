@@ -11,6 +11,7 @@ import UIKit
 class IngredientsViewController: UIViewController {
     @IBOutlet weak var ingredientsLbl: UILabel!
     @IBOutlet weak var recipeImgBackground: UIImageView!
+    @IBOutlet weak var ingredientsLblConstraint: NSLayoutConstraint!
     
     private var currentRecipe = Recipe()
 
@@ -29,6 +30,8 @@ class IngredientsViewController: UIViewController {
             label.attributedText = fullAttributedString
             
             let newIngredientsLblSize = ingredientsLbl.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+            ingredientsLbl.frame.size.height = newIngredientsLblSize.height
+//            ingredientsLblConstraint.constant = newIngredientsLblSize.height
             view.frame.size.height = newIngredientsLblSize.height + 56
         }
         

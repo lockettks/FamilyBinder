@@ -41,7 +41,19 @@
          contextName = "RecipeTabsViewController.updateHeights():RecipeTabsViewController.swift">
          <PersistentStrings>
             <PersistentString
+               value = "ingredientsContainer.frame.size.height">
+            </PersistentString>
+            <PersistentString
+               value = "ingredientsContainer.subviews[0].subviews">
+            </PersistentString>
+            <PersistentString
                value = "detailsView.frame.size.height">
+            </PersistentString>
+            <PersistentString
+               value = "ingredientsContainer.subviews[0].subviews[0].frame.size.height">
+            </PersistentString>
+            <PersistentString
+               value = "ingredientsContainer.subviews[0].frame.size.height">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -73,6 +85,20 @@
          <PersistentStrings>
             <PersistentString
                value = "encoding.encode(urlRequest, with: params)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "IngredientsViewController.configureView():IngredientsViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "ingredientsLblConstraint.constant">
+            </PersistentString>
+            <PersistentString
+               value = "view.frame.size.height">
+            </PersistentString>
+            <PersistentString
+               value = "ingredientsLbl.frame.size.height">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -521,6 +547,12 @@
                value = "scrollView.frame.size.height">
             </PersistentString>
             <PersistentString
+               value = "recipeImg.frame.size.height">
+            </PersistentString>
+            <PersistentString
+               value = "recipeTitleContainerView.frame.maxY">
+            </PersistentString>
+            <PersistentString
                value = "recipeTabsContainerView.subviews[0].frame.size.height">
             </PersistentString>
             <PersistentString
@@ -534,6 +566,9 @@
             </PersistentString>
             <PersistentString
                value = "recipeTitleContainerView.subviews">
+            </PersistentString>
+            <PersistentString
+               value = "contentViewConstraint.constant">
             </PersistentString>
             <PersistentString
                value = "recipeTabsContainerView.frame.size.height">
