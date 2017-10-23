@@ -207,7 +207,13 @@
                value = "recipeDetailsView.frame.size">
             </PersistentString>
             <PersistentString
+               value = "self.recipeTabsViewController.view.frame.size.height">
+            </PersistentString>
+            <PersistentString
                value = "ingredientsViewContainer.frame.size">
+            </PersistentString>
+            <PersistentString
+               value = "self.view.frame.size.height">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -308,7 +314,16 @@
          contextName = "RecipeDetailViewController.viewDidLoad():RecipeDetailViewController.swift">
          <PersistentStrings>
             <PersistentString
+               value = "self.contentView.frame.size.height">
+            </PersistentString>
+            <PersistentString
                value = "ingredientsViewContainer.subviews">
+            </PersistentString>
+            <PersistentString
+               value = "self.recipeTabsContainerView.frame.size.height">
+            </PersistentString>
+            <PersistentString
+               value = "self.view.frame.size.height">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -553,22 +568,13 @@
                value = "recipeImg.frame.size.height">
             </PersistentString>
             <PersistentString
-               value = "recipeTitleContainerView.frame.maxY">
-            </PersistentString>
-            <PersistentString
                value = "titleHeight">
-            </PersistentString>
-            <PersistentString
-               value = "recipeTitleContainerView.frame.origin.y">
             </PersistentString>
             <PersistentString
                value = "recipeTitleContainerView.subviews">
             </PersistentString>
             <PersistentString
                value = "contentViewConstraint.constant">
-            </PersistentString>
-            <PersistentString
-               value = "recipeTabsContainerView.frame.origin.y">
             </PersistentString>
             <PersistentString
                value = "recipeTabsContainerView.subviews[0].frame.size.height">
@@ -586,6 +592,14 @@
          <PersistentStrings>
             <PersistentString
                value = "recipeTabsContainerView.frame.size.height">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "DirectionsViewController.configureView():DirectionsViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "newDirectionsLblSize">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -627,6 +641,14 @@
       </ContextState>
       <ContextState
          contextName = "static SessionManager.(default).(variable initialization expression).(closure #1):SessionManager.swift">
+      </ContextState>
+      <ContextState
+         contextName = "RecipeTabsViewController.configureView():RecipeTabsViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "testSize">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "RecipeDetailViewController.backBtnPressed(Any) -&gt; ():RecipeDetailViewController.swift">

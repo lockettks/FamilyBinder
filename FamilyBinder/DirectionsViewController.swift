@@ -27,10 +27,14 @@ class DirectionsViewController: UIViewController {
             for instruction in currentRecipe.analyzedInstructions {
                 fullAttributedString.append(stringHelper.convertToNumberedItem(textToConvert: instruction.step, textNumber: instruction.stepNumber.description))
             }
-            label.attributedText = fullAttributedString
+//            label.attributedText = fullAttributedString
+            label.text = "Test"
             
-//            let newDirectionsLblSize = directionsLbl.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
-//            view.frame.size.height = newDirectionsLblSize.height + 56
+            let newDirectionsLblSize = directionsLbl.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+            print("newDirectionsLblSize \(newDirectionsLblSize.height)")
+            print("directions view.frame.size.height \(view.frame.size.height)\n")
+            
+            //directionsLbl.frame.size.height = newDirectionsLblSize.height
         }
     }
     

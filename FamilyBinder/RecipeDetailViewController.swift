@@ -121,15 +121,15 @@ class RecipeDetailViewController: UIViewController, TabToggledDelegate {
     
     func updateHeights(){
         
-        contentView.frame.size.height = recipeImg.frame.size.height + recipeTitleContainerView.frame.size.height + recipeTabsContainerView.frame.size.height
-        recipeTitleContainerView.frame.origin.y = recipeImg.frame.size.height + 1
-        recipeTabsContainerView.frame.origin.y = recipeTitleContainerView.frame.maxY + 1
-//       contentViewConstraint.constant = recipeImg.frame.size.height + recipeTitleContainerView.frame.size.height + recipeTabsContainerView.frame.size.height
+//        contentView.frame.size.height = recipeImg.frame.size.height + recipeTitleContainerView.frame.size.height + recipeTabsContainerView.frame.size.height
+//        recipeTitleContainerView.frame.origin.y = recipeImg.frame.size.height + 1
+//        recipeTabsContainerView.frame.origin.y = recipeTitleContainerView.frame.maxY + 1
+////       contentViewConstraint.constant = recipeImg.frame.size.height + recipeTitleContainerView.frame.size.height + recipeTabsContainerView.frame.size.height
     }
     
     // MARK: Protocol Functions
     func updateTabHeights(detailHeight: CGFloat){
-        recipeTabsContainerView.frame.size.height = detailHeight
+//        recipeTabsContainerView.frame.size.height = detailHeight
         updateHeights()
     }
     

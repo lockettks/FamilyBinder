@@ -29,10 +29,12 @@ class IngredientsViewController: UIViewController {
             }
             label.attributedText = fullAttributedString
             
-//            let newIngredientsLblSize = ingredientsLbl.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
-//            ingredientsLbl.frame.size.height = newIngredientsLblSize.height
-//            ingredientsLblConstraint.constant = newIngredientsLblSize.height
-//            view.frame.size.height = newIngredientsLblSize.height + 56
+            let newIngredientsLblSize = ingredientsLbl.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+            print("newIngredientsLblSize \(newIngredientsLblSize.height)")
+            print("ingredients view.frame.size.height \(view.frame.size.height)\n\n")
+            //layoutIfNeeded
+            
+            //ingredientsLbl.frame.size.height = newIngredientsLblSize.height
         }
         
         if let img = self.recipeImgBackground {
@@ -50,4 +52,5 @@ class IngredientsViewController: UIViewController {
     func setCurrentRecipe(newRecipe: Recipe){
         self.currentRecipe = newRecipe
     }
+
 }
