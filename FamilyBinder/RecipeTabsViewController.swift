@@ -73,56 +73,46 @@ class RecipeTabsViewController: UIViewController {
     }
     
     func updateHeights(){
-        var newDetailHeight = self.ingredientsBtn.frame.size.height
-//        ingredientsContainer.translatesAutoresizingMaskIntoConstraints = false
-//        directionsContainer.translatesAutoresizingMaskIntoConstraints = false
-//        ingredientsContainer.subviews[0].translatesAutoresizingMaskIntoConstraints = false
-//        directionsContainer.subviews[0].translatesAutoresizingMaskIntoConstraints = false
-        
-        let ingredientsContainerHeight = ingredientsContainer.subviews[0].frame.size.height
-        ingredientsContainer.frame.size.height = ingredientsContainerHeight
-        
-        let directionsContainerHeight = directionsContainer.subviews[0].frame.size.height
-        directionsContainer.frame.size.height = directionsContainerHeight
-        
-        if ingredientsBtn.isSelected {
-            detailsView.frame.size.height = ingredientsContainerHeight
-            detailsView.subviews[1].frame.size.height = 0
-            
-        } else if directionsBtn.isSelected {
-            detailsView.frame.size.height = directionsContainerHeight
-            detailsView.subviews[0].frame.size.height = 0
-        }
-
-        newDetailHeight += detailsView.frame.size.height
-
-        tabToggledDelegate?.updateTabHeights(detailHeight: newDetailHeight)
-        
-//        contentViewConstraint.constant = recipeImg.frame.size.height + recipeTitleView.frame.size.height + detailsView.frame.size.height
+//        var newDetailHeight = self.ingredientsBtn.frame.size.height
+//        
+//        let ingredientsContainerHeight = ingredientsContainer.subviews[0].frame.size.height
+//        ingredientsContainer.frame.size.height = ingredientsContainerHeight
+//        
+//        let directionsContainerHeight = directionsContainer.subviews[0].frame.size.height
+//        directionsContainer.frame.size.height = directionsContainerHeight
+//        
+//        if ingredientsBtn.isSelected {
+//            detailsView.frame.size.height = ingredientsContainerHeight
+//            detailsView.subviews[1].frame.size.height = 0
+//            
+//        } else if directionsBtn.isSelected {
+//            detailsView.frame.size.height = directionsContainerHeight
+//            detailsView.subviews[0].frame.size.height = 0
+//        }
+//
+//        newDetailHeight += detailsView.frame.size.height
+//
+//        tabToggledDelegate?.updateTabHeights(detailHeight: newDetailHeight)
+//        
+////        contentViewConstraint.constant = recipeImg.frame.size.height + recipeTitleView.frame.size.height + detailsView.frame.size.height
     }
     
     // MARK: Actions
     @IBAction func detailTabPressed(_ sender: UIButton) {
-//        var newDetailHeight = self.ingredientsBtn.frame.size.height
-        
         switch sender.tag {
         case DetailTabs.ingredients.rawValue:
             ingredientsBtn.isSelected = true
             directionsBtn.isSelected = false
-//            newDetailHeight += ingredientsContainer.frame.size.height
         case DetailTabs.directions.rawValue:
             ingredientsBtn.isSelected = false
             directionsBtn.isSelected = true
-//            newDetailHeight += directionsContainer.frame.size.height
         default:
             break
         }
         
         ingredientsContainer.isHidden = !ingredientsBtn.isSelected
         directionsContainer.isHidden = !directionsBtn.isSelected
-        
         updateHeights()
-//        tabToggledDelegate?.updateTabHeights(detailHeight: newDetailHeight)
     }
     
     

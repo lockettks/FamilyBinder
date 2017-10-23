@@ -93,9 +93,7 @@ class RecipeDetailViewController: UIViewController, TabToggledDelegate {
                 }
             }
 
-            
             self.navigationItem.title = detail.title
-            
             
             addRecipeBtn.isEnabled = true
             
@@ -122,17 +120,11 @@ class RecipeDetailViewController: UIViewController, TabToggledDelegate {
     
     
     func updateHeights(){
-//        recipeTitleContainerView.subviews[0].translatesAutoresizingMaskIntoConstraints = false
-//        recipeTabsContainerView.subviews[0].translatesAutoresizingMaskIntoConstraints = false
         
         contentView.frame.size.height = recipeImg.frame.size.height + recipeTitleContainerView.frame.size.height + recipeTabsContainerView.frame.size.height
-        recipeTitleContainerView.frame.origin.y = recipeImg.frame.size.height
-        recipeTabsContainerView.frame.origin.y = recipeTitleContainerView.frame.maxY
+        recipeTitleContainerView.frame.origin.y = recipeImg.frame.size.height + 1
+        recipeTabsContainerView.frame.origin.y = recipeTitleContainerView.frame.maxY + 1
 //       contentViewConstraint.constant = recipeImg.frame.size.height + recipeTitleContainerView.frame.size.height + recipeTabsContainerView.frame.size.height
-        view.layoutSubviews()
-        view.layoutIfNeeded()
-    
-        
     }
     
     // MARK: Protocol Functions
