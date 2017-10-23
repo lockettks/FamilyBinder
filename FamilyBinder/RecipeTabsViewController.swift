@@ -74,10 +74,10 @@ class RecipeTabsViewController: UIViewController {
     
     func updateHeights(){
         var newDetailHeight = self.ingredientsBtn.frame.size.height
-        ingredientsContainer.translatesAutoresizingMaskIntoConstraints = false
-        directionsContainer.translatesAutoresizingMaskIntoConstraints = false
-        ingredientsContainer.subviews[0].translatesAutoresizingMaskIntoConstraints = false
-        directionsContainer.subviews[0].translatesAutoresizingMaskIntoConstraints = false
+//        ingredientsContainer.translatesAutoresizingMaskIntoConstraints = false
+//        directionsContainer.translatesAutoresizingMaskIntoConstraints = false
+//        ingredientsContainer.subviews[0].translatesAutoresizingMaskIntoConstraints = false
+//        directionsContainer.subviews[0].translatesAutoresizingMaskIntoConstraints = false
         
         let ingredientsContainerHeight = ingredientsContainer.subviews[0].frame.size.height
         ingredientsContainer.frame.size.height = ingredientsContainerHeight

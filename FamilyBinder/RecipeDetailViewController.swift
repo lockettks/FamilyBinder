@@ -129,6 +129,9 @@ class RecipeDetailViewController: UIViewController, TabToggledDelegate {
         recipeTitleContainerView.frame.origin.y = recipeImg.frame.size.height
         recipeTabsContainerView.frame.origin.y = recipeTitleContainerView.frame.maxY
 //       contentViewConstraint.constant = recipeImg.frame.size.height + recipeTitleContainerView.frame.size.height + recipeTabsContainerView.frame.size.height
+        view.layoutSubviews()
+        view.layoutIfNeeded()
+    
         
     }
     
@@ -176,12 +179,15 @@ class RecipeDetailViewController: UIViewController, TabToggledDelegate {
             recipeTitleViewController = segue.destination as? RecipeTitleViewController
             if let detail = self.detailItem {
                 recipeTitleViewController?.setCurrentRecipe(newRecipe: detail)
+                recipeTitleViewController?.view.translatesAutoresizingMaskIntoConstraints = false
+                
             }
         } else if segue.identifier == "tabsSegue" {
             recipeTabsViewController = segue.destination as? RecipeTabsViewController
             recipeTabsViewController?.tabToggledDelegate = self
             if let detail = self.detailItem {
                 recipeTabsViewController?.setCurrentRecipe(newRecipe: detail)
+                recipeTabsViewController?.view.translatesAutoresizingMaskIntoConstraints = false
             }
         }
     }

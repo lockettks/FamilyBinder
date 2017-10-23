@@ -733,7 +733,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gi9-A6-E2J" userLabel="Ingredients Tab">
-                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="33"/>
+                                <rect key="frame" x="0.0" y="0.0" width="188" height="33"/>
                                 <color key="backgroundColor" red="0.85490196078431369" green="0.8784313725490196" blue="0.88235294117647056" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="33" id="jRs-f0-XAP"/>
@@ -751,7 +751,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" horizontalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fsf-7g-p9T" userLabel="Directions Tab">
-                                <rect key="frame" x="187.5" y="0.0" width="187.5" height="33"/>
+                                <rect key="frame" x="187" y="0.0" width="188" height="33"/>
                                 <color key="backgroundColor" red="0.85490196078431369" green="0.8784313725490196" blue="0.88235294117647056" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="33" id="Kiu-Fv-Xyd"/>
@@ -773,14 +773,14 @@
                                 <subviews>
                                     <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FfB-HE-66a">
                                         <rect key="frame" x="0.0" y="-4" width="375" height="134"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <connections>
                                             <segue destination="NoO-Yg-R1o" kind="embed" identifier="ingredientsSegue" id="Dyx-53-6TI"/>
                                         </connections>
                                     </containerView>
                                     <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="58v-f9-Q3u">
                                         <rect key="frame" x="0.0" y="-4" width="375" height="134"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <connections>
                                             <segue destination="WW1-tk-E63" kind="embed" identifier="directionsSegue" id="tWX-Fj-Rjh"/>
                                         </connections>
@@ -788,27 +788,22 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="130" id="YrU-OH-V14"/>
-                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="osP-Sm-LYO" firstAttribute="width" secondItem="QeB-xJ-eN9" secondAttribute="width" id="Bvw-FZ-JFx"/>
-                            <constraint firstItem="osP-Sm-LYO" firstAttribute="top" secondItem="gi9-A6-E2J" secondAttribute="bottom" id="Cj7-Wx-Knd"/>
-                            <constraint firstAttribute="trailing" secondItem="osP-Sm-LYO" secondAttribute="trailing" id="Edq-8K-bMb"/>
-                            <constraint firstItem="Lmq-1c-nB2" firstAttribute="top" secondItem="osP-Sm-LYO" secondAttribute="bottom" id="HYe-c0-asS"/>
+                            <constraint firstItem="osP-Sm-LYO" firstAttribute="leading" secondItem="gi9-A6-E2J" secondAttribute="leading" id="2Qr-5z-6BW"/>
                             <constraint firstItem="gi9-A6-E2J" firstAttribute="top" secondItem="JzM-fu-PeW" secondAttribute="bottom" id="IiL-xM-KQ6"/>
-                            <constraint firstItem="osP-Sm-LYO" firstAttribute="top" secondItem="fsf-7g-p9T" secondAttribute="bottom" id="JVC-5s-lEW"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="gi9-A6-E2J" secondAttribute="trailing" constant="20" symbolic="YES" id="Jyu-oo-yqf"/>
-                            <constraint firstItem="osP-Sm-LYO" firstAttribute="leading" secondItem="QeB-xJ-eN9" secondAttribute="leading" id="S6W-co-BVt"/>
+                            <constraint firstItem="osP-Sm-LYO" firstAttribute="bottom" secondItem="Lmq-1c-nB2" secondAttribute="top" id="Sro-Oi-IrZ"/>
                             <constraint firstItem="fsf-7g-p9T" firstAttribute="width" secondItem="QeB-xJ-eN9" secondAttribute="width" multiplier="0.5" id="cLz-zY-kvT"/>
                             <constraint firstItem="fsf-7g-p9T" firstAttribute="top" secondItem="JzM-fu-PeW" secondAttribute="bottom" id="kFq-kW-XnY"/>
                             <constraint firstItem="gi9-A6-E2J" firstAttribute="leading" secondItem="QeB-xJ-eN9" secondAttribute="leading" id="oc0-WO-Av2"/>
                             <constraint firstItem="gi9-A6-E2J" firstAttribute="width" secondItem="QeB-xJ-eN9" secondAttribute="width" multiplier="0.5" id="otj-e8-xm2"/>
                             <constraint firstItem="fsf-7g-p9T" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="QeB-xJ-eN9" secondAttribute="leading" constant="20" symbolic="YES" id="phU-N4-KtW"/>
                             <constraint firstAttribute="trailing" secondItem="fsf-7g-p9T" secondAttribute="trailing" id="wRS-p1-Bjs"/>
+                            <constraint firstItem="osP-Sm-LYO" firstAttribute="top" secondItem="gi9-A6-E2J" secondAttribute="bottom" id="y4s-OO-E3d"/>
+                            <constraint firstAttribute="trailing" secondItem="osP-Sm-LYO" secondAttribute="trailing" id="zTN-R8-lR8"/>
                         </constraints>
                     </view>
                     <connections>
