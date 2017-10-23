@@ -81,7 +81,7 @@ class RecipeTabsViewController: UIViewController {
         //var newDetailHeight = self.ingredientsBtn.frame.size.height
 
         let ingredientsHeightNeeded = ingredientsContainer.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
-        print("ingrdients \(ingredientsHeightNeeded)")
+        print("ingredientsHeightNeeded \(ingredientsHeightNeeded)")
 //        let ingredientsContainerHeight = ingredientsHeightNeeded
 //        let ingredientsContainerHeight = ingredientsContainer.subviews[0].frame.size.height
 //        print("ingredientsContainerHeight \(ingredientsContainerHeight)")
@@ -89,7 +89,7 @@ class RecipeTabsViewController: UIViewController {
 
         
         let directionsHeightNeeded = directionsContainer.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
-        print("directions \(directionsHeightNeeded)")
+        print("directionsHeightNeeded \(directionsHeightNeeded)")
 //        let directionsContainerHeight = directionsHeightNeeded
         //let directionsContainerHeight = directionsContainer.subviews[0].frame.size.height
 //        print("directionsContainerHeight \(directionsContainerHeight)\n")
@@ -97,11 +97,11 @@ class RecipeTabsViewController: UIViewController {
 
         if ingredientsBtn.isSelected {
             detailsView.frame.size.height = ingredientsHeightNeeded
-            ingredientsContainer.frame.size.height = ingredientsHeightNeeded
+//            ingredientsContainer.frame.size.height = ingredientsHeightNeeded
 
         } else if directionsBtn.isSelected {
             detailsView.frame.size.height = directionsHeightNeeded
-            directionsContainer.frame.size.height = directionsHeightNeeded
+//            directionsContainer.frame.size.height = directionsHeightNeeded
         }
 
         //newDetailHeight += detailsView.frame.size.height
