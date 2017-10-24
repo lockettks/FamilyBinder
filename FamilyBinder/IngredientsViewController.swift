@@ -14,6 +14,7 @@ class IngredientsViewController: UIViewController {
     @IBOutlet weak var ingredientsLblConstraint: NSLayoutConstraint!
     
     private var currentRecipe = Recipe()
+    private var ingredients = [Ingredient()]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +25,8 @@ class IngredientsViewController: UIViewController {
         if let label = self.ingredientsLbl {
             let attributesDictionary = [NSFontAttributeName : label.font]
             let fullAttributedString = NSMutableAttributedString(string: "", attributes: (attributesDictionary as Any as! [String : Any]))
-            for ingredient in (currentRecipe.ingredients) where ingredient.originalString != "" {
+            for ingredient in (ingredients) where ingredient.originalString != "" {
+//            for ingredient in (currentRecipe.ingredients) where ingredient.originalString != "" {
                 fullAttributedString.append(stringHelper.convertToBulletedItem(textToConvert: ingredient.originalString))
             }
             label.attributedText = fullAttributedString
@@ -46,6 +48,13 @@ class IngredientsViewController: UIViewController {
         }
    
     }
+    func setIngredients(ingredients: [Ingredient]){
+        self.ingredients = ingredients
+    }
+    
+    func removeIngredients(){
+        self.ingredients = [Ingredient]()
+    }
     
     // MARK: Functions
     
@@ -54,3 +63,4 @@ class IngredientsViewController: UIViewController {
     }
 
 }
+
