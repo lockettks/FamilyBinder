@@ -31,9 +31,9 @@ class IngredientsViewController: UIViewController {
             }
             label.attributedText = fullAttributedString
             
-            let newIngredientsLblSize = ingredientsLbl.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
-            print("ingredients newIngredientsLblSize \(newIngredientsLblSize.height)")//245
-            print("ingredients view.frame.size.height \(view.frame.size.height)\n")//134
+//            let newIngredientsLblSize = ingredientsLbl.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+//            print("ingredients newIngredientsLblSize \(newIngredientsLblSize.height)")//245
+//            print("ingredients view.frame.size.height \(view.frame.size.height)\n")//134
             //layoutIfNeeded
             
             //ingredientsLbl.frame.size.height = newIngredientsLblSize.height

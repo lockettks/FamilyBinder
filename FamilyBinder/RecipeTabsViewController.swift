@@ -104,11 +104,11 @@ class RecipeTabsViewController: UIViewController {
                 self.view.setNeedsDisplay()
                 self.view.setNeedsLayout()
                 self.view.layoutIfNeeded()
-                let ingredientsHeightNeeded = ingredientsContainer.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
-                print("tabs ingredientsHeightNeeded & ingredientsContainer \(ingredientsHeightNeeded)") //289.5
-                ingredientsContainer.frame.size.height = ingredientsHeightNeeded
+//                let ingredientsHeightNeeded = ingredientsContainer.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
+//                print("tabs ingredientsHeightNeeded & ingredientsContainer \(ingredientsHeightNeeded)") //289.5
+//                ingredientsContainer.frame.size.height = ingredientsHeightNeeded
                 
-                detailsView.frame.size.height = ingredientsHeightNeeded
+//                detailsView.frame.size.height = ingredientsHeightNeeded
             
                 
             } else if directionsBtn.isSelected {
@@ -118,30 +118,30 @@ class RecipeTabsViewController: UIViewController {
                 iVC.configureView()
                 
                 //update ingredients height
-                self.view.setNeedsDisplay()
-                self.view.setNeedsLayout()
-                self.view.layoutIfNeeded()
-                let ingredientsHeightNeeded = ingredientsContainer.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
-                print("tabs RESET ingredientsHeightNeeded & ingredientsContainer \(ingredientsHeightNeeded)") //289.5
+                
+//                let ingredientsHeightNeeded = ingredientsContainer.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
+//                print("tabs RESET ingredientsHeightNeeded & ingredientsContainer \(ingredientsHeightNeeded)") //289.5
                 
                 //set directions
                 dVC.setCurrentRecipe(newRecipe: currentRecipe)
                 dVC.configureView()
                 
-                //update directions height
-                let directionsHeightNeeded = directionsContainer.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
-                print("tabs directionsHeightNeeded & directionsContainer \(directionsHeightNeeded)") //64.5
-                directionsContainer.frame.size.height = directionsHeightNeeded
+                self.view.setNeedsDisplay()
+                self.view.setNeedsLayout()
+                self.view.layoutIfNeeded()
                 
-                detailsView.frame.size.height = directionsHeightNeeded
+                //update directions height
+//                let directionsHeightNeeded = directionsContainer.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
+//                print("tabs directionsHeightNeeded & directionsContainer \(directionsHeightNeeded)") //64.5
+//                directionsContainer.frame.size.height = directionsHeightNeeded
+                
+//                detailsView.frame.size.height = directionsHeightNeeded
                 
             }
         }
         
-        print("tabs detailsView \(detailsView.frame.size.height)")
-        
         newDetailHeight += detailsView.frame.size.height
-        print("tabs newDetailHeight for delegate \(newDetailHeight)\n") //322.5 for ingredients, 97.5 for directions
+//        print("tabs newDetailHeight for delegate \(newDetailHeight)\n") //322.5 for ingredients, 97.5 for directions
         
         tabToggledDelegate?.updateTabHeights(detailHeight: newDetailHeight)
     }
