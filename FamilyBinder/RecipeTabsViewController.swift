@@ -108,7 +108,7 @@ class RecipeTabsViewController: UIViewController {
                 dVC.configureView()
                 
                 let directionsHeightNeeded = directionsContainer.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
-                print("tabs directionsHeightNeeded & directionsContainer \(directionsHeightNeeded)")
+                print("tabs directionsHeightNeeded & directionsContainer \(directionsHeightNeeded)") //64.5
                 directionsContainer.frame.size.height = directionsHeightNeeded
                 
                 detailsView.frame.size.height = directionsHeightNeeded
@@ -117,7 +117,7 @@ class RecipeTabsViewController: UIViewController {
         }
         
         newDetailHeight += detailsView.frame.size.height
-        print("tabs newDetailHeight for delegate \(newDetailHeight)\n") //322.5
+        print("tabs newDetailHeight for delegate \(newDetailHeight)\n") //322.5 for ingredients, 97.5 for directions
         
         tabToggledDelegate?.updateTabHeights(detailHeight: newDetailHeight)
     }
