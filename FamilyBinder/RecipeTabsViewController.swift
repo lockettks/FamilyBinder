@@ -46,12 +46,12 @@ class RecipeTabsViewController: UIViewController {
     }
     
     func configureView(){
-        var detailHeight = self.ingredientsBtn.frame.size.height
+//        var detailHeight = self.ingredientsBtn.frame.size.height
         ingredientsBtn.setBackgroundColor(color: UIColor(hex: "DAE0E1"), forState: .normal)
         ingredientsBtn.setBackgroundColor(color: UIColor(hex: "C1212E"), forState: .selected)
         ingredientsBtn.isSelected = true
-        detailHeight += ingredientsContainer.frame.size.height
-        tabToggledDelegate?.updateTabHeights(detailHeight: detailHeight)
+//        detailHeight += ingredientsContainer.frame.size.height
+//        tabToggledDelegate?.updateTabHeights(detailHeight: detailHeight)
         
         directionsBtn.setBackgroundColor(color: UIColor(hex: "DAE0E1"), forState: .normal)
         directionsBtn.setBackgroundColor(color: UIColor(hex: "C1212E"), forState: .selected)
@@ -79,65 +79,49 @@ class RecipeTabsViewController: UIViewController {
     //    }
     
     func updateHeights(){
-        //var newDetailHeight = self.ingredientsBtn.frame.size.height
+        var newDetailHeight = self.ingredientsBtn.frame.size.height
         
-        let ingredientsHeightNeeded = ingredientsContainer.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
-        print("ingredientsHeightNeeded \(ingredientsHeightNeeded)")
-        ingredientsContainer.frame.size.height = ingredientsHeightNeeded
+        //        let ingredientsHeightNeeded = ingredientsContainer.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
+        //        print("ingredientsHeightNeeded \(ingredientsHeightNeeded)")
+        //        ingredientsContainer.frame.size.height = ingredientsHeightNeeded
         
         
-        let directionsHeightNeeded = directionsContainer.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
-        print("directionsHeightNeeded \(directionsHeightNeeded)")
-        directionsContainer.frame.size.height = directionsHeightNeeded
+        //        let directionsHeightNeeded = directionsContainer.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
+        //        print("directionsHeightNeeded \(directionsHeightNeeded)")
+        //        directionsContainer.frame.size.height = directionsHeightNeeded
         
-//        if let iVC = ingredientsViewController, let dVC = directionsViewController {
-        
+        if let iVC = ingredientsViewController, let dVC = directionsViewController {
+            
             if ingredientsBtn.isSelected {
+                let ingredientsArray = Array(currentRecipe.ingredients)
+                iVC.setIngredients(ingredients: ingredientsArray)
+                iVC.configureView()
+                
+                let ingredientsHeightNeeded = ingredientsContainer.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
+                print("tabs ingredientsHeightNeeded & ingredientsContainer \(ingredientsHeightNeeded)") //289.5
+                ingredientsContainer.frame.size.height = ingredientsHeightNeeded
+                
                 detailsView.frame.size.height = ingredientsHeightNeeded
                 
-//                remove(asChildViewController: dVC)
-//                add(asChildViewController: iVC)
-                
             } else if directionsBtn.isSelected {
+                dVC.setCurrentRecipe(newRecipe: currentRecipe)
+                dVC.configureView()
+                
+                let directionsHeightNeeded = directionsContainer.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
+                print("tabs directionsHeightNeeded & directionsContainer \(directionsHeightNeeded)")
+                directionsContainer.frame.size.height = directionsHeightNeeded
+                
                 detailsView.frame.size.height = directionsHeightNeeded
                 
-//                remove(asChildViewController: iVC)
-//                add(asChildViewController: dVC)
             }
-//        }
+        }
         
-        //newDetailHeight += detailsView.frame.size.height
-        //
-        //                tabToggledDelegate?.updateTabHeights(detailHeight: newDetailHeight)
+        newDetailHeight += detailsView.frame.size.height
+        print("tabs newDetailHeight for delegate \(newDetailHeight)\n") //322.5
         
-        //        contentViewConstraint.constant = recipeImg.frame.size.height + recipeTitleView.frame.size.height + detailsView.frame.size.height
+        tabToggledDelegate?.updateTabHeights(detailHeight: newDetailHeight)
     }
     
-    private func add(asChildViewController viewController: UIViewController) {
-        // Add Child View Controller
-        addChildViewController(viewController)
-        
-        // Add Child View as Subview
-        view.addSubview(viewController.view)
-        
-        // Configure Child View
-        viewController.view.frame = view.bounds
-        viewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        
-        // Notify Child View Controller
-        viewController.didMove(toParentViewController: self)
-    }
-    
-    private func remove(asChildViewController viewController: UIViewController) {
-        // Notify Child View Controller
-        viewController.willMove(toParentViewController: nil)
-        
-        // Remove Child View From Superview
-        viewController.view.removeFromSuperview()
-        
-        // Notify Child View Controller
-        viewController.removeFromParentViewController()
-    }
     
     // MARK: Actions
     @IBAction func detailTabPressed(_ sender: UIButton) {

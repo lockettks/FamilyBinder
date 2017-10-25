@@ -13,7 +13,7 @@ class IngredientsViewController: UIViewController {
     @IBOutlet weak var recipeImgBackground: UIImageView!
     @IBOutlet weak var ingredientsLblConstraint: NSLayoutConstraint!
     
-    private var currentRecipe = Recipe()
+//    private var currentRecipe = Recipe()
     private var ingredients = [Ingredient()]
 
     override func viewDidLoad() {
@@ -32,20 +32,20 @@ class IngredientsViewController: UIViewController {
             label.attributedText = fullAttributedString
             
             let newIngredientsLblSize = ingredientsLbl.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
-            print("newIngredientsLblSize \(newIngredientsLblSize.height)")
-            print("ingredients view.frame.size.height \(view.frame.size.height)\n\n")
+            print("ingredients newIngredientsLblSize \(newIngredientsLblSize.height)")//245
+            print("ingredients view.frame.size.height \(view.frame.size.height)\n")//134
             //layoutIfNeeded
             
             //ingredientsLbl.frame.size.height = newIngredientsLblSize.height
         }
         
-        if let img = self.recipeImgBackground {
-            let placeholderImage = #imageLiteral(resourceName: "dinnerPlate")
-            if let url = URL(string: currentRecipe.imageURL) {
-                img.af_setImage(withURL: url, placeholderImage: placeholderImage)
-                //detail.image = img.image
-            }
-        }
+//        if let img = self.recipeImgBackground {
+//            let placeholderImage = #imageLiteral(resourceName: "dinnerPlate")
+//            if let url = URL(string: currentRecipe.imageURL) {
+//                img.af_setImage(withURL: url, placeholderImage: placeholderImage)
+//                //detail.image = img.image
+//            }
+//        }
    
     }
     func setIngredients(ingredients: [Ingredient]){
@@ -58,9 +58,9 @@ class IngredientsViewController: UIViewController {
     
     // MARK: Functions
     
-    func setCurrentRecipe(newRecipe: Recipe){
-        self.currentRecipe = newRecipe
-    }
+//    func setCurrentRecipe(newRecipe: Recipe){
+//        self.currentRecipe = newRecipe
+//    }
 
 }
 
