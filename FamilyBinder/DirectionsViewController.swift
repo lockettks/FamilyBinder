@@ -31,7 +31,7 @@ class DirectionsViewController: UIViewController {
             label.text = "Test"
             
             let newDirectionsLblSize = directionsLbl.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
-            print("newDirectionsLblSize \(newDirectionsLblSize.height)")
+            print("directions newDirectionsLblSize \(newDirectionsLblSize.height)")
             print("directions view.frame.size.height \(view.frame.size.height)\n")
             
             //directionsLbl.frame.size.height = newDirectionsLblSize.height

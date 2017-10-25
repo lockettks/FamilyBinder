@@ -104,6 +104,12 @@ class RecipeTabsViewController: UIViewController {
                 detailsView.frame.size.height = ingredientsHeightNeeded
                 
             } else if directionsBtn.isSelected {
+                iVC.removeIngredients()
+                iVC.configureView()
+                self.view.layoutIfNeeded()
+                
+                let ingredientsHeightNeeded = ingredientsContainer.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
+                print("tabs DOES THIS CHANGE NOW THAT TEXT IS RESET?? ingredientsHeightNeeded & ingredientsContainer \(ingredientsHeightNeeded)") //289.5
                 dVC.setCurrentRecipe(newRecipe: currentRecipe)
                 dVC.configureView()
                 
@@ -115,6 +121,8 @@ class RecipeTabsViewController: UIViewController {
                 
             }
         }
+        
+        print("tabs detailsView \(detailsView.frame.size.height)")
         
         newDetailHeight += detailsView.frame.size.height
         print("tabs newDetailHeight for delegate \(newDetailHeight)\n") //322.5 for ingredients, 97.5 for directions
