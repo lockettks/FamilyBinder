@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         navController2.navigationBar.isTranslucent = true
         navController2.view.backgroundColor = .clear
         
-        print("po Realm.Configuration.defaultConfiguration.fileURL")
+//        print("po Realm.Configuration.defaultConfiguration.fileURL")
         return true
     }
 
