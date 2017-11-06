@@ -14,7 +14,7 @@ enum DetailTabs: Int {
     case directions
 }
 
-class RecipeDetailViewController: UIViewController, TabToggledDelegate {
+class RecipeDetailViewController: UIViewController {
     // MARK: - Outlets
     @IBOutlet weak var backBtn: UIButton!
     
@@ -111,35 +111,6 @@ class RecipeDetailViewController: UIViewController, TabToggledDelegate {
         }
     }
     
-    // MARK: Constraints
-    
-    override func updateViewConstraints() {
-        super.updateViewConstraints()
-//        updateHeights()
-    }
-    
-    
-    func updateHeights(){
-        
-        contentView.frame.size.height = recipeImg.frame.size.height + recipeTitleContainerView.frame.size.height + recipeTabsContainerView.frame.size.height
-        self.view.setNeedsDisplay()
-        self.view.setNeedsLayout()
-       
-       contentViewConstraint.constant = recipeImg.frame.size.height + recipeTitleContainerView.frame.size.height + recipeTabsContainerView.frame.size.height
-         self.view.layoutIfNeeded()
-    }
-    
-    // MARK: Protocol Functions
-    func updateTabHeights(detailHeight: CGFloat){
-        recipeTabsContainerView.frame.size.height = detailHeight
-        print("detail tabsContainer \(recipeTabsContainerView.frame.size.height)\n")
-        self.view.setNeedsDisplay()
-        self.view.setNeedsLayout()
-        //self.view.layoutIfNeeded()//title updates
-        updateHeights()
-    }
-    
-    
     override func viewDidDisappear(_ animated: Bool) {
         if let thisRecipe = self.detailItem {
             if (!(thisRecipe.isFavorite)) {
@@ -182,7 +153,7 @@ class RecipeDetailViewController: UIViewController, TabToggledDelegate {
             }
         } else if segue.identifier == "tabsSegue" {
             recipeTabsViewController = segue.destination as? RecipeTabsViewController
-            recipeTabsViewController?.tabToggledDelegate = self
+//            recipeTabsViewController?.tabToggledDelegate = self
             if let detail = self.detailItem {
                 recipeTabsViewController?.setCurrentRecipe(newRecipe: detail)
                 recipeTabsViewController?.view.translatesAutoresizingMaskIntoConstraints = false

@@ -9,10 +9,6 @@
 import Foundation
 import UIKit
 
-// MARK: Protocols
-protocol TabToggledDelegate: class {
-    func updateTabHeights(detailHeight: CGFloat)
-}
 
 class RecipeTabsViewController: UIViewController {
     // MARK: Outlets
@@ -23,11 +19,10 @@ class RecipeTabsViewController: UIViewController {
     @IBOutlet weak var directionsContainer: UIView!
     
     // MARK: Properties
-    weak var tabToggledDelegate: TabToggledDelegate?
+//    weak var tabToggledDelegate: TabToggledDelegate?
     private var currentRecipe = Recipe()
     var ingredientsViewController:IngredientsViewController?
     var directionsViewController:DirectionsViewController?
-    
     
     // MARK: View Loaders
     override func viewDidLoad() {
@@ -61,61 +56,30 @@ class RecipeTabsViewController: UIViewController {
     func updateHeights(){
         var newDetailHeight = self.ingredientsBtn.frame.size.height
         
-        //        let ingredientsHeightNeeded = ingredientsContainer.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
-        //        print("ingredientsHeightNeeded \(ingredientsHeightNeeded)")
-        //        ingredientsContainer.frame.size.height = ingredientsHeightNeeded
-        
-        
-        //        let directionsHeightNeeded = directionsContainer.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
-        //        print("directionsHeightNeeded \(directionsHeightNeeded)")
-        //        directionsContainer.frame.size.height = directionsHeightNeeded
-        
         if let iVC = ingredientsViewController, let dVC = directionsViewController {
-            
+
             if ingredientsBtn.isSelected {
+                //clear directions
                 dVC.removeCurrentRecipe()
-                dVC.configureView()
-                
                 //set ingredients
                 let ingredientsArray = Array(currentRecipe.ingredients)
                 iVC.setIngredients(ingredients: ingredientsArray)
-                iVC.configureView()
-                
-                //update ingredients height
-                self.view.setNeedsDisplay()
-                self.view.setNeedsLayout()
-                self.view.layoutIfNeeded()
-                let ingredientsHeightNeeded = ingredientsContainer.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
-
-                ingredientsContainer.frame.size.height = ingredientsHeightNeeded
-//                tabsContainerHeightConstraint.constant = ingredientsHeightNeeded
                 
             } else if directionsBtn.isSelected {
-                
                 //clear ingredients
                 iVC.removeIngredients()
-                iVC.configureView()
-//                let ingredientsHeightNeeded = ingredientsContainer.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
-                
                 //set directions
                 dVC.setCurrentRecipe(newRecipe: currentRecipe)
-                dVC.configureView()
-                
-                self.view.setNeedsDisplay()
-                self.view.setNeedsLayout()
-                self.view.layoutIfNeeded()
-                
-                //update directions height
-                let directionsHeightNeeded = directionsContainer.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
-                directionsContainer.frame.size.height = directionsHeightNeeded
             }
+            
+            iVC.configureView()
+            dVC.configureView()
+            self.view.layoutIfNeeded()
         }
         
         newDetailHeight += detailsView.frame.size.height
-        
-        tabToggledDelegate?.updateTabHeights(detailHeight: newDetailHeight)
+//        tabToggledDelegate?.updateTabHeights(detailHeight: newDetailHeight)
     }
-    
     
     // MARK: Actions
     @IBAction func detailTabPressed(_ sender: UIButton) {
