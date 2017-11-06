@@ -26,26 +26,10 @@ class IngredientsViewController: UIViewController {
             let attributesDictionary = [NSFontAttributeName : label.font]
             let fullAttributedString = NSMutableAttributedString(string: "", attributes: (attributesDictionary as Any as! [String : Any]))
             for ingredient in (ingredients) where ingredient.originalString != "" {
-//            for ingredient in (currentRecipe.ingredients) where ingredient.originalString != "" {
                 fullAttributedString.append(stringHelper.convertToBulletedItem(textToConvert: ingredient.originalString))
             }
             label.attributedText = fullAttributedString
-            
-//            let newIngredientsLblSize = ingredientsLbl.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
-//            print("ingredients newIngredientsLblSize \(newIngredientsLblSize.height)")//245
-//            print("ingredients view.frame.size.height \(view.frame.size.height)\n")//134
-            //layoutIfNeeded
-            
-            //ingredientsLbl.frame.size.height = newIngredientsLblSize.height
         }
-        
-//        if let img = self.recipeImgBackground {
-//            let placeholderImage = #imageLiteral(resourceName: "dinnerPlate")
-//            if let url = URL(string: currentRecipe.imageURL) {
-//                img.af_setImage(withURL: url, placeholderImage: placeholderImage)
-//                //detail.image = img.image
-//            }
-//        }
    
     }
     func setIngredients(ingredients: [Ingredient]){

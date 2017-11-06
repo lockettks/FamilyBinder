@@ -27,27 +27,19 @@ class DirectionsViewController: UIViewController {
             for instruction in currentRecipe.analyzedInstructions {
                 fullAttributedString.append(stringHelper.convertToNumberedItem(textToConvert: instruction.step, textNumber: instruction.stepNumber.description))
             }
-//            label.attributedText = fullAttributedString
-            label.text = "Test"
-            
-//            let newDirectionsLblSize = directionsLbl.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
-//            print("directions newDirectionsLblSize \(newDirectionsLblSize.height)")
-//            print("directions view.frame.size.height \(view.frame.size.height)\n")
-            
-            //directionsLbl.frame.size.height = newDirectionsLblSize.height
+            label.attributedText = fullAttributedString
+//            label.text = "Test"
         }
     }
-    
-    override func viewDidLayoutSubviews() {
-//        preferredContentSize = view.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
-//        view.frame.size.height = preferredContentSize.height
-    }
-    
 
     // MARK: Functions
     
     func setCurrentRecipe(newRecipe: Recipe){
         self.currentRecipe = newRecipe
+     }
+    
+    func removeCurrentRecipe(){
+        self.currentRecipe = Recipe()
     }
 
 

@@ -125,8 +125,6 @@ class RecipeDetailViewController: UIViewController, TabToggledDelegate {
         self.view.setNeedsDisplay()
         self.view.setNeedsLayout()
        
-//        recipeTitleContainerView.frame.origin.y = recipeImg.frame.size.height + 1
-//        recipeTabsContainerView.frame.origin.y = recipeTitleContainerView.frame.maxY + 1
        contentViewConstraint.constant = recipeImg.frame.size.height + recipeTitleContainerView.frame.size.height + recipeTabsContainerView.frame.size.height
          self.view.layoutIfNeeded()
     }

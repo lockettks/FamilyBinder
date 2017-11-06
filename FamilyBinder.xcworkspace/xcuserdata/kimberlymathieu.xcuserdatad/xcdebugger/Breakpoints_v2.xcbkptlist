@@ -54,8 +54,40 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
+            filePath = "FamilyBinder/RecipeTabsViewController.swift"
+            timestampString = "531645157.856952"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
+            landmarkName = "updateHeights()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
             filePath = "FamilyBinder/RecipeDetailViewController.swift"
-            timestampString = "530601074.601548"
+            timestampString = "531645157.857406"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
+            landmarkName = "updateTabHeights(detailHeight:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FamilyBinder/RecipeDetailViewController.swift"
+            timestampString = "531645157.857463"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "124"
@@ -70,13 +102,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FamilyBinder/RecipeDetailViewController.swift"
-            timestampString = "530601074.602103"
+            filePath = "FamilyBinder/RecipeTabsViewController.swift"
+            timestampString = "531645157.857513"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
-            landmarkName = "updateTabHeights(detailHeight:)"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
+            landmarkName = "updateHeights()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -86,12 +118,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FamilyBinder/RecipeDetailViewController.swift"
-            timestampString = "530601074.602472"
+            filePath = "FamilyBinder/RecipeTabsViewController.swift"
+            timestampString = "531645157.857836"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
             landmarkName = "updateHeights()"
             landmarkType = "7">
          </BreakpointContent>
