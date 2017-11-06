@@ -13,7 +13,7 @@ class DirectionsViewController: UIViewController {
     @IBOutlet weak var directionsLbl: UILabel!
     @IBOutlet weak var recipeImgBackground: UIImageView!
     
-    private var currentDirections = [Instruction()]
+    private var currentDirections = [Direction()]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,10 +31,10 @@ class DirectionsViewController: UIViewController {
         }
     }
 
-    func setDirections(directions: [Instruction]){
+    func setDirections(directions: [Direction]){
         self.currentDirections = directions
     }
     func removeDirections(){
-        self.currentDirections = [Instruction]()
+        self.currentDirections = [Direction]()
     }
 }

@@ -1,5 +1,5 @@
 //
-//  Instruction.swift
+//  Direction.swift
 //  FamilyBinder
 //
 //  Created by Kimberly Mathieu on 7/26/17.
@@ -10,10 +10,10 @@ import Foundation
 import SwiftyJSON
 import RealmSwift
 
-class Instruction : Object {
+class Direction : Object {
     dynamic var stepNumber: Int = 0
     dynamic var step: String = ""
-    let recipes = LinkingObjects(fromType: Recipe.self, property: "analyzedInstructions")
+    let recipes = LinkingObjects(fromType: Recipe.self, property: "analyzedDirections")
     
     convenience init?(json: JSON) {
         self.init()

@@ -13,9 +13,9 @@ import RealmSwift
 class Recipe : Object, NSCopying {
     dynamic var id: Int = 0
     dynamic var title: String = ""
-    var analyzedInstructions = List<Instruction>()
+    var analyzedDirections = List<Direction>()
     var ingredients = List<Ingredient>()
-    dynamic var instructions: String = ""
+    dynamic var directions: String = ""
     dynamic var servings: Int = 0
     dynamic var imageURL: String = ""
     var image: UIImage?
@@ -44,14 +44,14 @@ class Recipe : Object, NSCopying {
             else {
                 return nil
         }
-        self.instructions = instructions
+        self.directions = instructions
         self.id = idValue
         self.title = title
         self.servings = servings
         self.imageURL = imageURL
         for instructionJSON in instructionsJSONArray {
-            if let instruction = Instruction(json: instructionJSON) {
-                analyzedInstructions.append(instruction)
+            if let direction = Direction(json: instructionJSON) {
+                analyzedDirections.append(direction)
             }
         }
         for ingredientJSON in ingredientsJSONArray {
@@ -72,13 +72,13 @@ class Recipe : Object, NSCopying {
         self.creditText = creditText
     }
     
-    convenience init(id: Int, title: String, analyzedInstructions: List<Instruction>, ingredients: List<Ingredient>, instructions: String, servings: Int, imageURL: String, image: UIImage?, isFavorite: Bool, dishTypes: List<RealmString>, readyInMinutes: Int, likes: Int, spoonacularScore: Int, creditText: String) {
+    convenience init(id: Int, title: String, analyzedDirections: List<Direction>, ingredients: List<Ingredient>, directions: String, servings: Int, imageURL: String, image: UIImage?, isFavorite: Bool, dishTypes: List<RealmString>, readyInMinutes: Int, likes: Int, spoonacularScore: Int, creditText: String) {
         self.init()
         self.id = id
         self.title = title
-        self.analyzedInstructions = analyzedInstructions
+        self.analyzedDirections = analyzedDirections
         self.ingredients = ingredients
-        self.instructions = instructions
+        self.directions = directions
         self.servings = servings
         self.imageURL = imageURL
         self.image = image
@@ -99,6 +99,6 @@ class Recipe : Object, NSCopying {
     }
     
     func copy(with zone: NSZone? = nil) -> Any {
-        return Recipe(id: id, title: title, analyzedInstructions: analyzedInstructions, ingredients: ingredients, instructions: instructions, servings: servings, imageURL: imageURL, image: image, isFavorite: isFavorite, dishTypes: dishTypes, readyInMinutes: readyInMinutes, likes: likes, spoonacularScore: spoonacularScore, creditText: creditText)
+        return Recipe(id: id, title: title, analyzedDirections: analyzedDirections, ingredients: ingredients, directions: directions, servings: servings, imageURL: imageURL, image: image, isFavorite: isFavorite, dishTypes: dishTypes, readyInMinutes: readyInMinutes, likes: likes, spoonacularScore: spoonacularScore, creditText: creditText)
     }
 }

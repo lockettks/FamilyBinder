@@ -68,7 +68,7 @@ class RecipeTabsViewController: UIViewController {
                 //clear ingredients
                 iVC.removeIngredients()
                 //set directions
-                let directionsArray = Array(currentRecipe.analyzedInstructions)
+                let directionsArray = Array(currentRecipe.analyzedDirections)
                 dVC.setDirections(directions: directionsArray)
             }
             

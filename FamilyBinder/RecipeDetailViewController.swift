@@ -112,7 +112,7 @@ class RecipeDetailViewController: UIViewController {
                 // Remove from favorites
                 try! self.realm.write {
                     if let recipeToDelete = realm.object(ofType: Recipe.self, forPrimaryKey: thisRecipe.id) {
-                        self.realm.delete(recipeToDelete.analyzedInstructions)
+                        self.realm.delete(recipeToDelete.analyzedDirections)
                         self.realm.delete(recipeToDelete.ingredients)
                         self.realm.delete(recipeToDelete)
                     }
