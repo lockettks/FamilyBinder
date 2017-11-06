@@ -13,7 +13,6 @@ class IngredientsViewController: UIViewController {
     @IBOutlet weak var recipeImgBackground: UIImageView!
     @IBOutlet weak var ingredientsLblConstraint: NSLayoutConstraint!
     
-//    private var currentRecipe = Recipe()
     private var ingredients = [Ingredient()]
 
     override func viewDidLoad() {
@@ -39,12 +38,6 @@ class IngredientsViewController: UIViewController {
     func removeIngredients(){
         self.ingredients = [Ingredient]()
     }
-    
-    // MARK: Functions
-    
-//    func setCurrentRecipe(newRecipe: Recipe){
-//        self.currentRecipe = newRecipe
-//    }
 
 }
 

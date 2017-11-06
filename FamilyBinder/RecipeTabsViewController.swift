@@ -59,7 +59,7 @@ class RecipeTabsViewController: UIViewController {
 
             if ingredientsBtn.isSelected {
                 //clear directions
-                dVC.removeCurrentRecipe()
+                dVC.removeDirections()
                 //set ingredients
                 let ingredientsArray = Array(currentRecipe.ingredients)
                 iVC.setIngredients(ingredients: ingredientsArray)
@@ -68,7 +68,8 @@ class RecipeTabsViewController: UIViewController {
                 //clear ingredients
                 iVC.removeIngredients()
                 //set directions
-                dVC.setCurrentRecipe(newRecipe: currentRecipe)
+                let directionsArray = Array(currentRecipe.analyzedInstructions)
+                dVC.setDirections(directions: directionsArray)
             }
             
             iVC.configureView()

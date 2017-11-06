@@ -13,7 +13,7 @@ class DirectionsViewController: UIViewController {
     @IBOutlet weak var directionsLbl: UILabel!
     @IBOutlet weak var recipeImgBackground: UIImageView!
     
-    private var currentRecipe = Recipe()
+    private var currentDirections = [Instruction()]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,33 +24,17 @@ class DirectionsViewController: UIViewController {
         if let label = directionsLbl {
             let attributesDictionary = [NSFontAttributeName : label.font]
             let fullAttributedString = NSMutableAttributedString(string: "", attributes: (attributesDictionary as Any as! [String : Any]))
-            for instruction in currentRecipe.analyzedInstructions {
-                fullAttributedString.append(stringHelper.convertToNumberedItem(textToConvert: instruction.step, textNumber: instruction.stepNumber.description))
+            for direction in currentDirections {
+                fullAttributedString.append(stringHelper.convertToNumberedItem(textToConvert: direction.step, textNumber: direction.stepNumber.description))
             }
             label.attributedText = fullAttributedString
-//            label.text = "Test"
         }
     }
 
-    // MARK: Functions
-    
-    func setCurrentRecipe(newRecipe: Recipe){
-        self.currentRecipe = newRecipe
-     }
-    
-    func removeCurrentRecipe(){
-        self.currentRecipe = Recipe()
+    func setDirections(directions: [Instruction]){
+        self.currentDirections = directions
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func removeDirections(){
+        self.currentDirections = [Instruction]()
     }
-    */
-
 }
