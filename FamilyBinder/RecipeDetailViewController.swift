@@ -18,11 +18,6 @@ class RecipeDetailViewController: UIViewController {
     // MARK: - Outlets
     @IBOutlet weak var backBtn: UIButton!
     
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var contentView: UIView!
-    @IBOutlet weak var contentViewConstraint: NSLayoutConstraint!
-    
-    
     @IBOutlet weak var addRecipeBtn: UIBarButtonItem!
     @IBOutlet weak var recipeImg: UIImageView!
     @IBOutlet weak var recipeTabsContainerView: UIView!
@@ -153,7 +148,6 @@ class RecipeDetailViewController: UIViewController {
             }
         } else if segue.identifier == "tabsSegue" {
             recipeTabsViewController = segue.destination as? RecipeTabsViewController
-//            recipeTabsViewController?.tabToggledDelegate = self
             if let detail = self.detailItem {
                 recipeTabsViewController?.setCurrentRecipe(newRecipe: detail)
                 recipeTabsViewController?.view.translatesAutoresizingMaskIntoConstraints = false

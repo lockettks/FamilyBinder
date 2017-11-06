@@ -19,7 +19,6 @@ class RecipeTabsViewController: UIViewController {
     @IBOutlet weak var directionsContainer: UIView!
     
     // MARK: Properties
-//    weak var tabToggledDelegate: TabToggledDelegate?
     private var currentRecipe = Recipe()
     var ingredientsViewController:IngredientsViewController?
     var directionsViewController:DirectionsViewController?
@@ -76,9 +75,7 @@ class RecipeTabsViewController: UIViewController {
             dVC.configureView()
             self.view.layoutIfNeeded()
         }
-        
         newDetailHeight += detailsView.frame.size.height
-//        tabToggledDelegate?.updateTabHeights(detailHeight: newDetailHeight)
     }
     
     // MARK: Actions

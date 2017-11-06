@@ -5,7 +5,7 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -65,7 +65,7 @@
                                                     <constraint firstAttribute="height" constant="325" id="fGG-Zc-1Mt"/>
                                                 </constraints>
                                             </imageView>
-                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pxe-2U-Wjp" userLabel="Title Container View">
+                                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pxe-2U-Wjp" userLabel="Title Container View">
                                                 <rect key="frame" x="0.0" y="325" width="375" height="179"/>
                                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
@@ -139,12 +139,9 @@
                     <connections>
                         <outlet property="addRecipeBtn" destination="scj-v7-0wW" id="MSI-e2-HI6"/>
                         <outlet property="backBtn" destination="JiU-1R-hKD" id="d8N-iT-Fx1"/>
-                        <outlet property="contentView" destination="58z-TB-dOe" id="KuF-3c-JgS"/>
-                        <outlet property="contentViewConstraint" destination="vza-tG-gEF" id="WEf-rM-bj1"/>
                         <outlet property="recipeImg" destination="vq0-5k-8yN" id="LUK-bp-qrF"/>
                         <outlet property="recipeTabsContainerView" destination="vRp-yY-tRC" id="v3R-Js-bLk"/>
                         <outlet property="recipeTitleContainerView" destination="pxe-2U-Wjp" id="JRr-f2-Igs"/>
-                        <outlet property="scrollView" destination="ved-Ad-DDW" id="Cmg-f8-RQz"/>
                         <segue destination="Zop-bv-ev8" kind="popoverPresentation" identifier="addRecipeToMealPlanSegue" popoverAnchorBarButtonItem="scj-v7-0wW" id="cZF-5b-rlJ">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                         </segue>
@@ -822,6 +819,10 @@
         <scene sceneID="P7P-Uy-7vT">
             <objects>
                 <viewController id="NoO-Yg-R1o" customClass="IngredientsViewController" customModule="FamilyBinder" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="f9q-i5-uB0"/>
+                        <viewControllerLayoutGuide type="bottom" id="nlM-WS-wMc"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="juG-Es-UvV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="134"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -860,6 +861,10 @@
         <scene sceneID="dp7-fw-dPV">
             <objects>
                 <viewController id="WW1-tk-E63" customClass="DirectionsViewController" customModule="FamilyBinder" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="V0X-Cb-f4o"/>
+                        <viewControllerLayoutGuide type="bottom" id="ti3-6L-1G2"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="PH9-QJ-JiC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="134"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
