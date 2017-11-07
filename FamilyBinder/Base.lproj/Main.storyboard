@@ -562,13 +562,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1aL-vW-l1D" userLabel="Recipe Title View" customClass="DesignableView" customModule="FamilyBinder" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="179"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock" translatesAutoresizingMaskIntoConstraints="NO" id="HuA-di-27J">
-                                        <rect key="frame" x="32" y="8" width="21" height="21"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="21" id="eaT-vq-1La"/>
-                                            <constraint firstAttribute="height" constant="21" id="pTi-q1-Xgx"/>
-                                        </constraints>
-                                    </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99 min" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I7u-Ag-Idx" userLabel="time">
                                         <rect key="frame" x="15" y="31" width="50.5" height="19.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -588,8 +581,14 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="likes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W0l-yc-hXs" userLabel="likesLbl">
-                                        <rect key="frame" x="331" y="8" width="30" height="21"/>
+                                        <rect key="frame" x="330" y="8" width="30" height="21"/>
                                         <fontDescription key="fontDescription" name="BodoniSvtyTwoOSITCTT-Book" family="Bodoni 72 Oldstyle" pointSize="17"/>
+                                        <color key="textColor" red="0.0078431372550000003" green="0.14901960780000001" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VhE-R3-X4v" userLabel="likes">
+                                        <rect key="frame" x="350" y="31" width="10" height="19.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="textColor" red="0.0078431372550000003" green="0.14901960780000001" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -664,19 +663,20 @@
                                         <color key="textColor" red="0.75686274509999996" green="0.12941176469999999" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VhE-R3-X4v" userLabel="likes">
-                                        <rect key="frame" x="348" y="31" width="10" height="19.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <color key="textColor" red="0.0078431372550000003" green="0.14901960780000001" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock" translatesAutoresizingMaskIntoConstraints="NO" id="HuA-di-27J">
+                                        <rect key="frame" x="25" y="8" width="21" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="21" id="eaT-vq-1La"/>
+                                            <constraint firstAttribute="height" constant="21" id="pTi-q1-Xgx"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.93725490196078431" green="0.94117647058823528" blue="0.92549019607843142" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="Jty-0Z-tbb" firstAttribute="top" secondItem="9bT-Vn-xgO" secondAttribute="bottom" constant="32" id="2yW-Gx-Usf"/>
                                     <constraint firstAttribute="bottom" secondItem="b6c-Hn-mvm" secondAttribute="bottom" constant="-44" id="4Uu-eK-Qht"/>
                                     <constraint firstItem="Kjq-7g-xCd" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="JeH-wa-Iq8" secondAttribute="trailing" symbolic="YES" id="4xT-0K-H0C"/>
-                                    <constraint firstAttribute="trailing" secondItem="W0l-yc-hXs" secondAttribute="trailing" constant="14" id="9KF-fE-ARL"/>
+                                    <constraint firstAttribute="trailing" secondItem="W0l-yc-hXs" secondAttribute="trailing" constant="15" id="9KF-fE-ARL"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="I7u-Ag-Idx" secondAttribute="trailing" constant="20" symbolic="YES" id="BFT-RG-ePg"/>
                                     <constraint firstItem="VhE-R3-X4v" firstAttribute="top" secondItem="W0l-yc-hXs" secondAttribute="bottom" constant="2" id="BQM-m1-Pny"/>
                                     <constraint firstItem="jkR-AS-zOC" firstAttribute="leading" secondItem="1aL-vW-l1D" secondAttribute="leading" constant="102" id="Bxx-uF-pGE"/>
@@ -712,11 +712,11 @@
                                     <constraint firstItem="jkR-AS-zOC" firstAttribute="leading" secondItem="UdF-Kc-PS3" secondAttribute="trailing" constant="27" id="nzn-jt-XXa"/>
                                     <constraint firstItem="ut3-Lb-i92" firstAttribute="top" secondItem="1aL-vW-l1D" secondAttribute="top" constant="8" id="oQs-wO-f4B"/>
                                     <constraint firstItem="HuA-di-27J" firstAttribute="top" secondItem="1aL-vW-l1D" secondAttribute="top" constant="8" id="r3q-8v-deJ"/>
-                                    <constraint firstAttribute="trailing" secondItem="VhE-R3-X4v" secondAttribute="trailing" constant="17" id="rgP-CA-tWu"/>
+                                    <constraint firstAttribute="trailing" secondItem="VhE-R3-X4v" secondAttribute="trailing" constant="15" id="rgP-CA-tWu"/>
                                     <constraint firstItem="I7u-Ag-Idx" firstAttribute="baseline" secondItem="V8U-u3-YV4" secondAttribute="baseline" id="sPP-ae-SNS"/>
                                     <constraint firstAttribute="bottom" secondItem="Jty-0Z-tbb" secondAttribute="bottom" constant="13" id="ssn-MV-2dQ"/>
                                     <constraint firstItem="jkR-AS-zOC" firstAttribute="leading" secondItem="XwO-zQ-Wlh" secondAttribute="leading" id="wUK-p1-nAo"/>
-                                    <constraint firstItem="HuA-di-27J" firstAttribute="leading" secondItem="1aL-vW-l1D" secondAttribute="leading" constant="32" id="zPt-vo-qjZ"/>
+                                    <constraint firstItem="HuA-di-27J" firstAttribute="leading" secondItem="1aL-vW-l1D" secondAttribute="leading" constant="25" id="zPt-vo-qjZ"/>
                                     <constraint firstItem="V8U-u3-YV4" firstAttribute="centerX" secondItem="1aL-vW-l1D" secondAttribute="centerX" id="zYF-NS-jmS"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
