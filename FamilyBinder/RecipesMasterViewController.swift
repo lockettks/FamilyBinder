@@ -70,17 +70,14 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
                         if (self?.recipes.count)! > 0 {
                             self?.detailViewController?.detailItem = self?.recipes[0]
                         }
-                        break
                     //case .update(let results, let deletions, let insertions, let modifications):
                     case .update( _, let deletions, let insertions, _):
                         self?.tableView.beginUpdates()
                         self?.tableView.insertRows(at: insertions.map {IndexPath(row: $0, section: 0) }, with: .automatic)
                         self?.tableView.deleteRows(at: deletions.map {IndexPath(row: $0, section: 0)}, with: .automatic)
                         self?.tableView.endUpdates()
-                        break
                     case .error(let error):
                         print(error)
-                        break
                     }
                 }
             }

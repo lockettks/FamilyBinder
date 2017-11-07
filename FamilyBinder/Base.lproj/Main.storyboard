@@ -642,16 +642,6 @@
                                         <rect key="frame" x="206" y="142" width="32" height="29"/>
                                         <state key="normal" image="shoppingCart_Add"/>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jty-0Z-tbb" userLabel="mealPlan">
-                                        <rect key="frame" x="314" y="119.5" width="53" height="46.5"/>
-                                        <state key="normal" backgroundImage="mealPlan_Add"/>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jkR-AS-zOC" userLabel="servings">
-                                        <rect key="frame" x="102" y="144" width="49" height="27"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                        <color key="textColor" red="0.75686274509999996" green="0.12941176469999999" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b6c-Hn-mvm" userLabel="circleBackground">
                                         <rect key="frame" x="272" y="87" width="137" height="138"/>
                                         <constraints>
@@ -670,17 +660,29 @@
                                             <action selector="mealPlanBtnClicked:" destination="aId-Aq-4cR" eventType="touchUpInside" id="2VF-xg-22E"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jkR-AS-zOC" userLabel="servings">
+                                        <rect key="frame" x="102" y="144" width="49" height="27"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <color key="textColor" red="0.75686274509999996" green="0.12941176469999999" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jty-0Z-tbb" userLabel="mealPlan">
+                                        <rect key="frame" x="314" y="119" width="53" height="46.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="46.5" id="Iq2-eh-dYh"/>
+                                            <constraint firstAttribute="width" constant="53" id="YIh-9C-UnJ"/>
+                                        </constraints>
+                                        <state key="normal" backgroundImage="mealPlan_Add"/>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.93725490196078431" green="0.94117647058823528" blue="0.92549019607843142" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="Jty-0Z-tbb" firstAttribute="top" secondItem="9bT-Vn-xgO" secondAttribute="bottom" constant="32" id="2yW-Gx-Usf"/>
                                     <constraint firstAttribute="bottom" secondItem="b6c-Hn-mvm" secondAttribute="bottom" constant="-46" id="4Uu-eK-Qht"/>
                                     <constraint firstItem="Kjq-7g-xCd" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="JeH-wa-Iq8" secondAttribute="trailing" symbolic="YES" id="4xT-0K-H0C"/>
                                     <constraint firstAttribute="trailing" secondItem="W0l-yc-hXs" secondAttribute="trailing" constant="15" id="9KF-fE-ARL"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="I7u-Ag-Idx" secondAttribute="trailing" constant="20" symbolic="YES" id="BFT-RG-ePg"/>
                                     <constraint firstItem="VhE-R3-X4v" firstAttribute="top" secondItem="W0l-yc-hXs" secondAttribute="bottom" constant="2" id="BQM-m1-Pny"/>
                                     <constraint firstItem="jkR-AS-zOC" firstAttribute="leading" secondItem="1aL-vW-l1D" secondAttribute="leading" constant="102" id="Bxx-uF-pGE"/>
-                                    <constraint firstItem="b6c-Hn-mvm" firstAttribute="centerX" secondItem="Jty-0Z-tbb" secondAttribute="centerX" id="C3b-5r-eC5"/>
                                     <constraint firstItem="Kjq-7g-xCd" firstAttribute="bottom" secondItem="jkR-AS-zOC" secondAttribute="bottom" id="DEu-hd-ra0"/>
                                     <constraint firstItem="b6c-Hn-mvm" firstAttribute="leading" secondItem="Kjq-7g-xCd" secondAttribute="trailing" constant="34" id="DMV-2S-eZr"/>
                                     <constraint firstItem="VhE-R3-X4v" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="1aL-vW-l1D" secondAttribute="leading" constant="20" symbolic="YES" id="GMp-tP-i3t"/>
