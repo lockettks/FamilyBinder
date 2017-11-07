@@ -53,25 +53,31 @@ class RecipeTitleViewController: UIViewController {
         
         if let recipeTitleLabel = self.recipeTitleLabel {
             recipeTitleLabel.text = currentRecipe.title
+            recipeTitleLabel.sizeToFit()
         }
         if let creditLabel = self.creditLabel {
             creditLabel.text = currentRecipe.creditText
+            creditLabel.sizeToFit()
         }
         
         if let servingsLabel = self.servingsLabel {
             servingsLabel.text = currentRecipe.servings.description
+            servingsLabel.sizeToFit()
         }
         
         if let cookTimeLabel = self.timeToCookLabel {
             cookTimeLabel.text = "\(currentRecipe.readyInMinutes) min"
+            cookTimeLabel.sizeToFit()
         }
         
         if let spoonacularLabel = self.spoonacularLabel {
             spoonacularLabel.text = currentRecipe.spoonacularScore.description
+            spoonacularLabel.sizeToFit()
         }
         
         if let likesLabel = self.likesLabel {
             likesLabel.text = currentRecipe.likes.description
+            likesLabel.sizeToFit()
         }
         
         if let favoriteBtn = self.favoriteBtn {
