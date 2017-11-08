@@ -11,7 +11,7 @@ import UIKit
 import RealmSwift
 
 class RecipeTitleViewController: UIViewController {
-
+    
     // MARK: Outlets
     @IBOutlet weak var recipeTitleView: DesignableView!
     @IBOutlet weak var timeToCookLabel: UILabel!
@@ -42,6 +42,28 @@ class RecipeTitleViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         configureView()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        if (!(self.currentRecipe.isFavorite)) {
+            // Remove from favorites
+            try! self.realm.write {
+                if let recipeToDelete = realm.object(ofType: Recipe.self, forPrimaryKey: self.currentRecipe.id) {
+                    self.realm.delete(recipeToDelete.analyzedDirections)
+                    self.realm.delete(recipeToDelete.ingredients)
+                    self.realm.delete(recipeToDelete)
+                }
+            }
+        } else {
+            // Add to favorites
+            if realm.object(ofType: Recipe.self, forPrimaryKey: self.currentRecipe.id) == nil {
+                try! self.realm.write {
+                    // self.realm.create(Recipe.self, value: thisRecipe, update:true)
+                    self.realm.add(self.currentRecipe, update:true)
+                    print("Added \(self.currentRecipe.title) to my recipes")
+                }
+            }
+        }
     }
     
     // MARK: Functions
@@ -86,23 +108,23 @@ class RecipeTitleViewController: UIViewController {
         }
         
         
-//        if realm.objects(Recipe.self).filter("id == %@", detail.id).first != nil {
-//            try! self.realm.write {
-//                detail.isFavorite = true
-//            }
-//            setFavoriteIconImg()
-//        }
+        if realm.objects(Recipe.self).filter("id == %@", currentRecipe.id).first != nil {
+            try! self.realm.write {
+                currentRecipe.isFavorite = true
+            }
+            setFavoriteIconImg()
+        }
     }
     
     // MARK: Actions
-    @IBAction func mealPlanBtnClicked(_ sender: Any) {
-    }
-    
-    func updateFavoriteStatus(){
+    @IBAction func favoriteBtnClicked(_ sender: Any) {
         try! realm.write {
             currentRecipe.isFavorite = !currentRecipe.isFavorite
             setFavoriteIconImg()
         }
+    }
+    
+    @IBAction func mealPlanBtnClicked(_ sender: Any) {
     }
     
     func setFavoriteIconImg(){
@@ -116,5 +138,4 @@ class RecipeTitleViewController: UIViewController {
             }
         }
     }
-    
 }

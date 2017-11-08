@@ -17,25 +17,17 @@ enum DetailTabs: Int {
 class RecipeDetailViewController: UIViewController {
     // MARK: - Outlets
     @IBOutlet weak var backBtn: UIButton!
-    
-    @IBOutlet weak var addRecipeBtn: UIBarButtonItem!
     @IBOutlet weak var recipeImg: UIImageView!
     @IBOutlet weak var recipeTabsContainerView: UIView!
     @IBOutlet weak var recipeTitleContainerView: UIView!
     
-    var favoritedRecipe = Recipe()
     var recipeTitleViewController:RecipeTitleViewController?
-    var titleHeight = CGFloat()
-    var tabsHeight = CGFloat()
     var recipeTabsViewController:RecipeTabsViewController?
 
-    
-    //    // Get the default Realm
     let realm = try! Realm()
 
     
     // MARK: - View Manipulation
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         if self.detailItem == nil {
@@ -43,7 +35,6 @@ class RecipeDetailViewController: UIViewController {
                 self.detailItem = firstRecipe
             }
         }
-        
         configureView()
     }
     
@@ -90,42 +81,9 @@ class RecipeDetailViewController: UIViewController {
 
             self.navigationItem.title = detail.title
             
-            addRecipeBtn.isEnabled = true
-            
-//            if realm.objects(Recipe.self).filter("id == %@", detail.id).first != nil {
-//                try! self.realm.write {
-//                    detail.isFavorite = true
-//                }
-//                setFavoriteIconImg()
-//            }
-            
             if let vc = recipeTabsViewController {
                 vc.setCurrentRecipe(newRecipe: detail)
                 vc.configureView()
-            }
-        }
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        if let thisRecipe = self.detailItem {
-            if (!(thisRecipe.isFavorite)) {
-                // Remove from favorites
-                try! self.realm.write {
-                    if let recipeToDelete = realm.object(ofType: Recipe.self, forPrimaryKey: thisRecipe.id) {
-                        self.realm.delete(recipeToDelete.analyzedDirections)
-                        self.realm.delete(recipeToDelete.ingredients)
-                        self.realm.delete(recipeToDelete)
-                    }
-                }
-            } else {
-                // Add to favorites
-                if realm.object(ofType: Recipe.self, forPrimaryKey: thisRecipe.id) == nil {
-                    try! self.realm.write {
-                        // self.realm.create(Recipe.self, value: thisRecipe, update:true)
-                        self.realm.add(thisRecipe, update:true)
-                        print("Added \(thisRecipe.title) to my recipes")
-                    }
-                }
             }
         }
     }
@@ -155,10 +113,6 @@ class RecipeDetailViewController: UIViewController {
         }
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     var detailItem: Recipe? {
         didSet {

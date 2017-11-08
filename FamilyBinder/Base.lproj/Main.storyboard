@@ -127,14 +127,9 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Recipe Detail" id="mOI-FS-AaM">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="scj-v7-0wW">
-                            <connections>
-                                <action selector="addRecipeBtnClicked:" destination="JEX-9P-axG" id="2vg-aR-6Ab"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="scj-v7-0wW"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="addRecipeBtn" destination="scj-v7-0wW" id="MSI-e2-HI6"/>
                         <outlet property="backBtn" destination="JiU-1R-hKD" id="d8N-iT-Fx1"/>
                         <outlet property="recipeImg" destination="vq0-5k-8yN" id="LUK-bp-qrF"/>
                         <outlet property="recipeTabsContainerView" destination="vRp-yY-tRC" id="v3R-Js-bLk"/>
@@ -617,10 +612,16 @@
                                             <constraint firstAttribute="width" constant="41" id="Rnh-Jy-YfV"/>
                                         </constraints>
                                         <state key="normal" image="pin"/>
+                                        <connections>
+                                            <action selector="favoriteBtnClicked:" destination="aId-Aq-4cR" eventType="touchUpInside" id="H9v-zF-zKo"/>
+                                        </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UdF-Kc-PS3" userLabel="line1">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UdF-Kc-PS3" userLabel="line1">
                                         <rect key="frame" x="73" y="144" width="2" height="30"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="Or2-kG-TEp"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -631,9 +632,12 @@
                                         <color key="textColor" red="0.0078431372549019607" green="0.14901960784313725" blue="0.28235294117647058" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JeH-wa-Iq8" userLabel="line2">
-                                        <rect key="frame" x="175" y="144" width="2" height="30"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JeH-wa-Iq8" userLabel="line2">
+                                        <rect key="frame" x="175" y="144" width="0.0" height="30"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="wJQ-cI-mLR"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -678,7 +682,7 @@
                                 <color key="backgroundColor" red="0.93725490196078431" green="0.94117647058823528" blue="0.92549019607843142" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="b6c-Hn-mvm" secondAttribute="bottom" constant="-46" id="4Uu-eK-Qht"/>
-                                    <constraint firstItem="Kjq-7g-xCd" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="JeH-wa-Iq8" secondAttribute="trailing" symbolic="YES" id="4xT-0K-H0C"/>
+                                    <constraint firstItem="Kjq-7g-xCd" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="JeH-wa-Iq8" secondAttribute="trailing" constant="8" symbolic="YES" id="4xT-0K-H0C"/>
                                     <constraint firstAttribute="trailing" secondItem="W0l-yc-hXs" secondAttribute="trailing" constant="15" id="9KF-fE-ARL"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="I7u-Ag-Idx" secondAttribute="trailing" constant="20" symbolic="YES" id="BFT-RG-ePg"/>
                                     <constraint firstItem="VhE-R3-X4v" firstAttribute="top" secondItem="W0l-yc-hXs" secondAttribute="bottom" constant="2" id="BQM-m1-Pny"/>
