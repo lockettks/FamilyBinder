@@ -38,6 +38,17 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "RecipeTitleViewController.setFavoriteIconImg():RecipeTitleViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "favoriteBtnOrigin">
+            </PersistentString>
+            <PersistentString
+               value = "self.favoriteBtn.frame.origin">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "RecipeTabsViewController.updateHeights():RecipeTabsViewController.swift">
          <PersistentStrings>
             <PersistentString
