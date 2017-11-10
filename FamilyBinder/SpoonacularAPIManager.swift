@@ -39,7 +39,9 @@ class SpoonacularAPIManager {
                     print(receivedString)
                 }
         }
-        debugPrint("Print Random Recipes: \(request)")
+        if self.DEBUG {
+            debugPrint("Print Random Recipes: \(request)")
+        }
     }
     
     func fetchRandomRecipes(numberOfRecipes: Int) -> Promise<[Recipe]> {
