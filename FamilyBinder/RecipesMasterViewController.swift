@@ -106,14 +106,13 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
                 let myRecipes = Array(myFavoriteRecipes)
                 fulfill(myRecipes)
                 
-                break
             case 1:
                 getRandomRecipes().then { recipesReceived -> Void in
                     fulfill(recipesReceived)
                     }.catch { error in
                         print(error)
                 }
-                break
+                
             default:
                 break
             }
