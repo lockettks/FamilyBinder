@@ -21,7 +21,7 @@ enum SpoonacularAPIManagerError: Error {
 }
 
 class SpoonacularAPIManager {
-    let DEBUG = true
+    let DEBUG = false
     
     static let sharedInstance = SpoonacularAPIManager()
     

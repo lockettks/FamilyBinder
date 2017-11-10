@@ -51,14 +51,16 @@ class Recipe : Object, NSCopying {
         self.imageURL = imageURL
         for instructionJSON in instructionsJSONArray {
             if let direction = Direction(json: instructionJSON) {
-                if (!direction.step.isNumber) {
+                if (!direction.step.isNumber) && (direction.step != "Watch how to make this recipe." ) {
                     analyzedDirections.append(direction)
                 }
             }
         }
         for ingredientJSON in ingredientsJSONArray {
             if let ingredient = Ingredient(json: ingredientJSON) {
-                ingredients.append(ingredient)
+                if (!ingredient.originalString.hasPrefix("-") ) {
+                    ingredients.append(ingredient)
+                }
             }
         }
         for dishTypesJSON in dishTypesJSONArray {
