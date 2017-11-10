@@ -21,7 +21,6 @@ class StringHelper {
         return attributedString
     }
     
-    
     func convertToNumberedItem(textToConvert: String, textNumber: String) -> NSMutableAttributedString {
         let formattedString: String = "\(textNumber). \(textToConvert)\n"
         let attributedString: NSMutableAttributedString = NSMutableAttributedString(string: formattedString)
@@ -30,10 +29,7 @@ class StringHelper {
         attributedString.addAttributes([NSParagraphStyleAttributeName: paragraphStyle], range: NSMakeRange(0, attributedString.length))
         return attributedString
     }
-    
 
-    
-    
     func createParagraphAttribute() ->NSParagraphStyle {
         var paragraphStyle: NSMutableParagraphStyle
         paragraphStyle = NSParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle
@@ -43,6 +39,14 @@ class StringHelper {
         paragraphStyle.headIndent = 15
         
         return paragraphStyle
+    }
+}
+
+extension String  {
+    var isNumber : Bool {
+        get{
+            return !self.isEmpty && self.rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil
+        }
     }
 }
 
