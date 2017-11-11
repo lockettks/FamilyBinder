@@ -107,6 +107,8 @@ class RecipeTitleViewController: UIViewController {
             setFavoriteIconImg()
         }
         
+        self.view.layoutIfNeeded()
+        
         
         if realm.objects(Recipe.self).filter("id == %@", currentRecipe.id).first != nil {
             try! self.realm.write {
