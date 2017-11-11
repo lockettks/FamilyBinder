@@ -56,7 +56,7 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
         
         // Get notified if My Recipes change and update table accordingly
         if (recipesTypeSegCntrl.selectedSegmentIndex == 0) {
-            token = myFavoriteRecipes.addNotificationBlock{[weak self] (changes: RealmCollectionChange) in
+            token = myFavoriteRecipes.observe{[weak self] (changes: RealmCollectionChange) in
                 if (self?.recipesTypeSegCntrl.selectedSegmentIndex == 0) {
                     if let mfr = self?.myFavoriteRecipes {
                         self?.recipes = Array(mfr)
