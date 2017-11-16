@@ -64,7 +64,7 @@
                                                     <constraint firstAttribute="height" constant="325" id="fGG-Zc-1Mt"/>
                                                 </constraints>
                                             </imageView>
-                                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pxe-2U-Wjp" userLabel="Title Container View">
+                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pxe-2U-Wjp" userLabel="Title Container View">
                                                 <rect key="frame" x="0.0" y="325" width="375" height="179"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="250" constant="179" id="BJH-Jb-UeR"/>
@@ -150,7 +150,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="F1J-KY-01s">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.90588235289999997" green="0.89061790699999999" blue="0.86538159849999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.85490196080000003" green="0.87843137250000003" blue="0.88235294119999996" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" red="0.75686274509803919" green="0.12941176470588234" blue="0.1803921568627451" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
                             <tableViewSection headerTitle="" id="oCc-o0-lhG">
@@ -174,8 +174,9 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.98039215686274506" green="0.98431372549019602" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -196,14 +197,14 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2JT-6p-rFE">
-                                                    <rect key="frame" x="117" y="11" width="250" height="21"/>
+                                                    <rect key="frame" x="117" y="12" width="233" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="BodoniSvtyTwoOSITCTT-Book" family="Bodoni 72 Oldstyle" pointSize="17"/>
                                                     <color key="textColor" red="0.16470588235294117" green="0.16470588235294117" blue="0.17254901960784313" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.98039215686274506" green="0.98431372549019602" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="200" id="Nme-hm-XEY" userLabel="cellDatePicker">
@@ -216,7 +217,7 @@
                                                 <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="oF0-JF-S4Z">
                                                     <rect key="frame" x="-16" y="-8" width="382" height="216"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" red="0.98039215686274506" green="0.98431372549019602" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <date key="date" timeIntervalSinceReferenceDate="522285438.03378499">
                                                         <!--2017-07-20 23:17:18 +0000-->
                                                     </date>
@@ -247,7 +248,7 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.98039215686274506" green="0.98431372549019602" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="cell" textLabel="4Vt-5z-5WW" style="IBUITableViewCellStyleDefault" id="eIe-4v-OZK" userLabel="cellLunch">
                                         <rect key="frame" x="0.0" y="475" width="375" height="44"/>
@@ -265,7 +266,7 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.98039215686274506" green="0.98431372549019602" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="cell" textLabel="iNS-Fm-LYZ" style="IBUITableViewCellStyleDefault" id="hDU-wG-87g" userLabel="cellSnack">
                                         <rect key="frame" x="0.0" y="519" width="375" height="44"/>
@@ -283,7 +284,7 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.98039215686274506" green="0.98431372549019602" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="cell" textLabel="Gwg-bD-oEr" style="IBUITableViewCellStyleDefault" id="rW2-Af-lgj" userLabel="cellDinner">
                                         <rect key="frame" x="0.0" y="563" width="375" height="44"/>
@@ -301,7 +302,7 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.98039215686274506" green="0.98431372549019602" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -313,13 +314,13 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Add to Meal Plan" id="Uo1-8b-e31">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="0T7-uX-oXD">
-                            <color key="tintColor" red="0.98039215686274506" green="0.98431372549019602" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" red="0.0078431372550000003" green="0.14901960780000001" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="cancelTapped:" destination="eJS-Nu-ZeB" id="HOz-3n-Qie"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Add" id="bXJ-PY-VZv">
-                            <color key="tintColor" red="0.98039215686274506" green="0.98431372549019602" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" red="0.0078431372550000003" green="0.14901960780000001" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="addTapped:" destination="eJS-Nu-ZeB" id="FkO-pq-S82"/>
                             </connections>
@@ -342,7 +343,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cM7-GM-6Dx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2358" y="-179"/>
+            <point key="canvasLocation" x="2394" y="-439"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Z5o-nq-Ep3">
@@ -667,6 +668,9 @@
                                             <constraint firstAttribute="width" constant="53" id="YIh-9C-UnJ"/>
                                         </constraints>
                                         <state key="normal" backgroundImage="mealPlan_Add"/>
+                                        <connections>
+                                            <action selector="mealPlanBtnClicked:" destination="aId-Aq-4cR" eventType="touchUpInside" id="LM2-6H-WE5"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fg6-dX-sVh" userLabel="favoriteBtn">
                                         <rect key="frame" x="26" y="139" width="20" height="30"/>
@@ -874,6 +878,7 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="LblIngredients" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z11-Iu-NwK" userLabel="LblIngredients">
                                 <rect key="frame" x="15" y="20" width="345" height="90"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Ingredients">
                                         <attributes>

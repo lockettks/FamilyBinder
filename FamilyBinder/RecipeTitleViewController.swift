@@ -10,6 +10,10 @@ import Foundation
 import UIKit
 import RealmSwift
 
+protocol TitleDelegate : class {
+    func mealPlanBtnClicked()
+}
+
 class RecipeTitleViewController: UIViewController {
     
     // MARK: Outlets
@@ -34,6 +38,7 @@ class RecipeTitleViewController: UIViewController {
     //    // po Realm.Configuration.defaultConfiguration.fileURL
     
     private var currentRecipe = Recipe()
+    weak var delegate: TitleDelegate?
     
     // MARK: View Loading
     override func viewDidLoad() {
@@ -127,6 +132,7 @@ class RecipeTitleViewController: UIViewController {
     }
     
     @IBAction func mealPlanBtnClicked(_ sender: Any) {
+        delegate?.mealPlanBtnClicked()
     }
     
     func setFavoriteIconImg(){

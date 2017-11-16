@@ -14,7 +14,9 @@ enum DetailTabs: Int {
     case directions
 }
 
-class RecipeDetailViewController: UIViewController {
+class RecipeDetailViewController: UIViewController, TitleDelegate {
+
+    
     // MARK: - Outlets
     @IBOutlet weak var backBtn: UIButton!
     @IBOutlet weak var recipeImg: UIImageView!
@@ -61,12 +63,6 @@ class RecipeDetailViewController: UIViewController {
     }
     
     
-    @IBAction func backBtnPressed(_ sender: Any) {
-        self.navigationController?.popToRootViewController(animated: true)
-        self.navigationController?.navigationController?.popToRootViewController(animated: true)
-    }
-    
-    
     func configureView() {
         // Update the user interface for the detail item.
         if let detail = self.detailItem {
@@ -89,6 +85,19 @@ class RecipeDetailViewController: UIViewController {
     }
     
     
+    
+    // MARK: - Actions
+    @IBAction func backBtnPressed(_ sender: Any) {
+        self.navigationController?.popToRootViewController(animated: true)
+        self.navigationController?.navigationController?.popToRootViewController(animated: true)
+    }
+    
+    
+    // MARK: - Protocols
+    func mealPlanBtnClicked() {
+        performSegue(withIdentifier: "addRecipeToMealPlanSegue", sender: nil)
+    }
+    
     // MARK: - Segues
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addRecipeToMealPlanSegue" {
@@ -102,7 +111,7 @@ class RecipeDetailViewController: UIViewController {
             if let detail = self.detailItem {
                 recipeTitleViewController?.setCurrentRecipe(newRecipe: detail)
                 recipeTitleViewController?.view.translatesAutoresizingMaskIntoConstraints = false
-                
+                recipeTitleViewController?.delegate = self
             }
         } else if segue.identifier == "tabsSegue" {
             recipeTabsViewController = segue.destination as? RecipeTabsViewController
