@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import RealmSwift
 
-class zAddToMealPlanTableViewController: UITableViewController {
+class oldAddtoMealPlan: UITableViewController {
     
     @IBOutlet weak var btnAdd: UIBarButtonItem!
     @IBOutlet weak var imgRecipe: UIImageView!

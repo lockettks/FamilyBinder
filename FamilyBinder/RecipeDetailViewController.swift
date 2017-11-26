@@ -101,7 +101,7 @@ class RecipeDetailViewController: UIViewController, TitleDelegate {
     // MARK: - Segues
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addRecipeToMealPlanSegue" {
-            if let controller = (segue.destination as! UINavigationController).topViewController as? AddToMealPlanTableViewController {
+            if let controller = (segue.destination as! UINavigationController).topViewController as? oldAddtoMealPlan {
                 if let detail = self.detailItem {
                     controller.selectedRecipe = detail
                 }
