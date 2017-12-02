@@ -10,24 +10,37 @@ import UIKit
 import RealmSwift
 
 class AddRecipeToMealPlanTableViewController: UITableViewController {
-
-
-    @IBOutlet weak var cellRecipe: UITableViewCell!
     
     let realm = try! Realm()
     var selectedRecipe = Recipe()
-    let RECIPE_POSITION = (SECTION: 0, ROW: 0)
-    let CALENDAR_POSITION = (SECTION: 1, ROW: 0)
-    let DAYS_POSITION = (SECTION: 2, ROW: 0)
+    let POSITION_RECIPE = (SECTION: 0, ROW: 0)
+    let POSITION_CALENDAR = (SECTION: 1, ROW: 0)
+    let POSITION_DAYS = (SECTION: 2, ROW: 0)
     
-
+    let startDate = Date()
+    var days = [Date]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        imgRecipe.image = selectedRecipe.image
     }
     
+
+    
+    override func viewWillAppear(_ animated: Bool) {
+        days = generateDates(startDate: startDate, addbyUnit: .day, numberOfDays: 7)
+    }
+    
+    func generateDates( startDate: Date?, addbyUnit: Calendar.Component, numberOfDays: Int) -> [Date] {
+        var dates = [Date]()
+        var date = startDate!
+        let endDate = Calendar.current.date(byAdding: addbyUnit, value: numberOfDays, to: date)!
+        while date < endDate {
+            date = Calendar.current.date(byAdding: addbyUnit, value: 1, to: date)!
+            dates.append(date)
+        }
+        return dates
+    }
     
     @IBAction func cancelTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -70,12 +83,12 @@ class AddRecipeToMealPlanTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
-        case RECIPE_POSITION.SECTION:
+        case POSITION_RECIPE.SECTION:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath) as! RecipeTitleTableViewCell
             cell.initWithModel(model: selectedRecipe)
             return cell
 //            return cellRecipe
-        case CALENDAR_POSITION.SECTION:
+        case POSITION_CALENDAR.SECTION:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell2", for: indexPath) as! CalendarTableViewCell
             cell.initWithModel(model: selectedRecipe)
 //            cell.initWithModel(model: recipe)
@@ -92,7 +105,7 @@ class AddRecipeToMealPlanTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         var height:CGFloat = 44 // Default
-        if indexPath.section == RECIPE_POSITION.SECTION {
+        if indexPath.section == POSITION_RECIPE.SECTION {
             height = 85
         } 
         return height
@@ -104,7 +117,13 @@ class AddRecipeToMealPlanTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        switch section {
+        case POSITION_DAYS.SECTION:
+            return days.count
+        default:
+            return 1
+        }
+        
     }
 
 
