@@ -11,6 +11,7 @@ import RealmSwift
 
 class AddRecipeToMealPlanTableViewController: UITableViewController {
     
+
     let realm = try! Realm()
     var selectedRecipe = Recipe()
     let POSITION_RECIPE = (SECTION: 0, ROW: 0)
@@ -95,8 +96,8 @@ class AddRecipeToMealPlanTableViewController: UITableViewController {
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell3", for: indexPath) as! DayTableViewCell
-            cell.initWithModel(model: selectedRecipe)
-//            cell.initWithModel(model: recipe)
+            cell.initWithModel(dayHeadline: days[indexPath.row])
+
             return cell
             
             

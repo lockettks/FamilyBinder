@@ -1047,6 +1047,8 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="lblDayHeading" destination="wY6-Ae-Zb9" id="3BE-4s-36h"/>
+                                    <outlet property="lblDayHeadingBackground" destination="BuS-go-cSt" id="QN7-oE-fbG"/>
                                     <outlet property="lblMealType" destination="ch9-qY-XuF" id="3U9-nb-drl"/>
                                     <outlet property="lblScheduledRecipeCat" destination="TTL-Pz-u5J" id="o5V-ZH-oIc"/>
                                     <outlet property="lblScheduledRecipeUncat" destination="YzR-tR-lsI" id="mUv-pt-zms"/>

@@ -13,8 +13,13 @@ class DayTableViewCell: UITableViewCell {
     @IBOutlet weak var lblMealType: UILabel!    
     @IBOutlet weak var lblScheduledRecipeCat: UILabel!
     @IBOutlet weak var lblScheduledRecipeUncat: UILabel!
+    @IBOutlet weak var lblDayHeading: UILabel!
+    @IBOutlet weak var lblDayHeadingBackground: UILabel!
     
-    func initWithModel(model: Recipe){
+    func initWithModel(dayHeadline: Date){
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE, MMMM d, yyyy"
+        lblDayHeading.text = dateFormatter.string(from: dayHeadline)
     }
     
     override func awakeFromNib() {
