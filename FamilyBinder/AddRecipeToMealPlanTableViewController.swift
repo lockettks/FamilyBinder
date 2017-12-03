@@ -84,20 +84,21 @@ class AddRecipeToMealPlanTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
+            
         case POSITION_RECIPE.SECTION:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath) as! RecipeTitleTableViewCell
             cell.initWithModel(model: selectedRecipe)
             return cell
 //            return cellRecipe
+            
         case POSITION_CALENDAR.SECTION:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell2", for: indexPath) as! CalendarTableViewCell
-            cell.initWithModel(model: selectedRecipe)
-//            cell.initWithModel(model: recipe)
+            cell.initWithModel(days: days)
             return cell
+            
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell3", for: indexPath) as! DayTableViewCell
             cell.initWithModel(dayHeadline: days[indexPath.row])
-
             return cell
             
             
@@ -108,7 +109,10 @@ class AddRecipeToMealPlanTableViewController: UITableViewController {
         var height:CGFloat = 44 // Default
         if indexPath.section == POSITION_RECIPE.SECTION {
             height = 85
-        } 
+        }
+        else if indexPath.section == POSITION_CALENDAR.SECTION {
+            height = 90
+        }
         return height
     }
 

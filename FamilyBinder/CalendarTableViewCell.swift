@@ -8,11 +8,15 @@
 
 import UIKit
 
-class CalendarTableViewCell: UITableViewCell {
+class CalendarTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet private weak var collectionView: UICollectionView!
     
-    func initWithModel(model: Recipe){
+    var days = [Date]()
+    
+    func initWithModel(days: [Date]){
+        self.days = days
+        self.collectionView.frame.size.width = self.frame.size.width - 70
     }
     
     override func awakeFromNib() {
@@ -26,30 +30,39 @@ class CalendarTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
-}
-
-extension CalendarTableViewCell: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return days.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CalendarDayCollectionViewCell
-        cell.label.text = "\(indexPath)"
+        cell.initWithModel(day: days[indexPath.row])
         return cell
     }
-}
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        layout.minimumInteritemSpacing = 1
+        layout.minimumLineSpacing = 1
+        let collectionSize = self.collectionView.frame.size
+        let cellSize = CGSize(width: collectionSize.width / 7, height: collectionSize.height)
+        layout.invalidateLayout()
+        return cellSize
+    }
 
-extension CalendarTableViewCell: UICollectionViewDelegate {
+   
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("collectionViewCell selected \(indexPath)")
     }
     
+    
 }
+
