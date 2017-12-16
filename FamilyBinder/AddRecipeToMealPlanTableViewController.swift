@@ -193,29 +193,7 @@ class AddRecipeToMealPlanTableViewController: UITableViewController {
 //        
 //    }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "addRecipeToMealPlanSegue" {
-//            if let controller = (segue.destination as! UINavigationController).topViewController as? AddRecipeToMealPlanTableViewController {
-//                if let detail = self.detailItem {
-//
-//                    controller.selectedRecipe = detail
-//                }
-//            }
-//        } else if segue.identifier == "titleSegue" {
-//            recipeTitleViewController = segue.destination as? RecipeTitleViewController
-//            if let detail = self.detailItem {
-//                recipeTitleViewController?.setCurrentRecipe(newRecipe: detail)
-//                recipeTitleViewController?.view.translatesAutoresizingMaskIntoConstraints = false
-//                recipeTitleViewController?.delegate = self
-//            }
-//        } else if segue.identifier == "tabsSegue" {
-//            recipeTabsViewController = segue.destination as? RecipeTabsViewController
-//            if let detail = self.detailItem {
-//                recipeTabsViewController?.setCurrentRecipe(newRecipe: detail)
-//                recipeTabsViewController?.view.translatesAutoresizingMaskIntoConstraints = false
-//            }
-//        }
-//    }
+
 
 
 }
