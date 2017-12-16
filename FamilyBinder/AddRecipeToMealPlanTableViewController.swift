@@ -10,8 +10,7 @@ import UIKit
 import RealmSwift
 
 class AddRecipeToMealPlanTableViewController: UITableViewController {
-    
-
+    //let calTBC: CalendarTableViewCell?
     let realm = try! Realm()
     var selectedRecipe = Recipe()
     let POSITION_RECIPE = (SECTION: 0, ROW: 0)
@@ -20,6 +19,22 @@ class AddRecipeToMealPlanTableViewController: UITableViewController {
     
     let startDate = Date()
     var days = [Date]()
+    
+    @IBAction func btnWeekBackClicked(_ sender: Any) {
+        days = generateDates(startDate: days[0], addbyUnit: .day, numberOfDays: -7)
+        let children = self.childViewControllers
+        print("test")
+//        if let vc = calTBC {
+//            vc.days = days
+//        }
+        
+    }
+    
+    @IBAction func btnWeekFrwdClicked(_ sender: Any) {
+        days = generateDates(startDate: days[0], addbyUnit: .day, numberOfDays: 7)
+    }
+    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()

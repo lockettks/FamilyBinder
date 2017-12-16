@@ -9,10 +9,13 @@
 import UIKit
 
 class CalendarTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    var days = [Date]()
+    
 
+    
     @IBOutlet private weak var collectionView: UICollectionView!
     
-    var days = [Date]()
+
     
     func initWithModel(days: [Date]){
         self.days = days

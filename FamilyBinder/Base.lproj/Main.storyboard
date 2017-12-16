@@ -16,6 +16,9 @@
             <string>BodoniSvtyTwoOSITCTT-Book</string>
             <string>BodoniSvtyTwoOSITCTT-BookIt</string>
         </array>
+        <array key="Bodoni72.ttc">
+            <string>BodoniSvtyTwoITCTT-Book</string>
+        </array>
     </customFonts>
     <scenes>
         <!--Recipes-->
@@ -954,36 +957,36 @@
                                             <rect key="frame" x="35" y="11" width="308" height="68"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="s8e-YR-gik">
-                                                <size key="itemSize" width="29" height="66"/>
+                                                <size key="itemSize" width="35" height="66"/>
                                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                 <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                             </collectionViewFlowLayout>
                                             <cells>
                                                 <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="YGR-xv-RgE" customClass="CalendarDayCollectionViewCell" customModule="FamilyBinder" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="1" width="31" height="66"/>
+                                                    <rect key="frame" x="0.0" y="1" width="35" height="66"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                                        <rect key="frame" x="0.0" y="0.0" width="31" height="66"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="35" height="66"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="25" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3H9-3k-b7y" userLabel="lblDate">
-                                                                <rect key="frame" x="0.0" y="35" width="31" height="31"/>
+                                                                <rect key="frame" x="0.0" y="35" width="35" height="31"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="S" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L0M-f7-kVh" userLabel="lblWeekday">
-                                                                <rect key="frame" x="0.0" y="0.0" width="30" height="35"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <fontDescription key="fontDescription" name="BodoniSvtyTwoOSITCTT-Book" family="Bodoni 72 Oldstyle" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
                                                     </view>
-                                                    <size key="customSize" width="31" height="66"/>
+                                                    <size key="customSize" width="35" height="66"/>
                                                     <connections>
                                                         <outlet property="lblDate" destination="3H9-3k-b7y" id="b4H-dQ-UD2"/>
                                                         <outlet property="lblWeekday" destination="L0M-f7-kVh" id="fC9-Lh-4Gx"/>
@@ -1003,6 +1006,9 @@
                                                 <constraint firstAttribute="height" constant="24" id="msX-a4-fG4"/>
                                             </constraints>
                                             <state key="normal" title="Button" image="triangle_right"/>
+                                            <connections>
+                                                <action selector="btnWeekFrwdClicked:" destination="Odc-46-Mka" eventType="touchUpInside" id="XRW-hf-0Gq"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aeO-70-DvG">
                                             <rect key="frame" x="13" y="33" width="14" height="24"/>
@@ -1011,6 +1017,9 @@
                                                 <constraint firstAttribute="width" constant="14" id="Ujg-uL-dan"/>
                                             </constraints>
                                             <state key="normal" title="Button" image="triangle_left"/>
+                                            <connections>
+                                                <action selector="btnWeekBackClicked:" destination="Odc-46-Mka" eventType="touchUpInside" id="Gj1-vr-bF0"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
