@@ -10,7 +10,7 @@ import UIKit
 import RealmSwift
 
 class AddRecipeToMealPlanTableViewController: UITableViewController {
-    //let calTBC: CalendarTableViewCell?
+    var calTBC: CalendarTableViewCell = CalendarTableViewCell()
     let realm = try! Realm()
     var selectedRecipe = Recipe()
     let POSITION_RECIPE = (SECTION: 0, ROW: 0)
@@ -21,80 +21,109 @@ class AddRecipeToMealPlanTableViewController: UITableViewController {
     var days = [Date]()
     
     @IBAction func btnWeekBackClicked(_ sender: Any) {
-        days = generateDates(startDate: days[0], addbyUnit: .day, numberOfDays: -7)
-        let children = self.childViewControllers
-        print("test")
-//        if let vc = calTBC {
-//            vc.days = days
-//        }
+        days = generateDates(anchorDate: days[0], addbyUnit: .day, numberOfDays: -7)
+        calTBC.days = days
+        
+        let calendarIndexPath = IndexPath(item: POSITION_CALENDAR.ROW, section: POSITION_CALENDAR.SECTION)
+        self.tableView.reloadRows(at: [calendarIndexPath], with: .left)
+        
+        self.tableView.reloadSections(IndexSet(integersIn: POSITION_DAYS.SECTION...POSITION_DAYS.SECTION), with: .bottom)
         
     }
     
     @IBAction func btnWeekFrwdClicked(_ sender: Any) {
-        days = generateDates(startDate: days[0], addbyUnit: .day, numberOfDays: 7)
+        days = generateDates(anchorDate: days[0], addbyUnit: .day, numberOfDays: 7)
+        calTBC.days = days
+        
+        let calendarIndexPath = IndexPath(item: POSITION_CALENDAR.ROW, section: POSITION_CALENDAR.SECTION)
+        self.tableView.reloadRows(at: [calendarIndexPath], with: .left)
+        
+        self.tableView.reloadSections(IndexSet(integersIn: POSITION_DAYS.SECTION...POSITION_DAYS.SECTION), with: .bottom)
     }
     
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
-    
-
     
     override func viewWillAppear(_ animated: Bool) {
-        days = generateDates(startDate: startDate, addbyUnit: .day, numberOfDays: 7)
+        days = generateDates(anchorDate: startDate, addbyUnit: .day, numberOfDays: 7)
     }
     
-    func generateDates( startDate: Date?, addbyUnit: Calendar.Component, numberOfDays: Int) -> [Date] {
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        
+    }
+    
+    func generateDates( anchorDate: Date, addbyUnit: Calendar.Component, numberOfDays: Int) -> [Date] {
         var dates = [Date]()
-        var date = startDate!
-        let endDate = Calendar.current.date(byAdding: addbyUnit, value: numberOfDays, to: date)!
-        while date < endDate {
-            date = Calendar.current.date(byAdding: addbyUnit, value: 1, to: date)!
-            dates.append(date)
+        //        var date = anchorDate!
+        
+        if let anchorDate2 = Calendar.current.date(byAdding: addbyUnit, value: numberOfDays, to: anchorDate) {
+            let startDate = min(anchorDate, anchorDate2)
+            let endDate = max(anchorDate, anchorDate2)
+            var date = startDate
+            
+            while date < endDate {
+                date = Calendar.current.date(byAdding: addbyUnit, value: 1, to: date)!
+                dates.append(date)
+            }
         }
         return dates
     }
+    
+    //    func generateDates( startDate: Date?, addbyUnit: Calendar.Component, numberOfDays: Int) -> [Date] {
+    //        var dates = [Date]()
+    //        var date = startDate!
+    //        let endDate = Calendar.current.date(byAdding: addbyUnit, value: numberOfDays, to: date)!
+    //        while date < endDate {
+    //            date = Calendar.current.date(byAdding: addbyUnit, value: 1, to: date)!
+    //            dates.append(date)
+    //        }
+    //        return dates
+    //    }
     
     @IBAction func cancelTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
     @IBAction func addTapped(_ sender: Any) {
-//        var mealTypesStr = ""
-//        for mealType in selectedMealTypes {
-//            mealTypesStr.append("\(mealType.displayName()), ")
-//
-//            let newScheduledMeal = ScheduledMeal()
-//            let realmRecipe = realm.objects(Recipe.self).filter("id == %@", selectedRecipe.id)
-//            if realmRecipe.count > 0 {
-//                newScheduledMeal.recipe = realmRecipe[0] as Recipe
-//            } else {
-//                newScheduledMeal.recipe = selectedRecipe
-//            }
-//            newScheduledMeal.mealTypeRaw = mealType.rawValue
-//            newScheduledMeal.scheduledDate = selectedDate
-//
-//            // Add newScheduledMeal to meal plan
-//            try! self.realm.write {
-//                self.realm.create(ScheduledMeal.self, value: newScheduledMeal)
-//                print("\(selectedRecipe.title) is added to meal plan for date \(selectedDate.withoutTime()) for \(mealTypesStr)")
-//                dismiss(animated: true, completion: nil)
-//
-//                if let recipeOnMealPlan = realm.object(ofType: Recipe.self, forPrimaryKey: selectedRecipe.id) {
-//                    recipeOnMealPlan.isOnMealPlan = true
-//                }//TODO:  check this
-//            }
-//        }
+        //        var mealTypesStr = ""
+        //        for mealType in selectedMealTypes {
+        //            mealTypesStr.append("\(mealType.displayName()), ")
+        //
+        //            let newScheduledMeal = ScheduledMeal()
+        //            let realmRecipe = realm.objects(Recipe.self).filter("id == %@", selectedRecipe.id)
+        //            if realmRecipe.count > 0 {
+        //                newScheduledMeal.recipe = realmRecipe[0] as Recipe
+        //            } else {
+        //                newScheduledMeal.recipe = selectedRecipe
+        //            }
+        //            newScheduledMeal.mealTypeRaw = mealType.rawValue
+        //            newScheduledMeal.scheduledDate = selectedDate
+        //
+        //            // Add newScheduledMeal to meal plan
+        //            try! self.realm.write {
+        //                self.realm.create(ScheduledMeal.self, value: newScheduledMeal)
+        //                print("\(selectedRecipe.title) is added to meal plan for date \(selectedDate.withoutTime()) for \(mealTypesStr)")
+        //                dismiss(animated: true, completion: nil)
+        //
+        //                if let recipeOnMealPlan = realm.object(ofType: Recipe.self, forPrimaryKey: selectedRecipe.id) {
+        //                    recipeOnMealPlan.isOnMealPlan = true
+        //                }//TODO:  check this
+        //            }
+        //        }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -104,11 +133,12 @@ class AddRecipeToMealPlanTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath) as! RecipeTitleTableViewCell
             cell.initWithModel(model: selectedRecipe)
             return cell
-//            return cellRecipe
+            //            return cellRecipe
             
         case POSITION_CALENDAR.SECTION:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell2", for: indexPath) as! CalendarTableViewCell
             cell.initWithModel(days: days)
+            calTBC = cell
             return cell
             
         default:
@@ -130,12 +160,12 @@ class AddRecipeToMealPlanTableViewController: UITableViewController {
         }
         return height
     }
-
-
+    
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case POSITION_DAYS.SECTION:
@@ -145,55 +175,48 @@ class AddRecipeToMealPlanTableViewController: UITableViewController {
         }
         
     }
-
-
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
     
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        // Get the new view controller using segue.destinationViewController.
-//        // Pass the selected object to the new view controller.
-//        
-//    }
     
-
-
-
+    
+    /*
+     // Override to support conditional editing of the table view.
+     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+     // Return false if you do not want the specified item to be editable.
+     return true
+     }
+     */
+    
+    /*
+     // Override to support editing the table view.
+     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+     if editingStyle == .delete {
+     // Delete the row from the data source
+     tableView.deleteRows(at: [indexPath], with: .fade)
+     } else if editingStyle == .insert {
+     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+     }
+     }
+     */
+    
+    /*
+     // Override to support rearranging the table view.
+     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+     
+     }
+     */
+    
+    /*
+     // Override to support conditional rearranging of the table view.
+     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+     // Return false if you do not want the item to be re-orderable.
+     return true
+     }
+     */
+    
+    
+    
+    
+    
+    
+    
 }

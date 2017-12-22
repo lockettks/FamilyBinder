@@ -20,6 +20,7 @@ class CalendarTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColl
     func initWithModel(days: [Date]){
         self.days = days
         self.collectionView.frame.size.width = self.frame.size.width - 70
+        self.collectionView.reloadData()
     }
     
     override func awakeFromNib() {
