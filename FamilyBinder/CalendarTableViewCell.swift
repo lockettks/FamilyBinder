@@ -13,6 +13,10 @@ class CalendarTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColl
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet weak var lblMonth1: UILabel!
     @IBOutlet weak var lblMonth2: UILabel!
+//    @IBOutlet strong var lblMonth1ConLeft: NSLayoutConstraint!
+    @IBOutlet var lblMonth1ConLeft: NSLayoutConstraint!
+    @IBOutlet var lblMonth1ConCenter: NSLayoutConstraint!
+//    @IBOutlet weak var lblMonth1ConCenter: NSLayoutConstraint!
     
     
     func initWithModel(days: [Date]){
@@ -58,13 +62,14 @@ class CalendarTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColl
         let uniqueMonths = Array(Set(monthArray))
         lblMonth1.text = uniqueMonths[0]
         if uniqueMonths.count > 1 {
-            lblMonth1.frame.origin.x = 35
+            lblMonth1ConCenter.isActive = false
+            lblMonth1ConLeft.isActive = true
             
             lblMonth2.text = uniqueMonths[1]
             lblMonth2.isHidden = false
         } else {
-            
-            lblMonth1.center.x = collectionView.center.x
+            lblMonth1ConCenter.isActive = true
+            lblMonth1ConLeft.isActive = false
             lblMonth2.isHidden = true
         }
         layoutIfNeeded()

@@ -679,6 +679,14 @@
       </ContextState>
       <ContextState
          contextName = "CalendarTableViewCell.updateMonthLabels():CalendarTableViewCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "lblMonth1ConCenter.isActive">
+            </PersistentString>
+            <PersistentString
+               value = "lblMonth1ConLeft.isActive">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "SpoonacularAPIManager.randomRecipeArrayFromResponse(response : DataResponse&lt;Any&gt;) -&gt; Result&lt;[Recipe]&gt;:SpoonacularAPIManager.swift">

@@ -1029,13 +1029,16 @@
                                         <constraint firstAttribute="bottom" secondItem="Gwg-7F-2WT" secondAttribute="bottom" constant="10.666666666666657" id="Xxp-BG-7Bh"/>
                                         <constraint firstItem="qT7-SX-dwZ" firstAttribute="leading" secondItem="Gwg-7F-2WT" secondAttribute="trailing" constant="8" id="g8N-IM-rJL"/>
                                         <constraint firstItem="JeS-ic-Evg" firstAttribute="trailing" secondItem="Gwg-7F-2WT" secondAttribute="trailing" id="jDx-0m-7kH"/>
+                                        <constraint firstItem="cxU-aj-zOH" firstAttribute="leading" secondItem="Gwg-7F-2WT" secondAttribute="leading" priority="250" id="jx4-pe-z99"/>
                                         <constraint firstItem="JeS-ic-Evg" firstAttribute="top" secondItem="tk2-yl-zjD" secondAttribute="topMargin" id="l1A-g6-L0I"/>
-                                        <constraint firstItem="cxU-aj-zOH" firstAttribute="centerX" secondItem="tk2-yl-zjD" secondAttribute="centerX" placeholder="YES" id="zBb-D1-Mnx"/>
+                                        <constraint firstItem="cxU-aj-zOH" firstAttribute="centerX" secondItem="tk2-yl-zjD" secondAttribute="centerX" id="zBb-D1-Mnx"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="collectionView" destination="Gwg-7F-2WT" id="T1t-af-AmL"/>
                                     <outlet property="lblMonth1" destination="cxU-aj-zOH" id="8jy-7y-QNb"/>
+                                    <outlet property="lblMonth1ConCenter" destination="zBb-D1-Mnx" id="fUj-3N-oMF"/>
+                                    <outlet property="lblMonth1ConLeft" destination="jx4-pe-z99" id="3Lx-vy-5ib"/>
                                     <outlet property="lblMonth2" destination="JeS-ic-Evg" id="xTY-WE-4Jq"/>
                                 </connections>
                             </tableViewCell>
