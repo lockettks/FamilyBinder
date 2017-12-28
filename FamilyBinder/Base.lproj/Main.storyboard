@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="eAF-aV-N69">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="eAF-aV-N69">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -916,15 +916,15 @@
                                     <outlet property="lblRecipeTitle" destination="LCj-5D-p9F" id="cDR-D2-6zA"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell2" rowHeight="90" id="r5O-ww-ca6" customClass="CalendarTableViewCell" customModule="FamilyBinder" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="140.33333333333334" width="414" height="90"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell2" rowHeight="132" id="r5O-ww-ca6" customClass="CalendarTableViewCell" customModule="FamilyBinder" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="140.33333333333334" width="414" height="132"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="r5O-ww-ca6" id="tk2-yl-zjD">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="89.666666666666671"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="131.66666666666666"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Gwg-7F-2WT">
-                                            <rect key="frame" x="35" y="11" width="347" height="68"/>
+                                            <rect key="frame" x="35" y="33" width="347" height="88"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="s8e-YR-gik">
                                                 <size key="itemSize" width="35" height="66"/>
@@ -934,28 +934,41 @@
                                             </collectionViewFlowLayout>
                                             <cells>
                                                 <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="YGR-xv-RgE" customClass="CalendarDayCollectionViewCell" customModule="FamilyBinder" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="1" width="35" height="66"/>
+                                                    <rect key="frame" x="0.0" y="11" width="35" height="66"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                         <rect key="frame" x="0.0" y="0.0" width="35" height="66"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="25" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3H9-3k-b7y" userLabel="lblDate">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3H9-3k-b7y" userLabel="lblDate">
                                                                 <rect key="frame" x="0.0" y="35" width="35" height="31"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="31" id="9G4-Uq-PAg"/>
+                                                                </constraints>
                                                                 <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="S" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L0M-f7-kVh" userLabel="lblWeekday">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="S" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L0M-f7-kVh" userLabel="lblWeekday">
                                                                 <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="35" id="QZR-TJ-RAr"/>
+                                                                </constraints>
                                                                 <fontDescription key="fontDescription" name="BodoniSvtyTwoOSITCTT-Book" family="Bodoni 72 Oldstyle" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
                                                     </view>
+                                                    <constraints>
+                                                        <constraint firstItem="3H9-3k-b7y" firstAttribute="top" secondItem="L0M-f7-kVh" secondAttribute="bottom" id="52w-F1-ZDR"/>
+                                                        <constraint firstItem="3H9-3k-b7y" firstAttribute="leading" secondItem="L0M-f7-kVh" secondAttribute="leading" id="AMf-rU-a2X"/>
+                                                        <constraint firstItem="L0M-f7-kVh" firstAttribute="top" secondItem="YGR-xv-RgE" secondAttribute="top" id="Lxd-Fs-h5g"/>
+                                                        <constraint firstAttribute="trailing" secondItem="3H9-3k-b7y" secondAttribute="trailing" id="oPX-wt-h5T"/>
+                                                        <constraint firstAttribute="bottom" secondItem="3H9-3k-b7y" secondAttribute="bottom" id="uWN-nD-Drb"/>
+                                                        <constraint firstItem="3H9-3k-b7y" firstAttribute="trailing" secondItem="L0M-f7-kVh" secondAttribute="trailing" id="y1I-dG-HOg"/>
+                                                        <constraint firstItem="3H9-3k-b7y" firstAttribute="leading" secondItem="YGR-xv-RgE" secondAttribute="leading" id="z1T-7n-8ye"/>
+                                                    </constraints>
                                                     <size key="customSize" width="35" height="66"/>
                                                     <connections>
                                                         <outlet property="lblDate" destination="3H9-3k-b7y" id="b4H-dQ-UD2"/>
@@ -968,49 +981,66 @@
                                                 <outlet property="delegate" destination="Odc-46-Mka" id="lZh-26-Tqj"/>
                                             </connections>
                                         </collectionView>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qT7-SX-dwZ">
-                                            <rect key="frame" x="390" y="33" width="14" height="24"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qT7-SX-dwZ" userLabel="Btn Forward">
+                                            <rect key="frame" x="390" y="54" width="14" height="24"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="14" id="TRx-Yc-LKo"/>
-                                                <constraint firstAttribute="width" secondItem="qT7-SX-dwZ" secondAttribute="height" multiplier="7:12" id="Yao-Wo-3TD"/>
-                                                <constraint firstAttribute="height" constant="24" id="msX-a4-fG4"/>
+                                                <constraint firstAttribute="width" constant="14" id="643-X5-iI9"/>
+                                                <constraint firstAttribute="height" constant="24" id="7cB-RF-zQF"/>
+                                                <constraint firstAttribute="width" secondItem="qT7-SX-dwZ" secondAttribute="height" multiplier="7:12" id="cWa-eS-8Qa"/>
                                             </constraints>
                                             <state key="normal" title="Button" image="triangle_right"/>
                                             <connections>
                                                 <action selector="btnWeekFrwdClicked:" destination="Odc-46-Mka" eventType="touchUpInside" id="XRW-hf-0Gq"/>
                                             </connections>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aeO-70-DvG">
-                                            <rect key="frame" x="13" y="33" width="14" height="24"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aeO-70-DvG" userLabel="Btn Back">
+                                            <rect key="frame" x="13" y="54" width="14" height="24"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="24" id="AUQ-12-dBF"/>
-                                                <constraint firstAttribute="width" constant="14" id="Ujg-uL-dan"/>
+                                                <constraint firstAttribute="height" constant="24" id="7SL-Lm-Hda"/>
+                                                <constraint firstAttribute="width" secondItem="aeO-70-DvG" secondAttribute="height" multiplier="7:12" id="OyR-ob-onb"/>
+                                                <constraint firstAttribute="width" constant="14" id="bqg-1Y-0AW"/>
                                             </constraints>
                                             <state key="normal" title="Button" image="triangle_left"/>
                                             <connections>
                                                 <action selector="btnWeekBackClicked:" destination="Odc-46-Mka" eventType="touchUpInside" id="Gj1-vr-bF0"/>
                                             </connections>
                                         </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="November" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cxU-aj-zOH">
+                                            <rect key="frame" x="173.66666666666666" y="11" width="66.666666666666657" height="21"/>
+                                            <fontDescription key="fontDescription" name="BodoniSvtyTwoOSITCTT-Book" family="Bodoni 72 Oldstyle" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="December" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JeS-ic-Evg">
+                                            <rect key="frame" x="315" y="11" width="67" height="21"/>
+                                            <fontDescription key="fontDescription" name="BodoniSvtyTwoOSITCTT-Book" family="Bodoni 72 Oldstyle" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="aeO-70-DvG" firstAttribute="top" secondItem="tk2-yl-zjD" secondAttribute="top" constant="33" id="2Ac-Fy-Q6e"/>
-                                        <constraint firstItem="qT7-SX-dwZ" firstAttribute="leading" secondItem="Gwg-7F-2WT" secondAttribute="trailing" constant="8" id="75F-bC-7bk"/>
-                                        <constraint firstAttribute="bottom" secondItem="aeO-70-DvG" secondAttribute="bottom" constant="32.5" id="7ZZ-wT-i1O"/>
-                                        <constraint firstItem="Gwg-7F-2WT" firstAttribute="bottom" secondItem="tk2-yl-zjD" secondAttribute="bottomMargin" id="8F3-bv-gN3"/>
-                                        <constraint firstAttribute="bottom" secondItem="qT7-SX-dwZ" secondAttribute="bottom" constant="32.5" id="EM7-qb-xK2"/>
-                                        <constraint firstItem="Gwg-7F-2WT" firstAttribute="top" secondItem="tk2-yl-zjD" secondAttribute="topMargin" id="EZJ-8t-f0S"/>
-                                        <constraint firstAttribute="trailing" secondItem="qT7-SX-dwZ" secondAttribute="trailing" constant="10" id="jbs-ak-uGY"/>
-                                        <constraint firstItem="Gwg-7F-2WT" firstAttribute="leading" secondItem="aeO-70-DvG" secondAttribute="trailing" constant="8" id="m9h-Cg-wxH"/>
-                                        <constraint firstItem="qT7-SX-dwZ" firstAttribute="top" secondItem="tk2-yl-zjD" secondAttribute="top" constant="33" id="yuQ-DU-XG6"/>
-                                        <constraint firstItem="aeO-70-DvG" firstAttribute="leading" secondItem="tk2-yl-zjD" secondAttribute="leading" constant="13" id="zpe-Yf-Wtn"/>
+                                        <constraint firstItem="Gwg-7F-2WT" firstAttribute="leading" secondItem="aeO-70-DvG" secondAttribute="trailing" constant="8" id="1g7-sV-w0G"/>
+                                        <constraint firstItem="aeO-70-DvG" firstAttribute="centerY" secondItem="tk2-yl-zjD" secondAttribute="centerY" id="7lM-3z-FHK"/>
+                                        <constraint firstItem="Gwg-7F-2WT" firstAttribute="top" secondItem="tk2-yl-zjD" secondAttribute="top" constant="33" id="Kcs-pg-YmD"/>
+                                        <constraint firstAttribute="trailing" secondItem="qT7-SX-dwZ" secondAttribute="trailing" constant="10" id="Rqi-Ug-r2G"/>
+                                        <constraint firstItem="cxU-aj-zOH" firstAttribute="top" secondItem="tk2-yl-zjD" secondAttribute="topMargin" id="SDO-4P-Sw8"/>
+                                        <constraint firstItem="aeO-70-DvG" firstAttribute="leading" secondItem="tk2-yl-zjD" secondAttribute="leading" constant="13" id="SHM-Ca-Q7G"/>
+                                        <constraint firstItem="qT7-SX-dwZ" firstAttribute="centerY" secondItem="tk2-yl-zjD" secondAttribute="centerY" id="TBS-B9-bxl"/>
+                                        <constraint firstAttribute="bottom" secondItem="Gwg-7F-2WT" secondAttribute="bottom" constant="10.666666666666657" id="Xxp-BG-7Bh"/>
+                                        <constraint firstItem="qT7-SX-dwZ" firstAttribute="leading" secondItem="Gwg-7F-2WT" secondAttribute="trailing" constant="8" id="g8N-IM-rJL"/>
+                                        <constraint firstItem="JeS-ic-Evg" firstAttribute="trailing" secondItem="Gwg-7F-2WT" secondAttribute="trailing" id="jDx-0m-7kH"/>
+                                        <constraint firstItem="JeS-ic-Evg" firstAttribute="top" secondItem="tk2-yl-zjD" secondAttribute="topMargin" id="l1A-g6-L0I"/>
+                                        <constraint firstItem="cxU-aj-zOH" firstAttribute="centerX" secondItem="tk2-yl-zjD" secondAttribute="centerX" placeholder="YES" id="zBb-D1-Mnx"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="collectionView" destination="Gwg-7F-2WT" id="T1t-af-AmL"/>
+                                    <outlet property="lblMonth1" destination="cxU-aj-zOH" id="8jy-7y-QNb"/>
+                                    <outlet property="lblMonth2" destination="JeS-ic-Evg" id="xTY-WE-4Jq"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell3" rowHeight="117" id="gUs-Bd-lPA" customClass="DayTableViewCell" customModule="FamilyBinder" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="230.33333333333334" width="414" height="117"/>
+                                <rect key="frame" x="0.0" y="272.33333333333337" width="414" height="117"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gUs-Bd-lPA" id="4qW-8p-Rs0">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="116.66666666666667"/>
@@ -1102,7 +1132,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Cj-Lv-ayJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2653.5999999999999" y="-439.43028485757122"/>
+            <point key="canvasLocation" x="2652.1739130434785" y="-440.21739130434787"/>
         </scene>
         <!--Directions View Controller-->
         <scene sceneID="dp7-fw-dPV">

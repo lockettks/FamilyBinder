@@ -32,7 +32,7 @@ class AddRecipeToMealPlanTableViewController: UITableViewController {
     }
     
     @IBAction func btnWeekFrwdClicked(_ sender: Any) {
-        days = generateDates(anchorDate: days[0], addbyUnit: .day, numberOfDays: 7)
+        days = generateDates(anchorDate: days[6], addbyUnit: .day, numberOfDays: 7)
         calTBC.days = days
         
         let calendarIndexPath = IndexPath(item: POSITION_CALENDAR.ROW, section: POSITION_CALENDAR.SECTION)

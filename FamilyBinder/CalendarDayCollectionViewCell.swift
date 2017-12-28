@@ -8,10 +8,12 @@
 
 import UIKit
 
+
 class CalendarDayCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var lblWeekday: UILabel!
     @IBOutlet weak var lblDate: UILabel!
+
     
     func initWithModel(day: Date){
         let weekdayFormatter = DateFormatter()
