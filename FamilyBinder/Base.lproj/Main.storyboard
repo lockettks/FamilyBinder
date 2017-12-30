@@ -576,13 +576,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="spoonacular score" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ut3-Lb-i92" userLabel="spoonacularScoreLbl">
-                                        <rect key="frame" x="148.66666666666666" y="8" width="115.99999999999997" height="21"/>
+                                        <rect key="frame" x="149" y="8" width="116" height="21"/>
                                         <fontDescription key="fontDescription" name="BodoniSvtyTwoOSITCTT-Book" family="Bodoni 72 Oldstyle" pointSize="17"/>
                                         <color key="textColor" red="0.0078431372550000003" green="0.14901960780000001" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V8U-u3-YV4" userLabel="spoonacularScore">
-                                        <rect key="frame" x="202.66666666666666" y="31" width="10" height="20"/>
+                                        <rect key="frame" x="202" y="31" width="10" height="20"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="textColor" red="0.0078431372549019607" green="0.14901960784313725" blue="0.28235294117647058" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -594,29 +594,33 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe Title" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9bT-Vn-xgO" userLabel="LblTitle">
-                                        <rect key="frame" x="152.66666666666666" y="59" width="109.99999999999997" height="29"/>
+                                        <rect key="frame" x="152" y="59" width="110" height="29"/>
                                         <fontDescription key="fontDescription" name="BodoniSvtyTwoOSITCTT-Book" family="Bodoni 72 Oldstyle" pointSize="24"/>
                                         <color key="textColor" red="0.0078431372549019607" green="0.14901960784313725" blue="0.28235294117647058" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" misplaced="YES" text="www.someblog.com" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lRd-1e-oO6" userLabel="credit">
-                                        <rect key="frame" x="25" y="97" width="232" height="23"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="www.someblog.com" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lRd-1e-oO6" userLabel="credit">
+                                        <rect key="frame" x="15" y="97" width="281" height="23"/>
                                         <fontDescription key="fontDescription" name="BodoniSvtyTwoOSITCTT-BookIt" family="Bodoni 72 Oldstyle" pointSize="18"/>
                                         <color key="textColor" red="0.0078431372550000003" green="0.14901960780000001" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Servings:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XwO-zQ-Wlh" userLabel="servingsLabel">
-                                        <rect key="frame" x="77" y="128" width="49" height="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Servings:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XwO-zQ-Wlh" userLabel="servingsLabel">
+                                        <rect key="frame" x="75" y="128" width="49" height="17"/>
                                         <fontDescription key="fontDescription" name="BodoniSvtyTwoOSITCTT-Book" family="Bodoni 72 Oldstyle" pointSize="14"/>
                                         <color key="textColor" red="0.0078431372549019607" green="0.14901960784313725" blue="0.28235294117647058" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleAspectFit" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kjq-7g-xCd" userLabel="shoppingCart">
-                                        <rect key="frame" x="156" y="141" width="32" height="29"/>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kjq-7g-xCd" userLabel="shoppingCart">
+                                        <rect key="frame" x="154" y="140" width="32" height="29"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Kjq-7g-xCd" secondAttribute="height" multiplier="32:29" id="fOQ-Q1-xPO"/>
+                                            <constraint firstAttribute="width" constant="32" id="hdR-Oc-ssD"/>
+                                        </constraints>
                                         <state key="normal" image="shoppingCart_Add"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b6c-Hn-mvm" userLabel="circleBackground">
-                                        <rect key="frame" x="311" y="87.666666666666671" width="137" height="137.33333333333331"/>
+                                        <rect key="frame" x="311" y="88" width="137" height="137"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="137" id="GUw-V8-a2c"/>
                                         </constraints>
@@ -657,8 +661,8 @@
                                         <color key="textColor" red="0.0078431372550000003" green="0.14901960780000001" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="3" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jkR-AS-zOC" userLabel="servings">
-                                        <rect key="frame" x="94" y="143" width="14" height="27"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jkR-AS-zOC" userLabel="servings">
+                                        <rect key="frame" x="92" y="144" width="14" height="27"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <color key="textColor" red="0.75686274509999996" green="0.12941176469999999" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -668,12 +672,11 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="W0l-yc-hXs" secondAttribute="trailing" constant="15" id="3hP-6f-YNM"/>
                                     <constraint firstAttribute="bottom" secondItem="b6c-Hn-mvm" secondAttribute="bottom" constant="-46" id="4Uu-eK-Qht"/>
-                                    <constraint firstItem="Kjq-7g-xCd" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="XwO-zQ-Wlh" secondAttribute="trailing" constant="30" id="8AT-Uq-iHh"/>
                                     <constraint firstAttribute="bottom" secondItem="lRd-1e-oO6" secondAttribute="bottom" constant="59" id="9dk-eV-yQH"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="I7u-Ag-Idx" secondAttribute="trailing" constant="20" symbolic="YES" id="BFT-RG-ePg"/>
                                     <constraint firstItem="VhE-R3-X4v" firstAttribute="top" secondItem="W0l-yc-hXs" secondAttribute="bottom" constant="2" id="BQM-m1-Pny"/>
                                     <constraint firstAttribute="bottom" secondItem="jkR-AS-zOC" secondAttribute="bottom" constant="8" id="D34-Fw-a74"/>
-                                    <constraint firstItem="XwO-zQ-Wlh" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Fg6-dX-sVh" secondAttribute="trailing" constant="30" id="H2D-yR-yTc"/>
+                                    <constraint firstItem="Kjq-7g-xCd" firstAttribute="leading" secondItem="1aL-vW-l1D" secondAttribute="leading" constant="154" id="Gmc-No-Qmu"/>
                                     <constraint firstItem="9bT-Vn-xgO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="1aL-vW-l1D" secondAttribute="leading" id="ICc-CP-1ek"/>
                                     <constraint firstItem="b6c-Hn-mvm" firstAttribute="leading" secondItem="lRd-1e-oO6" secondAttribute="trailing" constant="15" id="IRI-8l-scG"/>
                                     <constraint firstItem="9bT-Vn-xgO" firstAttribute="centerX" secondItem="V8U-u3-YV4" secondAttribute="centerX" id="JvZ-J9-eXW"/>
@@ -684,12 +687,12 @@
                                     <constraint firstItem="V8U-u3-YV4" firstAttribute="top" secondItem="ut3-Lb-i92" secondAttribute="bottom" constant="2" id="QqH-GL-siI"/>
                                     <constraint firstItem="b6c-Hn-mvm" firstAttribute="top" secondItem="9bT-Vn-xgO" secondAttribute="bottom" constant="-0.5" id="SgA-6k-17v"/>
                                     <constraint firstItem="jkR-AS-zOC" firstAttribute="top" secondItem="XwO-zQ-Wlh" secondAttribute="bottom" constant="-1" id="Wlo-ip-clA"/>
-                                    <constraint firstItem="9bT-Vn-xgO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="lRd-1e-oO6" secondAttribute="leading" id="YyL-Lo-U73"/>
                                     <constraint firstItem="W0l-yc-hXs" firstAttribute="top" secondItem="1aL-vW-l1D" secondAttribute="top" constant="8" id="b0f-5b-Jy8"/>
                                     <constraint firstAttribute="trailing" secondItem="b6c-Hn-mvm" secondAttribute="trailing" constant="-34" id="c8Y-fT-UEQ"/>
                                     <constraint firstItem="jkR-AS-zOC" firstAttribute="centerX" secondItem="XwO-zQ-Wlh" secondAttribute="centerX" id="eZE-aN-cfq"/>
                                     <constraint firstItem="VhE-R3-X4v" firstAttribute="centerX" secondItem="W0l-yc-hXs" secondAttribute="centerX" id="gU3-vo-aef"/>
                                     <constraint firstItem="ut3-Lb-i92" firstAttribute="centerX" secondItem="1aL-vW-l1D" secondAttribute="centerX" id="h33-eh-RAo"/>
+                                    <constraint firstItem="XwO-zQ-Wlh" firstAttribute="leading" secondItem="1aL-vW-l1D" secondAttribute="leading" constant="75" id="i5f-mn-PBr"/>
                                     <constraint firstItem="I7u-Ag-Idx" firstAttribute="leading" secondItem="1aL-vW-l1D" secondAttribute="leading" constant="15" id="lPz-M6-XL8"/>
                                     <constraint firstItem="ut3-Lb-i92" firstAttribute="top" secondItem="1aL-vW-l1D" secondAttribute="top" constant="8" id="oQs-wO-f4B"/>
                                     <constraint firstItem="HuA-di-27J" firstAttribute="top" secondItem="1aL-vW-l1D" secondAttribute="top" constant="8" id="r3q-8v-deJ"/>
@@ -697,6 +700,7 @@
                                     <constraint firstItem="I7u-Ag-Idx" firstAttribute="baseline" secondItem="V8U-u3-YV4" secondAttribute="baseline" id="sPP-ae-SNS"/>
                                     <constraint firstAttribute="bottom" secondItem="Jty-0Z-tbb" secondAttribute="bottom" constant="13" id="ssn-MV-2dQ"/>
                                     <constraint firstItem="lRd-1e-oO6" firstAttribute="top" secondItem="9bT-Vn-xgO" secondAttribute="bottom" constant="9.5" id="tHP-xC-O4r"/>
+                                    <constraint firstItem="lRd-1e-oO6" firstAttribute="leading" secondItem="1aL-vW-l1D" secondAttribute="leading" constant="15" id="vGk-4M-Uaq"/>
                                     <constraint firstAttribute="bottom" secondItem="Kjq-7g-xCd" secondAttribute="bottom" constant="10" id="vMU-at-1xj"/>
                                     <constraint firstItem="HuA-di-27J" firstAttribute="leading" secondItem="1aL-vW-l1D" secondAttribute="leading" constant="25" id="zPt-vo-qjZ"/>
                                     <constraint firstItem="V8U-u3-YV4" firstAttribute="centerX" secondItem="1aL-vW-l1D" secondAttribute="centerX" id="zYF-NS-jmS"/>
@@ -740,7 +744,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aog-Jk-AXk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1612" y="39.130434782608695"/>
+            <point key="canvasLocation" x="1612" y="38.5"/>
         </scene>
         <!--Recipe Tabs View Controller-->
         <scene sceneID="4te-Cj-fRH">
