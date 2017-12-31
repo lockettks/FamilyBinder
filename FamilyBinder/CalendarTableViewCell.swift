@@ -8,15 +8,21 @@
 
 import UIKit
 
+class Selection {
+    var date: Date = Date()
+    var mealType: MealType?
+}
+
 class CalendarTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     var days = [Date]()
+    var selections = [Selection]()
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet weak var lblMonth1: UILabel!
     @IBOutlet weak var lblMonth2: UILabel!
-//    @IBOutlet strong var lblMonth1ConLeft: NSLayoutConstraint!
+    //    @IBOutlet strong var lblMonth1ConLeft: NSLayoutConstraint!
     @IBOutlet var lblMonth1ConLeft: NSLayoutConstraint!
     @IBOutlet var lblMonth1ConCenter: NSLayoutConstraint!
-//    @IBOutlet weak var lblMonth1ConCenter: NSLayoutConstraint!
+    //    @IBOutlet weak var lblMonth1ConCenter: NSLayoutConstraint!
     
     
     func initWithModel(days: [Date]){
@@ -30,11 +36,12 @@ class CalendarTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColl
         super.awakeFromNib()
         collectionView.dataSource = self
         collectionView.delegate = self
+        collectionView.allowsMultipleSelection = true
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
@@ -49,6 +56,14 @@ class CalendarTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColl
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CalendarDayCollectionViewCell
         cell.initWithModel(day: days[indexPath.row])
+        
+        
+        if selections.index(where: { $0.date == days[indexPath.row] }) != nil {
+            cell.backgroundColor = UIColor.blue
+        } else
+        {
+            cell.backgroundColor = UIColor.red
+        }
         return cell
     }
     
@@ -86,13 +101,24 @@ class CalendarTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColl
         layout.invalidateLayout()
         return cellSize
     }
-
-   
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! UICollectionViewCell!
+        cell?.backgroundColor = UIColor.blue
+        let newSelection = Selection()
+        newSelection.date = days[indexPath.row]
+        selections.append(newSelection)
         print("collectionViewCell selected \(indexPath)")
     }
     
-    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! UICollectionViewCell!
+        
+        if let index = selections.index(where: { $0.date == days[indexPath.row] }) {
+            selections.remove(at: index)
+        }
+        cell?.backgroundColor = UIColor.red
+        print("collectionViewCell deselected \(indexPath)")
+    }
 }
 

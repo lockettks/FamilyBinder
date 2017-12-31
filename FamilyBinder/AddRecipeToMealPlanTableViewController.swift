@@ -21,11 +21,12 @@ class AddRecipeToMealPlanTableViewController: UITableViewController {
     var days = [Date]()
     
     @IBAction func btnWeekBackClicked(_ sender: Any) {
-        days = generateDates(anchorDate: days[0], addbyUnit: .day, numberOfDays: -7)
+        days = generateDates(anchorDate: days[0], addbyUnit: .day, numberOfDays: -8)
+        _ = days.popLast()
         calTBC.days = days
         
         let calendarIndexPath = IndexPath(item: POSITION_CALENDAR.ROW, section: POSITION_CALENDAR.SECTION)
-        self.tableView.reloadRows(at: [calendarIndexPath], with: .left)
+        self.tableView.reloadRows(at: [calendarIndexPath], with: .right)
         
         self.tableView.reloadSections(IndexSet(integersIn: POSITION_DAYS.SECTION...POSITION_DAYS.SECTION), with: .bottom)
         
