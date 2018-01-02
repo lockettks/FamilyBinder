@@ -59,12 +59,37 @@ class CalendarTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColl
         
         
         if selections.index(where: { $0.date == days[indexPath.row] }) != nil {
-            cell.backgroundColor = UIColor.blue
+            cell.backgroundColor = UIColor(hex: "C1212E")
+            cell.isSelected = true
+            collectionView.selectItem(at: indexPath, animated: true, scrollPosition: [])
+            
         } else
         {
-            cell.backgroundColor = UIColor.red
+            cell.backgroundColor = UIColor.clear
+            cell.isSelected = false
         }
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! UICollectionViewCell!
+        cell?.backgroundColor = UIColor(hex: "C1212E")
+        cell?.isSelected = true
+        let newSelection = Selection()
+        newSelection.date = days[indexPath.row]
+        selections.append(newSelection)
+        print("collectionViewCell selected \(indexPath)")
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! UICollectionViewCell!
+        cell?.isSelected = false
+        
+        if let index = selections.index(where: { $0.date == days[indexPath.row] }) {
+            selections.remove(at: index)
+        }
+        cell?.backgroundColor = UIColor.clear
+        print("collectionViewCell deselected \(indexPath)")
     }
     
     func updateMonthLabels() {
@@ -102,23 +127,6 @@ class CalendarTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColl
         return cellSize
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath) as! UICollectionViewCell!
-        cell?.backgroundColor = UIColor.blue
-        let newSelection = Selection()
-        newSelection.date = days[indexPath.row]
-        selections.append(newSelection)
-        print("collectionViewCell selected \(indexPath)")
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath) as! UICollectionViewCell!
-        
-        if let index = selections.index(where: { $0.date == days[indexPath.row] }) {
-            selections.remove(at: index)
-        }
-        cell?.backgroundColor = UIColor.red
-        print("collectionViewCell deselected \(indexPath)")
-    }
+
 }
 
