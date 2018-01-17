@@ -951,7 +951,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3H9-3k-b7y" userLabel="lblDate">
-                                                                <rect key="frame" x="0.0" y="29" width="35" height="29"/>
+                                                                <rect key="frame" x="0.0" y="29" width="35" height="21"/>
                                                                 <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="19"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -959,10 +959,9 @@
                                                         </subviews>
                                                     </view>
                                                     <constraints>
-                                                        <constraint firstItem="3H9-3k-b7y" firstAttribute="height" secondItem="YGR-xv-RgE" secondAttribute="height" multiplier="0.5" id="02W-md-BwU"/>
+                                                        <constraint firstAttribute="bottom" secondItem="3H9-3k-b7y" secondAttribute="bottom" constant="8" id="4wb-6h-ev7"/>
                                                         <constraint firstItem="L0M-f7-kVh" firstAttribute="top" secondItem="YGR-xv-RgE" secondAttribute="top" id="9gO-fy-wGB"/>
                                                         <constraint firstItem="L0M-f7-kVh" firstAttribute="height" secondItem="YGR-xv-RgE" secondAttribute="height" multiplier="0.5" id="L0t-RE-Y2T"/>
-                                                        <constraint firstAttribute="bottom" secondItem="3H9-3k-b7y" secondAttribute="bottom" id="M8y-2b-XKR"/>
                                                         <constraint firstItem="3H9-3k-b7y" firstAttribute="top" secondItem="L0M-f7-kVh" secondAttribute="bottom" id="TSQ-Dc-cxT"/>
                                                         <constraint firstAttribute="trailing" secondItem="L0M-f7-kVh" secondAttribute="trailing" id="USB-f7-RbP"/>
                                                         <constraint firstAttribute="trailing" secondItem="3H9-3k-b7y" secondAttribute="trailing" id="oPX-wt-h5T"/>
