@@ -31,7 +31,7 @@ class CalendarDayCollectionViewCell: UICollectionViewCell {
                 UIView.animate(withDuration: 0.25, animations: {
                     self.transform = CGAffineTransform.identity
                     self.lblWeekday.textColor = UIColor.black
-                    self.lblWeekday.font = self.lblWeekday.font.withSize(17)
+                    self.lblWeekday.font = self.lblWeekday.font.withSize(16)
                     self.lblDate.textColor = UIColor.black
                     self.backgroundColor = UIColor.clear
                 })

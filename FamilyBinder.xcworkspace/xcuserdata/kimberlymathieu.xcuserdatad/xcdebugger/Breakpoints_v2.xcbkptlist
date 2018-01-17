@@ -77,53 +77,5 @@
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FamilyBinder/CalendarTableViewCell.swift"
-            timestampString = "537914992.729513"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "138"
-            endingLineNumber = "138"
-            landmarkName = "collectionView(_:layout:sizeForItemAt:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "FamilyBinder.CalendarTableViewCell.collectionView(__ObjC.UICollectionView, layout: __ObjC.UICollectionViewLayout, sizeForItemAt: Foundation.IndexPath) -&gt; __C.CGSize"
-                  moduleName = "FamilyBinder"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kimberlymathieu/Desktop/My%20Projects/FamilyBinder/FamilyBinder/CalendarTableViewCell.swift"
-                  timestampString = "537840988.192299"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "137"
-                  endingLineNumber = "137"
-                  offsetFromSymbolStart = "520">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Foundation.IndexPath) -&gt; Swift.Bool in FamilyBinder.CalendarTableViewCell.collectionView(__ObjC.UICollectionView, layout: __ObjC.UICollectionViewLayout, sizeForItemAt: Foundation.IndexPath) -&gt; __C.CGSize"
-                  moduleName = "FamilyBinder"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kimberlymathieu/Desktop/My%20Projects/FamilyBinder/FamilyBinder/CalendarTableViewCell.swift"
-                  timestampString = "537840988.195534"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "137"
-                  endingLineNumber = "137"
-                  offsetFromSymbolStart = "40">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

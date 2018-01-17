@@ -19,11 +19,8 @@ class CalendarTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColl
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet weak var lblMonth1: UILabel!
     @IBOutlet weak var lblMonth2: UILabel!
-    //    @IBOutlet strong var lblMonth1ConLeft: NSLayoutConstraint!
     @IBOutlet var lblMonth1ConLeft: NSLayoutConstraint!
     @IBOutlet var lblMonth1ConCenter: NSLayoutConstraint!
-    //    @IBOutlet weak var lblMonth1ConCenter: NSLayoutConstraint!
-    
     
     func initWithModel(days: [Date]){
         self.days = days
@@ -61,15 +58,11 @@ class CalendarTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColl
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CalendarDayCollectionViewCell
         cell.initWithModel(day: days[indexPath.row])
         
-        
         if selections.index(where: { $0.date == days[indexPath.row] }) != nil {
-//            cell.backgroundColor = UIColor(hex: "C1212E")
             cell.isSelected = true
             collectionView.selectItem(at: indexPath, animated: true, scrollPosition: [])
-            
         } else
         {
-//            cell.backgroundColor = UIColor.clear
             cell.isSelected = false
         }
         return cell
@@ -77,7 +70,6 @@ class CalendarTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColl
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! UICollectionViewCell!
-//        cell?.backgroundColor = UIColor(hex: "C1212E")
         cell?.isSelected = true
         let newSelection = Selection()
         newSelection.date = days[indexPath.row]
@@ -93,7 +85,6 @@ class CalendarTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColl
         if let index = selections.index(where: { $0.date == days[indexPath.row] }) {
             selections.remove(at: index)
         }
-//        cell?.backgroundColor = UIColor.clear
         print("collectionViewCell deselected \(indexPath)")
         collectionView.performBatchUpdates(nil, completion: nil)
     }
@@ -110,7 +101,6 @@ class CalendarTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColl
         if uniqueMonths.count > 1 {
             lblMonth1ConCenter.isActive = false
             lblMonth1ConLeft.isActive = true
-            
             lblMonth2.text = uniqueMonths[1]
             lblMonth2.isHidden = false
         } else {
@@ -122,7 +112,6 @@ class CalendarTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColl
     }
     
     
-    
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -131,31 +120,8 @@ class CalendarTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColl
         layout.minimumLineSpacing = 1
         let collectionSize = self.collectionView.frame.size
         let cellSize = CGSize(width: (collectionSize.width-5) / 7, height: collectionSize.height-10)
-        
-        //let cell = collectionView.cellForItem(at: indexPath) as! UICollectionViewCell
-        
-//        if ((collectionView.indexPathsForSelectedItems?.index(where: {$0.row == indexPath.row})) != nil) {
-//            cellSize = CGSize(width: collectionSize.width / 7, height: collectionSize.height)
-//            layout.invalidateLayout()
-//        } else {
-//            cellSize = CGSize(width: collectionSize.width / 7, height: collectionSize.height-10)
-//        }
-
-        
-//        switch collectionView.indexPathsForSelectedItems?.first {
-//        case .some(indexPath):
-//            cellSize = CGSize(width: collectionSize.width / 7, height: collectionSize.height+10)
-//            layout.invalidateLayout()
-////            return cellSize
-//        default:
-//            cellSize = CGSize(width: collectionSize.width / 7, height: collectionSize.height-10)
-//            layout.invalidateLayout()
-////            return cellSize
-//        }
         layout.invalidateLayout()
         return cellSize
     }
-    
-
 }
 
