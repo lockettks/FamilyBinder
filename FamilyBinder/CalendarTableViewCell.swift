@@ -37,6 +37,10 @@ class CalendarTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColl
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.allowsMultipleSelection = true
+        
+        self.separatorInset = .zero
+        self.preservesSuperviewLayoutMargins = false
+        self.layoutMargins = .zero
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -79,6 +83,7 @@ class CalendarTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColl
         newSelection.date = days[indexPath.row]
         selections.append(newSelection)
         print("collectionViewCell selected \(indexPath)")
+        collectionView.performBatchUpdates(nil, completion: nil)
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
@@ -90,6 +95,7 @@ class CalendarTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColl
         }
         cell?.backgroundColor = UIColor.clear
         print("collectionViewCell deselected \(indexPath)")
+        collectionView.performBatchUpdates(nil, completion: nil)
     }
     
     func updateMonthLabels() {
@@ -115,6 +121,8 @@ class CalendarTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColl
         layoutIfNeeded()
     }
     
+    
+    
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -122,7 +130,29 @@ class CalendarTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColl
         layout.minimumInteritemSpacing = 1
         layout.minimumLineSpacing = 1
         let collectionSize = self.collectionView.frame.size
-        let cellSize = CGSize(width: collectionSize.width / 7, height: collectionSize.height)
+        var cellSize = CGSize(width: collectionSize.width / 7, height: collectionSize.height-10)
+        
+        //let cell = collectionView.cellForItem(at: indexPath) as! UICollectionViewCell
+        
+        if ((collectionView.indexPathsForSelectedItems?.index(where: {$0.row == indexPath.row})) != nil) {
+            cellSize = CGSize(width: collectionSize.width / 7, height: collectionSize.height)
+            layout.invalidateLayout()
+        } else {
+            cellSize = CGSize(width: collectionSize.width / 7, height: collectionSize.height-10)
+            
+        }
+
+        
+//        switch collectionView.indexPathsForSelectedItems?.first {
+//        case .some(indexPath):
+//            cellSize = CGSize(width: collectionSize.width / 7, height: collectionSize.height+10)
+//            layout.invalidateLayout()
+////            return cellSize
+//        default:
+//            cellSize = CGSize(width: collectionSize.width / 7, height: collectionSize.height-10)
+//            layout.invalidateLayout()
+////            return cellSize
+//        }
         layout.invalidateLayout()
         return cellSize
     }

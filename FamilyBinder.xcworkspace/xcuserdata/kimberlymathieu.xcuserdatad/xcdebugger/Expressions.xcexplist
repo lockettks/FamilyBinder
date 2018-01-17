@@ -390,6 +390,17 @@
          contextName = "MealDatePickerTableViewCell.awakeFromNib() -&gt; ():MealDatePickerTableViewCell.swift">
       </ContextState>
       <ContextState
+         contextName = "CalendarTableViewCell.collectionView(_:layout:sizeForItemAt:):CalendarTableViewCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "collectionView.indexPathsForSelectedItems">
+            </PersistentString>
+            <PersistentString
+               value = "collectionView.frame.size.height">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "AddRecipeToMealPlanTableViewController.generateDates(anchorDate:addbyUnit:numberOfDays:):AddRecipeToMealPlanTableViewController.swift">
       </ContextState>
       <ContextState
