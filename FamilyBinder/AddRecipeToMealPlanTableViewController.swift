@@ -157,7 +157,7 @@ class AddRecipeToMealPlanTableViewController: UITableViewController {
             height = 85
         }
         else if indexPath.section == POSITION_CALENDAR.SECTION {
-            height = 120
+            height = 110
         }
         return height
     }

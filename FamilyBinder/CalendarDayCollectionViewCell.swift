@@ -18,15 +18,23 @@ class CalendarDayCollectionViewCell: UICollectionViewCell {
         didSet{
             if self.isSelected
             {
-                self.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
-                lblWeekday.textColor = UIColor.white
-                lblDate.textColor = UIColor.white
+                UIView.animate(withDuration: 0.25, animations: {
+               // self.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+                    self.lblWeekday.textColor = UIColor.white
+                    self.lblWeekday.font = self.lblWeekday.font.withSize(19)
+                    self.lblDate.textColor = UIColor.white
+                    self.backgroundColor = UIColor(hex: "C1212E")
+                })
             }
             else
             {
-                self.transform = CGAffineTransform.identity
-                lblWeekday.textColor = UIColor.black
-                lblDate.textColor = UIColor.black
+                UIView.animate(withDuration: 0.25, animations: {
+                    self.transform = CGAffineTransform.identity
+                    self.lblWeekday.textColor = UIColor.black
+                    self.lblWeekday.font = self.lblWeekday.font.withSize(17)
+                    self.lblDate.textColor = UIColor.black
+                    self.backgroundColor = UIColor.clear
+                })
             }
         }
     }
