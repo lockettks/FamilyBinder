@@ -13,6 +13,10 @@ class Selection {
     var mealType: MealType?
 }
 
+protocol SelectDayDelegate : class {
+    func dayCollectionCellSelected(selectedDay: Selection)
+}
+
 class CalendarTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     var days = [Date]()
     var selections = [Selection]()
@@ -21,6 +25,7 @@ class CalendarTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColl
     @IBOutlet weak var lblMonth2: UILabel!
     @IBOutlet var lblMonth1ConLeft: NSLayoutConstraint!
     @IBOutlet var lblMonth1ConCenter: NSLayoutConstraint!
+    weak var delegate: SelectDayDelegate?
     
     func initWithModel(days: [Date]){
         self.days = days
@@ -69,7 +74,7 @@ class CalendarTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColl
         newSelection.date = days[indexPath.row]
         selections.append(newSelection)
         print("collectionViewCell selected \(indexPath)")
-        collectionView.performBatchUpdates(nil, completion: nil)
+        delegate?.dayCollectionCellSelected(selectedDay: newSelection)
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
@@ -80,7 +85,6 @@ class CalendarTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColl
             selections.remove(at: index)
         }
         print("collectionViewCell deselected \(indexPath)")
-        collectionView.performBatchUpdates(nil, completion: nil)
     }
     
     func updateMonthLabels() {

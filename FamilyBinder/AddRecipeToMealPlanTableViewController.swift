@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class AddRecipeToMealPlanTableViewController: UITableViewController {
+class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDelegate {
     var calTBC: CalendarTableViewCell = CalendarTableViewCell()
     let realm = try! Realm()
     var selectedRecipe = Recipe()
@@ -42,7 +42,15 @@ class AddRecipeToMealPlanTableViewController: UITableViewController {
         self.tableView.reloadSections(IndexSet(integersIn: POSITION_DAYS.SECTION...POSITION_DAYS.SECTION), with: .bottom)
     }
     
-    
+    func dayCollectionCellSelected(selectedDay: Selection) {
+        let index = days.index(where: { (day) -> Bool in
+            day == selectedDay.date // test if this is the item you're looking for
+        })
+        if let selectedCell = index {
+            let rowToSelect = IndexPath(row: selectedCell, section: POSITION_DAYS.SECTION)
+            self.tableView.selectRow(at: rowToSelect, animated: true, scrollPosition: .none)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -139,6 +147,7 @@ class AddRecipeToMealPlanTableViewController: UITableViewController {
         case POSITION_CALENDAR.SECTION:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell2", for: indexPath) as! CalendarTableViewCell
             cell.initWithModel(days: days)
+            cell.delegate = self
             calTBC = cell
             return cell
             

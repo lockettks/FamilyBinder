@@ -249,6 +249,17 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "AddRecipeToMealPlanTableViewController.dayCollectionCellSelected(selectedDay:):AddRecipeToMealPlanTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "days">
+            </PersistentString>
+            <PersistentString
+               value = "days.index">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "RecipesMasterViewController.(viewWillAppear(Bool) -&gt; ()).(closure #1):RecipesMasterViewController.swift">
       </ContextState>
       <ContextState
@@ -698,6 +709,9 @@
                value = "lblMonth1ConLeft.isActive">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in CalendarTableViewCell.collectionView(_:layout:sizeForItemAt:):CalendarTableViewCell.swift">
       </ContextState>
       <ContextState
          contextName = "SpoonacularAPIManager.randomRecipeArrayFromResponse(response : DataResponse&lt;Any&gt;) -&gt; Result&lt;[Recipe]&gt;:SpoonacularAPIManager.swift">
