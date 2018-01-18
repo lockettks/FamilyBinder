@@ -44,7 +44,7 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
     
     func dayCollectionCellSelected(selectedDay: Selection) {
         let index = days.index(where: { (day) -> Bool in
-            day == selectedDay.date // test if this is the item you're looking for
+            day == selectedDay.date
         })
         if let selectedCell = index {
             let rowToSelect = IndexPath(row: selectedCell, section: POSITION_DAYS.SECTION)
@@ -52,9 +52,18 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
         }
     }
     
+    func dayCollectionCellDeselected(deselectedDay: Selection) {
+        let index = days.index(where: { (day) -> Bool in
+            day == deselectedDay.date
+        })
+        if let deselectedCell = index {
+            let rowToSelect = IndexPath(row: deselectedCell, section: POSITION_DAYS.SECTION)
+            self.tableView.deselectRow(at: rowToSelect, animated: true)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {

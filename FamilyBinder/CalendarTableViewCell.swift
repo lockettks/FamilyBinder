@@ -15,6 +15,7 @@ class Selection {
 
 protocol SelectDayDelegate : class {
     func dayCollectionCellSelected(selectedDay: Selection)
+    func dayCollectionCellDeselected(deselectedDay: Selection)
 }
 
 class CalendarTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -80,11 +81,15 @@ class CalendarTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColl
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! UICollectionViewCell!
         cell?.isSelected = false
+        var deselectedDay = Selection()
         
         if let index = selections.index(where: { $0.date == days[indexPath.row] }) {
+            deselectedDay = selections[index]
             selections.remove(at: index)
         }
         print("collectionViewCell deselected \(indexPath)")
+        
+        delegate?.dayCollectionCellDeselected(deselectedDay: deselectedDay)
     }
     
     func updateMonthLabels() {
