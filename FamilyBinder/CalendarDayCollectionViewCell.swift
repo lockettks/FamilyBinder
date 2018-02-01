@@ -38,6 +38,14 @@ class CalendarDayCollectionViewCell: UICollectionViewCell {
             }
         }
     }
+    
+    func selectCell(){
+        self.isSelected = true
+    }
+    
+    func deselectCell(){
+        self.isSelected = false
+    }
 
     
     func initWithModel(day: Date){
@@ -53,8 +61,4 @@ class CalendarDayCollectionViewCell: UICollectionViewCell {
         lblDate.text = date
         
     }
-    
-    
-
-    
 }

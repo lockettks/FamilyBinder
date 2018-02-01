@@ -10,7 +10,7 @@ import UIKit
 import RealmSwift
 
 class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDelegate {
-    var calTBC: CalendarTableViewCell = CalendarTableViewCell()
+    var calTVC: CalendarTableViewCell = CalendarTableViewCell()
     let realm = try! Realm()
     var selectedRecipe = Recipe()
     let POSITION_RECIPE = (SECTION: 0, ROW: 0)
@@ -19,11 +19,12 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
     
     let startDate = Date()
     var days = [Date]()
+    var selections = [Selection]()
     
     @IBAction func btnWeekBackClicked(_ sender: Any) {
         days = generateDates(anchorDate: days[0], addbyUnit: .day, numberOfDays: -8)
         _ = days.popLast()
-        calTBC.days = days
+        calTVC.days = days
         
         let calendarIndexPath = IndexPath(item: POSITION_CALENDAR.ROW, section: POSITION_CALENDAR.SECTION)
         self.tableView.reloadRows(at: [calendarIndexPath], with: .right)
@@ -34,7 +35,7 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
     
     @IBAction func btnWeekFrwdClicked(_ sender: Any) {
         days = generateDates(anchorDate: days[6], addbyUnit: .day, numberOfDays: 7)
-        calTBC.days = days
+        calTVC.days = days
         
         let calendarIndexPath = IndexPath(item: POSITION_CALENDAR.ROW, section: POSITION_CALENDAR.SECTION)
         self.tableView.reloadRows(at: [calendarIndexPath], with: .left)
@@ -42,7 +43,27 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
         self.tableView.reloadSections(IndexSet(integersIn: POSITION_DAYS.SECTION...POSITION_DAYS.SECTION), with: .bottom)
     }
     
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let newSelection = Selection()
+        newSelection.date = days[indexPath.row]
+        addToSelection(selectedDay: newSelection)
+        
+        calTVC.tableRowSelected(indexOfSelected: indexPath.row)
+    }
+    
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let deselectedRow = Selection()
+        deselectedRow.date = days[indexPath.row]
+        removeFromSelection(deselectedDay: deselectedRow)
+        
+        calTVC.tableRowDeselected(indexOfDeselected: indexPath.row)
+    }
+    
+    
     func dayCollectionCellSelected(selectedDay: Selection) {
+        addToSelection(selectedDay: selectedDay)
+        
         let index = days.index(where: { (day) -> Bool in
             day == selectedDay.date
         })
@@ -51,14 +72,29 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
             self.tableView.selectRow(at: rowToSelect, animated: true, scrollPosition: .none)
         }
     }
-    
+
     func dayCollectionCellDeselected(deselectedDay: Selection) {
-        let index = days.index(where: { (day) -> Bool in
+        removeFromSelection(deselectedDay: deselectedDay)
+        
+        let daysIndexToDeselect = days.index(where: { (day) -> Bool in
             day == deselectedDay.date
         })
-        if let deselectedCell = index {
-            let rowToSelect = IndexPath(row: deselectedCell, section: POSITION_DAYS.SECTION)
-            self.tableView.deselectRow(at: rowToSelect, animated: true)
+        if let deselectedIndex = daysIndexToDeselect {
+            let rowToDeselect = IndexPath(row: deselectedIndex, section: POSITION_DAYS.SECTION)
+            self.tableView.deselectRow(at: rowToDeselect, animated: true)
+        }
+    }
+    
+    
+    func addToSelection(selectedDay: Selection) {
+        selections.append(selectedDay)
+    }
+    
+    func removeFromSelection(deselectedDay: Selection) {
+        if let indexToRemove = selections.index(where: { (selection) -> Bool in
+            selection.date == deselectedDay.date
+        }) {
+            selections.remove(at: indexToRemove)
         }
     }
     
@@ -157,7 +193,7 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell2", for: indexPath) as! CalendarTableViewCell
             cell.initWithModel(days: days)
             cell.delegate = self
-            calTBC = cell
+            calTVC = cell
             return cell
             
         default:
