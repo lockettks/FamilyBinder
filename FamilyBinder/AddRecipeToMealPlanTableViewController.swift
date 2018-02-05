@@ -117,14 +117,18 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
         var dates = [Date]()
         //        var date = anchorDate!
         
-        if let anchorDate2 = Calendar.current.date(byAdding: addbyUnit, value: numberOfDays, to: anchorDate) {
-            let startDate = min(anchorDate, anchorDate2)
-            let endDate = max(anchorDate, anchorDate2)
-            var date = startDate
+        if let firstSundayFromAnchor = anchorDate.startOfWeek {
+        
+        
+            if let anchorDate2 = Calendar.current.date(byAdding: addbyUnit, value: numberOfDays, to: firstSundayFromAnchor) {
+                let startDate = min(firstSundayFromAnchor, anchorDate2)
+                let endDate = max(firstSundayFromAnchor, anchorDate2)
+                var date = startDate
             
-            while date < endDate {
-                date = Calendar.current.date(byAdding: addbyUnit, value: 1, to: date)!
-                dates.append(date)
+                while date < endDate {
+                    date = Calendar.current.date(byAdding: addbyUnit, value: 1, to: date)!
+                    dates.append(date)
+                }
             }
         }
         return dates

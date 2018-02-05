@@ -112,6 +112,7 @@ class CalendarTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColl
     
     func updateMonthLabels() {
         let monthFormatter = DateFormatter()
+        monthFormatter.timeZone = TimeZone.current
         monthFormatter.dateFormat = "MMMM"
         var monthArray = [String]()
         for day in self.days {

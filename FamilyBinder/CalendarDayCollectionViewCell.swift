@@ -51,11 +51,13 @@ class CalendarDayCollectionViewCell: UICollectionViewCell {
     func initWithModel(day: Date){
         
         let weekdayFormatter = DateFormatter()
+        weekdayFormatter.timeZone = TimeZone.current
         weekdayFormatter.dateFormat = "EEE"
         let weekday = weekdayFormatter.string(from: day)
         lblWeekday.text = weekday
         
         let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone.current
         dateFormatter.dateFormat = "d"
         let date = dateFormatter.string(from: day)
         lblDate.text = date
