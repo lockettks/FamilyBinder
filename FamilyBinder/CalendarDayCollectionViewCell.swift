@@ -49,17 +49,19 @@ class CalendarDayCollectionViewCell: UICollectionViewCell {
 
     
     func initWithModel(day: Date){
-        
         let weekdayFormatter = DateFormatter()
         weekdayFormatter.timeZone = TimeZone.current
         weekdayFormatter.dateFormat = "EEE"
         let weekday = weekdayFormatter.string(from: day)
+        let test = Date()
+        print(weekdayFormatter.string(from: test))
         lblWeekday.text = weekday
         
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone.current
         dateFormatter.dateFormat = "d"
         let date = dateFormatter.string(from: day)
+        print(dateFormatter.string(from: test))
         lblDate.text = date
         
     }

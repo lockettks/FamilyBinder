@@ -22,7 +22,8 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
     var selections = [Selection]()
     
     @IBAction func btnWeekBackClicked(_ sender: Any) {
-        days = generateDates(anchorDate: days[0], addbyUnit: .day, numberOfDays: -8)
+        let lastWeekEndDate = Calendar.current.date(byAdding: .day, value: -1, to: days[0])!
+        days = generateDates(anchorDate: lastWeekEndDate, addbyUnit: .day, numberOfDays: 8)
         _ = days.popLast()
         calTVC.days = days
         
@@ -34,7 +35,8 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
     }
     
     @IBAction func btnWeekFrwdClicked(_ sender: Any) {
-        days = generateDates(anchorDate: days[6], addbyUnit: .day, numberOfDays: 7)
+        let nextWeekStartDate = Calendar.current.date(byAdding: .day, value: 1, to: days[6])!
+        days = generateDates(anchorDate: nextWeekStartDate, addbyUnit: .day, numberOfDays: 7)
         calTVC.days = days
         
         let calendarIndexPath = IndexPath(item: POSITION_CALENDAR.ROW, section: POSITION_CALENDAR.SECTION)
@@ -117,6 +119,12 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
         var dates = [Date]()
         //        var date = anchorDate!
         
+        
+        let weekdayFormatter = DateFormatter()
+        weekdayFormatter.timeZone = TimeZone.current
+        weekdayFormatter.dateFormat = "EEE"
+        let weekday = weekdayFormatter.string(from: anchorDate)
+        
         if let firstSundayFromAnchor = anchorDate.startOfWeek {
         
         
@@ -126,8 +134,8 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
                 var date = startDate
             
                 while date < endDate {
-                    date = Calendar.current.date(byAdding: addbyUnit, value: 1, to: date)!
                     dates.append(date)
+                    date = Calendar.current.date(byAdding: addbyUnit, value: 1, to: date)!
                 }
             }
         }

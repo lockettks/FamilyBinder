@@ -18,6 +18,7 @@ class DayTableViewCell: UITableViewCell {
     
     func initWithModel(dayHeadline: Date){
         let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone.current
         dateFormatter.dateFormat = "EEEE, MMMM d, yyyy"
         lblDayHeading.text = dateFormatter.string(from: dayHeadline)
     }
