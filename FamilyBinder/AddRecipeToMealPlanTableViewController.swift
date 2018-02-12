@@ -117,17 +117,12 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
     
     func generateDates( anchorDate: Date, addbyUnit: Calendar.Component, numberOfDays: Int) -> [Date] {
         var dates = [Date]()
-        //        var date = anchorDate!
-        
-        
         let weekdayFormatter = DateFormatter()
         weekdayFormatter.timeZone = TimeZone.current
         weekdayFormatter.dateFormat = "EEE"
         let weekday = weekdayFormatter.string(from: anchorDate)
         
         if let firstSundayFromAnchor = anchorDate.startOfWeek {
-        
-        
             if let anchorDate2 = Calendar.current.date(byAdding: addbyUnit, value: numberOfDays, to: firstSundayFromAnchor) {
                 let startDate = min(firstSundayFromAnchor, anchorDate2)
                 let endDate = max(firstSundayFromAnchor, anchorDate2)
@@ -141,17 +136,6 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
         }
         return dates
     }
-    
-    //    func generateDates( startDate: Date?, addbyUnit: Calendar.Component, numberOfDays: Int) -> [Date] {
-    //        var dates = [Date]()
-    //        var date = startDate!
-    //        let endDate = Calendar.current.date(byAdding: addbyUnit, value: numberOfDays, to: date)!
-    //        while date < endDate {
-    //            date = Calendar.current.date(byAdding: addbyUnit, value: 1, to: date)!
-    //            dates.append(date)
-    //        }
-    //        return dates
-    //    }
     
     @IBAction func cancelTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -199,7 +183,6 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath) as! RecipeTitleTableViewCell
             cell.initWithModel(model: selectedRecipe)
             return cell
-            //            return cellRecipe
             
         case POSITION_CALENDAR.SECTION:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell2", for: indexPath) as! CalendarTableViewCell

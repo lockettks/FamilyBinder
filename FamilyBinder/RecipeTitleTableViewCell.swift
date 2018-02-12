@@ -17,7 +17,6 @@ class RecipeTitleTableViewCell: UITableViewCell {
         let placeholderImage = #imageLiteral(resourceName: "dinnerPlate")
         model.image = placeholderImage
         if let url = URL(string: model.imageURL) {
-            
             imgRecipe.af_setImage(withURL: url, placeholderImage: placeholderImage)
             model.image = imgRecipe.image
         }
@@ -30,8 +29,6 @@ class RecipeTitleTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
-
 }
