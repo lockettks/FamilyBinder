@@ -20,7 +20,6 @@ protocol SelectDayDelegate : class {
 
 class CalendarTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     var days = [Date]()
-//    var selections = [Selection]()
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet weak var lblMonth1: UILabel!
     @IBOutlet weak var lblMonth2: UILabel!
@@ -57,27 +56,15 @@ class CalendarTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColl
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CalendarDayCollectionViewCell
         cell.initWithModel(day: days[indexPath.row])
-        
-//        if selections.index(where: { $0.date == days[indexPath.row] }) != nil {
-//            cell.isSelected = true
-//            collectionView.selectItem(at: indexPath, animated: true, scrollPosition: [])
-//        } else
-//        {
-//            cell.isSelected = false
-//        }
         return cell
     }
     
     func tableRowSelected(indexOfSelected: Int){
         let indexOfSelected = IndexPath(row: indexOfSelected, section: 0)
         collectionView.selectItem(at: indexOfSelected, animated: true, scrollPosition: [])
-//        collectionView.cellForItem(at: indexOfSelected)?.isSelected = true
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexOfSelected) as! CalendarDayCollectionViewCell
-//        let cell = collectionView.cellForItem(at: indexOfSelected) as! CalendarDayCollectionViewCell!
-        
-        cell.isSelected = true
-        cell.selectCell()
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexOfSelected) as! CalendarDayCollectionViewCell
+//        cell.isSelected = true
+//        cell.selectCell()
     }
     
     func tableRowDeselected(indexOfDeselected: Int) {
@@ -99,12 +86,8 @@ class CalendarTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColl
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! CalendarDayCollectionViewCell!
         cell?.isSelected = false
-        var deselectedDay = Selection()
-        
-//        if let index = selections.index(where: { $0.date == days[indexPath.row] }) {
-//            deselectedDay = selections[index]
-//            selections.remove(at: index)
-//        }
+        let deselectedDay = Selection()
+        deselectedDay.date = days[indexPath.row]
         print("collectionViewCell deselected \(indexPath)")
         
         delegate?.dayCollectionCellDeselected(deselectedDay: deselectedDay)
