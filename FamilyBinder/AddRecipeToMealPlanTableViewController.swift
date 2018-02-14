@@ -194,9 +194,14 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell3", for: indexPath) as! DayTableViewCell
             cell.initWithModel(dayHeadline: days[indexPath.row])
+            let isSelected = selections.contains(where: { (selection) -> Bool in
+                selection.date == days[indexPath.row]
+            })
+            if isSelected {
+                self.tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
+                calTVC.tableRowSelected(indexOfSelected: indexPath.row)
+            }
             return cell
-            
-            
         }
     }
     
