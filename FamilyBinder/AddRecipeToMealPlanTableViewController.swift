@@ -74,7 +74,7 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
             self.tableView.selectRow(at: rowToSelect, animated: true, scrollPosition: .none)
         }
     }
-
+    
     func dayCollectionCellDeselected(deselectedDay: Selection) {
         removeFromSelection(deselectedDay: deselectedDay)
         
@@ -127,7 +127,7 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
                 let startDate = min(firstSundayFromAnchor, anchorDate2)
                 let endDate = max(firstSundayFromAnchor, anchorDate2)
                 var date = startDate
-            
+                
                 while date < endDate {
                     dates.append(date)
                     date = Calendar.current.date(byAdding: addbyUnit, value: 1, to: date)!
@@ -142,6 +142,27 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
     }
     
     @IBAction func addTapped(_ sender: Any) {
+        
+        for selection in selections {
+            print("Selected \(selection.date)")
+            let newScheduledMeal = ScheduledMeal()
+            let realmRecipe = realm.objects(Recipe.self).filter("id == %@", selectedRecipe.id)
+            if realmRecipe.count > 0 {
+                newScheduledMeal.recipe = realmRecipe[0] as Recipe
+            } else {
+                newScheduledMeal.recipe = selectedRecipe
+            }
+            newScheduledMeal.scheduledDate = selection.date
+            
+            // Add newScheduledMeal to meal plan
+            
+            try! self.realm.write {
+                self.realm.create(ScheduledMeal.self, value: newScheduledMeal)
+                print("\(newScheduledMeal.recipe?.title) is added to meal plan for date \(newScheduledMeal.scheduledDate.withoutTime())")
+                dismiss(animated: true, completion: nil)
+            }
+            
+        }
         //        var mealTypesStr = ""
         //        for mealType in selectedMealTypes {
         //            mealTypesStr.append("\(mealType.displayName()), ")

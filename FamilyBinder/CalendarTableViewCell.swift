@@ -78,8 +78,6 @@ class CalendarTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColl
         
         let newSelection = Selection()
         newSelection.date = days[indexPath.row]
-
-        print("collectionViewCell selected \(indexPath)")
         delegate?.dayCollectionCellSelected(selectedDay: newSelection)
     }
     
@@ -88,8 +86,6 @@ class CalendarTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColl
         cell?.isSelected = false
         let deselectedDay = Selection()
         deselectedDay.date = days[indexPath.row]
-        print("collectionViewCell deselected \(indexPath)")
-        
         delegate?.dayCollectionCellDeselected(deselectedDay: deselectedDay)
     }
     
