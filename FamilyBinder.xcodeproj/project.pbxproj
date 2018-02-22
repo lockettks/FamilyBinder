@@ -13,6 +13,7 @@
 		952BE9C71FCA8D2400662ECA /* CalendarDayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952BE9C61FCA8D2400662ECA /* CalendarDayCollectionViewCell.swift */; };
 		952BE9CD1FCB7E9000662ECA /* AddRecipeToMealPlanTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952BE9CC1FCB7E9000662ECA /* AddRecipeToMealPlanTableViewController.swift */; };
 		952BE9CF1FCB830100662ECA /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952BE9CE1FCB830100662ECA /* CalendarTableViewCell.swift */; };
+		952F2963203E6890003DFD48 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952F2962203E6890003DFD48 /* UIFont.swift */; };
 		954D7AAF1F198CB3000480A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954D7AAE1F198CB3000480A7 /* AppDelegate.swift */; };
 		954D7AB11F198CB3000480A7 /* RecipesMasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954D7AB01F198CB3000480A7 /* RecipesMasterViewController.swift */; };
 		954D7AB31F198CB3000480A7 /* RecipeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954D7AB21F198CB3000480A7 /* RecipeDetailViewController.swift */; };
@@ -52,6 +53,7 @@
 		952BE9C61FCA8D2400662ECA /* CalendarDayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDayCollectionViewCell.swift; sourceTree = "<group>"; };
 		952BE9CC1FCB7E9000662ECA /* AddRecipeToMealPlanTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeToMealPlanTableViewController.swift; sourceTree = "<group>"; };
 		952BE9CE1FCB830100662ECA /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
+		952F2962203E6890003DFD48 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		954D7AAB1F198CB3000480A7 /* FamilyBinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FamilyBinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		954D7AAE1F198CB3000480A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		954D7AB01F198CB3000480A7 /* RecipesMasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesMasterViewController.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				95628D6B1F7092FD00566EF1 /* UIButton.swift */,
 				95628D6D1F7093CC00566EF1 /* UIColor.swift */,
 				95628D731F719FBF00566EF1 /* StringHelper.swift */,
+				952F2962203E6890003DFD48 /* UIFont.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 				95CC0CBF1FCFE7CE0034E35D /* RecipeTitleTableViewCell.swift in Sources */,
 				954D7AB11F198CB3000480A7 /* RecipesMasterViewController.swift in Sources */,
 				95628D701F719C9500566EF1 /* IngredientsViewController.swift in Sources */,
+				952F2963203E6890003DFD48 /* UIFont.swift in Sources */,
 				956789B01F290E600070FEEB /* RecipeTableViewCell.swift in Sources */,
 				954D7ACB1F199034000480A7 /* SpoonacularAPIManager.swift in Sources */,
 				954D7ACF1F19DAD8000480A7 /* Recipe.swift in Sources */,

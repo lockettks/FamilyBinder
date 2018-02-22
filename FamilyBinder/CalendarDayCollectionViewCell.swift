@@ -53,6 +53,7 @@ class CalendarDayCollectionViewCell: UICollectionViewCell {
         weekdayFormatter.timeZone = TimeZone.current
         weekdayFormatter.dateFormat = "EEE"
         let weekday = weekdayFormatter.string(from: day)
+        
         lblWeekday.text = weekday
         
         let dateFormatter = DateFormatter()
@@ -60,5 +61,14 @@ class CalendarDayCollectionViewCell: UICollectionViewCell {
         dateFormatter.dateFormat = "d"
         let date = dateFormatter.string(from: day)
         lblDate.text = date
+        
+        let today = Date()
+        if day.withoutTime() == today.withoutTime() {
+            lblWeekday.font = lblWeekday.font.bold()
+            lblDate.font = lblWeekday.font.bold()
+        } else {
+            lblWeekday.font = lblWeekday.font.noBold()
+            lblDate.font = lblWeekday.font.noBold()
+        }
     }
 }

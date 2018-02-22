@@ -160,34 +160,12 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
                 self.realm.create(ScheduledMeal.self, value: newScheduledMeal)
                 print("\(newScheduledMeal.recipe?.title) is added to meal plan for date \(newScheduledMeal.scheduledDate.withoutTime())")
                 dismiss(animated: true, completion: nil)
+                
+                if let recipeOnMealPlan = realm.object(ofType: Recipe.self, forPrimaryKey: selectedRecipe.id) {
+                    recipeOnMealPlan.isOnMealPlan = true
+                }
             }
-            
         }
-        //        var mealTypesStr = ""
-        //        for mealType in selectedMealTypes {
-        //            mealTypesStr.append("\(mealType.displayName()), ")
-        //
-        //            let newScheduledMeal = ScheduledMeal()
-        //            let realmRecipe = realm.objects(Recipe.self).filter("id == %@", selectedRecipe.id)
-        //            if realmRecipe.count > 0 {
-        //                newScheduledMeal.recipe = realmRecipe[0] as Recipe
-        //            } else {
-        //                newScheduledMeal.recipe = selectedRecipe
-        //            }
-        //            newScheduledMeal.mealTypeRaw = mealType.rawValue
-        //            newScheduledMeal.scheduledDate = selectedDate
-        //
-        //            // Add newScheduledMeal to meal plan
-        //            try! self.realm.write {
-        //                self.realm.create(ScheduledMeal.self, value: newScheduledMeal)
-        //                print("\(selectedRecipe.title) is added to meal plan for date \(selectedDate.withoutTime()) for \(mealTypesStr)")
-        //                dismiss(animated: true, completion: nil)
-        //
-        //                if let recipeOnMealPlan = realm.object(ofType: Recipe.self, forPrimaryKey: selectedRecipe.id) {
-        //                    recipeOnMealPlan.isOnMealPlan = true
-        //                }//TODO:  check this
-        //            }
-        //        }
     }
     
     override func didReceiveMemoryWarning() {
