@@ -893,8 +893,39 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell4" rowHeight="44" id="FxQ-wS-d5T" userLabel="Meal Plan Cell" customClass="MealPlanSelectedTableViewCell" customModule="FamilyBinder" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="55.333333333333336" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FxQ-wS-d5T" id="OuV-7a-baR" userLabel="Days List Content View">
+                                    <rect key="frame" x="0.0" y="0.0" width="376" height="43.666666666666664"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="The awesome plan" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0zx-yC-2ZY" userLabel="Lbl Selected Meal Plan">
+                                            <rect key="frame" x="75" y="13" width="301" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="BodoniSvtyTwoOSITCTT-Book" family="Bodoni 72 Oldstyle" pointSize="17"/>
+                                            <color key="textColor" red="0.30980392159999998" green="0.36078431370000003" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Selected Meal Plan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XwZ-te-WCD" userLabel="Lbl Meal Plan Label">
+                                            <rect key="frame" x="19.999999999999993" y="13.000000000000036" width="119.33333333333331" height="21"/>
+                                            <fontDescription key="fontDescription" name="BodoniSvtyTwoOSITCTT-Book" family="Bodoni 72 Oldstyle" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="XwZ-te-WCD" firstAttribute="leading" secondItem="OuV-7a-baR" secondAttribute="leadingMargin" id="5tY-iC-iNt"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="lblMealType" destination="XwZ-te-WCD" id="2a5-TL-RD7"/>
+                                    <outlet property="lblScheduledRecipeCat" destination="0zx-yC-2ZY" id="XV8-fs-Aq7"/>
+                                    <outlet property="lblSelectedMealPlan" destination="0zx-yC-2ZY" id="DQ3-5r-TgH"/>
+                                </connections>
+                            </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell1" rowHeight="85" id="nBl-AO-mqe" userLabel="Title Cell" customClass="RecipeTitleTableViewCell" customModule="FamilyBinder" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="55.333333333333336" width="414" height="85"/>
+                                <rect key="frame" x="0.0" y="99.333333333333343" width="414" height="85"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nBl-AO-mqe" id="ut0-o5-hxv" userLabel="Title Content View">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="84.666666666666671"/>
@@ -921,7 +952,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell2" rowHeight="127" id="r5O-ww-ca6" userLabel="Calendar Cell" customClass="CalendarTableViewCell" customModule="FamilyBinder" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="140.33333333333334" width="414" height="127"/>
+                                <rect key="frame" x="0.0" y="184.33333333333334" width="414" height="127"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="r5O-ww-ca6" id="tk2-yl-zjD" userLabel="Calendar Content View">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="126.66666666666667"/>
@@ -1045,7 +1076,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell3" rowHeight="117" id="gUs-Bd-lPA" userLabel="Days List Cell" customClass="DayTableViewCell" customModule="FamilyBinder" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="267.33333333333337" width="414" height="117"/>
+                                <rect key="frame" x="0.0" y="311.33333333333337" width="414" height="117"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gUs-Bd-lPA" id="4qW-8p-Rs0" userLabel="Days List Content View">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="116.66666666666667"/>

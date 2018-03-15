@@ -13,9 +13,10 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
     var calTVC: CalendarTableViewCell = CalendarTableViewCell()
     let realm = try! Realm()
     var selectedRecipe = Recipe()
-    let POSITION_RECIPE = (SECTION: 0, ROW: 0)
-    let POSITION_CALENDAR = (SECTION: 1, ROW: 0)
-    let POSITION_DAYS = (SECTION: 2, ROW: 0)
+    let POSITION_MEALPLAN = (SECTION: 0, ROW: 0)
+    let POSITION_RECIPE = (SECTION: 1, ROW: 0)
+    let POSITION_CALENDAR = (SECTION: 2, ROW: 0)
+    let POSITION_DAYS = (SECTION: 3, ROW: 0)
     
     let startDate = Date()
     var days = [Date]()
@@ -177,6 +178,9 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
+        case POSITION_MEALPLAN.SECTION:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell4", for: indexPath) as! MealPlanSelectedTableViewCell
+            return cell
             
         case POSITION_RECIPE.SECTION:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath) as! RecipeTitleTableViewCell
@@ -217,7 +221,7 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
     
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -11,7 +11,7 @@ import UIKit
 import RealmSwift
 
 class UserContextCache: Object {
-    var myRecipes = List<Recipe>()
+    var myRecipes = List<Recipe>() //TODO:  do i need this?
 
  
     static func current() -> UserContextCache {
