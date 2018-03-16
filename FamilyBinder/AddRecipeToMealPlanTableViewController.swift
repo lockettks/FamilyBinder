@@ -13,6 +13,7 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
     var calTVC: CalendarTableViewCell = CalendarTableViewCell()
     let realm = try! Realm()
     var selectedRecipe = Recipe()
+    var selectedMealPlan = MealPlan()
     let POSITION_MEALPLAN = (SECTION: 0, ROW: 0)
     let POSITION_RECIPE = (SECTION: 1, ROW: 0)
     let POSITION_CALENDAR = (SECTION: 2, ROW: 0)
@@ -48,11 +49,22 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let newSelection = Selection()
-        newSelection.date = days[indexPath.row]
-        addToSelection(selectedDay: newSelection)
-        
-        calTVC.tableRowSelected(indexOfSelected: indexPath.row)
+        switch indexPath.section {
+        case POSITION_MEALPLAN.SECTION:
+            self.performSegue(withIdentifier: "mealPlansSegue", sender: self)
+            return
+            
+        case POSITION_CALENDAR.SECTION, POSITION_DAYS.SECTION:
+            let newSelection = Selection()
+            newSelection.date = days[indexPath.row]
+            addToSelection(selectedDay: newSelection)
+            
+            calTVC.tableRowSelected(indexOfSelected: indexPath.row)
+            return
+            
+        default:
+            return
+        }
     }
     
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
@@ -113,8 +125,13 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        
+        if (segue.identifier == "mealPlansSegue") {
+            let mealPlansTableViewController: MealPlansTableViewController = segue.destination as! MealPlansTableViewController
+            mealPlansTableViewController.selectedMealPlan = selectedMealPlan
+            
+        }
     }
+    
     
     func generateDates( anchorDate: Date, addbyUnit: Calendar.Component, numberOfDays: Int) -> [Date] {
         var dates = [Date]()
@@ -174,12 +191,14 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
         // Dispose of any resources that can be recreated.
     }
     
+    
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case POSITION_MEALPLAN.SECTION:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell4", for: indexPath) as! MealPlanSelectedTableViewCell
+            cell.initWithModel(selectedMealPlan: selectedMealPlan)
             return cell
             
         case POSITION_RECIPE.SECTION:

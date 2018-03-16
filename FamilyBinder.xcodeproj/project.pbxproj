@@ -43,6 +43,7 @@
 		95CC0CBF1FCFE7CE0034E35D /* RecipeTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CC0CBE1FCFE7CE0034E35D /* RecipeTitleTableViewCell.swift */; };
 		95F0A2C4204C8F3500A0E064 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F0A2C3204C8F3500A0E064 /* User.swift */; };
 		95F0A2C6205A1B2400A0E064 /* MealPlanSelectedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F0A2C5205A1B2400A0E064 /* MealPlanSelectedTableViewCell.swift */; };
+		95F0A2C8205B36FF00A0E064 /* MealPlansTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F0A2C7205B36FF00A0E064 /* MealPlansTableViewController.swift */; };
 		95FA99861F475FAA0057B83F /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 95FA99851F475FAA0057B83F /* .swiftlint.yml */; };
 		95FA99AE1F50CADF0057B83F /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FA99AD1F50CADF0057B83F /* UIView.swift */; };
 /* End PBXBuildFile section */
@@ -87,6 +88,7 @@
 		95CC0CBE1FCFE7CE0034E35D /* RecipeTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTitleTableViewCell.swift; sourceTree = "<group>"; };
 		95F0A2C3204C8F3500A0E064 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		95F0A2C5205A1B2400A0E064 /* MealPlanSelectedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlanSelectedTableViewCell.swift; sourceTree = "<group>"; };
+		95F0A2C7205B36FF00A0E064 /* MealPlansTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlansTableViewController.swift; sourceTree = "<group>"; };
 		95FA99851F475FAA0057B83F /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 		95FA99AD1F50CADF0057B83F /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		F183672AF08D8E0DAEAA01C4 /* Pods_FamilyBinder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FamilyBinder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -145,9 +147,9 @@
 			isa = PBXGroup;
 			children = (
 				954D7AB41F198CB3000480A7 /* Main.storyboard */,
-				956789BA1F2FDB8E0070FEEB /* Cache */,
 				95628D681F70586300566EF1 /* Models */,
 				956789B11F290EC40070FEEB /* View Controllers */,
+				956789BA1F2FDB8E0070FEEB /* Cache */,
 				956789AE1F28F7AD0070FEEB /* APIs */,
 				9567899B1F226DD30070FEEB /* Utils */,
 				954D7AAE1F198CB3000480A7 /* AppDelegate.swift */,
@@ -228,6 +230,7 @@
 				95CC0CBC1FCE882C0034E35D /* DayTableViewCell.swift */,
 				95CC0CBE1FCFE7CE0034E35D /* RecipeTitleTableViewCell.swift */,
 				95F0A2C5205A1B2400A0E064 /* MealPlanSelectedTableViewCell.swift */,
+				95F0A2C7205B36FF00A0E064 /* MealPlansTableViewController.swift */,
 			);
 			name = "Add to Meal Plan";
 			sourceTree = "<group>";
@@ -376,6 +379,7 @@
 				954D7AB31F198CB3000480A7 /* RecipeDetailViewController.swift in Sources */,
 				95628D741F719FBF00566EF1 /* StringHelper.swift in Sources */,
 				956789941F2146B50070FEEB /* ScheduledMeal.swift in Sources */,
+				95F0A2C8205B36FF00A0E064 /* MealPlansTableViewController.swift in Sources */,
 				95F0A2C4204C8F3500A0E064 /* User.swift in Sources */,
 				956789B51F29560B0070FEEB /* Ingredient.swift in Sources */,
 				95CC0CBF1FCFE7CE0034E35D /* RecipeTitleTableViewCell.swift in Sources */,

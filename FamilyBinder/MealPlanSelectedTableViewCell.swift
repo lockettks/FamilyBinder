@@ -25,5 +25,7 @@ class MealPlanSelectedTableViewCell: UITableViewCell {
     func initWithModel(selectedMealPlan: MealPlan){
         lblSelectedMealPlan.text = selectedMealPlan.name
     }
+    
+    
 
 }
