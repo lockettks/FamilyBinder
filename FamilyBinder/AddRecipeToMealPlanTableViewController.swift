@@ -55,11 +55,13 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
             return
             
         case POSITION_CALENDAR.SECTION, POSITION_DAYS.SECTION:
-            let newSelection = Selection()
-            newSelection.date = days[indexPath.row]
-            addToSelection(selectedDay: newSelection)
-            
-            calTVC.tableRowSelected(indexOfSelected: indexPath.row)
+            if days[indexPath.row].withoutTime() >= Date().withoutTime() {
+                let newSelection = Selection()
+                newSelection.date = days[indexPath.row]
+                addToSelection(selectedDay: newSelection)
+                
+                calTVC.tableRowSelected(indexOfSelected: indexPath.row)
+            }
             return
             
         default:
@@ -68,11 +70,12 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
     }
     
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        let deselectedRow = Selection()
-        deselectedRow.date = days[indexPath.row]
-        removeFromSelection(deselectedDay: deselectedRow)
-        
-        calTVC.tableRowDeselected(indexOfDeselected: indexPath.row)
+        if (indexPath.section == POSITION_DAYS.SECTION) {
+            let deselectedRow = Selection()
+            deselectedRow.date = days[indexPath.row]
+            removeFromSelection(deselectedDay: deselectedRow)
+            calTVC.tableRowDeselected(indexOfDeselected: indexPath.row)
+        }
     }
     
     func mealPlanSelected(selectedMealPlan: MealPlan) {
@@ -81,26 +84,30 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
     
     
     func dayCollectionCellSelected(selectedDay: Selection) {
-        addToSelection(selectedDay: selectedDay)
-        
-        let index = days.index(where: { (day) -> Bool in
-            day == selectedDay.date
-        })
-        if let selectedCell = index {
-            let rowToSelect = IndexPath(row: selectedCell, section: POSITION_DAYS.SECTION)
-            self.tableView.selectRow(at: rowToSelect, animated: true, scrollPosition: .none)
+        if selectedDay.date.withoutTime() >= Date().withoutTime() {
+            addToSelection(selectedDay: selectedDay)
+            
+            let index = days.index(where: { (day) -> Bool in
+                day == selectedDay.date
+            })
+            if let selectedCell = index {
+                let rowToSelect = IndexPath(row: selectedCell, section: POSITION_DAYS.SECTION)
+                self.tableView.selectRow(at: rowToSelect, animated: true, scrollPosition: .none)
+            }
         }
     }
     
     func dayCollectionCellDeselected(deselectedDay: Selection) {
-        removeFromSelection(deselectedDay: deselectedDay)
-        
-        let daysIndexToDeselect = days.index(where: { (day) -> Bool in
-            day == deselectedDay.date
-        })
-        if let deselectedIndex = daysIndexToDeselect {
-            let rowToDeselect = IndexPath(row: deselectedIndex, section: POSITION_DAYS.SECTION)
-            self.tableView.deselectRow(at: rowToDeselect, animated: true)
+        if deselectedDay.date.withoutTime() >= Date().withoutTime(){
+            removeFromSelection(deselectedDay: deselectedDay)
+            
+            let daysIndexToDeselect = days.index(where: { (day) -> Bool in
+                day == deselectedDay.date
+            })
+            if let deselectedIndex = daysIndexToDeselect {
+                let rowToDeselect = IndexPath(row: deselectedIndex, section: POSITION_DAYS.SECTION)
+                self.tableView.deselectRow(at: rowToDeselect, animated: true)
+            }
         }
     }
     
@@ -220,12 +227,16 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell3", for: indexPath) as! DayTableViewCell
             cell.initWithModel(dayHeadline: days[indexPath.row])
-            let isSelected = selections.contains(where: { (selection) -> Bool in
-                selection.date == days[indexPath.row]
-            })
-            if isSelected {
-                self.tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
-                calTVC.tableRowSelected(indexOfSelected: indexPath.row)
+            if days[indexPath.row].withoutTime() < Date().withoutTime() {
+                cell.selectionStyle = .none
+            } else {
+                let isSelected = selections.contains(where: { (selection) -> Bool in
+                    selection.date == days[indexPath.row]
+                })
+                if isSelected {
+                    self.tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
+                    calTVC.tableRowSelected(indexOfSelected: indexPath.row)
+                }
             }
             return cell
         }

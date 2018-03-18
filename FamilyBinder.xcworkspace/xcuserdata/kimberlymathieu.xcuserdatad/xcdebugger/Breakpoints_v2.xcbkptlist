@@ -96,32 +96,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FamilyBinder/AddRecipeToMealPlanTableViewController.swift"
-            timestampString = "543070250.4453321"
+            filePath = "FamilyBinder/AppDelegate.swift"
+            timestampString = "543095071.25771"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
-            landmarkName = "tableView(_:didSelectRowAt:)"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "application(_:didFinishLaunchingWithOptions:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FamilyBinder/AppDelegate.swift"
-            timestampString = "543070250.445703"
+            filePath = "FamilyBinder/CalendarTableViewCell.swift"
+            timestampString = "543095071.257776"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
-            landmarkName = "application(_:didFinishLaunchingWithOptions:)"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

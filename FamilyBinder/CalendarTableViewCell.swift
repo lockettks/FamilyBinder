@@ -56,15 +56,14 @@ class CalendarTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColl
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CalendarDayCollectionViewCell
         cell.initWithModel(day: days[indexPath.row])
+        cell.isUserInteractionEnabled = days[indexPath.row].withoutTime() >= Date().withoutTime()
+
         return cell
     }
     
     func tableRowSelected(indexOfSelected: Int){
         let indexOfSelected = IndexPath(row: indexOfSelected, section: 0)
         collectionView.selectItem(at: indexOfSelected, animated: true, scrollPosition: [])
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexOfSelected) as! CalendarDayCollectionViewCell
-//        cell.isSelected = true
-//        cell.selectCell()
     }
     
     func tableRowDeselected(indexOfDeselected: Int) {
