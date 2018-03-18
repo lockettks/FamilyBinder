@@ -9,9 +9,15 @@
 import UIKit
 import RealmSwift
 
+protocol MealPlanSelectedDelegate : class {
+    func mealPlanSelected(selectedMealPlan: MealPlan)
+}
+
 class MealPlansTableViewController: UITableViewController {
     
     var selectedMealPlan: MealPlan?
+    weak var mealPlanDelegate: MealPlanSelectedDelegate?
+    
     
     let myMealPlans: Results<MealPlan> = {
         let realm = try! Realm()
@@ -20,7 +26,6 @@ class MealPlansTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -56,7 +61,15 @@ class MealPlansTableViewController: UITableViewController {
         
         return cell
     }
- 
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedMealPlan = myMealPlans[indexPath.row]
+        if let selectedMealPlan = selectedMealPlan {
+            mealPlanDelegate?.mealPlanSelected(selectedMealPlan: selectedMealPlan)
+        }
+        _ = navigationController?.popViewController(animated: true)
+
+    }
 
     /*
     // Override to support conditional editing of the table view.

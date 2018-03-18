@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDelegate {
+class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDelegate, MealPlanSelectedDelegate {
     var calTVC: CalendarTableViewCell = CalendarTableViewCell()
     let realm = try! Realm()
     var selectedRecipe = Recipe()
@@ -73,6 +73,10 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
         removeFromSelection(deselectedDay: deselectedRow)
         
         calTVC.tableRowDeselected(indexOfDeselected: indexPath.row)
+    }
+    
+    func mealPlanSelected(selectedMealPlan: MealPlan) {
+        self.selectedMealPlan = selectedMealPlan
     }
     
     
