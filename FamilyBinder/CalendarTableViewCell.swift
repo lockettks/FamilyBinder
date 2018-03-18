@@ -25,7 +25,7 @@ class CalendarTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColl
     @IBOutlet weak var lblMonth2: UILabel!
     @IBOutlet var lblMonth1ConLeft: NSLayoutConstraint!
     @IBOutlet var lblMonth1ConCenter: NSLayoutConstraint!
-    weak var delegate: SelectDayDelegate?
+    weak var selectDayDelegate: SelectDayDelegate?
     
     func initWithModel(days: [Date]){
         self.days = days
@@ -78,7 +78,7 @@ class CalendarTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColl
         
         let newSelection = Selection()
         newSelection.date = days[indexPath.row]
-        delegate?.dayCollectionCellSelected(selectedDay: newSelection)
+        selectDayDelegate?.dayCollectionCellSelected(selectedDay: newSelection)
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
@@ -86,7 +86,7 @@ class CalendarTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColl
         cell?.isSelected = false
         let deselectedDay = Selection()
         deselectedDay.date = days[indexPath.row]
-        delegate?.dayCollectionCellDeselected(deselectedDay: deselectedDay)
+        selectDayDelegate?.dayCollectionCellDeselected(deselectedDay: deselectedDay)
     }
     
     func updateMonthLabels() {

@@ -213,7 +213,7 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
         case POSITION_CALENDAR.SECTION:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell2", for: indexPath) as! CalendarTableViewCell
             cell.initWithModel(days: days)
-            cell.delegate = self
+            cell.selectDayDelegate = self
             calTVC = cell
             return cell
             
