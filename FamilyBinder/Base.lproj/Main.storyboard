@@ -956,38 +956,81 @@
                                     <outlet property="lblRecipeTitle" destination="LCj-5D-p9F" id="cDR-D2-6zA"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell2" rowHeight="127" id="r5O-ww-ca6" userLabel="Calendar Cell" customClass="CalendarTableViewCell" customModule="FamilyBinder" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="184.33333333333334" width="414" height="127"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell2" rowHeight="210" id="r5O-ww-ca6" userLabel="Calendar Cell" customClass="CalendarTableViewCell" customModule="FamilyBinder" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="184.33333333333334" width="414" height="210"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="r5O-ww-ca6" id="tk2-yl-zjD" userLabel="Calendar Content View">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="126.66666666666667"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="209.66666666666666"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Su" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nGX-UE-69a">
+                                            <rect key="frame" x="35" y="28" width="33" height="24"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="19"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="M" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NbG-ZX-GiZ">
+                                            <rect key="frame" x="76" y="29" width="33" height="24"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="19"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tu" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aSq-lR-uzK">
+                                            <rect key="frame" x="117" y="28.666666666666657" width="33" height="24"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="19"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="W" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Asw-qz-JcL">
+                                            <rect key="frame" x="163" y="28.666666666666657" width="33" height="24"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="19"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Th" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H2c-jr-jnN">
+                                            <rect key="frame" x="212" y="28.666666666666657" width="33" height="24"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="19"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="F" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UeW-Sm-hYN">
+                                            <rect key="frame" x="261" y="27.666666666666657" width="33" height="24"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="19"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sa" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ncY-Ne-xUf">
+                                            <rect key="frame" x="302" y="27.666666666666657" width="33" height="24"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="19"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Gwg-7F-2WT" userLabel="Calendar Collection View">
-                                            <rect key="frame" x="35" y="33" width="347" height="83"/>
-                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="s8e-YR-gik">
-                                                <size key="itemSize" width="35" height="66"/>
+                                            <rect key="frame" x="35" y="60" width="347" height="111"/>
+                                            <color key="backgroundColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="s8e-YR-gik">
+                                                <size key="itemSize" width="35" height="38"/>
                                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                                <size key="footerReferenceSize" width="0.0" height="10"/>
+                                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                             </collectionViewFlowLayout>
                                             <cells>
                                                 <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="YGR-xv-RgE" userLabel="Calendar Collection Cell" customClass="CalendarDayCollectionViewCell" customModule="FamilyBinder" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="12.666666666666666" width="35" height="58"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="35" height="38"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                                        <rect key="frame" x="0.0" y="0.0" width="35" height="58"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="35" height="38"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="S" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L0M-f7-kVh" userLabel="lblWeekday">
-                                                                <rect key="frame" x="0.0" y="0.0" width="35" height="29"/>
-                                                                <fontDescription key="fontDescription" name="BodoniSvtyTwoOSITCTT-Book" family="Bodoni 72 Oldstyle" pointSize="19"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3H9-3k-b7y" userLabel="lblDate">
-                                                                <rect key="frame" x="0.0" y="29" width="35" height="21"/>
+                                                                <rect key="frame" x="0.0" y="6" width="35" height="23"/>
                                                                 <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="19"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -996,32 +1039,22 @@
                                                     </view>
                                                     <constraints>
                                                         <constraint firstAttribute="bottom" secondItem="3H9-3k-b7y" secondAttribute="bottom" constant="8" id="4wb-6h-ev7"/>
-                                                        <constraint firstItem="L0M-f7-kVh" firstAttribute="top" secondItem="YGR-xv-RgE" secondAttribute="top" id="9gO-fy-wGB"/>
-                                                        <constraint firstItem="L0M-f7-kVh" firstAttribute="height" secondItem="YGR-xv-RgE" secondAttribute="height" multiplier="0.5" id="L0t-RE-Y2T"/>
-                                                        <constraint firstItem="3H9-3k-b7y" firstAttribute="top" secondItem="L0M-f7-kVh" secondAttribute="bottom" id="TSQ-Dc-cxT"/>
-                                                        <constraint firstAttribute="trailing" secondItem="L0M-f7-kVh" secondAttribute="trailing" id="USB-f7-RbP"/>
                                                         <constraint firstAttribute="trailing" secondItem="3H9-3k-b7y" secondAttribute="trailing" id="oPX-wt-h5T"/>
-                                                        <constraint firstItem="L0M-f7-kVh" firstAttribute="leading" secondItem="YGR-xv-RgE" secondAttribute="leading" id="xMX-dP-bKe"/>
                                                         <constraint firstItem="3H9-3k-b7y" firstAttribute="leading" secondItem="YGR-xv-RgE" secondAttribute="leading" id="z1T-7n-8ye"/>
                                                     </constraints>
-                                                    <size key="customSize" width="35" height="58"/>
+                                                    <size key="customSize" width="35" height="38"/>
                                                     <connections>
                                                         <outlet property="lblDate" destination="3H9-3k-b7y" id="b4H-dQ-UD2"/>
-                                                        <outlet property="lblWeekday" destination="L0M-f7-kVh" id="fC9-Lh-4Gx"/>
                                                     </connections>
                                                 </collectionViewCell>
                                             </cells>
-                                            <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="8kw-Gb-9ll">
-                                                <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
-                                                <autoresizingMask key="autoresizingMask"/>
-                                            </collectionReusableView>
                                             <connections>
                                                 <outlet property="dataSource" destination="Odc-46-Mka" id="Ugi-Jn-d8S"/>
                                                 <outlet property="delegate" destination="Odc-46-Mka" id="lZh-26-Tqj"/>
                                             </connections>
                                         </collectionView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qT7-SX-dwZ" userLabel="Btn Forward">
-                                            <rect key="frame" x="390" y="52" width="14" height="24"/>
+                                            <rect key="frame" x="390" y="93" width="14" height="24"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="24" id="7cB-RF-zQF"/>
                                                 <constraint firstAttribute="width" secondItem="qT7-SX-dwZ" secondAttribute="height" multiplier="7:12" id="cWa-eS-8Qa"/>
@@ -1032,7 +1065,7 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aeO-70-DvG" userLabel="Btn Back">
-                                            <rect key="frame" x="13" y="52" width="14" height="24"/>
+                                            <rect key="frame" x="13" y="93" width="14" height="24"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="24" id="7SL-Lm-Hda"/>
                                                 <constraint firstAttribute="width" secondItem="aeO-70-DvG" secondAttribute="height" multiplier="7:12" id="OyR-ob-onb"/>
@@ -1058,12 +1091,12 @@
                                     <constraints>
                                         <constraint firstItem="Gwg-7F-2WT" firstAttribute="leading" secondItem="aeO-70-DvG" secondAttribute="trailing" constant="8" id="1g7-sV-w0G" userLabel="CalCollectionViewLeading"/>
                                         <constraint firstItem="aeO-70-DvG" firstAttribute="centerY" secondItem="tk2-yl-zjD" secondAttribute="centerY" id="7lM-3z-FHK"/>
-                                        <constraint firstItem="Gwg-7F-2WT" firstAttribute="top" secondItem="tk2-yl-zjD" secondAttribute="top" constant="33" id="Kcs-pg-YmD" userLabel="CalCollectionViewTop"/>
+                                        <constraint firstItem="Gwg-7F-2WT" firstAttribute="top" secondItem="tk2-yl-zjD" secondAttribute="top" constant="60" id="Kcs-pg-YmD" userLabel="CalCollectionViewTop"/>
                                         <constraint firstAttribute="trailing" secondItem="qT7-SX-dwZ" secondAttribute="trailing" constant="10" id="Rqi-Ug-r2G"/>
                                         <constraint firstItem="cxU-aj-zOH" firstAttribute="top" secondItem="tk2-yl-zjD" secondAttribute="topMargin" id="SDO-4P-Sw8" userLabel="LblMonth1Top"/>
                                         <constraint firstItem="aeO-70-DvG" firstAttribute="leading" secondItem="tk2-yl-zjD" secondAttribute="leading" constant="13" id="SHM-Ca-Q7G"/>
                                         <constraint firstItem="qT7-SX-dwZ" firstAttribute="centerY" secondItem="tk2-yl-zjD" secondAttribute="centerY" id="TBS-B9-bxl"/>
-                                        <constraint firstAttribute="bottom" secondItem="Gwg-7F-2WT" secondAttribute="bottom" constant="10.666666666666657" id="Xxp-BG-7Bh" userLabel="CalCollectionViewBottom"/>
+                                        <constraint firstAttribute="bottom" secondItem="Gwg-7F-2WT" secondAttribute="bottom" constant="38.666666666666657" id="Xxp-BG-7Bh" userLabel="CalCollectionViewBottom"/>
                                         <constraint firstItem="JeS-ic-Evg" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="tk2-yl-zjD" secondAttribute="leading" constant="20" symbolic="YES" id="bIQ-pb-NCl"/>
                                         <constraint firstItem="qT7-SX-dwZ" firstAttribute="leading" secondItem="Gwg-7F-2WT" secondAttribute="trailing" constant="8" id="g8N-IM-rJL"/>
                                         <constraint firstItem="JeS-ic-Evg" firstAttribute="trailing" secondItem="Gwg-7F-2WT" secondAttribute="trailing" id="jDx-0m-7kH"/>
@@ -1081,7 +1114,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell3" rowHeight="117" id="gUs-Bd-lPA" userLabel="Days List Cell" customClass="DayTableViewCell" customModule="FamilyBinder" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="311.33333333333337" width="414" height="117"/>
+                                <rect key="frame" x="0.0" y="394.33333333333337" width="414" height="117"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gUs-Bd-lPA" id="4qW-8p-Rs0" userLabel="Days List Content View">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="116.66666666666667"/>
@@ -1175,7 +1208,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Cj-Lv-ayJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2909" y="-412"/>
+            <point key="canvasLocation" x="2908.6956521739135" y="-412.50000000000006"/>
         </scene>
         <!--Meal Plans Table View Controller-->
         <scene sceneID="pq7-47-hsB">

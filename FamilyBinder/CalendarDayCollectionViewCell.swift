@@ -11,7 +11,7 @@ import UIKit
 
 class CalendarDayCollectionViewCell: UICollectionViewCell {
 
-    @IBOutlet weak var lblWeekday: UILabel!
+//    @IBOutlet weak var lblWeekday: UILabel!
     @IBOutlet weak var lblDate: UILabel!
     
     override var isSelected: Bool{
@@ -19,20 +19,20 @@ class CalendarDayCollectionViewCell: UICollectionViewCell {
             if self.isSelected
             {
                 UIView.animate(withDuration: 0.25, animations: {
-                    self.lblWeekday.textColor = UIColor.white
+//                    self.lblWeekday.textColor = UIColor.white
                     self.lblDate.textColor = UIColor.white
-                    self.lblWeekday.font = self.lblWeekday.font.withSize(19)
-                    self.lblDate.font = self.lblWeekday.font.withSize(22)
+//                    self.lblWeekday.font = self.lblWeekday.font.withSize(19)
+                    self.lblDate.font = self.lblDate.font.withSize(22)
                     self.backgroundColor = UIColor(hex: "C1212E")
                 })
             }
             else
             {
                 UIView.animate(withDuration: 0.25, animations: {
-                    self.lblWeekday.textColor = UIColor.black
+//                    self.lblWeekday.textColor = UIColor.black
                     self.lblDate.textColor = UIColor.black
-                    self.lblWeekday.font = self.lblWeekday.font.withSize(16)
-                    self.lblDate.font = self.lblWeekday.font.withSize(17)
+//                    self.lblWeekday.font = self.lblWeekday.font.withSize(16)
+                    self.lblDate.font = self.lblDate.font.withSize(17)
                     self.backgroundColor = UIColor.clear
                 })
             }
@@ -54,7 +54,7 @@ class CalendarDayCollectionViewCell: UICollectionViewCell {
         weekdayFormatter.dateFormat = "EEE"
         let weekday = weekdayFormatter.string(from: day)
         
-        lblWeekday.text = weekday
+//        lblWeekday.text = weekday
         
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone.current
@@ -64,17 +64,17 @@ class CalendarDayCollectionViewCell: UICollectionViewCell {
         
         let today = Date()
         if (day.withoutTime() < today.withoutTime()) {
-            lblWeekday.textColor = UIColor(hex: "C0C0C0")
+//            lblWeekday.textColor = UIColor(hex: "C0C0C0")
             lblDate.textColor = UIColor(hex: "C0C0C0")
         } else if (day.withoutTime() == today.withoutTime()) {
-            lblWeekday.font = lblWeekday.font.bold()
-            lblDate.font = lblWeekday.font.bold()
-            lblWeekday.textColor = UIColor.black
+//            lblWeekday.font = lblWeekday.font.bold()
+            lblDate.font = lblDate.font.bold()
+//            lblWeekday.textColor = UIColor.black
             lblDate.textColor = UIColor.black
         } else {
-            lblWeekday.font = lblWeekday.font.noBold()
-            lblDate.font = lblWeekday.font.noBold()
-            lblWeekday.textColor = UIColor.black
+//            lblWeekday.font = lblWeekday.font.noBold()
+            lblDate.font = lblDate.font.noBold()
+//            lblWeekday.textColor = UIColor.black
             lblDate.textColor = UIColor.black
         }
     }

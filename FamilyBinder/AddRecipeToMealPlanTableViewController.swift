@@ -25,7 +25,7 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
     
     @IBAction func btnWeekBackClicked(_ sender: Any) {
         let lastWeekEndDate = Calendar.current.date(byAdding: .day, value: -1, to: days[0])!
-        days = generateDates(anchorDate: lastWeekEndDate, addbyUnit: .day, numberOfDays: 8)
+        days = generateDates(anchorDate: lastWeekEndDate, addbyUnit: .day, numberOfDays: 15)
         _ = days.popLast()
         calTVC.days = days
         
@@ -38,7 +38,7 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
     
     @IBAction func btnWeekFrwdClicked(_ sender: Any) {
         let nextWeekStartDate = Calendar.current.date(byAdding: .day, value: 1, to: days[6])!
-        days = generateDates(anchorDate: nextWeekStartDate, addbyUnit: .day, numberOfDays: 7)
+        days = generateDates(anchorDate: nextWeekStartDate, addbyUnit: .day, numberOfDays: 14)
         calTVC.days = days
         
         let calendarIndexPath = IndexPath(item: POSITION_CALENDAR.ROW, section: POSITION_CALENDAR.SECTION)
@@ -129,7 +129,7 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        days = generateDates(anchorDate: startDate, addbyUnit: .day, numberOfDays: 7)
+        days = generateDates(anchorDate: startDate, addbyUnit: .day, numberOfDays: 14)
     }
     
     // MARK: - Navigation
@@ -248,7 +248,7 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
             height = 85
         }
         else if indexPath.section == POSITION_CALENDAR.SECTION {
-            height = 110
+            height = 200
         }
         return height
     }
