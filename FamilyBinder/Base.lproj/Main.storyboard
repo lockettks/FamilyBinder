@@ -1013,8 +1013,8 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Gwg-7F-2WT" userLabel="Calendar Collection View">
-                                            <rect key="frame" x="35" y="60" width="347" height="111"/>
-                                            <color key="backgroundColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <rect key="frame" x="35" y="60" width="347" height="134"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="s8e-YR-gik">
                                                 <size key="itemSize" width="35" height="38"/>
                                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -1096,7 +1096,7 @@
                                         <constraint firstItem="cxU-aj-zOH" firstAttribute="top" secondItem="tk2-yl-zjD" secondAttribute="topMargin" id="SDO-4P-Sw8" userLabel="LblMonth1Top"/>
                                         <constraint firstItem="aeO-70-DvG" firstAttribute="leading" secondItem="tk2-yl-zjD" secondAttribute="leading" constant="13" id="SHM-Ca-Q7G"/>
                                         <constraint firstItem="qT7-SX-dwZ" firstAttribute="centerY" secondItem="tk2-yl-zjD" secondAttribute="centerY" id="TBS-B9-bxl"/>
-                                        <constraint firstAttribute="bottom" secondItem="Gwg-7F-2WT" secondAttribute="bottom" constant="38.666666666666657" id="Xxp-BG-7Bh" userLabel="CalCollectionViewBottom"/>
+                                        <constraint firstAttribute="bottom" secondItem="Gwg-7F-2WT" secondAttribute="bottom" constant="15.666666666666657" id="Xxp-BG-7Bh" userLabel="CalCollectionViewBottom"/>
                                         <constraint firstItem="JeS-ic-Evg" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="tk2-yl-zjD" secondAttribute="leading" constant="20" symbolic="YES" id="bIQ-pb-NCl"/>
                                         <constraint firstItem="qT7-SX-dwZ" firstAttribute="leading" secondItem="Gwg-7F-2WT" secondAttribute="trailing" constant="8" id="g8N-IM-rJL"/>
                                         <constraint firstItem="JeS-ic-Evg" firstAttribute="trailing" secondItem="Gwg-7F-2WT" secondAttribute="trailing" id="jDx-0m-7kH"/>

@@ -243,7 +243,7 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        var height:CGFloat = 44 // Default
+        var height:CGFloat = 44
         if indexPath.section == POSITION_RECIPE.SECTION {
             height = 85
         }

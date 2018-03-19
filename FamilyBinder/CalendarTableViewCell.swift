@@ -21,7 +21,6 @@ protocol SelectDayDelegate : class {
 class CalendarTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     var days = [Date]()
     fileprivate let itemsPerRow: CGFloat = 7
-//    fileprivate let sectionInsets = UIEdgeInsets(top: 3.0, left: 1.0, bottom: 3.0, right: 10.0)
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet weak var lblMonth1: UILabel!
     @IBOutlet weak var lblMonth2: UILabel!
@@ -31,7 +30,6 @@ class CalendarTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColl
     
     func initWithModel(days: [Date]){
         self.days = days
-//        self.collectionView.frame.size.width = self.frame.size.width - 70
         updateMonthLabels()
         self.collectionView.reloadData()
     }
@@ -112,40 +110,14 @@ class CalendarTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColl
         }
         layoutIfNeeded()
     }
-    
-    
-//    func collectionView(_ collectionView: UICollectionView,
-//                        layout collectionViewLayout: UICollectionViewLayout,
-//                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-//
-//        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-//        layout.minimumInteritemSpacing = 1
-//        layout.minimumLineSpacing = 1
-//        let collectionSize = self.collectionView.frame.size
-//        let cellSize = CGSize(width: (collectionSize.width-5) / 7, height: (collectionSize.height-10)/2)
-//        layout.invalidateLayout()
-//        return cellSize
-//    }
+
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let collectionSize = self.collectionView.frame.size
-        let paddingSpace = 2 * (itemsPerRow + 1)
-//        let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
-        let availableWidth = self.collectionView.frame.width - paddingSpace
-//        let widthPerItem = availableWidth / itemsPerRow
         let widthPerItem = self.collectionView.frame.size.width / itemsPerRow
         let heightPerItem = (self.collectionView.frame.size.height) / 2
         
 
         return CGSize(width: widthPerItem, height: heightPerItem)
     }
-    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//        return sectionInsets
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//        return sectionInsets.left
-//    }
 }
 
