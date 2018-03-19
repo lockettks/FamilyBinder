@@ -163,8 +163,10 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
                 }
             }
         }
+        
         return dates
     }
+    
     
     @IBAction func cancelTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)

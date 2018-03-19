@@ -1106,6 +1106,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="backArrowBtn" destination="aeO-70-DvG" id="JYa-nX-qzp"/>
                                     <outlet property="collectionView" destination="Gwg-7F-2WT" id="T1t-af-AmL"/>
                                     <outlet property="lblMonth1" destination="cxU-aj-zOH" id="8jy-7y-QNb"/>
                                     <outlet property="lblMonth1ConCenter" destination="zBb-D1-Mnx" id="fUj-3N-oMF"/>

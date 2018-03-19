@@ -21,6 +21,7 @@ protocol SelectDayDelegate : class {
 class CalendarTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     var days = [Date]()
     fileprivate let itemsPerRow: CGFloat = 7
+    @IBOutlet var backArrowBtn: UIButton!
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet weak var lblMonth1: UILabel!
     @IBOutlet weak var lblMonth2: UILabel!
@@ -56,6 +57,7 @@ class CalendarTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColl
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CalendarDayCollectionViewCell
         cell.initWithModel(day: days[indexPath.row])
+        backArrowBtn.isHidden = days[0].withoutTime() <= Date().withoutTime()
         cell.isUserInteractionEnabled = days[indexPath.row].withoutTime() >= Date().withoutTime()
 
         return cell
