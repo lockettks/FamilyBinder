@@ -230,7 +230,6 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell3", for: indexPath) as! DayTableViewCell
             cell.initWithModel(dayHeadline: days[indexPath.row])
             if days[indexPath.row].withoutTime() < Date().withoutTime() {
-                cell.selectionStyle = .none
             } else {
                 let isSelected = selections.contains(where: { (selection) -> Bool in
                     selection.date == days[indexPath.row]
@@ -245,12 +244,20 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        var height:CGFloat = 44
-        if indexPath.section == POSITION_RECIPE.SECTION {
+        var height:CGFloat
+        switch indexPath.section {
+        case POSITION_RECIPE.SECTION:
             height = 85
-        }
-        else if indexPath.section == POSITION_CALENDAR.SECTION {
+        case POSITION_CALENDAR.SECTION:
             height = 200
+        case POSITION_DAYS.SECTION:
+            if days[indexPath.row].withoutTime() < Date().withoutTime() {
+                height = 0
+            } else {
+                height = 44
+            }
+        default:
+            height = 44
         }
         return height
     }
