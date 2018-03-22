@@ -1137,12 +1137,6 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Another fabulous meal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YzR-tR-lsI">
-                                            <rect key="frame" x="20" y="70" width="172.33333333333334" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunday, December 3" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wY6-Ae-Zb9">
                                             <rect key="frame" x="20" y="5" width="374" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -1163,23 +1157,19 @@
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="TTL-Pz-u5J" secondAttribute="trailing" constant="20" symbolic="YES" id="V9I-ux-gmX"/>
                                         <constraint firstItem="ch9-qY-XuF" firstAttribute="top" secondItem="BuS-go-cSt" secondAttribute="bottom" constant="9" id="Zes-gQ-p9g"/>
                                         <constraint firstItem="BuS-go-cSt" firstAttribute="width" secondItem="4qW-8p-Rs0" secondAttribute="width" id="c2j-Q1-F5i"/>
-                                        <constraint firstItem="YzR-tR-lsI" firstAttribute="top" secondItem="ch9-qY-XuF" secondAttribute="bottom" constant="8" symbolic="YES" id="f2f-rA-Nc2"/>
                                         <constraint firstItem="ch9-qY-XuF" firstAttribute="leading" secondItem="4qW-8p-Rs0" secondAttribute="leadingMargin" id="hfR-f3-htp"/>
-                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="YzR-tR-lsI" secondAttribute="trailing" constant="20" symbolic="YES" id="hrR-ga-3DO"/>
                                         <constraint firstItem="ch9-qY-XuF" firstAttribute="baseline" secondItem="TTL-Pz-u5J" secondAttribute="baseline" id="ira-Bn-BoU"/>
                                         <constraint firstItem="ch9-qY-XuF" firstAttribute="leading" secondItem="wY6-Ae-Zb9" secondAttribute="leading" id="jyZ-VP-ixI"/>
-                                        <constraint firstItem="TTL-Pz-u5J" firstAttribute="leading" secondItem="ch9-qY-XuF" secondAttribute="trailing" constant="8" symbolic="YES" id="lct-JY-kaj"/>
+                                        <constraint firstItem="TTL-Pz-u5J" firstAttribute="leading" secondItem="ch9-qY-XuF" secondAttribute="trailing" constant="8" id="nv7-wW-HMt"/>
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="BuS-go-cSt" secondAttribute="trailing" id="nxA-Fx-mh0"/>
                                         <constraint firstItem="BuS-go-cSt" firstAttribute="centerX" secondItem="wY6-Ae-Zb9" secondAttribute="centerX" id="ovW-hF-VoE"/>
-                                        <constraint firstItem="ch9-qY-XuF" firstAttribute="leading" secondItem="YzR-tR-lsI" secondAttribute="leading" id="pQP-cN-3SE"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="lblDayHeading" destination="wY6-Ae-Zb9" id="3BE-4s-36h"/>
                                     <outlet property="lblDayHeadingBackground" destination="BuS-go-cSt" id="QN7-oE-fbG"/>
                                     <outlet property="lblMealType" destination="ch9-qY-XuF" id="3U9-nb-drl"/>
-                                    <outlet property="lblScheduledRecipeCat" destination="TTL-Pz-u5J" id="o5V-ZH-oIc"/>
-                                    <outlet property="lblScheduledRecipeUncat" destination="YzR-tR-lsI" id="mUv-pt-zms"/>
+                                    <outlet property="lblScheduledRecipe" destination="TTL-Pz-u5J" id="snO-O3-DTD"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

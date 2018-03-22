@@ -14,6 +14,7 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
     let realm = try! Realm()
     var selectedRecipe = Recipe()
     var selectedMealPlan = MealPlan()
+    var existingScheduledMeals = [ScheduledMeal]()
     let POSITION_MEALPLAN = (SECTION: 0, ROW: 0)
     let POSITION_RECIPE = (SECTION: 1, ROW: 0)
     let POSITION_CALENDAR = (SECTION: 2, ROW: 0)
@@ -23,9 +24,22 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
     var days = [Date]()
     var selections = [Selection]()
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        days = generateDates(anchorDate: startDate, addbyUnit: .day, numberOfDays: 14)
+        existingScheduledMeals = getOtherMeals(startDate: days.first!, endDate: days.last!)
+        if let defaultMealPlan = realm.objects(User.self).first?.defaultMealPlan {
+            self.selectedMealPlan = defaultMealPlan
+        }
+    }
+    
     @IBAction func btnWeekBackClicked(_ sender: Any) {
         let lastWeekEndDate = Calendar.current.date(byAdding: .day, value: -1, to: days[0])!
         days = generateDates(anchorDate: lastWeekEndDate, addbyUnit: .day, numberOfDays: 15)
+        existingScheduledMeals = getOtherMeals(startDate: days.first!, endDate: days.last!)
         _ = days.popLast()
         calTVC.days = days
         
@@ -33,12 +47,12 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
         self.tableView.reloadRows(at: [calendarIndexPath], with: .right)
         
         self.tableView.reloadSections(IndexSet(integersIn: POSITION_DAYS.SECTION...POSITION_DAYS.SECTION), with: .bottom)
-        
     }
     
     @IBAction func btnWeekFrwdClicked(_ sender: Any) {
         let nextWeekStartDate = Calendar.current.date(byAdding: .day, value: 1, to: days[6])!
         days = generateDates(anchorDate: nextWeekStartDate, addbyUnit: .day, numberOfDays: 14)
+        existingScheduledMeals = getOtherMeals(startDate: days.first!, endDate: days.last!)
         calTVC.days = days
         
         let calendarIndexPath = IndexPath(item: POSITION_CALENDAR.ROW, section: POSITION_CALENDAR.SECTION)
@@ -124,26 +138,13 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        days = generateDates(anchorDate: startDate, addbyUnit: .day, numberOfDays: 14)
-//        selectedMealPlan = realm.object(ofType: User.self, forPrimaryKey: self.selectedMealPlan.id)
-        if let defaultMealPlan = realm.objects(User.self).first?.defaultMealPlan {
-            self.selectedMealPlan = defaultMealPlan
-        }
-    }
+
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
         if (segue.identifier == "mealPlansSegue") {
             let mealPlansTableViewController: MealPlansTableViewController = segue.destination as! MealPlansTableViewController
             mealPlansTableViewController.selectedMealPlan = selectedMealPlan
-            
         }
     }
     
@@ -153,8 +154,6 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
         let weekdayFormatter = DateFormatter()
         weekdayFormatter.timeZone = TimeZone.current
         weekdayFormatter.dateFormat = "EEE"
-        let weekday = weekdayFormatter.string(from: anchorDate)
-        
         if let firstSundayFromAnchor = anchorDate.startOfWeek {
             if let anchorDate2 = Calendar.current.date(byAdding: addbyUnit, value: numberOfDays, to: firstSundayFromAnchor) {
                 let startDate = min(firstSundayFromAnchor, anchorDate2)
@@ -167,17 +166,14 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
                 }
             }
         }
-        
         return dates
     }
     
-//    func getOtherMeals(startDate: Date, endDate: Date) -> List<ScheduledMeal> {
-//        let mealPlanRecipes = selectedMealPlan.meals
-//        let mealPlanRecipesInRange = mealPlanRecipes.filter { $0.scheduledDate >= startDate && $0.scheduledDate <= endDate }
-//        return mealPlanRecipesInRange
-//        
-//        
-//    }
+    func getOtherMeals(startDate: Date, endDate: Date) -> [ScheduledMeal] {
+        let mealPlanRecipes = selectedMealPlan.meals
+        let mealPlanRecipesInRange = mealPlanRecipes.filter { $0.scheduledDate >= startDate && $0.scheduledDate <= endDate }
+        return Array(mealPlanRecipesInRange)
+    }
     
     
     @IBAction func cancelTapped(_ sender: Any) {
@@ -185,7 +181,6 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
     }
     
     @IBAction func addTapped(_ sender: Any) {
-        
         for selection in selections {
             print("Selected \(selection.date)")
             let newScheduledMeal = ScheduledMeal()
@@ -198,21 +193,17 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
             newScheduledMeal.scheduledDate = selection.date
             
             // Add newScheduledMeal to meal plan
-//            if let realmSelectedMealPlan = realm.object(ofType: MealPlan.self, forPrimaryKey: self.selectedMealPlan.id) {
-            
             try! realm.write {
                 selectedMealPlan.name="Updated name"
                 selectedMealPlan.meals.append(newScheduledMeal)
 
-                print("\(newScheduledMeal.recipe?.title) is added to meal plan for date \(newScheduledMeal.scheduledDate.withoutTime())")
-                
+                print("\(newScheduledMeal.recipe!.title) is added to meal plan for date \(newScheduledMeal.scheduledDate.withoutTime())")
                 
                 if let recipeOnMealPlan = realm.object(ofType: Recipe.self, forPrimaryKey: selectedRecipe.id) {
                     recipeOnMealPlan.isOnMealPlan = true
                 }
                 dismiss(animated: true, completion: nil)
             }
-//            }
         }
     }
     

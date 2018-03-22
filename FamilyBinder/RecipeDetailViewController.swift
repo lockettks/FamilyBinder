@@ -38,7 +38,6 @@ class RecipeDetailViewController: UIViewController, TitleDelegate {
             }
         }
         configureView()
-        
     }
     
     

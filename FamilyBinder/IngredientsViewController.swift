@@ -10,8 +10,6 @@ import UIKit
 
 class IngredientsViewController: UIViewController {
     @IBOutlet weak var ingredientsLbl: UILabel!
-    @IBOutlet weak var recipeImgBackground: UIImageView!
-    @IBOutlet weak var ingredientsLblConstraint: NSLayoutConstraint!
     
     private var ingredients = [Ingredient()]
 

@@ -11,8 +11,7 @@ import UIKit
 class DayTableViewCell: UITableViewCell {
 
     @IBOutlet weak var lblMealType: UILabel!    
-    @IBOutlet weak var lblScheduledRecipeCat: UILabel!
-    @IBOutlet weak var lblScheduledRecipeUncat: UILabel!
+    @IBOutlet weak var lblScheduledRecipe: UILabel!
     @IBOutlet weak var lblDayHeading: UILabel!
     @IBOutlet weak var lblDayHeadingBackground: UILabel!
     

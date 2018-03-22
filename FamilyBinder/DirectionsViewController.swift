@@ -11,7 +11,6 @@ import UIKit
 class DirectionsViewController: UIViewController {
 
     @IBOutlet weak var directionsLbl: UILabel!
-    @IBOutlet weak var recipeImgBackground: UIImageView!
     
     private var currentDirections = [Direction()]
     
