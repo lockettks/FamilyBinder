@@ -16,6 +16,7 @@ class MealPlan : Object {
     static let sharedInstance = MealPlan()
     
     var meals = List<ScheduledMeal>()
+    dynamic var id = UUID().uuidString
     dynamic var name = "Magical Meal Plan"
     dynamic var startDate: Date?
     dynamic var endDate: Date?
@@ -30,9 +31,13 @@ class MealPlan : Object {
             self.startDate = newStartDate
         }
         
-        if let newEndDate = endDate {
+        if let newEndDate = endDate { 
             self.endDate = newEndDate
         }
+    }
+    
+    override static func primaryKey() -> String? {
+        return "id"
     }
     
     func addToMealPlan(mealToAdd : ScheduledMeal?) {

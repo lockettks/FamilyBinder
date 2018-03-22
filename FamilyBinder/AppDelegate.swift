@@ -34,16 +34,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         navController2.navigationBar.isTranslucent = true
         navController2.view.backgroundColor = .clear
         
-        let usersMealPlans: Results<MealPlan> = {
-            let realm = try! Realm()
-            return realm.objects(MealPlan.self)
-        }()
-        if usersMealPlans.count == 0 {
-            try! self.realm.write {
-                let defaultMealPlan = MealPlan()
-                self.realm.add(defaultMealPlan)
+        if realm.objects(User.self).first == nil {
+            try! self.realm.write{
+                let newUser = User()
+                realm.create(User.self, value: newUser, update: true)
             }
         }
+        
+        
+//        let usersMealPlans: Results<MealPlan> = {
+//            let realm = try! Realm()
+//            return realm.objects(MealPlan.self)
+//        }()
+//        if usersMealPlans.count == 0 {
+//            try! self.realm.write {
+//                let defaultMealPlan = MealPlan()
+//                self.realm.add(defaultMealPlan)
+//            }
+//        }
         
         print("po Realm.Configuration.defaultConfiguration.fileURL")
         

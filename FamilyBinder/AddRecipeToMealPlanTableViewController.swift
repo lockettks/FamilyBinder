@@ -130,6 +130,10 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
     
     override func viewWillAppear(_ animated: Bool) {
         days = generateDates(anchorDate: startDate, addbyUnit: .day, numberOfDays: 14)
+//        selectedMealPlan = realm.object(ofType: User.self, forPrimaryKey: self.selectedMealPlan.id)
+        if let defaultMealPlan = realm.objects(User.self).first?.defaultMealPlan {
+            self.selectedMealPlan = defaultMealPlan
+        }
     }
     
     // MARK: - Navigation
@@ -167,6 +171,14 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
         return dates
     }
     
+//    func getOtherMeals(startDate: Date, endDate: Date) -> List<ScheduledMeal> {
+//        let mealPlanRecipes = selectedMealPlan.meals
+//        let mealPlanRecipesInRange = mealPlanRecipes.filter { $0.scheduledDate >= startDate && $0.scheduledDate <= endDate }
+//        return mealPlanRecipesInRange
+//        
+//        
+//    }
+    
     
     @IBAction func cancelTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -186,16 +198,21 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
             newScheduledMeal.scheduledDate = selection.date
             
             // Add newScheduledMeal to meal plan
+//            if let realmSelectedMealPlan = realm.object(ofType: MealPlan.self, forPrimaryKey: self.selectedMealPlan.id) {
             
-            try! self.realm.write {
-                self.realm.create(ScheduledMeal.self, value: newScheduledMeal)
+            try! realm.write {
+                selectedMealPlan.name="Updated name"
+                selectedMealPlan.meals.append(newScheduledMeal)
+
                 print("\(newScheduledMeal.recipe?.title) is added to meal plan for date \(newScheduledMeal.scheduledDate.withoutTime())")
-                dismiss(animated: true, completion: nil)
+                
                 
                 if let recipeOnMealPlan = realm.object(ofType: Recipe.self, forPrimaryKey: selectedRecipe.id) {
                     recipeOnMealPlan.isOnMealPlan = true
                 }
+                dismiss(animated: true, completion: nil)
             }
+//            }
         }
     }
     
@@ -274,7 +291,6 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
         default:
             return 1
         }
-        
     }
     
     

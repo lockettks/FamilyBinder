@@ -147,12 +147,12 @@
 			isa = PBXGroup;
 			children = (
 				954D7AB41F198CB3000480A7 /* Main.storyboard */,
+				954D7AAE1F198CB3000480A7 /* AppDelegate.swift */,
 				95628D681F70586300566EF1 /* Models */,
 				956789B11F290EC40070FEEB /* View Controllers */,
 				956789BA1F2FDB8E0070FEEB /* Cache */,
 				956789AE1F28F7AD0070FEEB /* APIs */,
 				9567899B1F226DD30070FEEB /* Utils */,
-				954D7AAE1F198CB3000480A7 /* AppDelegate.swift */,
 				954D7ABC1F198CB3000480A7 /* Info.plist */,
 				954D7AB71F198CB3000480A7 /* Assets.xcassets */,
 				954D7AB91F198CB3000480A7 /* LaunchScreen.storyboard */,
@@ -200,14 +200,10 @@
 		956789B11F290EC40070FEEB /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				95CC0CC01FD125D60034E35D /* Add to Meal Plan */,
 				954D7AB01F198CB3000480A7 /* RecipesMasterViewController.swift */,
 				956789AF1F290E600070FEEB /* RecipeTableViewCell.swift */,
-				954D7AB21F198CB3000480A7 /* RecipeDetailViewController.swift */,
-				9521C1F01F8F239300B9CAC1 /* RecipeTitleViewController.swift */,
-				9521C1F21F8F24B200B9CAC1 /* RecipeTabsViewController.swift */,
-				95628D6F1F719C9500566EF1 /* IngredientsViewController.swift */,
-				95628D711F719CC600566EF1 /* DirectionsViewController.swift */,
+				95F0A2C92062DD1800A0E064 /* Recipe Details */,
+				95CC0CC01FD125D60034E35D /* Add to Meal Plan */,
 				956789991F216D330070FEEB /* oldAddtoMealPlan.swift */,
 			);
 			name = "View Controllers";
@@ -233,6 +229,18 @@
 				95F0A2C7205B36FF00A0E064 /* MealPlansTableViewController.swift */,
 			);
 			name = "Add to Meal Plan";
+			sourceTree = "<group>";
+		};
+		95F0A2C92062DD1800A0E064 /* Recipe Details */ = {
+			isa = PBXGroup;
+			children = (
+				954D7AB21F198CB3000480A7 /* RecipeDetailViewController.swift */,
+				9521C1F01F8F239300B9CAC1 /* RecipeTitleViewController.swift */,
+				9521C1F21F8F24B200B9CAC1 /* RecipeTabsViewController.swift */,
+				95628D6F1F719C9500566EF1 /* IngredientsViewController.swift */,
+				95628D711F719CC600566EF1 /* DirectionsViewController.swift */,
+			);
+			name = "Recipe Details";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

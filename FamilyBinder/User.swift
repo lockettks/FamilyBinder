@@ -11,10 +11,10 @@ import RealmSwift
 
 class User : Object {
     dynamic var userName: String = "Kimpossible"
-    var mealPlans = List<MealPlan>()
+//    var mealPlans = List<MealPlan>()
+    dynamic var defaultMealPlan: MealPlan? = MealPlan()
     
-//    convenience init() {
-//        self.init()
-//        self.userName = "Kimpossible"
-//    }
+    override static func primaryKey() -> String? {
+        return "userName"
+    }
 }
