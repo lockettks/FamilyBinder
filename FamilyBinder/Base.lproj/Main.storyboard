@@ -1131,20 +1131,22 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lunch" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ch9-qY-XuF">
-                                            <rect key="frame" x="20.000000000000004" y="41" width="47.333333333333343" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Lunch" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ch9-qY-XuF">
+                                            <rect key="frame" x="20" y="40" width="55" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunday, December 3" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wY6-Ae-Zb9">
-                                            <rect key="frame" x="20" y="5" width="374" height="21"/>
+                                            <rect key="frame" x="127.33333333333333" y="5" width="159.33333333333337" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Some fabulous meal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TTL-Pz-u5J">
-                                            <rect key="frame" x="75.333333333333314" y="41" width="155" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Some fabulous meal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TTL-Pz-u5J">
+                                            <rect key="frame" x="94" y="40" width="300" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -1154,13 +1156,7 @@
                                         <constraint firstItem="BuS-go-cSt" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="4qW-8p-Rs0" secondAttribute="leading" id="4fL-uK-rch"/>
                                         <constraint firstItem="BuS-go-cSt" firstAttribute="top" secondItem="4qW-8p-Rs0" secondAttribute="top" id="M80-MH-ygg"/>
                                         <constraint firstItem="BuS-go-cSt" firstAttribute="centerY" secondItem="wY6-Ae-Zb9" secondAttribute="centerY" id="SaK-bi-5j1"/>
-                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="TTL-Pz-u5J" secondAttribute="trailing" constant="20" symbolic="YES" id="V9I-ux-gmX"/>
-                                        <constraint firstItem="ch9-qY-XuF" firstAttribute="top" secondItem="BuS-go-cSt" secondAttribute="bottom" constant="9" id="Zes-gQ-p9g"/>
                                         <constraint firstItem="BuS-go-cSt" firstAttribute="width" secondItem="4qW-8p-Rs0" secondAttribute="width" id="c2j-Q1-F5i"/>
-                                        <constraint firstItem="ch9-qY-XuF" firstAttribute="leading" secondItem="4qW-8p-Rs0" secondAttribute="leadingMargin" id="hfR-f3-htp"/>
-                                        <constraint firstItem="ch9-qY-XuF" firstAttribute="baseline" secondItem="TTL-Pz-u5J" secondAttribute="baseline" id="ira-Bn-BoU"/>
-                                        <constraint firstItem="ch9-qY-XuF" firstAttribute="leading" secondItem="wY6-Ae-Zb9" secondAttribute="leading" id="jyZ-VP-ixI"/>
-                                        <constraint firstItem="TTL-Pz-u5J" firstAttribute="leading" secondItem="ch9-qY-XuF" secondAttribute="trailing" constant="8" id="nv7-wW-HMt"/>
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="BuS-go-cSt" secondAttribute="trailing" id="nxA-Fx-mh0"/>
                                         <constraint firstItem="BuS-go-cSt" firstAttribute="centerX" secondItem="wY6-Ae-Zb9" secondAttribute="centerX" id="ovW-hF-VoE"/>
                                     </constraints>

@@ -13,8 +13,8 @@ class ScheduledMeal : Object {
     dynamic var recipe: Recipe?
     dynamic var scheduledDate = Date()
     dynamic var mealTypeRaw = ""
-    var mealType : MealType {
-        return MealType(rawValue: mealTypeRaw) ?? .dinner
+    var mealType : MealType? {
+        return MealType(rawValue: mealTypeRaw) ?? nil
     }
     
     convenience init?(recipe:Recipe?, scheduledDate:Date?, mealType:MealType?){
@@ -33,9 +33,6 @@ class ScheduledMeal : Object {
         }
         if let newMealType = mealType {
             self.mealTypeRaw = newMealType.rawValue
-        } else {
-            print("Unable to add recipe to meal plan.  Missing meal type.")
-            return nil
         }
     }
 }

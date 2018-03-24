@@ -138,7 +138,7 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
         }
     }
     
-
+    
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -196,7 +196,7 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
             try! realm.write {
                 selectedMealPlan.name="Updated name"
                 selectedMealPlan.meals.append(newScheduledMeal)
-
+                
                 print("\(newScheduledMeal.recipe!.title) is added to meal plan for date \(newScheduledMeal.scheduledDate.withoutTime())")
                 
                 if let recipeOnMealPlan = realm.object(ofType: Recipe.self, forPrimaryKey: selectedRecipe.id) {
@@ -236,9 +236,12 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
             
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell3", for: indexPath) as! DayTableViewCell
+            let existingMeal = days.filter{ $0 == days[indexPath.row]}
+            
+            //mealPlanRecipes.filter { $0.scheduledDate >= startDate && $0.scheduledDate <= endDate }
+            
             cell.initWithModel(dayHeadline: days[indexPath.row])
-            if days[indexPath.row].withoutTime() < Date().withoutTime() {
-            } else {
+            if days[indexPath.row].withoutTime() >= Date().withoutTime() {
                 let isSelected = selections.contains(where: { (selection) -> Bool in
                     selection.date == days[indexPath.row]
                 })
