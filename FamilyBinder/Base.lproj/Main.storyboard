@@ -69,7 +69,7 @@
                                                     <constraint firstAttribute="height" constant="325" id="fGG-Zc-1Mt"/>
                                                 </constraints>
                                             </imageView>
-                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pxe-2U-Wjp" userLabel="Title Container View">
+                                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pxe-2U-Wjp" userLabel="Title Container View">
                                                 <rect key="frame" x="0.0" y="325" width="414" height="179"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="250" constant="179" id="BJH-Jb-UeR"/>
@@ -1030,7 +1030,7 @@
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3H9-3k-b7y" userLabel="lblDate">
-                                                                <rect key="frame" x="0.0" y="6" width="35" height="23"/>
+                                                                <rect key="frame" x="0.0" y="7" width="35" height="23"/>
                                                                 <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="19"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -1131,41 +1131,33 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Lunch" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ch9-qY-XuF">
-                                            <rect key="frame" x="20" y="40" width="55" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunday, December 3" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wY6-Ae-Zb9">
                                             <rect key="frame" x="127.33333333333333" y="5" width="159.33333333333337" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Some fabulous meal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TTL-Pz-u5J">
-                                            <rect key="frame" x="94" y="40" width="300" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="kOC-Sv-cnS">
+                                            <rect key="frame" x="20" y="40.000000000000007" width="374" height="68.666666666666686"/>
+                                        </stackView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="BuS-go-cSt" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="4qW-8p-Rs0" secondAttribute="leading" id="4fL-uK-rch"/>
+                                        <constraint firstAttribute="bottom" secondItem="kOC-Sv-cnS" secondAttribute="bottom" constant="8" id="BYa-fR-xeo"/>
                                         <constraint firstItem="BuS-go-cSt" firstAttribute="top" secondItem="4qW-8p-Rs0" secondAttribute="top" id="M80-MH-ygg"/>
+                                        <constraint firstItem="kOC-Sv-cnS" firstAttribute="top" secondItem="4qW-8p-Rs0" secondAttribute="top" constant="40" id="PIO-Si-8RK"/>
+                                        <constraint firstItem="kOC-Sv-cnS" firstAttribute="leading" secondItem="4qW-8p-Rs0" secondAttribute="leading" constant="20" id="SLX-nA-fHX"/>
                                         <constraint firstItem="BuS-go-cSt" firstAttribute="centerY" secondItem="wY6-Ae-Zb9" secondAttribute="centerY" id="SaK-bi-5j1"/>
                                         <constraint firstItem="BuS-go-cSt" firstAttribute="width" secondItem="4qW-8p-Rs0" secondAttribute="width" id="c2j-Q1-F5i"/>
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="BuS-go-cSt" secondAttribute="trailing" id="nxA-Fx-mh0"/>
                                         <constraint firstItem="BuS-go-cSt" firstAttribute="centerX" secondItem="wY6-Ae-Zb9" secondAttribute="centerX" id="ovW-hF-VoE"/>
+                                        <constraint firstAttribute="trailing" secondItem="kOC-Sv-cnS" secondAttribute="trailing" constant="20" id="xQK-O2-C04"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="lblDayHeading" destination="wY6-Ae-Zb9" id="3BE-4s-36h"/>
                                     <outlet property="lblDayHeadingBackground" destination="BuS-go-cSt" id="QN7-oE-fbG"/>
-                                    <outlet property="lblMealType" destination="ch9-qY-XuF" id="3U9-nb-drl"/>
-                                    <outlet property="lblScheduledRecipe" destination="TTL-Pz-u5J" id="snO-O3-DTD"/>
+                                    <outlet property="stackView" destination="kOC-Sv-cnS" id="anS-Yg-Tsc"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

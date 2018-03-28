@@ -30,7 +30,7 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
     
     override func viewWillAppear(_ animated: Bool) {
         days = generateDates(anchorDate: startDate, addbyUnit: .day, numberOfDays: 14)
-        existingScheduledMeals = getOtherMeals(startDate: days.first!, endDate: days.last!)
+//        existingScheduledMeals = getOtherMeals(startDate: days.first!, endDate: days.last!)
         if let defaultMealPlan = realm.objects(User.self).first?.defaultMealPlan {
             self.selectedMealPlan = defaultMealPlan
         }
@@ -39,7 +39,7 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
     @IBAction func btnWeekBackClicked(_ sender: Any) {
         let lastWeekEndDate = Calendar.current.date(byAdding: .day, value: -1, to: days[0])!
         days = generateDates(anchorDate: lastWeekEndDate, addbyUnit: .day, numberOfDays: 15)
-        existingScheduledMeals = getOtherMeals(startDate: days.first!, endDate: days.last!)
+//        existingScheduledMeals = getOtherMeals(startDate: days.first!, endDate: days.last!)
         _ = days.popLast()
         calTVC.days = days
         
@@ -52,7 +52,7 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
     @IBAction func btnWeekFrwdClicked(_ sender: Any) {
         let nextWeekStartDate = Calendar.current.date(byAdding: .day, value: 1, to: days[6])!
         days = generateDates(anchorDate: nextWeekStartDate, addbyUnit: .day, numberOfDays: 14)
-        existingScheduledMeals = getOtherMeals(startDate: days.first!, endDate: days.last!)
+//        existingScheduledMeals = getOtherMeals(startDate: days.first!, endDate: days.last!)
         calTVC.days = days
         
         let calendarIndexPath = IndexPath(item: POSITION_CALENDAR.ROW, section: POSITION_CALENDAR.SECTION)
@@ -236,11 +236,15 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
             
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell3", for: indexPath) as! DayTableViewCell
-            let existingMeal = days.filter{ $0 == days[indexPath.row]}
-            
             //mealPlanRecipes.filter { $0.scheduledDate >= startDate && $0.scheduledDate <= endDate }
             
-            cell.initWithModel(dayHeadline: days[indexPath.row])
+            let existingMealsForDay: [ScheduledMeal]
+            existingMealsForDay = Array(selectedMealPlan.meals.filter { $0.scheduledDate.withoutTime() == self.days[indexPath.row].withoutTime() })
+//            let existingMeals = existingScheduledMeals.filter { $0.scheduledDate.withoutTime() == days[indexPath.row].withoutTime() }
+            
+//            cell.initWithModel(dayHeadline: days[indexPath.row])
+//            cell.initWithModel(dayHeadline: days[indexPath.row], existingMeals: existingMealsForDay)
+            cell.initWithModel(dayHeadline: days[indexPath.row], existingMeals: existingMealsForDay)
             if days[indexPath.row].withoutTime() >= Date().withoutTime() {
                 let isSelected = selections.contains(where: { (selection) -> Bool in
                     selection.date == days[indexPath.row]
@@ -254,6 +258,38 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
         }
     }
     
+    
+    ///
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        if shouldUseSelfSizingCells(for: indexPath) {
+//            return UITableViewAutomaticDimension // will ask for the estimatedHeightForRowAt
+//        } else {
+//            return 44 // just fix the cell to 44pt
+//        }
+//    }
+//
+//    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+//        if shouldUseSelfSizingCells(for: indexPath) {
+//            return 44
+//        } else {
+//            return 0 // this will never be called
+//        }
+//    }
+//
+//    func shouldUseSelfSizingCells(for indexPath: IndexPath) -> Bool {
+//        // Some real check here based on the IndexPath
+//        return (indexPath.row % 2) == 0
+//    }
+    ///
+    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        if (indexPath.section == POSITION_DAYS.SECTION) {
+            return 120
+        } else {
+            return 0 //this will never be called
+        }
+    }
+    
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         var height:CGFloat
         switch indexPath.section {
@@ -265,7 +301,7 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
             if days[indexPath.row].withoutTime() < Date().withoutTime() {
                 height = 0
             } else {
-                height = 44
+                height = UITableViewAutomaticDimension
             }
         default:
             height = 44
