@@ -1143,7 +1143,7 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="BuS-go-cSt" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="4qW-8p-Rs0" secondAttribute="leading" id="4fL-uK-rch"/>
-                                        <constraint firstAttribute="bottom" secondItem="kOC-Sv-cnS" secondAttribute="bottom" constant="8" id="BYa-fR-xeo"/>
+                                        <constraint firstAttribute="bottom" secondItem="kOC-Sv-cnS" secondAttribute="bottom" priority="999" constant="8" id="BYa-fR-xeo"/>
                                         <constraint firstItem="BuS-go-cSt" firstAttribute="top" secondItem="4qW-8p-Rs0" secondAttribute="top" id="M80-MH-ygg"/>
                                         <constraint firstItem="kOC-Sv-cnS" firstAttribute="top" secondItem="4qW-8p-Rs0" secondAttribute="top" constant="40" id="PIO-Si-8RK"/>
                                         <constraint firstItem="kOC-Sv-cnS" firstAttribute="leading" secondItem="4qW-8p-Rs0" secondAttribute="leading" constant="20" id="SLX-nA-fHX"/>
