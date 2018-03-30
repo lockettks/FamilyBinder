@@ -272,6 +272,9 @@
          contextName = "AddRecipeToMealPlanTableViewController.tableView(_:cellForRowAt:):AddRecipeToMealPlanTableViewController.swift">
          <PersistentStrings>
             <PersistentString
+               value = "days[indexPath.row].withoutTime()">
+            </PersistentString>
+            <PersistentString
                value = "self.days[indexPath.row].withoutTime()">
             </PersistentString>
             <PersistentString

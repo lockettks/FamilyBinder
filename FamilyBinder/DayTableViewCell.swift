@@ -18,15 +18,13 @@ class DayTableViewCell: UITableViewCell {
     @IBOutlet weak var lblDayHeadingBackground: UILabel!
     var scheduledMeal: ScheduledMeal?
     
-    //    func displayExistingMeal(location: CGRect, textToDisplay: String) -> UILabel {
-    //        let existingMealLabel = UILabel(frame: location)
-    //        existingMealLabel.center = CGPoint(x: 160, y: 285)
-    //        existingMealLabel.textAlignment = .left
-    //        existingMealLabel.text = textToDisplay
-    //        return existingMealLabel
-    //    }
     
-    //    func initWithModel(dayHeadline: Date){
+    override func prepareForReuse() {
+        for sub in stackView.subviews {
+            sub.removeFromSuperview()
+        }
+    }
+    
     func initWithModel(dayHeadline: Date, existingMeals: [ScheduledMeal]?){
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone.current
@@ -40,8 +38,9 @@ class DayTableViewCell: UITableViewCell {
         if let meals = existingMeals {
             if meals.count > 0 {
                 meals.forEach{existingMeal in
-                    let existingMealLabel = createExistingMealLabel(existingMeal: existingMeal)
-                    stack.insertArrangedSubview(existingMealLabel, at: index)
+                    let existingMealStackView = createExistingMealStackView(existingMeal: existingMeal)
+                    stack.addArrangedSubview(existingMealStackView)
+//                    stack.insertArrangedSubview(existingMealStackView, at: index)
                 }
             }
         }
@@ -49,7 +48,7 @@ class DayTableViewCell: UITableViewCell {
         
     }
     
-    func createExistingMealLabel(existingMeal: ScheduledMeal) -> UIView {
+    func createExistingMealStackView(existingMeal: ScheduledMeal) -> UIView {
         let stack = UIStackView()
         stack.axis = .horizontal
         stack.alignment = .firstBaseline
@@ -70,12 +69,12 @@ class DayTableViewCell: UITableViewCell {
         return stack
     }
     
-    //    func addExistingMealLabel(){
+    //    func addexistingMealStackView(){
     //        let stack = stackView
     //        let index = (stack?.arrangedSubviews.count)! - 1
     //        let addView = stack?.arrangedSubviews[index]
     //
-    //        let newView = createExistingMealLabel()
+    //        let newView = createExistingMealStackView()
     //        newView.isHidden = true
     //        stack?.insertArrangedSubview(newView, at: index)
     //    }
