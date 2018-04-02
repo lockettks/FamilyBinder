@@ -64,97 +64,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FamilyBinder/DayTableViewCell.swift"
-            timestampString = "544131613.511812"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
-            landmarkName = "initWithModel(dayHeadline:existingMeals:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FamilyBinder/DayTableViewCell.swift"
-            timestampString = "544131613.512575"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
-            landmarkName = "initWithModel(dayHeadline:existingMeals:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FamilyBinder/DayTableViewCell.swift"
-            timestampString = "544131613.512858"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
-            landmarkName = "initWithModel(dayHeadline:existingMeals:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "FamilyBinder.DayTableViewCell.initWithModel(dayHeadline: Foundation.Date, existingMeals: Swift.Optional&lt;Swift.Array&lt;FamilyBinder.ScheduledMeal&gt;&gt;) -&gt; ()"
-                  moduleName = "FamilyBinder"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kimberlymathieu/Desktop/My%20Projects/FamilyBinder/FamilyBinder/DayTableViewCell.swift"
-                  timestampString = "544131239.10004"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "47"
-                  endingLineNumber = "47"
-                  offsetFromSymbolStart = "1438">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (FamilyBinder.ScheduledMeal) -&gt; () in FamilyBinder.DayTableViewCell.initWithModel(dayHeadline: Foundation.Date, existingMeals: Swift.Optional&lt;Swift.Array&lt;FamilyBinder.ScheduledMeal&gt;&gt;) -&gt; ()"
-                  moduleName = "FamilyBinder"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kimberlymathieu/Desktop/My%20Projects/FamilyBinder/FamilyBinder/DayTableViewCell.swift"
-                  timestampString = "544131239.10201"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "48"
-                  endingLineNumber = "48"
-                  offsetFromSymbolStart = "22">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
-            condition = "indexPath.row==5"
             continueAfterRunningActions = "No"
-            filePath = "FamilyBinder/AddRecipeToMealPlanTableViewController.swift"
-            timestampString = "544131613.513145"
+            filePath = "FamilyBinder/MealPlanService.swift"
+            timestampString = "544385841.726892"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "238"
-            endingLineNumber = "238"
-            landmarkName = "tableView(_:cellForRowAt:)"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "generateDates(anchorDate:addbyUnit:numberOfDays:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

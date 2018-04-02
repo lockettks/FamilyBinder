@@ -14,6 +14,7 @@
 		952BE9CD1FCB7E9000662ECA /* AddRecipeToMealPlanTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952BE9CC1FCB7E9000662ECA /* AddRecipeToMealPlanTableViewController.swift */; };
 		952BE9CF1FCB830100662ECA /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952BE9CE1FCB830100662ECA /* CalendarTableViewCell.swift */; };
 		952F2963203E6890003DFD48 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952F2962203E6890003DFD48 /* UIFont.swift */; };
+		953F5AD720706E8400CE290E /* MealPlanService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953F5AD620706E8400CE290E /* MealPlanService.swift */; };
 		954D7AAF1F198CB3000480A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954D7AAE1F198CB3000480A7 /* AppDelegate.swift */; };
 		954D7AB11F198CB3000480A7 /* RecipesMasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954D7AB01F198CB3000480A7 /* RecipesMasterViewController.swift */; };
 		954D7AB31F198CB3000480A7 /* RecipeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954D7AB21F198CB3000480A7 /* RecipeDetailViewController.swift */; };
@@ -57,6 +58,7 @@
 		952BE9CC1FCB7E9000662ECA /* AddRecipeToMealPlanTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeToMealPlanTableViewController.swift; sourceTree = "<group>"; };
 		952BE9CE1FCB830100662ECA /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
 		952F2962203E6890003DFD48 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
+		953F5AD620706E8400CE290E /* MealPlanService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlanService.swift; sourceTree = "<group>"; };
 		954D7AAB1F198CB3000480A7 /* FamilyBinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FamilyBinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		954D7AAE1F198CB3000480A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		954D7AB01F198CB3000480A7 /* RecipesMasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesMasterViewController.swift; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				952BE9CC1FCB7E9000662ECA /* AddRecipeToMealPlanTableViewController.swift */,
+				953F5AD620706E8400CE290E /* MealPlanService.swift */,
 				952BE9CE1FCB830100662ECA /* CalendarTableViewCell.swift */,
 				952BE9C61FCA8D2400662ECA /* CalendarDayCollectionViewCell.swift */,
 				95CC0CBC1FCE882C0034E35D /* DayTableViewCell.swift */,
@@ -388,6 +391,7 @@
 				95628D741F719FBF00566EF1 /* StringHelper.swift in Sources */,
 				956789941F2146B50070FEEB /* ScheduledMeal.swift in Sources */,
 				95F0A2C8205B36FF00A0E064 /* MealPlansTableViewController.swift in Sources */,
+				953F5AD720706E8400CE290E /* MealPlanService.swift in Sources */,
 				95F0A2C4204C8F3500A0E064 /* User.swift in Sources */,
 				956789B51F29560B0070FEEB /* Ingredient.swift in Sources */,
 				95CC0CBF1FCFE7CE0034E35D /* RecipeTitleTableViewCell.swift in Sources */,

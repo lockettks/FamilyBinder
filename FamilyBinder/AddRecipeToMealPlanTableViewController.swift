@@ -12,6 +12,7 @@ import RealmSwift
 class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDelegate, MealPlanSelectedDelegate {
     var calTVC: CalendarTableViewCell = CalendarTableViewCell()
     let realm = try! Realm()
+    let mealPlanService = MealPlanService()
     var selectedRecipe = Recipe()
     var selectedMealPlan = MealPlan()
     var existingScheduledMeals = [ScheduledMeal]()
@@ -22,15 +23,18 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
     
     let startDate = Date()
     var days = [Date]()
-    var selections = [Selection]()
+    var selectedDays = [Selection]()
+    
+    convenience init(){
+        self.init(nibName: nil, bundle: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        days = generateDates(anchorDate: startDate, addbyUnit: .day, numberOfDays: 14)
-//        existingScheduledMeals = getOtherMeals(startDate: days.first!, endDate: days.last!)
+        days = mealPlanService.generateDates(anchorDate: startDate, addbyUnit: .day, numberOfDays: 14)
         if let defaultMealPlan = realm.objects(User.self).first?.defaultMealPlan {
             self.selectedMealPlan = defaultMealPlan
         }
@@ -38,8 +42,7 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
     
     @IBAction func btnWeekBackClicked(_ sender: Any) {
         let lastWeekEndDate = Calendar.current.date(byAdding: .day, value: -1, to: days[0])!
-        days = generateDates(anchorDate: lastWeekEndDate, addbyUnit: .day, numberOfDays: 15)
-//        existingScheduledMeals = getOtherMeals(startDate: days.first!, endDate: days.last!)
+        days = mealPlanService.generateDates(anchorDate: lastWeekEndDate, addbyUnit: .day, numberOfDays: 15)
         _ = days.popLast()
         calTVC.days = days
         
@@ -51,8 +54,7 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
     
     @IBAction func btnWeekFrwdClicked(_ sender: Any) {
         let nextWeekStartDate = Calendar.current.date(byAdding: .day, value: 1, to: days[6])!
-        days = generateDates(anchorDate: nextWeekStartDate, addbyUnit: .day, numberOfDays: 14)
-//        existingScheduledMeals = getOtherMeals(startDate: days.first!, endDate: days.last!)
+        days = mealPlanService.generateDates(anchorDate: nextWeekStartDate, addbyUnit: .day, numberOfDays: 14)
         calTVC.days = days
         
         let calendarIndexPath = IndexPath(item: POSITION_CALENDAR.ROW, section: POSITION_CALENDAR.SECTION)
@@ -127,14 +129,14 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
     
     
     func addToSelection(selectedDay: Selection) {
-        selections.append(selectedDay)
+        selectedDays.append(selectedDay)
     }
     
     func removeFromSelection(deselectedDay: Selection) {
-        if let indexToRemove = selections.index(where: { (selection) -> Bool in
+        if let indexToRemove = selectedDays.index(where: { (selection) -> Bool in
             selection.date == deselectedDay.date
         }) {
-            selections.remove(at: indexToRemove)
+            selectedDays.remove(at: indexToRemove)
         }
     }
     
@@ -149,62 +151,36 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
     }
     
     
-    func generateDates( anchorDate: Date, addbyUnit: Calendar.Component, numberOfDays: Int) -> [Date] {
-        var dates = [Date]()
-        let weekdayFormatter = DateFormatter()
-        weekdayFormatter.timeZone = TimeZone.current
-        weekdayFormatter.dateFormat = "EEE"
-        if let firstSundayFromAnchor = anchorDate.startOfWeek {
-            if let anchorDate2 = Calendar.current.date(byAdding: addbyUnit, value: numberOfDays, to: firstSundayFromAnchor) {
-                let startDate = min(firstSundayFromAnchor, anchorDate2)
-                let endDate = max(firstSundayFromAnchor, anchorDate2)
-                var date = startDate
-                
-                while date < endDate {
-                    dates.append(date)
-                    date = Calendar.current.date(byAdding: addbyUnit, value: 1, to: date)!
-                }
-            }
-        }
-        return dates
-    }
-    
-    func getOtherMeals(startDate: Date, endDate: Date) -> [ScheduledMeal] {
-        let mealPlanRecipes = selectedMealPlan.meals
-        let mealPlanRecipesInRange = mealPlanRecipes.filter { $0.scheduledDate >= startDate && $0.scheduledDate <= endDate }
-        return Array(mealPlanRecipesInRange)
-    }
-    
-    
     @IBAction func cancelTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
     @IBAction func addTapped(_ sender: Any) {
-        for selection in selections {
-            print("Selected \(selection.date)")
-            let newScheduledMeal = ScheduledMeal()
-            let realmRecipe = realm.objects(Recipe.self).filter("id == %@", selectedRecipe.id)
-            if realmRecipe.count > 0 {
-                newScheduledMeal.recipe = realmRecipe[0] as Recipe
-            } else {
-                newScheduledMeal.recipe = selectedRecipe
-            }
-            newScheduledMeal.scheduledDate = selection.date
-            
-            // Add newScheduledMeal to meal plan
-            try! realm.write {
-                selectedMealPlan.name="Updated name"
-                selectedMealPlan.meals.append(newScheduledMeal)
-                
-                print("\(newScheduledMeal.recipe!.title) is added to meal plan for date \(newScheduledMeal.scheduledDate.withoutTime())")
-                
-                if let recipeOnMealPlan = realm.object(ofType: Recipe.self, forPrimaryKey: selectedRecipe.id) {
-                    recipeOnMealPlan.isOnMealPlan = true
-                }
-                dismiss(animated: true, completion: nil)
-            }
+        for selectedDay in selectedDays {
+            print("Selected \(selectedDay.date)")
+            mealPlanService.addRecipeToMealPlan(recipe: selectedRecipe, scheduledDate: selectedDay.date, mealPlan: selectedMealPlan)
+//            let newScheduledMeal = ScheduledMeal()
+//            let realmRecipe = realm.objects(Recipe.self).filter("id == %@", selectedRecipe.id)
+//            if realmRecipe.count > 0 {
+//                newScheduledMeal.recipe = realmRecipe[0] as Recipe
+//            } else {
+//                newScheduledMeal.recipe = selectedRecipe
+//            }
+//            newScheduledMeal.scheduledDate = selectedDay.date
+//
+//            // Add newScheduledMeal to meal plan
+//            try! realm.write {
+//                selectedMealPlan.meals.append(newScheduledMeal)
+//
+//                print("\(newScheduledMeal.recipe!.title) is added to meal plan for date \(newScheduledMeal.scheduledDate.withoutTime())")
+//
+//                if let recipeOnMealPlan = realm.object(ofType: Recipe.self, forPrimaryKey: selectedRecipe.id) {
+//                    recipeOnMealPlan.isOnMealPlan = true
+//                }
+//                dismiss(animated: true, completion: nil)
+//            }
         }
+        dismiss(animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {
@@ -214,7 +190,6 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
     
     
     // MARK: - Table view data source
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case POSITION_MEALPLAN.SECTION:
@@ -236,19 +211,17 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
             
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell3", for: indexPath) as! DayTableViewCell
-            //mealPlanRecipes.filter { $0.scheduledDate >= startDate && $0.scheduledDate <= endDate }
             
             let existingMealsForDay: [ScheduledMeal]
             existingMealsForDay = Array(selectedMealPlan.meals.filter { $0.scheduledDate.withoutTime() == self.days[indexPath.row].withoutTime() })
-//            let existingMeals = existingScheduledMeals.filter { $0.scheduledDate.withoutTime() == days[indexPath.row].withoutTime() }
-            
-//            cell.initWithModel(dayHeadline: days[indexPath.row])
-//            cell.initWithModel(dayHeadline: days[indexPath.row], existingMeals: existingMealsForDay)
+
             cell.initWithModel(dayHeadline: days[indexPath.row], existingMeals: existingMealsForDay)
+            
             if days[indexPath.row].withoutTime() >= Date().withoutTime() {
-                let isSelected = selections.contains(where: { (selection) -> Bool in
+                let isSelected = selectedDays.contains(where: { (selection) -> Bool in
                     selection.date == days[indexPath.row]
                 })
+                // check if any days are already selected
                 if isSelected {
                     self.tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
                     calTVC.tableRowSelected(indexOfSelected: indexPath.row)
@@ -259,28 +232,6 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
     }
     
     
-    ///
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        if shouldUseSelfSizingCells(for: indexPath) {
-//            return UITableViewAutomaticDimension // will ask for the estimatedHeightForRowAt
-//        } else {
-//            return 44 // just fix the cell to 44pt
-//        }
-//    }
-//
-//    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-//        if shouldUseSelfSizingCells(for: indexPath) {
-//            return 44
-//        } else {
-//            return 0 // this will never be called
-//        }
-//    }
-//
-//    func shouldUseSelfSizingCells(for indexPath: IndexPath) -> Bool {
-//        // Some real check here based on the IndexPath
-//        return (indexPath.row % 2) == 0
-//    }
-    ///
     override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         if (indexPath.section == POSITION_DAYS.SECTION) {
             return 120
@@ -299,6 +250,7 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
             height = 200
         case POSITION_DAYS.SECTION:
             if days[indexPath.row].withoutTime() < Date().withoutTime() {
+                // hide days in the past
                 height = 0
             } else {
                 height = UITableViewAutomaticDimension

@@ -32,18 +32,14 @@ class DayTableViewCell: UITableViewCell {
         lblDayHeading.text = dateFormatter.string(from: dayHeadline)
         
         if let stack = stackView {
-        let index = stack.arrangedSubviews.count > 0 ? (stack.arrangedSubviews.count) - 1 : 0
-//        let addView = stack.arrangedSubviews[index]
-        
-        if let meals = existingMeals {
-            if meals.count > 0 {
-                meals.forEach{existingMeal in
-                    let existingMealStackView = createExistingMealStackView(existingMeal: existingMeal)
-                    stack.addArrangedSubview(existingMealStackView)
-//                    stack.insertArrangedSubview(existingMealStackView, at: index)
+            if let meals = existingMeals {
+                if meals.count > 0 {
+                    meals.forEach{existingMeal in
+                        let existingMealStackView = createExistingMealStackView(existingMeal: existingMeal)
+                        stack.addArrangedSubview(existingMealStackView)
+                    }
                 }
             }
-        }
         }
         
     }
@@ -69,16 +65,6 @@ class DayTableViewCell: UITableViewCell {
         return stack
     }
     
-    //    func addexistingMealStackView(){
-    //        let stack = stackView
-    //        let index = (stack?.arrangedSubviews.count)! - 1
-    //        let addView = stack?.arrangedSubviews[index]
-    //
-    //        let newView = createExistingMealStackView()
-    //        newView.isHidden = true
-    //        stack?.insertArrangedSubview(newView, at: index)
-    //    }
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -86,7 +72,6 @@ class DayTableViewCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
         // Configure the view for the selected state
     }
     
