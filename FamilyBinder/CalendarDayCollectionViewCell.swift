@@ -10,8 +10,6 @@ import UIKit
 
 
 class CalendarDayCollectionViewCell: UICollectionViewCell {
-
-//    @IBOutlet weak var lblWeekday: UILabel!
     @IBOutlet weak var lblDate: UILabel!
     
     override var isSelected: Bool{
@@ -19,9 +17,7 @@ class CalendarDayCollectionViewCell: UICollectionViewCell {
             if self.isSelected
             {
                 UIView.animate(withDuration: 0.25, animations: {
-//                    self.lblWeekday.textColor = UIColor.white
                     self.lblDate.textColor = UIColor.white
-//                    self.lblWeekday.font = self.lblWeekday.font.withSize(19)
                     self.lblDate.font = self.lblDate.font.withSize(22)
                     self.backgroundColor = UIColor(hex: "C1212E")
                 })
@@ -29,9 +25,7 @@ class CalendarDayCollectionViewCell: UICollectionViewCell {
             else
             {
                 UIView.animate(withDuration: 0.25, animations: {
-//                    self.lblWeekday.textColor = UIColor.black
                     self.lblDate.textColor = UIColor.black
-//                    self.lblWeekday.font = self.lblWeekday.font.withSize(16)
                     self.lblDate.font = self.lblDate.font.withSize(17)
                     self.backgroundColor = UIColor.clear
                 })
@@ -52,27 +46,20 @@ class CalendarDayCollectionViewCell: UICollectionViewCell {
         let weekdayFormatter = DateFormatter()
         weekdayFormatter.timeZone = TimeZone.current
         weekdayFormatter.dateFormat = "EEE"
-//        let weekday = weekdayFormatter.string(from: day)
         
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone.current
         dateFormatter.dateFormat = "d"
         let date = dateFormatter.string(from: day)
         lblDate.text = date
-        
         let today = Date()
         if (day < today) {
-//            lblWeekday.textColor = UIColor(hex: "C0C0C0")
             lblDate.textColor = UIColor(hex: "C0C0C0")
         } else if (day == today) {
-//            lblWeekday.font = lblWeekday.font.bold()
             lblDate.font = lblDate.font.bold()
-//            lblWeekday.textColor = UIColor.black
             lblDate.textColor = UIColor.black
         } else {
-//            lblWeekday.font = lblWeekday.font.noBold()
             lblDate.font = lblDate.font.noBold()
-//            lblWeekday.textColor = UIColor.black
             lblDate.textColor = UIColor.black
         }
     }
