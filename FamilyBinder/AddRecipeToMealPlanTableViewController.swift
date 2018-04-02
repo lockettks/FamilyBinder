@@ -75,7 +75,6 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
                 let newSelection = Selection()
                 newSelection.date = days[indexPath.row]
                 addToSelection(selectedDay: newSelection)
-                
                 calTVC.tableRowSelected(indexOfSelected: indexPath.row)
             }
             return
@@ -141,7 +140,6 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
     }
     
     
-    
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "mealPlansSegue") {
@@ -159,33 +157,8 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
         for selectedDay in selectedDays {
             print("Selected \(selectedDay.date)")
             mealPlanService.addRecipeToMealPlan(recipe: selectedRecipe, scheduledDate: selectedDay.date, mealPlan: selectedMealPlan)
-//            let newScheduledMeal = ScheduledMeal()
-//            let realmRecipe = realm.objects(Recipe.self).filter("id == %@", selectedRecipe.id)
-//            if realmRecipe.count > 0 {
-//                newScheduledMeal.recipe = realmRecipe[0] as Recipe
-//            } else {
-//                newScheduledMeal.recipe = selectedRecipe
-//            }
-//            newScheduledMeal.scheduledDate = selectedDay.date
-//
-//            // Add newScheduledMeal to meal plan
-//            try! realm.write {
-//                selectedMealPlan.meals.append(newScheduledMeal)
-//
-//                print("\(newScheduledMeal.recipe!.title) is added to meal plan for date \(newScheduledMeal.scheduledDate.withoutTime())")
-//
-//                if let recipeOnMealPlan = realm.object(ofType: Recipe.self, forPrimaryKey: selectedRecipe.id) {
-//                    recipeOnMealPlan.isOnMealPlan = true
-//                }
-//                dismiss(animated: true, completion: nil)
-//            }
         }
         dismiss(animated: true, completion: nil)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     

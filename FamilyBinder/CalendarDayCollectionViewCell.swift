@@ -63,10 +63,10 @@ class CalendarDayCollectionViewCell: UICollectionViewCell {
         lblDate.text = date
         
         let today = Date()
-        if (day.withoutTime() < today.withoutTime()) {
+        if (day < today) {
 //            lblWeekday.textColor = UIColor(hex: "C0C0C0")
             lblDate.textColor = UIColor(hex: "C0C0C0")
-        } else if (day.withoutTime() == today.withoutTime()) {
+        } else if (day == today) {
 //            lblWeekday.font = lblWeekday.font.bold()
             lblDate.font = lblDate.font.bold()
 //            lblWeekday.textColor = UIColor.black
