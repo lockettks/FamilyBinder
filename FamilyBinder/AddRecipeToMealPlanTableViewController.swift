@@ -209,7 +209,7 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
         if (indexPath.section == POSITION_DAYS.SECTION) {
             return 120
         } else {
-            return 0 //this will never be called
+            return 44
         }
     }
     

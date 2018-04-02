@@ -52,9 +52,7 @@ class CalendarDayCollectionViewCell: UICollectionViewCell {
         let weekdayFormatter = DateFormatter()
         weekdayFormatter.timeZone = TimeZone.current
         weekdayFormatter.dateFormat = "EEE"
-        let weekday = weekdayFormatter.string(from: day)
-        
-//        lblWeekday.text = weekday
+//        let weekday = weekdayFormatter.string(from: day)
         
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone.current
