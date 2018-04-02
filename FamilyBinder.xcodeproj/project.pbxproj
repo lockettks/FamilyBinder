@@ -34,7 +34,6 @@
 		956789941F2146B50070FEEB /* ScheduledMeal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956789931F2146B50070FEEB /* ScheduledMeal.swift */; };
 		956789961F2147D90070FEEB /* MealTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956789951F2147D90070FEEB /* MealTypes.swift */; };
 		956789981F2156190070FEEB /* MealPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956789971F2156190070FEEB /* MealPlan.swift */; };
-		9567899A1F216D330070FEEB /* oldAddtoMealPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956789991F216D330070FEEB /* oldAddtoMealPlan.swift */; };
 		9567899D1F226DF10070FEEB /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9567899C1F226DF10070FEEB /* DateHelper.swift */; };
 		956789B01F290E600070FEEB /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956789AF1F290E600070FEEB /* RecipeTableViewCell.swift */; };
 		956789B31F294F180070FEEB /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956789B21F294F180070FEEB /* Direction.swift */; };
@@ -80,7 +79,6 @@
 		956789931F2146B50070FEEB /* ScheduledMeal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduledMeal.swift; sourceTree = "<group>"; };
 		956789951F2147D90070FEEB /* MealTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealTypes.swift; sourceTree = "<group>"; };
 		956789971F2156190070FEEB /* MealPlan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealPlan.swift; sourceTree = "<group>"; };
-		956789991F216D330070FEEB /* oldAddtoMealPlan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = oldAddtoMealPlan.swift; sourceTree = "<group>"; };
 		9567899C1F226DF10070FEEB /* DateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		956789AF1F290E600070FEEB /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
 		956789B21F294F180070FEEB /* Direction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
@@ -206,7 +204,6 @@
 				956789AF1F290E600070FEEB /* RecipeTableViewCell.swift */,
 				95F0A2C92062DD1800A0E064 /* Recipe Details */,
 				95CC0CC01FD125D60034E35D /* Add to Meal Plan */,
-				956789991F216D330070FEEB /* oldAddtoMealPlan.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -404,7 +401,6 @@
 				95628D6E1F7093CC00566EF1 /* UIColor.swift in Sources */,
 				954D7AAF1F198CB3000480A7 /* AppDelegate.swift in Sources */,
 				95628D6A1F70596A00566EF1 /* RealmString.swift in Sources */,
-				9567899A1F216D330070FEEB /* oldAddtoMealPlan.swift in Sources */,
 				95CC0CBD1FCE882C0034E35D /* DayTableViewCell.swift in Sources */,
 				952BE9C71FCA8D2400662ECA /* CalendarDayCollectionViewCell.swift in Sources */,
 				956789B91F2FDA660070FEEB /* UserContextCache.swift in Sources */,
