@@ -68,7 +68,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FamilyBinder/MealPlanService.swift"
-            timestampString = "544410524.378106"
+            timestampString = "544416241.149286"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "22"
@@ -83,13 +83,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FamilyBinder/AddRecipeToMealPlanTableViewController.swift"
-            timestampString = "544410524.378171"
+            filePath = "FamilyBinder/RecipeTitleViewController.swift"
+            timestampString = "544416241.149597"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "191"
-            endingLineNumber = "191"
-            landmarkName = "tableView(_:cellForRowAt:)"
+            startingLineNumber = "156"
+            endingLineNumber = "156"
+            landmarkName = "setMealPlanIconImg()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -99,14 +99,46 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FamilyBinder/AddRecipeToMealPlanTableViewController.swift"
-            timestampString = "544410524.378523"
+            filePath = "FamilyBinder/RecipeTitleViewController.swift"
+            timestampString = "544416537.20187"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "193"
-            endingLineNumber = "193"
-            landmarkName = "tableView(_:cellForRowAt:)"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
+            landmarkName = "configureView()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FamilyBinder.RecipeTitleViewController.configureView() -&gt; ()"
+                  moduleName = "FamilyBinder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kimberlymathieu/Desktop/My%20Projects/FamilyBinder/FamilyBinder/RecipeTitleViewController.swift"
+                  timestampString = "544416537.2092251"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "123"
+                  endingLineNumber = "123"
+                  offsetFromSymbolStart = "3543">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in FamilyBinder.RecipeTitleViewController.configureView() -&gt; ()"
+                  moduleName = "FamilyBinder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kimberlymathieu/Desktop/My%20Projects/FamilyBinder/FamilyBinder/RecipeTitleViewController.swift"
+                  timestampString = "544416537.211442"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "124"
+                  endingLineNumber = "124"
+                  offsetFromSymbolStart = "14">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -47,6 +47,7 @@ class MealPlanService {
         // Add newScheduledMeal to meal plan
         try! realm.write {
             mealPlan.meals.append(newScheduledMeal)
+            recipe.isOnMealPlan = true
             
             print("\(newScheduledMeal.recipe!.title) is added to meal plan for date \(newScheduledMeal.scheduledDate.withoutTime())")
             

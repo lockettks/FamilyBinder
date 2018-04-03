@@ -112,6 +112,10 @@ class RecipeTitleViewController: UIViewController {
             setFavoriteIconImg()
         }
         
+        if let mealPlanBtn = self.mealPlanBtn {
+            mealPlanBtn.imageView?.contentMode = UIViewContentMode.scaleAspectFill
+            setMealPlanIconImg()
+        }
         self.view.layoutIfNeeded()
         
         
@@ -133,6 +137,7 @@ class RecipeTitleViewController: UIViewController {
     
     @IBAction func mealPlanBtnClicked(_ sender: Any) {
         delegate?.mealPlanBtnClicked()
+        setMealPlanIconImg()
     }
     
     func setFavoriteIconImg(){
@@ -143,6 +148,18 @@ class RecipeTitleViewController: UIViewController {
         } else {
             if let btn = self.favoriteBtn {
                 btn.setImage(#imageLiteral(resourceName: "pin"), for: .normal)
+            }
+        }
+    }
+    
+    func setMealPlanIconImg(){
+        if (currentRecipe.isOnMealPlan) {
+            if let btn = self.mealPlanBtn {
+                btn.setBackgroundImage(#imageLiteral(resourceName: "mealPlan_Checkmark_On"), for: .normal)
+            }
+        } else {
+            if let btn = self.mealPlanBtn {
+                btn.setBackgroundImage(#imageLiteral(resourceName: "mealPlan_Add"), for: .normal)
             }
         }
     }
