@@ -221,12 +221,12 @@
 			children = (
 				952BE9CC1FCB7E9000662ECA /* AddRecipeToMealPlanTableViewController.swift */,
 				953F5AD620706E8400CE290E /* MealPlanService.swift */,
-				952BE9CE1FCB830100662ECA /* CalendarTableViewCell.swift */,
-				952BE9C61FCA8D2400662ECA /* CalendarDayCollectionViewCell.swift */,
-				95CC0CBC1FCE882C0034E35D /* DayTableViewCell.swift */,
 				95CC0CBE1FCFE7CE0034E35D /* RecipeTitleTableViewCell.swift */,
 				95F0A2C5205A1B2400A0E064 /* MealPlanSelectedTableViewCell.swift */,
 				95F0A2C7205B36FF00A0E064 /* MealPlansTableViewController.swift */,
+				952BE9CE1FCB830100662ECA /* CalendarTableViewCell.swift */,
+				952BE9C61FCA8D2400662ECA /* CalendarDayCollectionViewCell.swift */,
+				95CC0CBC1FCE882C0034E35D /* DayTableViewCell.swift */,
 			);
 			name = "Add to Meal Plan";
 			sourceTree = "<group>";

@@ -190,7 +190,7 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
 
             cell.initWithModel(dayHeadline: days[indexPath.row], existingMeals: existingMealsForDay)
             
-            if days[indexPath.row].withoutTime() >= Date().withoutTime() {
+            if days[indexPath.row] >= Date() {
                 let isSelected = selectedDays.contains(where: { (selection) -> Bool in
                     selection.date == days[indexPath.row]
                 })
@@ -222,7 +222,7 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
         case POSITION_CALENDAR.SECTION:
             height = 200
         case POSITION_DAYS.SECTION:
-            if days[indexPath.row].withoutTime() < Date().withoutTime() {
+            if days[indexPath.row] < Date() {
                 // hide days in the past
                 height = 0
             } else {

@@ -58,7 +58,7 @@ class CalendarTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColl
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CalendarDayCollectionViewCell
         cell.initWithModel(day: days[indexPath.row])
         backArrowBtn.isHidden = days[0] <= Date()
-        cell.isUserInteractionEnabled = days[indexPath.row].withoutTime() >= Date().withoutTime()
+        cell.isUserInteractionEnabled = days[indexPath.row] >= Date()
 
         return cell
     }
