@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6CDEA317B4F3B4438B4DA2D9 /* Pods_FamilyBinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F183672AF08D8E0DAEAA01C4 /* Pods_FamilyBinder.framework */; };
+		951BAA3B207405DD001C1E1D /* RecipeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951BAA3A207405DD001C1E1D /* RecipeService.swift */; };
 		9521C1F11F8F239300B9CAC1 /* RecipeTitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9521C1F01F8F239300B9CAC1 /* RecipeTitleViewController.swift */; };
 		9521C1F31F8F24B200B9CAC1 /* RecipeTabsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9521C1F21F8F24B200B9CAC1 /* RecipeTabsViewController.swift */; };
 		952BE9C71FCA8D2400662ECA /* CalendarDayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952BE9C61FCA8D2400662ECA /* CalendarDayCollectionViewCell.swift */; };
@@ -51,6 +52,7 @@
 /* Begin PBXFileReference section */
 		896135F5E96B65B86C6B8365 /* Pods-FamilyBinder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FamilyBinder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FamilyBinder/Pods-FamilyBinder.debug.xcconfig"; sourceTree = "<group>"; };
 		926518CB44F8297EDDC2ED1D /* Pods-FamilyBinder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FamilyBinder.release.xcconfig"; path = "Pods/Target Support Files/Pods-FamilyBinder/Pods-FamilyBinder.release.xcconfig"; sourceTree = "<group>"; };
+		951BAA3A207405DD001C1E1D /* RecipeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeService.swift; sourceTree = "<group>"; };
 		9521C1F01F8F239300B9CAC1 /* RecipeTitleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTitleViewController.swift; sourceTree = "<group>"; };
 		9521C1F21F8F24B200B9CAC1 /* RecipeTabsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTabsViewController.swift; sourceTree = "<group>"; };
 		952BE9C61FCA8D2400662ECA /* CalendarDayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDayCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				954D7AB21F198CB3000480A7 /* RecipeDetailViewController.swift */,
+				951BAA3A207405DD001C1E1D /* RecipeService.swift */,
 				9521C1F01F8F239300B9CAC1 /* RecipeTitleViewController.swift */,
 				9521C1F21F8F24B200B9CAC1 /* RecipeTabsViewController.swift */,
 				95628D6F1F719C9500566EF1 /* IngredientsViewController.swift */,
@@ -406,6 +409,7 @@
 				956789B91F2FDA660070FEEB /* UserContextCache.swift in Sources */,
 				95F0A2C6205A1B2400A0E064 /* MealPlanSelectedTableViewCell.swift in Sources */,
 				956789981F2156190070FEEB /* MealPlan.swift in Sources */,
+				951BAA3B207405DD001C1E1D /* RecipeService.swift in Sources */,
 				956789B31F294F180070FEEB /* Direction.swift in Sources */,
 				9521C1F11F8F239300B9CAC1 /* RecipeTitleViewController.swift in Sources */,
 				9521C1F31F8F24B200B9CAC1 /* RecipeTabsViewController.swift in Sources */,

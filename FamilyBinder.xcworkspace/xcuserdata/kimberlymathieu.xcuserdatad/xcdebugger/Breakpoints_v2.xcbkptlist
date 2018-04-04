@@ -67,28 +67,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FamilyBinder/MealPlanService.swift"
-            timestampString = "544416241.149286"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
-            landmarkName = "generateDates(anchorDate:addbyUnit:numberOfDays:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "FamilyBinder/RecipeTitleViewController.swift"
-            timestampString = "544416241.149597"
+            timestampString = "544557819.00888"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "156"
-            endingLineNumber = "156"
+            startingLineNumber = "159"
+            endingLineNumber = "159"
             landmarkName = "setMealPlanIconImg()"
             landmarkType = "7">
          </BreakpointContent>
@@ -99,46 +83,30 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FamilyBinder/RecipeTitleViewController.swift"
-            timestampString = "544416537.20187"
+            filePath = "FamilyBinder/MealPlanService.swift"
+            timestampString = "544475996.672855"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "addRecipeToMealPlan(recipe:scheduledDate:mealPlan:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FamilyBinder/RecipeTitleViewController.swift"
+            timestampString = "544557901.3296109"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
             landmarkName = "configureView()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "FamilyBinder.RecipeTitleViewController.configureView() -&gt; ()"
-                  moduleName = "FamilyBinder"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kimberlymathieu/Desktop/My%20Projects/FamilyBinder/FamilyBinder/RecipeTitleViewController.swift"
-                  timestampString = "544416537.2092251"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "123"
-                  endingLineNumber = "123"
-                  offsetFromSymbolStart = "3543">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in FamilyBinder.RecipeTitleViewController.configureView() -&gt; ()"
-                  moduleName = "FamilyBinder"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kimberlymathieu/Desktop/My%20Projects/FamilyBinder/FamilyBinder/RecipeTitleViewController.swift"
-                  timestampString = "544416537.211442"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "124"
-                  endingLineNumber = "124"
-                  offsetFromSymbolStart = "14">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

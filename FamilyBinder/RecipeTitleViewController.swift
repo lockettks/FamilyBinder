@@ -32,13 +32,11 @@ class RecipeTitleViewController: UIViewController {
     @IBOutlet weak var mealPlanBtn: UIButton!
     
     // MARK: Properties
-    // Get the default Realm
     let realm = try! Realm()
-    //    // To find Realm File, enter the following when debugger is paused:
-    //    // po Realm.Configuration.defaultConfiguration.fileURL
-    
     private var currentRecipe = Recipe()
     weak var delegate: TitleDelegate?
+    let recipeService = RecipeService()
+    
     
     // MARK: View Loading
     override func viewDidLoad() {
@@ -47,6 +45,7 @@ class RecipeTitleViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         configureView()
+        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -121,10 +120,13 @@ class RecipeTitleViewController: UIViewController {
         
         if realm.objects(Recipe.self).filter("id == %@", currentRecipe.id).first != nil {
             try! self.realm.write {
-                currentRecipe.isFavorite = true
+                currentRecipe.isFavorite = true //why do this?  shouldn't be done here.
             }
             setFavoriteIconImg()
         }
+        
+        let testFavorite = recipeService.isFavoriteInRealm(recipe: self.currentRecipe)
+        let testMealPlan = recipeService.isOnMealPlanInFutureInRealm(recipe: self.currentRecipe)
     }
     
     // MARK: Actions
