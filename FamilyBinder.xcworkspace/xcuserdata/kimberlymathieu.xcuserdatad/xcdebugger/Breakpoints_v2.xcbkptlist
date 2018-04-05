@@ -68,11 +68,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FamilyBinder/RecipeTitleViewController.swift"
-            timestampString = "544557819.00888"
+            timestampString = "544628802.600021"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "159"
-            endingLineNumber = "159"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
             landmarkName = "setMealPlanIconImg()"
             landmarkType = "7">
          </BreakpointContent>
@@ -90,22 +90,6 @@
             startingLineNumber = "49"
             endingLineNumber = "49"
             landmarkName = "addRecipeToMealPlan(recipe:scheduledDate:mealPlan:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FamilyBinder/RecipeTitleViewController.swift"
-            timestampString = "544557901.3296109"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
-            landmarkName = "configureView()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

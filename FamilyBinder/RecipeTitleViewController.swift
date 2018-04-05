@@ -36,7 +36,7 @@ class RecipeTitleViewController: UIViewController {
     private var currentRecipe = Recipe()
     weak var delegate: TitleDelegate?
     let recipeService = RecipeService()
-    
+    var isCurrentlyFavorite = false
     
     // MARK: View Loading
     override func viewDidLoad() {
@@ -49,8 +49,8 @@ class RecipeTitleViewController: UIViewController {
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        if (!(self.currentRecipe.isFavorite)) {
-            // Remove from favorites
+        if (!(isCurrentlyFavorite)) {
+            // Remove from favorites if it exists
             try! self.realm.write {
                 if let recipeToDelete = realm.object(ofType: Recipe.self, forPrimaryKey: self.currentRecipe.id) {
                     self.realm.delete(recipeToDelete.analyzedDirections)
@@ -59,7 +59,7 @@ class RecipeTitleViewController: UIViewController {
                 }
             }
         } else {
-            // Add to favorites
+            // Add to favorites if it doesn't already exist
             if realm.object(ofType: Recipe.self, forPrimaryKey: self.currentRecipe.id) == nil {
                 try! self.realm.write {
                     // self.realm.create(Recipe.self, value: thisRecipe, update:true)
@@ -76,82 +76,75 @@ class RecipeTitleViewController: UIViewController {
     }
     
     func configureView(){
+        recipeTitleLabel.text = currentRecipe.title
+        recipeTitleLabel.sizeToFit()
         
-        if let recipeTitleLabel = self.recipeTitleLabel {
-            recipeTitleLabel.text = currentRecipe.title
-            recipeTitleLabel.sizeToFit()
-        }
-        if let creditLabel = self.creditLabel {
-            creditLabel.text = currentRecipe.creditText
-            creditLabel.sizeToFit()
-        }
+        creditLabel.text = currentRecipe.creditText
+        creditLabel.sizeToFit()
         
-        if let servingsLabel = self.servingsLabel {
-            servingsLabel.text = currentRecipe.servings.description
-            servingsLabel.sizeToFit()
-        }
+        servingsLabel.text = currentRecipe.servings.description
+        servingsLabel.sizeToFit()
         
-        if let cookTimeLabel = self.timeToCookLabel {
-            cookTimeLabel.text = "\(currentRecipe.readyInMinutes) min"
-            cookTimeLabel.sizeToFit()
-        }
+        timeToCookLabel.text = "\(currentRecipe.readyInMinutes) min"
+        timeToCookLabel.sizeToFit()
         
-        if let spoonacularLabel = self.spoonacularLabel {
-            spoonacularLabel.text = currentRecipe.spoonacularScore.description
-            spoonacularLabel.sizeToFit()
-        }
+        spoonacularLabel.text = currentRecipe.spoonacularScore.description
+        spoonacularLabel.sizeToFit()
         
-        if let likesLabel = self.likesLabel {
-            likesLabel.text = currentRecipe.likes.description
-            likesLabel.sizeToFit()
-        }
+        likesLabel.text = currentRecipe.likes.description
+        likesLabel.sizeToFit()
         
-        if let favoriteBtn = self.favoriteBtn {
-            favoriteBtn.imageView?.contentMode = UIViewContentMode.scaleAspectFill
-            setFavoriteIconImg()
-        }
+        isCurrentlyFavorite = recipeService.isFavoriteInRealm(recipe: currentRecipe)
+        setFavoriteIconImg()
         
-        if let mealPlanBtn = self.mealPlanBtn {
-            mealPlanBtn.imageView?.contentMode = UIViewContentMode.scaleAspectFill
-            setMealPlanIconImg()
-        }
+        mealPlanBtn.imageView?.contentMode = UIViewContentMode.scaleAspectFill
+        setMealPlanIconImg()
+        
         self.view.layoutIfNeeded()
         
         
-        if realm.objects(Recipe.self).filter("id == %@", currentRecipe.id).first != nil {
-            try! self.realm.write {
-                currentRecipe.isFavorite = true //why do this?  shouldn't be done here.
-            }
-            setFavoriteIconImg()
-        }
+//        if realm.objects(Recipe.self).filter("id == %@", currentRecipe.id).first != nil {
+//            try! self.realm.write {
+//                currentRecipe.isFavorite = true //why do this?  shouldn't be done here.
+//            }
+//            setFavoriteIconImg()
+//        }
         
-        let testFavorite = recipeService.isFavoriteInRealm(recipe: self.currentRecipe)
-        let testMealPlan = recipeService.isOnMealPlanInFutureInRealm(recipe: self.currentRecipe)
     }
     
     // MARK: Actions
     @IBAction func favoriteBtnClicked(_ sender: Any) {
-        try! realm.write {
-            currentRecipe.isFavorite = !currentRecipe.isFavorite
-            setFavoriteIconImg()
+        isCurrentlyFavorite = !isCurrentlyFavorite
+        setFavoriteIconImg()
+//        try! realm.write {
+//            currentRecipe.isFavorite = !currentRecipe.isFavorite
+////            setFavoriteIconImg()
+//        }
+    }
+    
+
+    
+    func setFavoriteIconImg(){
+        favoriteBtn.imageView?.contentMode = UIViewContentMode.scaleAspectFill
+        if (isCurrentlyFavorite) {
+            favoriteBtn.setImage(#imageLiteral(resourceName: "pin_Checkmark_On"), for: .normal)
+        } else {
+            favoriteBtn.setImage(#imageLiteral(resourceName: "pin"), for: .normal)
         }
+//        if (currentRecipe.isFavorite) {
+//            if let btn = self.favoriteBtn {
+//                btn.setImage(#imageLiteral(resourceName: "pin_Checkmark_On"), for: .normal)
+//            }
+//        } else {
+//            if let btn = self.favoriteBtn {
+//                btn.setImage(#imageLiteral(resourceName: "pin"), for: .normal)
+//            }
+//        }
     }
     
     @IBAction func mealPlanBtnClicked(_ sender: Any) {
         delegate?.mealPlanBtnClicked()
         setMealPlanIconImg()
-    }
-    
-    func setFavoriteIconImg(){
-        if (currentRecipe.isFavorite) {
-            if let btn = self.favoriteBtn {
-                btn.setImage(#imageLiteral(resourceName: "pin_Checkmark_On"), for: .normal)
-            }
-        } else {
-            if let btn = self.favoriteBtn {
-                btn.setImage(#imageLiteral(resourceName: "pin"), for: .normal)
-            }
-        }
     }
     
     func setMealPlanIconImg(){
