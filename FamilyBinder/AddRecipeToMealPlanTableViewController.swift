@@ -31,6 +31,22 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Long Press
+        let longPressGesture: UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
+        longPressGesture.minimumPressDuration = 0.5
+        longPressGesture.delegate = self as? UIGestureRecognizerDelegate
+        self.tableView.addGestureRecognizer(longPressGesture)
+    }
+    
+    func handleLongPress(longPressGesture:UILongPressGestureRecognizer){
+        let p = longPressGesture.location(in: self.tableView)
+        let indexPath = self.tableView.indexPathForRow(at: p)
+        if indexPath == nil {
+            print("Long press on table view, not row")
+        } else if (longPressGesture.state == UIGestureRecognizerState.began) {
+            print("long press on row, at \(indexPath!.row)")
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
