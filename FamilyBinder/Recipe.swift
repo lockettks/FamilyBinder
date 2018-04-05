@@ -25,7 +25,6 @@ class Recipe : Object, NSCopying {
     dynamic var likes: Int = 0
     dynamic var spoonacularScore: Int = 0
     dynamic var creditText: String = ""
-    dynamic var isOnMealPlan: Bool = false
     
     convenience init?(json: JSON) {
         self.init()

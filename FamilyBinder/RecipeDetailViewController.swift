@@ -34,7 +34,7 @@ class RecipeDetailViewController: UIViewController, TitleDelegate {
         super.viewDidLoad()
         if self.detailItem == nil {
             if let firstRecipe = realm.objects(Recipe.self).first {
-                self.detailItem = firstRecipe.copy as? Recipe
+                self.detailItem = firstRecipe
             }
         }
         configureView()
