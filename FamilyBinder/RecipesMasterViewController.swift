@@ -28,11 +28,9 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
     // MARK: - Variables
     var detailViewController: RecipeDetailViewController?
     var recipes = [Recipe]()
+    let userService = UserService()
     
-    let myFavoriteRecipes: Results<Recipe> = {
-        let realm = try! Realm()
-        return realm.objects(Recipe.self)
-    }()
+    //    var favoriteRecipes = [Recipe]()
     var token: NotificationToken?
     
     required init?(coder aDecoder: NSCoder) {
@@ -53,35 +51,37 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        loadRecipes()
         // Get notified if My Recipes change and update table accordingly
-        if (recipesTypeSegCntrl.selectedSegmentIndex == 0) {
-            token = myFavoriteRecipes.observe{[weak self] (changes: RealmCollectionChange) in
-                if (self?.recipesTypeSegCntrl.selectedSegmentIndex == 0) {
-                    if let mfr = self?.myFavoriteRecipes {
-                        self?.recipes = Array(mfr)
-                    }
-                    
-                    switch changes {
-                    case .initial:
-                        self?.tableView.reloadData()
-                        let initialIndexPath = IndexPath(row: 0, section: 0)
-                        self?.tableView.selectRow(at: initialIndexPath, animated: true, scrollPosition: UITableViewScrollPosition.none)
-                        if (self?.recipes.count)! > 0 {
-                            self?.detailViewController?.detailItem = self?.recipes[0]
-                        }
-                    //case .update(let results, let deletions, let insertions, let modifications):
-                    case .update( _, let deletions, let insertions, _):
-                        self?.tableView.beginUpdates()
-                        self?.tableView.insertRows(at: insertions.map {IndexPath(row: $0, section: 0) }, with: .automatic)
-                        self?.tableView.deleteRows(at: deletions.map {IndexPath(row: $0, section: 0)}, with: .automatic)
-                        self?.tableView.endUpdates()
-                    case .error(let error):
-                        print(error)
-                    }
-                }
-            }
-        }
+        //        if (recipesTypeSegCntrl.selectedSegmentIndex == 0) {
+        //            favoriteRecipes = userService.getFavoriteRecipes()
+        //            tableView.reloadData()
+        //            token = myFavoriteRecipes.observe{[weak self] (changes: RealmCollectionChange) in
+        //                if (self?.recipesTypeSegCntrl.selectedSegmentIndex == 0) {
+        //                    if let mfr = self?.myFavoriteRecipes {
+        //                        self?.recipes = Array(mfr)
+        //                    }
+        //
+        //                    switch changes {
+        //                    case .initial:
+        //                        self?.tableView.reloadData()
+        //                        let initialIndexPath = IndexPath(row: 0, section: 0)
+        //                        self?.tableView.selectRow(at: initialIndexPath, animated: true, scrollPosition: UITableViewScrollPosition.none)
+        //                        if (self?.recipes.count)! > 0 {
+        //                            self?.detailViewController?.detailItem = self?.recipes[0]
+        //                        }
+        //
+        //                    case .update( _, let deletions, let insertions, _):
+        //                        self?.tableView.beginUpdates()
+        //                        self?.tableView.insertRows(at: insertions.map {IndexPath(row: $0, section: 0) }, with: .automatic)
+        //                        self?.tableView.deleteRows(at: deletions.map {IndexPath(row: $0, section: 0)}, with: .automatic)
+        //                        self?.tableView.endUpdates()
+        //                    case .error(let error):
+        //                        print(error)
+        //                    }
+        //                }
+        //            }
+        //        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -99,24 +99,43 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
     
     // MARK: - Data
     
-    func loadRecipes() -> Promise<[Recipe]> {
-        return Promise{fulfill, _ in
-            switch(recipesTypeSegCntrl.selectedSegmentIndex){
-            case 0:
-                let myRecipes = Array(myFavoriteRecipes)
-                fulfill(myRecipes)
-                
-            case 1:
-                getRandomRecipes().then { recipesReceived -> Void in
-                    fulfill(recipesReceived)
-                    }.catch { error in
-                        print(error)
+    func loadRecipes() {
+        //    func loadRecipes() -> Promise<[Recipe]> {
+        //        loadRecipes().then{ recipesReceived -> Void in
+        //            self.recipes = recipesReceived
+        //            self.tableView.reloadData()
+        //            }.catch { error in
+        //                print(error)
+        //        }
+        switch(recipesTypeSegCntrl.selectedSegmentIndex){
+        case 0:
+            self.recipes = userService.getFavoriteRecipes()
+            tableView.reloadData()
+        case 1:
+            getRandomRecipes().then{ recipesReceived -> Void in
+                // Verify the tab hasn't changed before the promise is resolved
+                if (self.recipesTypeSegCntrl.selectedSegmentIndex == 1) {
+                    self.recipes = recipesReceived
+                    self.tableView.reloadData()
                 }
-                
-            default:
-                break
             }
+        default:
+            break
         }
+        //        return Promise{fulfill, _ in
+        //            switch(recipesTypeSegCntrl.selectedSegmentIndex){
+        //            case 0:
+        //                fulfill(userService.getFavoriteRecipes())
+        //
+        //            case 1:
+        //                getRandomRecipes().then { recipesReceived -> Void in
+        //                    fulfill(recipesReceived)
+        //                    }.catch { error in
+        //                        print(error)
+        //                }
+        
+        
+        //    }
     }
     
     func getRandomRecipes() -> Promise<[Recipe]> {
@@ -133,12 +152,7 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
     // MARK: - Action Handlers
     
     @IBAction func recipesTypeSegCntrlChanged(_ sender: UISegmentedControl) {
-        loadRecipes().then{ recipesReceived -> Void in
-            self.recipes = recipesReceived
-            self.tableView.reloadData()
-            }.catch { error in
-                print(error)
-        }
+        loadRecipes()
     }
     
     
