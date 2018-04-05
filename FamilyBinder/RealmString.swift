@@ -11,7 +11,7 @@ import SwiftyJSON
 import RealmSwift
 
 class RealmString : Object {
-    dynamic var theString: String = ""
+    @objc dynamic var theString: String = ""
     
     convenience init?(theString: String) {
         self.init()

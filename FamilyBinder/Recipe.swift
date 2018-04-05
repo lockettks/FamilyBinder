@@ -11,20 +11,20 @@ import SwiftyJSON
 import RealmSwift
 
 class Recipe : Object, NSCopying {
-    dynamic var id: Int = 0
-    dynamic var title: String = ""
+    @objc dynamic var id: Int = 0
+    @objc dynamic var title: String = ""
     var analyzedDirections = List<Direction>()
     var ingredients = List<Ingredient>()
-    dynamic var directions: String = ""
-    dynamic var servings: Int = 0
-    dynamic var imageURL: String = ""
+    @objc dynamic var directions: String = ""
+    @objc dynamic var servings: Int = 0
+    @objc dynamic var imageURL: String = ""
     var image: UIImage?
-    dynamic var isFavorite: Bool = false
+    @objc dynamic var isFavorite: Bool = false
     var dishTypes = List<RealmString>()
-    dynamic var readyInMinutes: Int = 0
-    dynamic var likes: Int = 0
-    dynamic var spoonacularScore: Int = 0
-    dynamic var creditText: String = ""
+    @objc dynamic var readyInMinutes: Int = 0
+    @objc dynamic var likes: Int = 0
+    @objc dynamic var spoonacularScore: Int = 0
+    @objc dynamic var creditText: String = ""
     
     convenience init?(json: JSON) {
         self.init()

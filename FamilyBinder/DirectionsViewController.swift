@@ -21,8 +21,8 @@ class DirectionsViewController: UIViewController {
     func configureView() {
         let stringHelper = StringHelper()
         if let label = directionsLbl {
-            let attributesDictionary = [NSFontAttributeName : label.font]
-            let fullAttributedString = NSMutableAttributedString(string: "", attributes: (attributesDictionary as Any as! [String : Any]))
+            let attributesDictionary = [NSAttributedStringKey.font : label.font]
+            let fullAttributedString = NSMutableAttributedString(string: "", attributes: (attributesDictionary as Any as! [NSAttributedStringKey : Any]))
             for direction in currentDirections {
                 fullAttributedString.append(stringHelper.convertToNumberedItem(textToConvert: direction.step, textNumber: direction.stepNumber.description))
             }

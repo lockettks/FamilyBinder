@@ -11,8 +11,8 @@ import SwiftyJSON
 import RealmSwift
 
 class Direction : Object {
-    dynamic var stepNumber: Int = 0
-    dynamic var step: String = ""
+    @objc dynamic var stepNumber: Int = 0
+    @objc dynamic var step: String = ""
     let recipes = LinkingObjects(fromType: Recipe.self, property: "analyzedDirections")
     
     convenience init?(json: JSON) {

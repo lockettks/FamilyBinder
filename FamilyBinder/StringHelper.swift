@@ -17,7 +17,7 @@ class StringHelper {
         let attributedString: NSMutableAttributedString = NSMutableAttributedString(string: formattedString)
         
         let paragraphStyle = createParagraphAttribute()
-        attributedString.addAttributes([NSParagraphStyleAttributeName: paragraphStyle], range: NSMakeRange(0, attributedString.length))
+        attributedString.addAttributes([NSAttributedStringKey.paragraphStyle: paragraphStyle], range: NSMakeRange(0, attributedString.length))
         return attributedString
     }
     
@@ -26,14 +26,14 @@ class StringHelper {
         let attributedString: NSMutableAttributedString = NSMutableAttributedString(string: formattedString)
         
         let paragraphStyle = createParagraphAttribute()
-        attributedString.addAttributes([NSParagraphStyleAttributeName: paragraphStyle], range: NSMakeRange(0, attributedString.length))
+        attributedString.addAttributes([NSAttributedStringKey.paragraphStyle: paragraphStyle], range: NSMakeRange(0, attributedString.length))
         return attributedString
     }
 
     func createParagraphAttribute() ->NSParagraphStyle {
         var paragraphStyle: NSMutableParagraphStyle
         paragraphStyle = NSParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle
-        paragraphStyle.tabStops = [NSTextTab(textAlignment: .left, location: 15, options: NSDictionary() as! [String : AnyObject])]
+        paragraphStyle.tabStops = [NSTextTab(textAlignment: .left, location: 15, options: NSDictionary() as! [NSTextTab.OptionKey : Any])]
         paragraphStyle.defaultTabInterval = 15
         paragraphStyle.firstLineHeadIndent = 0
         paragraphStyle.headIndent = 15

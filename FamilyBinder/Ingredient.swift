@@ -11,7 +11,7 @@ import SwiftyJSON
 import RealmSwift
 
 class Ingredient : Object {
-    dynamic var originalString: String = ""
+    @objc dynamic var originalString: String = ""
     let recipes = LinkingObjects(fromType: Recipe.self, property: "ingredients")
     
     convenience init?(json: JSON){

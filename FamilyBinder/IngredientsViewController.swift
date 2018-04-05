@@ -20,8 +20,8 @@ class IngredientsViewController: UIViewController {
     func configureView(){
         let stringHelper = StringHelper()
         if let label = self.ingredientsLbl {
-            let attributesDictionary = [NSFontAttributeName : label.font]
-            let fullAttributedString = NSMutableAttributedString(string: "", attributes: (attributesDictionary as Any as! [String : Any]))
+            let attributesDictionary = [NSAttributedStringKey.font : label.font]
+            let fullAttributedString = NSMutableAttributedString(string: "", attributes: (attributesDictionary as Any as! [NSAttributedStringKey : Any]))
             for ingredient in (ingredients) where ingredient.originalString != "" {
                 fullAttributedString.append(stringHelper.convertToBulletedItem(textToConvert: ingredient.originalString))
             }

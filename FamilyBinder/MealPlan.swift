@@ -16,10 +16,10 @@ class MealPlan : Object {
     static let sharedInstance = MealPlan()
     
     var meals = List<ScheduledMeal>()
-    dynamic var id = UUID().uuidString
-    dynamic var name = "Magical Meal Plan"
-    dynamic var startDate: Date?
-    dynamic var endDate: Date?
+    @objc dynamic var id = UUID().uuidString
+    @objc dynamic var name = "Magical Meal Plan"
+    @objc dynamic var startDate: Date?
+    @objc dynamic var endDate: Date?
     
     convenience init(newName: String?, startDate: Date?, endDate: Date?) {
         self.init()

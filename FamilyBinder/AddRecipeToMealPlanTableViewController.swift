@@ -39,7 +39,7 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
         self.tableView.addGestureRecognizer(longPressGesture)
     }
     
-    func handleLongPress(longPressGesture:UILongPressGestureRecognizer){
+    @objc func handleLongPress(longPressGesture:UILongPressGestureRecognizer){
         let p = longPressGesture.location(in: self.tableView)
         let indexPath = self.tableView.indexPathForRow(at: p)
         if indexPath == nil {
