@@ -14,7 +14,12 @@ class RecipeService {
     let realm = try! Realm()
     
     func isFavoriteInRealm(recipe: Recipe) -> Bool {
-        return (realm.object(ofType: Recipe.self, forPrimaryKey: recipe.id) != nil)
+        var isFavorite = false
+        if let savedRecipe = realm.object(ofType: Recipe.self, forPrimaryKey: recipe.id) {
+            isFavorite = savedRecipe.isFavorite
+        }
+        
+        return ( isFavorite )
     }
     
     func isOnMealPlanInFutureInRealm(recipe: Recipe)-> Bool {
