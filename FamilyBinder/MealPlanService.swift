@@ -40,20 +40,15 @@ class MealPlanService {
             newScheduledMeal.recipe = realmRecipe[0] as Recipe
         } else {
             // User added a non-favorited recipe to meal plan
-            newScheduledMeal.recipe = recipe
+            newScheduledMeal.recipe = recipe.copy() as? Recipe
         }
         newScheduledMeal.scheduledDate = scheduledDate
         
         // Add newScheduledMeal to meal plan
         try! realm.write {
             mealPlan.meals.append(newScheduledMeal)
-            recipe.isOnMealPlan = true
-            
             print("\(newScheduledMeal.recipe!.title) is added to meal plan for date \(newScheduledMeal.scheduledDate.withoutTime())")
             
-            if let recipeOnMealPlan = realm.object(ofType: Recipe.self, forPrimaryKey: recipe.id) {
-                recipeOnMealPlan.isOnMealPlan = true
-            }
         }
     }
 }

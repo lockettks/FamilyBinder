@@ -49,24 +49,10 @@ class RecipeTitleViewController: UIViewController {
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        if (!(isCurrentlyFavorite)) {
-            // Remove from favorites if it exists
-            try! self.realm.write {
-                if let recipeToDelete = realm.object(ofType: Recipe.self, forPrimaryKey: self.currentRecipe.id) {
-                    self.realm.delete(recipeToDelete.analyzedDirections)
-                    self.realm.delete(recipeToDelete.ingredients)
-                    self.realm.delete(recipeToDelete)
-                }
-            }
+        if (isCurrentlyFavorite) {
+            recipeService.addToFavorites(recipe: currentRecipe)
         } else {
-            // Add to favorites if it doesn't already exist
-            if realm.object(ofType: Recipe.self, forPrimaryKey: self.currentRecipe.id) == nil {
-                try! self.realm.write {
-                    // self.realm.create(Recipe.self, value: thisRecipe, update:true)
-                    self.realm.add(self.currentRecipe, update:true)
-                    print("Added \(self.currentRecipe.title) to my recipes")
-                }
-            }
+            recipeService.removeFromFavorites(recipe: currentRecipe)
         }
     }
     
@@ -94,7 +80,7 @@ class RecipeTitleViewController: UIViewController {
         likesLabel.text = currentRecipe.likes.description
         likesLabel.sizeToFit()
         
-        isCurrentlyFavorite = recipeService.isFavoriteInRealm(recipe: currentRecipe)
+        isCurrentlyFavorite = recipeService.isFavorite(recipe: currentRecipe)
         setFavoriteIconImg()
         
         mealPlanBtn.imageView?.contentMode = UIViewContentMode.scaleAspectFill
@@ -102,27 +88,13 @@ class RecipeTitleViewController: UIViewController {
         
         self.view.layoutIfNeeded()
         
-        
-//        if realm.objects(Recipe.self).filter("id == %@", currentRecipe.id).first != nil {
-//            try! self.realm.write {
-//                currentRecipe.isFavorite = true //why do this?  shouldn't be done here.
-//            }
-//            setFavoriteIconImg()
-//        }
-        
     }
     
     // MARK: Actions
     @IBAction func favoriteBtnClicked(_ sender: Any) {
         isCurrentlyFavorite = !isCurrentlyFavorite
         setFavoriteIconImg()
-//        try! realm.write {
-//            currentRecipe.isFavorite = !currentRecipe.isFavorite
-////            setFavoriteIconImg()
-//        }
     }
-    
-
     
     func setFavoriteIconImg(){
         favoriteBtn.imageView?.contentMode = UIViewContentMode.scaleAspectFill
@@ -131,15 +103,6 @@ class RecipeTitleViewController: UIViewController {
         } else {
             favoriteBtn.setImage(#imageLiteral(resourceName: "pin"), for: .normal)
         }
-//        if (currentRecipe.isFavorite) {
-//            if let btn = self.favoriteBtn {
-//                btn.setImage(#imageLiteral(resourceName: "pin_Checkmark_On"), for: .normal)
-//            }
-//        } else {
-//            if let btn = self.favoriteBtn {
-//                btn.setImage(#imageLiteral(resourceName: "pin"), for: .normal)
-//            }
-//        }
     }
     
     @IBAction func mealPlanBtnClicked(_ sender: Any) {
@@ -148,14 +111,10 @@ class RecipeTitleViewController: UIViewController {
     }
     
     func setMealPlanIconImg(){
-        if (currentRecipe.isOnMealPlan) {
-            if let btn = self.mealPlanBtn {
-                btn.setBackgroundImage(#imageLiteral(resourceName: "mealPlan_Checkmark_On"), for: .normal)
-            }
+        if (recipeService.isOnMealPlanInFuture(recipe: currentRecipe)) {
+            self.mealPlanBtn.setBackgroundImage(#imageLiteral(resourceName: "mealPlan_Checkmark_On"), for: .normal)
         } else {
-            if let btn = self.mealPlanBtn {
-                btn.setBackgroundImage(#imageLiteral(resourceName: "mealPlan_Add"), for: .normal)
-            }
+            self.mealPlanBtn.setBackgroundImage(#imageLiteral(resourceName: "mealPlan_Add"), for: .normal)
         }
     }
 }
