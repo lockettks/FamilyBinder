@@ -9,7 +9,11 @@
 import UIKit
 import RealmSwift
 
-class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDelegate, MealPlanSelectedDelegate {
+class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SelectDayDelegate, MealPlanSelectedDelegate {
+    @IBOutlet var tableView: UITableView!
+    @IBOutlet var addBtn: UIBarButtonItem!
+    
+    
     var calTVC: CalendarTableViewCell = CalendarTableViewCell()
     let realm = try! Realm()
     let mealPlanService = MealPlanService()
@@ -47,6 +51,8 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
         } else if (longPressGesture.state == UIGestureRecognizerState.began) {
             print("long press on row, at \(indexPath!.row)")
         }
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -80,7 +86,7 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
     }
     
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
         case POSITION_MEALPLAN.SECTION:
             self.performSegue(withIdentifier: "mealPlansSegue", sender: self)
@@ -100,7 +106,7 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
         }
     }
     
-    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         if (indexPath.section == POSITION_DAYS.SECTION) {
             let deselectedRow = Selection()
             deselectedRow.date = days[indexPath.row]
@@ -179,7 +185,7 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
     
     
     // MARK: - Table view data source
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case POSITION_MEALPLAN.SECTION:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell4", for: indexPath) as! MealPlanSelectedTableViewCell
@@ -221,7 +227,7 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
     }
     
     
-    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         if (indexPath.section == POSITION_DAYS.SECTION) {
             return 120
         } else {
@@ -230,7 +236,7 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
     }
     
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         var height:CGFloat
         switch indexPath.section {
         case POSITION_RECIPE.SECTION:
@@ -251,11 +257,11 @@ class AddRecipeToMealPlanTableViewController: UITableViewController, SelectDayDe
     }
     
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 4
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case POSITION_DAYS.SECTION:
             return days.count

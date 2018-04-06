@@ -12,5 +12,6 @@ target 'FamilyBinder' do
     pod 'PromiseKit', '~> 4.0'
     pod 'RealmSwift'
     pod 'SwiftLint'
+    pod 'FanMenu'
 
 end
