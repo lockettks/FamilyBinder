@@ -983,6 +983,7 @@
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="kOC-Sv-cnS">
                                                     <rect key="frame" x="20" y="40.000000000000007" width="374" height="68.666666666666686"/>
+                                                    <gestureRecognizers/>
                                                 </stackView>
                                             </subviews>
                                             <constraints>
