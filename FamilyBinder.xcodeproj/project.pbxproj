@@ -27,8 +27,9 @@
 		954D7ACD1F19D8AE000480A7 /* RecipeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954D7ACC1F19D8AE000480A7 /* RecipeRouter.swift */; };
 		954D7ACF1F19DAD8000480A7 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954D7ACE1F19DAD8000480A7 /* Recipe.swift */; };
 		954F755A20769D120062F995 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954F755920769D120062F995 /* UserService.swift */; };
-		955DFF94207FB98F00043247 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955DFF93207FB98F00043247 /* CircleView.swift */; };
-		955DFF96207FB9BB00043247 /* CircleMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955DFF95207FB9BB00043247 /* CircleMenuController.swift */; };
+		955DFF96207FB9BB00043247 /* CircleButtonService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955DFF95207FB9BB00043247 /* CircleButtonService.swift */; };
+		955DFF9820828BD200043247 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955DFF9720828BD200043247 /* UIImageView.swift */; };
+		955DFF9C20842D1F00043247 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955DFF9B20842D1F00043247 /* CircleButton.swift */; };
 		95628D6A1F70596A00566EF1 /* RealmString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95628D691F70596A00566EF1 /* RealmString.swift */; };
 		95628D6C1F7092FD00566EF1 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95628D6B1F7092FD00566EF1 /* UIButton.swift */; };
 		95628D6E1F7093CC00566EF1 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95628D6D1F7093CC00566EF1 /* UIColor.swift */; };
@@ -76,8 +77,9 @@
 		954D7ACC1F19D8AE000480A7 /* RecipeRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeRouter.swift; sourceTree = "<group>"; };
 		954D7ACE1F19DAD8000480A7 /* Recipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		954F755920769D120062F995 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
-		955DFF93207FB98F00043247 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
-		955DFF95207FB9BB00043247 /* CircleMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleMenuController.swift; sourceTree = "<group>"; };
+		955DFF95207FB9BB00043247 /* CircleButtonService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButtonService.swift; sourceTree = "<group>"; };
+		955DFF9720828BD200043247 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
+		955DFF9B20842D1F00043247 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		95628D691F70596A00566EF1 /* RealmString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmString.swift; sourceTree = "<group>"; };
 		95628D6B1F7092FD00566EF1 /* UIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		95628D6D1F7093CC00566EF1 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
@@ -172,8 +174,8 @@
 		955DFF92207FB95100043247 /* Circle Menu */ = {
 			isa = PBXGroup;
 			children = (
-				955DFF93207FB98F00043247 /* CircleView.swift */,
-				955DFF95207FB9BB00043247 /* CircleMenuController.swift */,
+				955DFF95207FB9BB00043247 /* CircleButtonService.swift */,
+				955DFF9B20842D1F00043247 /* CircleButton.swift */,
 			);
 			name = "Circle Menu";
 			sourceTree = "<group>";
@@ -202,6 +204,7 @@
 				95628D6D1F7093CC00566EF1 /* UIColor.swift */,
 				95628D731F719FBF00566EF1 /* StringHelper.swift */,
 				952F2962203E6890003DFD48 /* UIFont.swift */,
+				955DFF9720828BD200043247 /* UIImageView.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -404,7 +407,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				955DFF94207FB98F00043247 /* CircleView.swift in Sources */,
 				95FA99AE1F50CADF0057B83F /* UIView.swift in Sources */,
 				954D7AB31F198CB3000480A7 /* RecipeDetailViewController.swift in Sources */,
 				95628D741F719FBF00566EF1 /* StringHelper.swift in Sources */,
@@ -416,6 +418,7 @@
 				95CC0CBF1FCFE7CE0034E35D /* RecipeTitleTableViewCell.swift in Sources */,
 				954D7AB11F198CB3000480A7 /* RecipesMasterViewController.swift in Sources */,
 				95628D701F719C9500566EF1 /* IngredientsViewController.swift in Sources */,
+				955DFF9820828BD200043247 /* UIImageView.swift in Sources */,
 				952F2963203E6890003DFD48 /* UIFont.swift in Sources */,
 				956789B01F290E600070FEEB /* RecipeTableViewCell.swift in Sources */,
 				954D7ACB1F199034000480A7 /* SpoonacularAPIManager.swift in Sources */,
@@ -437,7 +440,8 @@
 				956789961F2147D90070FEEB /* MealTypes.swift in Sources */,
 				9567899D1F226DF10070FEEB /* DateHelper.swift in Sources */,
 				954D7ACD1F19D8AE000480A7 /* RecipeRouter.swift in Sources */,
-				955DFF96207FB9BB00043247 /* CircleMenuController.swift in Sources */,
+				955DFF9C20842D1F00043247 /* CircleButton.swift in Sources */,
+				955DFF96207FB9BB00043247 /* CircleButtonService.swift in Sources */,
 				95628D721F719CC600566EF1 /* DirectionsViewController.swift in Sources */,
 				95628D6C1F7092FD00566EF1 /* UIButton.swift in Sources */,
 				952BE9CF1FCB830100662ECA /* CalendarTableViewCell.swift in Sources */,

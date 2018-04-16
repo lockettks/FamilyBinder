@@ -50,23 +50,12 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
             print("Long press on table view, not row")
         } else if (longPressGesture.state == UIGestureRecognizerState.began) {
             print("long press on row, at \(indexPath!.row), location \(p)")
-            //            print("mealTypeFanView is at \(self.mealTypeFanView.frame.origin)")
-//            let horizontalAdjustment = self.mealTypeFanView.frame.width / 2
-//            let verticalAdjustment = self.mealTypeFanView.frame.height / 2
-//            let fanMenuLocation = CGPoint(x: p.x - horizontalAdjustment, y: p.y - verticalAdjustment)
-//            print("mealTypeFanView is \(fanMenuLocation)")
-//            self.mealTypeFanView.frame.origin = fanMenuLocation
-            //            self.mealTypeFanView.isHidden = false
-            //            self.mealTypeFanView.open()
-            
-            let circleView = CircleView(frame: CGRect(x: p.x, y: p.y, width: 50.0, height: 50.0))
-            view.addSubview(circleView)
-            /*
-             UIView.animateKeyframes(withDuration: 0.25, delay: 0.0, options: UIViewKeyframeAnimationOptions(rawValue: 7), animations: {
-             self.infoTextLabelView.frame.origin.y+=200
-             
-             },completion: nil)
-             */
+
+            let mealCircleSize = CGRect(x: p.x, y: p.y, width: 50.0, height: 50.0)
+            let mealCircleButton = CircleButton(frame: mealCircleSize, fillColor: .green, mealType: .lunch)
+
+
+            view.addSubview(mealCircleButton)
         }
     }
     
