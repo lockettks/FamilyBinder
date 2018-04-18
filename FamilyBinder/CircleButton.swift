@@ -13,7 +13,7 @@ class CircleButton: UIButton {
     var fillColor: UIColor
     var mealType: MealType
     
-    let circleViewService = CircleButtonService()
+    let circleViewService = CircleMenuService()
     
     init(frame: CGRect, fillColor: UIColor, mealType: MealType) {
         self.circleFrame = frame

@@ -39,13 +39,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FamilyBinder/AddRecipeToMealPlanTableViewController.swift"
-            timestampString = "545541929.924504"
+            timestampString = "545718035.868251"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
-            landmarkName = "dayCollectionCellSelected(selectedDay:)"
-            landmarkType = "7">
+            startingLineNumber = "131"
+            endingLineNumber = "131"
+            landmarkName = "AddRecipeToMealPlanTableViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

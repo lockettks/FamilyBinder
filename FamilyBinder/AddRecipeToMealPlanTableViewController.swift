@@ -29,6 +29,10 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
     var days = [Date]()
     var selectedDays = [Selection]()
     
+    var mealTypeCircles = [CircleButton]()
+    let mealTypeCircleDiameter = CGFloat(50.0)
+    let circleMenuRadius = CGFloat(75.0)
+    let circleMenuService = CircleMenuService()
     convenience init(){
         self.init(nibName: nil, bundle: nil)
     }
@@ -50,12 +54,18 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
             print("Long press on table view, not row")
         } else if (longPressGesture.state == UIGestureRecognizerState.began) {
             print("long press on row, at \(indexPath!.row), location \(p)")
-
-            let mealCircleSize = CGRect(x: p.x, y: p.y, width: 50.0, height: 50.0)
-            let mealCircleButton = CircleButton(frame: mealCircleSize, fillColor: .green, mealType: .lunch)
-
-
-            view.addSubview(mealCircleButton)
+            
+            // Meal Time Circle Menu
+            let mealTypeCircleSize = CGRect(x: p.x, y: p.y, width: mealTypeCircleDiameter, height: mealTypeCircleDiameter)
+            
+            for (index, mealType) in MealType.allTypes.enumerated() {
+                let mealTypeCircleButton = CircleButton(frame: mealTypeCircleSize, fillColor: .lightGray, mealType: mealType)
+                
+                mealTypeCircleButton.center = circleMenuService.getCircleLocation(menuRadius: circleMenuRadius, anchorPoint: p, totalCircleCount: Float(MealType.allTypes.count), circleInstanceNumber: Float(index))
+                
+                view.addSubview(mealTypeCircleButton)
+            }
+            
         }
     }
     
@@ -213,7 +223,7 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
             
             let existingMealsForDay: [ScheduledMeal]
             existingMealsForDay = Array(selectedMealPlan.meals.filter { $0.scheduledDate.withoutTime() == self.days[indexPath.row].withoutTime() })
-
+            
             cell.initWithModel(dayHeadline: days[indexPath.row], existingMeals: existingMealsForDay)
             
             if days[indexPath.row] >= Date() {
