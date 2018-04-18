@@ -61,7 +61,7 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
             for (index, mealType) in MealType.allTypes.enumerated() {
                 let mealTypeCircleButton = CircleButton(frame: mealTypeCircleSize, fillColor: .lightGray, mealType: mealType)
                 
-                mealTypeCircleButton.center = circleMenuService.getCircleLocation(menuRadius: circleMenuRadius, anchorPoint: p, totalCircleCount: Float(MealType.allTypes.count), circleInstanceNumber: Float(index))
+                mealTypeCircleButton.center = circleMenuService.getCircleLocation(menuRadius: Float(circleMenuRadius), anchorPoint: p, totalCircleCount: Float(MealType.allTypes.count), circleInstanceNumber: Float(index))
                 
                 view.addSubview(mealTypeCircleButton)
             }
