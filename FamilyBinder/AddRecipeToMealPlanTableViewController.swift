@@ -29,7 +29,7 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
     var days = [Date]()
     var selectedDays = [Selection]()
     
-    var mealTypeCircles = [CircleButton]()
+    var mealTypeCircleButtons = [CircleButton]()
     let mealTypeCircleDiameter = CGFloat(50.0)
     let circleMenuRadius = CGFloat(75.0)
     let circleMenuService = CircleMenuService()
@@ -55,18 +55,45 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
         } else if (longPressGesture.state == UIGestureRecognizerState.began) {
             print("long press on row, at \(indexPath!.row), location \(p)")
             
+            let tapOutsideCircleMenu = UITapGestureRecognizer(target: self, action: #selector(dismissCircleMenu))
+            self.view.addGestureRecognizer(tapOutsideCircleMenu)
+            
             // Meal Time Circle Menu
             let mealTypeCircleSize = CGRect(x: p.x, y: p.y, width: mealTypeCircleDiameter, height: mealTypeCircleDiameter)
             
             for (index, mealType) in MealType.allTypes.enumerated() {
                 let mealTypeCircleButton = CircleButton(frame: mealTypeCircleSize, fillColor: .lightGray, mealType: mealType)
+                mealTypeCircleButtons.append(mealTypeCircleButton)
                 
                 mealTypeCircleButton.center = circleMenuService.getCircleLocation(menuRadius: Float(circleMenuRadius), anchorPoint: p, totalCircleCount: Float(MealType.allTypes.count), circleInstanceNumber: Float(index))
                 
                 view.addSubview(mealTypeCircleButton)
             }
-            
+        } else if (longPressGesture.state == UIGestureRecognizerState.ended) {
+            dismissCircleMenu()
         }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print("touche began")
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print("touch moved")
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if mealTypeCircleButtons.count > 0 {
+           dismissCircleMenu()
+        }
+    }
+    
+    @objc func dismissCircleMenu(){
+        print("menu closed")
+        for mealTypeCircleButton in mealTypeCircleButtons {
+            mealTypeCircleButton.removeFromSuperview()
+        }
+        mealTypeCircleButtons.removeAll()
     }
     
     override func viewWillAppear(_ animated: Bool) {
