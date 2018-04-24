@@ -9,29 +9,20 @@
 import UIKit
 
 class CircleButton: UIView {
-    //var circleFrame: CGRect
     var radius: CGFloat
     var circleCenter: CGPoint
     var fillColor: CGColor
     var mealType: MealType
     
-    //var circlePath: UIBezierPath
-    
     let circleViewService = CircleMenuService()
     
     init(radius: CGFloat, frame: CGRect, fillColor: CGColor, mealType: MealType) {
-        //self.circleFrame = frame
         self.radius = radius
         self.circleCenter = CGPoint(x: radius, y: radius)
         self.fillColor = fillColor
         self.mealType = mealType
         
-        
-        //self.circlePath = UIBezierPath(arcCenter: self.circleCenter, radius: self.radius, startAngle: CGFloat(0), endAngle:CGFloat(Double.pi * 2), clockwise: true).cgPath
-        
         super.init(frame: frame)
-        
-//        self.frame = self.circleFrame
         
         let circleLayer = CAShapeLayer()
         circleLayer.path = UIBezierPath(arcCenter: self.circleCenter, radius: self.radius, startAngle: CGFloat(0), endAngle:CGFloat(Double.pi * 2), clockwise: true).cgPath
@@ -46,7 +37,6 @@ class CircleButton: UIView {
         let circleImage = circleViewService.getImageForMealTypeOn(mealType: self.mealType)
         imageView.image = circleImage
         self.addSubview(imageView)
-
     }
 
     
