@@ -76,7 +76,7 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
             let testColors = [UIColor.lightGray.cgColor, UIColor.blue.cgColor,UIColor.cyan.cgColor, UIColor.brown.cgColor]
             
             for (index, mealType) in MealType.allTypes.enumerated() {
-                let mealTypeCircleButton = CircleButton(frame: mealTypeCircleFrame, fillColor: testColors[index], mealType: mealType, radius: mealTypeCircleDiameter/2)
+                let mealTypeCircleButton = CircleButton(radius: mealTypeCircleDiameter/2, frame: mealTypeCircleFrame, fillColor: testColors[index], mealType: mealType)
                 mealTypeCircleButtons.append(mealTypeCircleButton)
                 
                 mealTypeCircleButton.center = circleMenuService.getCircleLocation(menuRadius: Float(circleMenuRadius), anchorPoint: p, totalCircleCount: Float(MealType.allTypes.count), circleInstanceNumber: Float(index))
