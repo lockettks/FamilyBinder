@@ -44,21 +44,18 @@ class CircleButton: UIView {
         */
         
         self.layer.addSublayer(shapeLayer)
-
+        var imageView: UIImageView
+        imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: self.frame.width * 0.6, height: self.frame.height * 0.6))
+        imageView.center = circleCenter
+        imageView.contentMode = .scaleAspectFit
         let circleImage = circleViewService.getImageForMealTypeOn(mealType: self.mealType)
-//        self.setImage(circleImage, for: .normal)
-//        self.addTarget(self, action: #selector(onPress), for: .touchUpInside)
+        imageView.image = circleImage
+        self.addSubview(imageView)
+
     }
-    /*
-     override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
-     return UIBezierPath(ovalIn: bounds).contains(point)
-     }
- */
+
     
     override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
-//        print("\n circlePath \(self.circlePath) contains point: \(point)")
-//        return UIBezierPath(ovalIn: self.bounds).contains(point)
-//        return self.circlePath.contains(point)
         return UIBezierPath(ovalIn: self.frame).contains(point)
     }
     
@@ -66,9 +63,5 @@ class CircleButton: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-//    @objc func onPress(){
-//        print("\(self.mealType.displayName()) Button Pressed")
-//    }
 
 }

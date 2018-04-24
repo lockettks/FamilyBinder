@@ -90,30 +90,18 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
             
             print("\n\ncurrent position: \(p)")
             
-//            let convertedPosition = mealTypeCircleButtons[0].convert(p, to: view)
-//            let convertedPosition = view.convert(p, to: mealTypeCircleButtons[0]) //SUCCESS within the button's radus of start point
+            // TODO:  Remove need for adjusting position
             let convertedPosition = CGPoint(x: p.x, y: p.y + 64)
             print("converted current position: \(convertedPosition)")
 
             print("button frame: \(mealTypeCircleButtons[0].frame)")
-            
-            
-//            let isPointOnButton = mealTypeCircleButtons[0].frame.contains(convertedPosition) // SUCCESS-- but for rect, not circle
-//            let isPointOnButton = mealTypeCircleButtons[0].bounds.contains(p)
-//            let isPointOnButton = mealTypeCircleButtons[0].bounds.contains(convertedPosition) //success
-            
-            //Using over-ridden method
-            let isPointOnButton = mealTypeCircleButtons[0].point(inside: convertedPosition, with: nil)
-//            let isPointOnButton = mealTypeCircleButtons[0].point(inside: p, with: nil)
 
-            
+            let isPointOnButton = mealTypeCircleButtons[0].point(inside: convertedPosition, with: nil)
             print("Is on button? \(isPointOnButton)")
             
             if isPointOnButton {
                 print("-------- SUCCESSSSSSSSSSSSS! --------")
             }
-            
-
         }
         else if (longPressGesture.state == UIGestureRecognizerState.ended) {
             
