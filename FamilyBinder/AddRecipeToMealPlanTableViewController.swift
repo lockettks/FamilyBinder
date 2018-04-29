@@ -73,17 +73,18 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
 //            let circleMenuFrame = CGRect(x: p.x, y: p.y, width: 200, height: 200)
             
             let testColors = [UIColor.lightGray.cgColor, UIColor.blue.cgColor,UIColor.cyan.cgColor, UIColor.brown.cgColor]
+            var mealCircleIds = [String]()
             
             var mealCircleImages = [UIImage]()
             for mealType in MealType.allTypes {
+                mealCircleIds.append(mealType.rawValue)
                 let mealCircleImage = circleMenuService.getImageForMealTypeOn(mealType: mealType)
                 mealCircleImages.append(mealCircleImage)
             }
             
-            mealCircleMenuView = CircleMenuView(touchPoint: adjustedPosition, fillColors: testColors, circleImages: mealCircleImages)
+            mealCircleMenuView = CircleMenuView(touchPoint: adjustedPosition, ids: mealCircleIds, fillColors: testColors, circleImages: mealCircleImages)
             if let menu = mealCircleMenuView {
                 self.view.addSubview(menu)
-                print("added")
             }
             
             /*
@@ -105,11 +106,11 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
             let currentPositionX = p.x
             let currentPositionY = p.y
             
-            print("\n\ncurrent position: \(p)")
+//            print("\n\ncurrent position: \(p)")
             
             // TODO:  Remove need for adjusting position
             let adjustedPosition = CGPoint(x: p.x, y: p.y + 64)
-            print("adjusted current position: \(adjustedPosition)")
+//            print("adjusted current position: \(adjustedPosition)")
             
             if let menu = mealCircleMenuView {
                 let convertedPosition = view.convert(adjustedPosition, to: menu)
@@ -128,6 +129,15 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
         else if (longPressGesture.state == UIGestureRecognizerState.ended) {
             
             print("final position: \(p)")
+            let adjustedPosition = CGPoint(x: p.x, y: p.y + 64)
+            
+            if let menu = mealCircleMenuView {
+                let convertedPosition = view.convert(adjustedPosition, to: menu)
+                if let selectedMealButton = menu.touchEnded(finalPosition: convertedPosition)
+                {
+                    print("\n--->selected meal type \(selectedMealButton.id)")
+                }
+            }
             //            let adjustedPosition = view.convert(p, to: mealTypeCircleButtons[0])
             //            print("converted final position: \(adjustedPosition)")
             //            let isPointOnButton = mealTypeCircleButtons[0].point(inside: adjustedPosition, with: nil)

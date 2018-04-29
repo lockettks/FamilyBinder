@@ -9,15 +9,16 @@
 import UIKit
 
 class CircleButton: UIView {
+    var id: String
     var radius: CGFloat
     var circleCenter: CGPoint
     var fillColor: CGColor
-//    var mealType: MealType
     var circleImage: UIImage?
     
     let circleViewService = CircleMenuService()
     
-    init(frame: CGRect, fillColor: CGColor, circleImage: UIImage?) {
+    init(id: String, frame: CGRect, fillColor: CGColor, circleImage: UIImage?) {
+        self.id = id
         self.radius = frame.width/2
         self.circleCenter = CGPoint(x: radius, y: radius)
         self.fillColor = fillColor
