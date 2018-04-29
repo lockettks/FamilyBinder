@@ -37,6 +37,8 @@ class CircleMenuView: UIView {
         
         super.init(frame: menuFrame)
         
+        self.backgroundColor = UIColor.yellow
+        
         for (index, fillColor) in self.fillColors.enumerated() {
             var circleButton : CircleButton
             let circleFrame = CGRect(x: 0, y: 0, width: self.circleRadius * 2, height: self.circleRadius * 2)
@@ -52,8 +54,11 @@ class CircleMenuView: UIView {
             print("circle center \(circleButton.center)")
             
             self.addSubview(circleButton)
-            self.backgroundColor = UIColor.brown
         }
+    }
+    
+    func touchMoved(newPosition: CGPoint) {
+        print("new position \(newPosition)")
     }
     
     required init?(coder aDecoder: NSCoder) {

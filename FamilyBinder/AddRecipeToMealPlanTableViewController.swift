@@ -31,10 +31,8 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
     
     let circleMenuService = CircleMenuService()
     var mealTypeCircleButtons = [CircleButton]()
-//    let mealTypeCircleDiameter = CGFloat(50.0)
-//    let circleMenuRadius = CGFloat(75.0)
-    
-    
+    var mealCircleMenuView : CircleMenuView?
+
     var firstPosition = CGPoint()
     
     
@@ -63,7 +61,7 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
         } else if (longPressGesture.state == UIGestureRecognizerState.began) {
             firstPosition = p
             
-            let convertedPosition = CGPoint(x: p.x, y: p.y + 64)
+            let adjustedPosition = CGPoint(x: p.x, y: p.y + 64)
             
             print("long press on row, at \(indexPath!.row), location \(p)")
             
@@ -82,10 +80,11 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
                 mealCircleImages.append(mealCircleImage)
             }
             
-            let mealCircleMenuView = CircleMenuView(touchPoint: convertedPosition, fillColors: testColors, circleImages: mealCircleImages)
-            
-            self.view.addSubview(mealCircleMenuView)
-            print("added")
+            mealCircleMenuView = CircleMenuView(touchPoint: adjustedPosition, fillColors: testColors, circleImages: mealCircleImages)
+            if let menu = mealCircleMenuView {
+                self.view.addSubview(menu)
+                print("added")
+            }
             
             /*
              let circleImage = circleViewService.getImageForMealTypeOn(mealType: self.mealType)
@@ -109,12 +108,17 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
             print("\n\ncurrent position: \(p)")
             
             // TODO:  Remove need for adjusting position
-            let convertedPosition = CGPoint(x: p.x, y: p.y + 64)
-            print("converted current position: \(convertedPosition)")
+            let adjustedPosition = CGPoint(x: p.x, y: p.y + 64)
+            print("adjusted current position: \(adjustedPosition)")
+            
+            if let menu = mealCircleMenuView {
+                let convertedPosition = view.convert(adjustedPosition, to: menu)
+                menu.touchMoved(newPosition: convertedPosition)
+            }
             
             //            print("button frame: \(mealTypeCircleButtons[0].frame)")
             
-            //            let isPointOnButton = mealTypeCircleButtons[0].point(inside: convertedPosition, with: nil)
+            //            let isPointOnButton = mealTypeCircleButtons[0].point(inside: adjustedPosition, with: nil)
             //            print("Is on button? \(isPointOnButton)")
             
             //            if isPointOnButton {
@@ -124,9 +128,9 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
         else if (longPressGesture.state == UIGestureRecognizerState.ended) {
             
             print("final position: \(p)")
-            //            let convertedPosition = view.convert(p, to: mealTypeCircleButtons[0])
-            //            print("converted final position: \(convertedPosition)")
-            //            let isPointOnButton = mealTypeCircleButtons[0].point(inside: convertedPosition, with: nil)
+            //            let adjustedPosition = view.convert(p, to: mealTypeCircleButtons[0])
+            //            print("converted final position: \(adjustedPosition)")
+            //            let isPointOnButton = mealTypeCircleButtons[0].point(inside: adjustedPosition, with: nil)
             //            print("button frame \(mealTypeCircleButtons[0].frame)")
             //            print("Is on button? \(isPointOnButton)")
             //            if isPointOnButton {
@@ -155,8 +159,8 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
     @objc func dismissCircleMenu(){
         print("menu closed")
         
-        for subview in self.view.subviews where subview is CircleMenuView {
-            subview.removeFromSuperview()
+        if let menu = mealCircleMenuView {
+            menu.removeFromSuperview()
         }
         
         //        for mealTypeCircleButton in mealTypeCircleButtons {
