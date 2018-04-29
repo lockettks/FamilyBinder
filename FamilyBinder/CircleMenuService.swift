@@ -14,8 +14,10 @@ class CircleMenuService {
     
     
     func getCircleLocation(menuRadius: Float, anchorPoint: CGPoint, totalCircleCount: Float, circleInstanceNumber: Float) -> CGPoint {
-        let x = CGFloat(Float(anchorPoint.x) + menuRadius * cosf(2 * circleInstanceNumber * Float.pi / totalCircleCount - Float.pi / 2))
-        let y = CGFloat(Float(anchorPoint.y) + menuRadius + menuRadius * sinf(2 * circleInstanceNumber * Float.pi / totalCircleCount - Float.pi / 2))
+//        let x = CGFloat((Float(anchorPoint.x) + menuRadius * cosf(2 * circleInstanceNumber * Float.pi / totalCircleCount - Float.pi / 2))+25)
+//        let y = CGFloat((Float(anchorPoint.y) + menuRadius + menuRadius * sinf(2 * circleInstanceNumber * Float.pi / totalCircleCount - Float.pi / 2))-25)
+                let x = CGFloat(Float(anchorPoint.x) + menuRadius * cosf(2 * circleInstanceNumber * Float.pi / totalCircleCount - Float.pi / 2))
+                let y = CGFloat(Float(anchorPoint.y) + menuRadius + menuRadius * sinf(2 * circleInstanceNumber * Float.pi / totalCircleCount - Float.pi / 2))
         return CGPoint(x: x, y: y)
     }
     

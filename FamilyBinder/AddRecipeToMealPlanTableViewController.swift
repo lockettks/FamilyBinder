@@ -29,10 +29,12 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
     var days = [Date]()
     var selectedDays = [Selection]()
     
-    var mealTypeCircleButtons = [CircleButton]()
-    let mealTypeCircleDiameter = CGFloat(50.0)
-    let circleMenuRadius = CGFloat(75.0)
     let circleMenuService = CircleMenuService()
+    var mealTypeCircleButtons = [CircleButton]()
+//    let mealTypeCircleDiameter = CGFloat(50.0)
+//    let circleMenuRadius = CGFloat(75.0)
+    
+    
     var firstPosition = CGPoint()
     
     
@@ -61,29 +63,45 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
         } else if (longPressGesture.state == UIGestureRecognizerState.began) {
             firstPosition = p
             
+            let convertedPosition = CGPoint(x: p.x, y: p.y + 64)
             
             print("long press on row, at \(indexPath!.row), location \(p)")
-            
-            
             
             let tapOutsideCircleMenu = UITapGestureRecognizer(target: self, action: #selector(dismissCircleMenu))
             self.view.addGestureRecognizer(tapOutsideCircleMenu)
             
             // Meal Time Circle Menu
-            //TODO:  restructure all this
-            let mealTypeCircleFrame = CGRect(x: p.x, y: p.y, width: mealTypeCircleDiameter, height: mealTypeCircleDiameter)
+            //let mealTypeCircleFrame = CGRect(x: p.x, y: p.y, width: mealTypeCircleDiameter, height: mealTypeCircleDiameter)
+//            let circleMenuFrame = CGRect(x: p.x, y: p.y, width: 200, height: 200)
             
             let testColors = [UIColor.lightGray.cgColor, UIColor.blue.cgColor,UIColor.cyan.cgColor, UIColor.brown.cgColor]
             
-            for (index, mealType) in MealType.allTypes.enumerated() {
-                let mealTypeCircleButton = CircleButton(radius: mealTypeCircleDiameter/2, frame: mealTypeCircleFrame, fillColor: testColors[index], mealType: mealType)
-                mealTypeCircleButtons.append(mealTypeCircleButton)
-                
-                mealTypeCircleButton.center = circleMenuService.getCircleLocation(menuRadius: Float(circleMenuRadius), anchorPoint: p, totalCircleCount: Float(MealType.allTypes.count), circleInstanceNumber: Float(index))
-                
-                view.addSubview(mealTypeCircleButton)
+            var mealCircleImages = [UIImage]()
+            for mealType in MealType.allTypes {
+                let mealCircleImage = circleMenuService.getImageForMealTypeOn(mealType: mealType)
+                mealCircleImages.append(mealCircleImage)
             }
-
+            
+            let mealCircleMenuView = CircleMenuView(touchPoint: convertedPosition, fillColors: testColors, circleImages: mealCircleImages)
+            
+            self.view.addSubview(mealCircleMenuView)
+            print("added")
+            
+            /*
+             let circleImage = circleViewService.getImageForMealTypeOn(mealType: self.mealType)
+             imageView.image = circleImage
+             self.addSubview(imageView)
+             */
+            
+            //            for (index, mealType) in MealType.allTypes.enumerated() {
+            //                let mealTypeCircleButton = CircleButton(radius: mealTypeCircleDiameter/2, frame: mealTypeCircleFrame, fillColor: testColors[index], mealType: mealType)
+            //                mealTypeCircleButtons.append(mealTypeCircleButton)
+            //
+            //                mealTypeCircleButton.center = circleMenuService.getCircleLocation(menuRadius: Float(circleMenuRadius), anchorPoint: p, totalCircleCount: Float(MealType.allTypes.count), circleInstanceNumber: Float(index))
+            //
+            //                view.addSubview(mealTypeCircleButton)
+            //            }
+            
         } else if (longPressGesture.state == .changed) {
             let currentPositionX = p.x
             let currentPositionY = p.y
@@ -93,29 +111,27 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
             // TODO:  Remove need for adjusting position
             let convertedPosition = CGPoint(x: p.x, y: p.y + 64)
             print("converted current position: \(convertedPosition)")
-
-            print("button frame: \(mealTypeCircleButtons[0].frame)")
-
-            let isPointOnButton = mealTypeCircleButtons[0].point(inside: convertedPosition, with: nil)
-            print("Is on button? \(isPointOnButton)")
             
-            if isPointOnButton {
-                print("-------- SUCCESSSSSSSSSSSSS! --------")
-            }
+            //            print("button frame: \(mealTypeCircleButtons[0].frame)")
+            
+            //            let isPointOnButton = mealTypeCircleButtons[0].point(inside: convertedPosition, with: nil)
+            //            print("Is on button? \(isPointOnButton)")
+            
+            //            if isPointOnButton {
+            //                print("-------- SUCCESSSSSSSSSSSSS! --------")
+            //            }
         }
         else if (longPressGesture.state == UIGestureRecognizerState.ended) {
             
             print("final position: \(p)")
-            let convertedPosition = view.convert(p, to: mealTypeCircleButtons[0])
-            print("converted final position: \(convertedPosition)")
-
-            let isPointOnButton = mealTypeCircleButtons[0].point(inside: convertedPosition, with: nil)
-
-            print("button frame \(mealTypeCircleButtons[0].frame)")
-            print("Is on button? \(isPointOnButton)")
-            if isPointOnButton {
-                print("-------- SUCCESSSSSSSSSSSSS! --------")
-            }
+            //            let convertedPosition = view.convert(p, to: mealTypeCircleButtons[0])
+            //            print("converted final position: \(convertedPosition)")
+            //            let isPointOnButton = mealTypeCircleButtons[0].point(inside: convertedPosition, with: nil)
+            //            print("button frame \(mealTypeCircleButtons[0].frame)")
+            //            print("Is on button? \(isPointOnButton)")
+            //            if isPointOnButton {
+            //                print("-------- SUCCESSSSSSSSSSSSS! --------")
+            //            }
             
             /*
              for (UIView *row in self.rows) {
@@ -125,7 +141,7 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
              }
              }
              }
- */
+             */
             dismissCircleMenu()
         }
     }
@@ -138,10 +154,15 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
     
     @objc func dismissCircleMenu(){
         print("menu closed")
-        for mealTypeCircleButton in mealTypeCircleButtons {
-            mealTypeCircleButton.removeFromSuperview()
+        
+        for subview in self.view.subviews where subview is CircleMenuView {
+            subview.removeFromSuperview()
         }
-        mealTypeCircleButtons.removeAll()
+        
+        //        for mealTypeCircleButton in mealTypeCircleButtons {
+        //            mealTypeCircleButton.removeFromSuperview()
+        //        }
+        //        mealTypeCircleButtons.removeAll()
     }
     
     override func viewWillAppear(_ animated: Bool) {
