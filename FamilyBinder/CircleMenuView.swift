@@ -50,9 +50,7 @@ class CircleMenuView: UIView {
     }
     
     func touchMoved(newPosition: CGPoint) {
-        if let selectedButton = isTouchingCircle(position: newPosition) {
-            print("Touched \(selectedButton.id)")
-        }
+        _ = isTouchingCircle(position: newPosition)
     }
     
     func touchEnded(finalPosition: CGPoint) -> CircleButton? {
@@ -65,7 +63,9 @@ class CircleMenuView: UIView {
     
     func isTouchingCircle(position: CGPoint) -> CircleButton? {
         for circle in self.circleButtons {
+            circle.setInactive()
             if circle.point(inside: position, with: nil) {
+                circle.setActive()
                 return circle
             }
         }

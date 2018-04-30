@@ -69,7 +69,7 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
             self.view.addGestureRecognizer(tapOutsideCircleMenu)
             
             // Meal Time Circle Menu
-            let testColors = [UIColor.lightGray.cgColor, UIColor.blue.cgColor,UIColor.cyan.cgColor, UIColor.brown.cgColor]
+            let testColors = [UIColor.lightGray.cgColor, UIColor.lightGray.cgColor,UIColor.lightGray.cgColor, UIColor.lightGray.cgColor]
             var mealCircleIds = [String]()
             
             var mealCircleImages = [UIImage]()

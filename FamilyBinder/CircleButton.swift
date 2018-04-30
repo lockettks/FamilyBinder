@@ -14,6 +14,7 @@ class CircleButton: UIView {
     var circleCenter: CGPoint
     var fillColor: CGColor
     var circleImage: UIImage?
+    var circleLayer:CAShapeLayer
     
     let circleViewService = CircleMenuService()
     
@@ -23,10 +24,11 @@ class CircleButton: UIView {
         self.circleCenter = CGPoint(x: radius, y: radius)
         self.fillColor = fillColor
 //        self.mealType = mealType
+        self.circleLayer = CAShapeLayer()
         
         super.init(frame: frame)
         
-        let circleLayer = CAShapeLayer()
+//        let circleLayer = CAShapeLayer()
         circleLayer.path = UIBezierPath(arcCenter: self.circleCenter, radius: self.radius, startAngle: CGFloat(0), endAngle:CGFloat(Double.pi * 2), clockwise: true).cgPath
         circleLayer.fillColor = self.fillColor
         self.layer.addSublayer(circleLayer)
@@ -45,6 +47,14 @@ class CircleButton: UIView {
 //        let circleImage = circleViewService.getImageForMealTypeOn(mealType: self.mealType)
 //        imageView.image = circleImage
 //        self.addSubview(imageView)
+    }
+    
+    func setActive(){
+        self.circleLayer.fillColor =  UIColor.red.cgColor
+    }
+    
+    func setInactive(){
+        self.circleLayer.fillColor =  self.fillColor
     }
 
     
