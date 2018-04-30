@@ -24,9 +24,7 @@ class CircleMenuView: UIView {
     init(touchPoint: CGPoint, ids: [String], fillColors: [CGColor], circleImages: [UIImage]?, circleRadius: CGFloat = 25.0) {
         let menuFrame = CGRect(x: touchPoint.x-self.frameWidth/2, y: touchPoint.y-self.frameHeight/2, width: self.frameWidth, height: self.frameHeight)
         let menuCenter = CGPoint(x: frameWidth/2, y: frameHeight/2)
-        print("menu center \(menuCenter)")
         self.circleRadius = circleRadius
-
         self.fillColors = fillColors
         if let images = circleImages {
             if images.count == fillColors.count {
@@ -35,11 +33,8 @@ class CircleMenuView: UIView {
                 print("Missing images for circle menu")
             }
         }
-        
         super.init(frame: menuFrame)
-        
         self.backgroundColor = UIColor.yellow
-        
         for (index, fillColor) in self.fillColors.enumerated() {
             var circleButton : CircleButton
             let circleFrame = CGRect(x: 0, y: 0, width: self.circleRadius * 2, height: self.circleRadius * 2)
@@ -49,34 +44,26 @@ class CircleMenuView: UIView {
                 circleButton = CircleButton(id: ids[index], frame: circleFrame, fillColor: fillColor, circleImage: nil)
             }
             self.circleButtons.append(circleButton)
-            
             circleButton.center = circleMenuService.getCircleLocation(menuRadius: self.menuRadius, anchorPoint: menuCenter, totalCircleCount: Float(self.fillColors.count), circleInstanceNumber: Float(index))
-            
-            print("circle frame \(circleButton.frame)")
-            
             self.addSubview(circleButton)
         }
     }
     
-    func touchMoved(newPosition: CGPoint) -> CircleButton? {
-        print("menu view position \(newPosition)")
+    func touchMoved(newPosition: CGPoint) {
         if let selectedButton = isTouchingCircle(position: newPosition) {
-            print("-------- SUCCESSSSSSSSSSSSS! -------- selected \(selectedButton.fillColor)")
-            return selectedButton
+            print("Touched \(selectedButton.id)")
         }
-        return nil
     }
     
     func touchEnded(finalPosition: CGPoint) -> CircleButton? {
         if let selectedButton = isTouchingCircle(position: finalPosition) {
-            print("-------- SUCCESSSSSSSSSSSSS! -------- selected \(selectedButton.fillColor)")
+            print("\nSelected \(selectedButton.id)")
             return selectedButton
         }
         return nil
     }
     
     func isTouchingCircle(position: CGPoint) -> CircleButton? {
-
         for circle in self.circleButtons {
             if circle.point(inside: position, with: nil) {
                 return circle
@@ -88,13 +75,4 @@ class CircleMenuView: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    /*
-     // Only override draw() if you perform custom drawing.
-     // An empty implementation adversely affects performance during animation.
-     override func draw(_ rect: CGRect) {
-     // Drawing code
-     }
-     */
-    
 }

@@ -176,9 +176,9 @@
 		955DFF92207FB95100043247 /* Circle Menu */ = {
 			isa = PBXGroup;
 			children = (
-				955DFF95207FB9BB00043247 /* CircleMenuService.swift */,
-				955DFF9B20842D1F00043247 /* CircleButton.swift */,
 				9538411C208C117D007E79A1 /* CircleMenuView.swift */,
+				955DFF9B20842D1F00043247 /* CircleButton.swift */,
+				955DFF95207FB9BB00043247 /* CircleMenuService.swift */,
 			);
 			name = "Circle Menu";
 			sourceTree = "<group>";
