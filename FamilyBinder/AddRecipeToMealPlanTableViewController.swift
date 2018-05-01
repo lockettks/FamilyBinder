@@ -32,8 +32,7 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
     let circleMenuService = CircleMenuService()
     var mealTypeCircleButtons = [CircleButton]()
     var mealCircleMenuView : CircleMenuView?
-
-    var firstPosition = CGPoint()
+    var selectedRow : IndexPath?
     
     
     convenience init(){
@@ -54,34 +53,35 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
     
     @objc func handleLongPress(longPressGesture:UILongPressGestureRecognizer){
         let p = longPressGesture.location(in: self.tableView)
-        
-        let indexPath = self.tableView.indexPathForRow(at: p)
-        if indexPath == nil {
+
+        if self.tableView.indexPathForRow(at: p) == nil { //TODO:  Allow long press on collection cells too
             print("Long press on table view, not row")
         } else if (longPressGesture.state == UIGestureRecognizerState.began) {
-            firstPosition = p
-            
-            let adjustedPosition = CGPoint(x: p.x, y: p.y + 64)
-            
-            print("long press on row, at \(indexPath!.row), location \(p)")
-            
-            let tapOutsideCircleMenu = UITapGestureRecognizer(target: self, action: #selector(dismissCircleMenu))
-            self.view.addGestureRecognizer(tapOutsideCircleMenu)
-            
-            // Meal Time Circle Menu
-            let testColors = [UIColor.lightGray.cgColor, UIColor.lightGray.cgColor,UIColor.lightGray.cgColor, UIColor.lightGray.cgColor]
-            var mealCircleIds = [String]()
-            
-            var mealCircleImages = [UIImage]()
-            for mealType in MealType.allTypes {
-                mealCircleIds.append(mealType.rawValue)
-                let mealCircleImage = circleMenuService.getImageForMealTypeOn(mealType: mealType)
-                mealCircleImages.append(mealCircleImage)
-            }
-            
-            mealCircleMenuView = CircleMenuView(touchPoint: adjustedPosition, ids: mealCircleIds, fillColors: testColors, circleImages: mealCircleImages)
-            if let menu = mealCircleMenuView {
-                self.view.addSubview(menu)
+            selectedRow = self.tableView.indexPathForRow(at: p)
+            if let selectedRow = selectedRow {
+                
+                let adjustedPosition = CGPoint(x: p.x, y: p.y + 64)
+                
+                print("long press began at row \(selectedRow.row) on date \(days[selectedRow.row]), location \(p)")
+                
+                let tapOutsideCircleMenu = UITapGestureRecognizer(target: self, action: #selector(dismissCircleMenu))
+                self.view.addGestureRecognizer(tapOutsideCircleMenu)
+                
+                // Meal Time Circle Menu
+                let testColors = [UIColor.lightGray.cgColor, UIColor.lightGray.cgColor,UIColor.lightGray.cgColor, UIColor.lightGray.cgColor]
+                var mealCircleIds = [String]()
+                
+                var mealCircleImages = [UIImage]()
+                for mealType in MealType.allTypes {
+                    mealCircleIds.append(mealType.rawValue)
+                    let mealCircleImage = circleMenuService.getImageForMealTypeOn(mealType: mealType)
+                    mealCircleImages.append(mealCircleImage)
+                }
+                
+                mealCircleMenuView = CircleMenuView(touchPoint: adjustedPosition, ids: mealCircleIds, fillColors: testColors, circleImages: mealCircleImages)
+                if let menu = mealCircleMenuView {
+                    self.view.addSubview(menu)
+                }
             }
             
         } else if (longPressGesture.state == .changed) {
@@ -94,18 +94,27 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
             }
         }
         else if (longPressGesture.state == UIGestureRecognizerState.ended) {
-            
-            print("final position: \(p)")
-            let adjustedPosition = CGPoint(x: p.x, y: p.y + 64)
-            
-            if let menu = mealCircleMenuView {
-                let convertedPosition = view.convert(adjustedPosition, to: menu)
-                if let selectedMealButton = menu.touchEnded(finalPosition: convertedPosition)
-                {
-                    print("\n--->selected meal type \(selectedMealButton.id)")
+            if let selectedRow = selectedRow {
+                print("final press ended at row \(selectedRow.row) on date \(days[(selectedRow.row)]), location \(p)")
+                let adjustedPosition = CGPoint(x: p.x, y: p.y + 64)
+                
+                if let menu = mealCircleMenuView {
+                    let convertedPosition = view.convert(adjustedPosition, to: menu)
+                    if let selectedMealButton = menu.touchEnded(finalPosition: convertedPosition)
+                    {
+                        print("\n--->selected meal type \(selectedMealButton.id)")
+                        
+                        let newSelection = Selection()
+                        newSelection.date = days[selectedRow.row]
+                        newSelection.mealType = MealType(rawValue: selectedMealButton.id)
+                        addToSelection(selectedDay: newSelection)
+                        calTVC.tableRowSelected(indexOfSelected: selectedRow.row)
+                        dayCollectionCellSelected(selectedDay: newSelection)
+                    }
                 }
+                dismissCircleMenu()
             }
-            dismissCircleMenu()
+            
         }
     }
     
