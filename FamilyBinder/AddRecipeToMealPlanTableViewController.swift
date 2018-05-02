@@ -59,13 +59,9 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
         } else if (longPressGesture.state == UIGestureRecognizerState.began) {
             selectedRow = self.tableView.indexPathForRow(at: p)
             if let selectedRow = selectedRow {
-
                 let adjustedPosition = CGPoint(x: p.x, y: p.y + 64)
-
                 print("long press began at row \(selectedRow.row) on date \(days[selectedRow.row]), location \(p)")
-//
-//                let tapOutsideCircleMenu = UITapGestureRecognizer(target: self, action: #selector(dismissCircleMenu))
-//                self.view.addGestureRecognizer(tapOutsideCircleMenu)
+
 
                 // Meal Time Circle Menu
                 let testColors = [UIColor.lightGray.cgColor, UIColor.lightGray.cgColor,UIColor.lightGray.cgColor, UIColor.lightGray.cgColor]
@@ -97,31 +93,21 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
             if let selectedRow = selectedRow {
                 print("final press ended at row \(selectedRow.row) on date \(days[(selectedRow.row)]), location \(p)")
                 let adjustedPosition = CGPoint(x: p.x, y: p.y + 64)
-
                 if let menu = mealCircleMenuView {
                     let convertedPosition = view.convert(adjustedPosition, to: menu)
                     if let selectedMealButton = menu.touchEnded(finalPosition: convertedPosition)
                     {
                         print("\n--->selected meal type \(selectedMealButton.id)")
-
-//                        let newSelection = Selection()
-//                        newSelection.date = days[selectedRow.row]
-//                        newSelection.mealType = MealType(rawValue: selectedMealButton.id)
-                        
                         addMealToSelections(selectedDate: days[selectedRow.row], mealType: MealType(rawValue: selectedMealButton.id))
                         updateTableForSelection(selectedDay: days[selectedRow.row])
-
                         if let collectionRowToSelect = mealPlanService.getIndex(forDate: days[selectedRow.row], fromDates: days) {
                             let collectionCellIndexToSelect = IndexPath(row: collectionRowToSelect, section: 0)
                             calTVC.collectionView.selectItem(at: collectionCellIndexToSelect, animated: true, scrollPosition: [])
                         }
- 
                     }
-
                 }
                 dismissCircleMenu()
             }
-            
         }
     }
     
@@ -183,7 +169,7 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
         selectedDays.append(newSelection)
     }
     
-    func removeFromSelection(deselectedDate: Date) { //TODO:  need to call this after normal clicks on cells and rows.
+    func removeFromSelection(deselectedDate: Date) {
         if let indexToRemove = selectedDays.index(where: { (selection) -> Bool in
             selection.date == deselectedDate
         }) {

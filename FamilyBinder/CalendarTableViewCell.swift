@@ -102,8 +102,6 @@ class CalendarTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColl
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let widthPerItem = self.collectionView.frame.size.width / itemsPerRow
         let heightPerItem = (self.collectionView.frame.size.height) / 2
-        
-
         return CGSize(width: widthPerItem, height: heightPerItem)
     }
 }
