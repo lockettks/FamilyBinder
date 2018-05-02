@@ -14,8 +14,8 @@ class Selection {
 }
 
 protocol SelectDayDelegate : class {
-    func dayCollectionCellSelected(selectedDay: Date)
-    func dayCollectionCellDeselected(deselectedDay: Date)
+    func updateTableForSelection(selectedDay: Date)
+    func updateTableForDeselection(deselectedDay: Date)
 }
 
 class CalendarTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -66,13 +66,13 @@ class CalendarTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColl
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! CalendarDayCollectionViewCell?
         cell?.isSelected = true
-        selectDayDelegate?.dayCollectionCellSelected(selectedDay: days[indexPath.row])
+        selectDayDelegate?.updateTableForSelection(selectedDay: days[indexPath.row])
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! CalendarDayCollectionViewCell?
         cell?.isSelected = false
-        selectDayDelegate?.dayCollectionCellDeselected(deselectedDay: days[indexPath.row])
+        selectDayDelegate?.updateTableForDeselection(deselectedDay: days[indexPath.row])
     }
     
     func updateMonthLabels() {

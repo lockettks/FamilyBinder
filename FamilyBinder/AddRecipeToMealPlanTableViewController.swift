@@ -59,25 +59,25 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
         } else if (longPressGesture.state == UIGestureRecognizerState.began) {
             selectedRow = self.tableView.indexPathForRow(at: p)
             if let selectedRow = selectedRow {
-                
+
                 let adjustedPosition = CGPoint(x: p.x, y: p.y + 64)
-                
+
                 print("long press began at row \(selectedRow.row) on date \(days[selectedRow.row]), location \(p)")
-                
-                let tapOutsideCircleMenu = UITapGestureRecognizer(target: self, action: #selector(dismissCircleMenu))
-                self.view.addGestureRecognizer(tapOutsideCircleMenu)
-                
+//
+//                let tapOutsideCircleMenu = UITapGestureRecognizer(target: self, action: #selector(dismissCircleMenu))
+//                self.view.addGestureRecognizer(tapOutsideCircleMenu)
+
                 // Meal Time Circle Menu
                 let testColors = [UIColor.lightGray.cgColor, UIColor.lightGray.cgColor,UIColor.lightGray.cgColor, UIColor.lightGray.cgColor]
                 var mealCircleIds = [String]()
-                
+
                 var mealCircleImages = [UIImage]()
                 for mealType in MealType.allTypes {
                     mealCircleIds.append(mealType.rawValue)
                     let mealCircleImage = circleMenuService.getImageForMealTypeOn(mealType: mealType)
                     mealCircleImages.append(mealCircleImage)
                 }
-                
+
                 mealCircleMenuView = CircleMenuView(touchPoint: adjustedPosition, ids: mealCircleIds, fillColors: testColors, circleImages: mealCircleImages)
                 if let menu = mealCircleMenuView {
                     self.view.addSubview(menu)
@@ -85,9 +85,9 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
             }
             
         } else if (longPressGesture.state == .changed) {
-            // TODO:  Remove need for adjusting position
+//             TODO:  Remove need for adjusting position
             let adjustedPosition = CGPoint(x: p.x, y: p.y + 64)
-            
+
             if let menu = mealCircleMenuView {
                 let convertedPosition = view.convert(adjustedPosition, to: menu)
                 menu.touchMoved(newPosition: convertedPosition)
@@ -97,25 +97,102 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
             if let selectedRow = selectedRow {
                 print("final press ended at row \(selectedRow.row) on date \(days[(selectedRow.row)]), location \(p)")
                 let adjustedPosition = CGPoint(x: p.x, y: p.y + 64)
-                
+
                 if let menu = mealCircleMenuView {
                     let convertedPosition = view.convert(adjustedPosition, to: menu)
                     if let selectedMealButton = menu.touchEnded(finalPosition: convertedPosition)
                     {
                         print("\n--->selected meal type \(selectedMealButton.id)")
+
+//                        let newSelection = Selection()
+//                        newSelection.date = days[selectedRow.row]
+//                        newSelection.mealType = MealType(rawValue: selectedMealButton.id)
                         
-                        let newSelection = Selection()
-                        newSelection.date = days[selectedRow.row]
-                        newSelection.mealType = MealType(rawValue: selectedMealButton.id)
-                        addToSelection(selectedDay: newSelection)
-                        dayCollectionCellSelected(selectedDay: days[selectedRow.row])
+                        addMealToSelections(selectedDate: days[selectedRow.row], mealType: MealType(rawValue: selectedMealButton.id))
+                        updateTableForSelection(selectedDay: days[selectedRow.row])
+
+                        if let collectionRowToSelect = mealPlanService.getIndex(forDate: days[selectedRow.row], fromDates: days) {
+                            let collectionCellIndexToSelect = IndexPath(row: collectionRowToSelect, section: 0)
+                            calTVC.collectionView.selectItem(at: collectionCellIndexToSelect, animated: true, scrollPosition: [])
+                        }
+ 
                     }
+
                 }
                 dismissCircleMenu()
             }
             
         }
     }
+    
+    // Handle selection/deselections on table
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.section {
+        case POSITION_MEALPLAN.SECTION:
+            self.performSegue(withIdentifier: "mealPlansSegue", sender: self)
+            return
+            
+        case POSITION_DAYS.SECTION:
+            addMealToSelections(selectedDate: days[indexPath.row], mealType: nil)
+            if let collectionRowToSelect = mealPlanService.getIndex(forDate: days[indexPath.row], fromDates: days) {
+                let collectionCellIndexToSelect = IndexPath(row: collectionRowToSelect, section: 0)
+                calTVC.collectionView.selectItem(at: collectionCellIndexToSelect, animated: true, scrollPosition: [])
+            }
+            return
+            
+        default:
+            return
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        removeFromSelection(deselectedDate: days[indexPath.row])
+        if let collectionRowToDeselect = mealPlanService.getIndex(forDate: days[indexPath.row], fromDates: days) {
+            let collectionCellIndexToDeselect = IndexPath(row: collectionRowToDeselect, section: 0)
+            calTVC.collectionView.deselectItem(at: collectionCellIndexToDeselect, animated: true)
+        }
+    }
+    
+    // Update table when collection has updates
+    func updateTableForSelection(selectedDay: Date) {
+        addMealToSelections(selectedDate: selectedDay, mealType: nil)
+        if let tableRowToSelect = mealPlanService.getIndex(forDate: selectedDay, fromDates: days) {
+            let tableIndexToSelect = IndexPath(row: tableRowToSelect, section: POSITION_DAYS.SECTION)
+            self.tableView.selectRow(at: tableIndexToSelect, animated: true, scrollPosition: .none)
+        }
+    }
+    
+    func updateTableForDeselection(deselectedDay: Date) {
+        removeFromSelection(deselectedDate: deselectedDay)
+        if let tableRowToDeselect = mealPlanService.getIndex(forDate: deselectedDay, fromDates: days) {
+            let tableIndexToDeselect = IndexPath(row: tableRowToDeselect, section: POSITION_DAYS.SECTION)
+            self.tableView.deselectRow(at: tableIndexToDeselect, animated: true)
+        }
+    }
+    
+    
+    
+    // Manage shared selections
+    func addMealToSelections(selectedDate: Date, mealType: MealType?) {
+        
+        let newSelection = Selection()
+        newSelection.date = selectedDate
+        if let mealType = mealType {
+            newSelection.mealType = mealType
+        }
+        selectedDays.append(newSelection)
+    }
+    
+    func removeFromSelection(deselectedDate: Date) { //TODO:  need to call this after normal clicks on cells and rows.
+        if let indexToRemove = selectedDays.index(where: { (selection) -> Bool in
+            selection.date == deselectedDate
+        }) {
+            selectedDays.remove(at: indexToRemove)
+        }
+    }
+    
+    
+    
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if mealTypeCircleButtons.count > 0 {
@@ -160,62 +237,14 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
     }
     
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch indexPath.section {
-        case POSITION_MEALPLAN.SECTION:
-            self.performSegue(withIdentifier: "mealPlansSegue", sender: self)
-            return
-            
-        case POSITION_DAYS.SECTION:
-            if let collectionRowToSelect = mealPlanService.getIndex(forDate: days[indexPath.row], fromDates: days) {
-                let collectionCellIndexToSelect = IndexPath(row: collectionRowToSelect, section: 0)
-                calTVC.collectionView.selectItem(at: collectionCellIndexToSelect, animated: true, scrollPosition: [])
-            }
-            return
-            
-        default:
-            return
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        if let collectionRowToDeselect = mealPlanService.getIndex(forDate: days[indexPath.row], fromDates: days) {
-            let collectionCellIndexToDeselect = IndexPath(row: collectionRowToDeselect, section: 0)
-            calTVC.collectionView.deselectItem(at: collectionCellIndexToDeselect, animated: true)
-        }
-    }
+
     
     func mealPlanSelected(selectedMealPlan: MealPlan) {
         self.selectedMealPlan = selectedMealPlan
     }
     
     
-    func dayCollectionCellSelected(selectedDay: Date) {
-        if let tableRowToSelect = mealPlanService.getIndex(forDate: selectedDay, fromDates: days) {
-            let tableIndexToSelect = IndexPath(row: tableRowToSelect, section: POSITION_DAYS.SECTION)
-            self.tableView.selectRow(at: tableIndexToSelect, animated: true, scrollPosition: .none)
-        }
-    }
-    
-    func dayCollectionCellDeselected(deselectedDay: Date) {
-        if let tableRowToDeselect = mealPlanService.getIndex(forDate: deselectedDay, fromDates: days) {
-            let tableIndexToDeselect = IndexPath(row: tableRowToDeselect, section: POSITION_DAYS.SECTION)
-            self.tableView.deselectRow(at: tableIndexToDeselect, animated: true)
-        }
-    }
-    
-    
-    func addToSelection(selectedDay: Selection) { //TODO:  need to call this after normal clicks on cells and rows.
-        selectedDays.append(selectedDay)
-    }
-    
-    func removeFromSelection(deselectedDay: Selection) { //TODO:  need to call this after normal clicks on cells and rows.
-        if let indexToRemove = selectedDays.index(where: { (selection) -> Bool in
-            selection.date == deselectedDay.date
-        }) {
-            selectedDays.remove(at: indexToRemove)
-        }
-    }
+
     
     
     // MARK: - Navigation

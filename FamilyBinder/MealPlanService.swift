@@ -54,7 +54,6 @@ class MealPlanService {
     
     func getIndex(forDate: Date, fromDates: [Date]) -> Int? {
         if forDate.withoutTime() >= Date().withoutTime() {
-            
             if let index = fromDates.index(where: { (day) -> Bool in
                 day == forDate
             }) {
