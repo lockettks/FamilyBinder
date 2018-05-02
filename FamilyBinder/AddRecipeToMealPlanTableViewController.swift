@@ -108,8 +108,6 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
                         newSelection.date = days[selectedRow.row]
                         newSelection.mealType = MealType(rawValue: selectedMealButton.id)
                         addToSelection(selectedDay: newSelection)
-//                        calTVC.tableRowSelected(selectedDay: newSelection)
-//                        calTVC.tableRowSelected(indexOfSelected: selectedRow.row)
                         dayCollectionCellSelected(selectedDay: days[selectedRow.row])
                     }
                 }
@@ -173,13 +171,6 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
                 let collectionCellIndexToSelect = IndexPath(row: collectionRowToSelect, section: 0)
                 calTVC.collectionView.selectItem(at: collectionCellIndexToSelect, animated: true, scrollPosition: [])
             }
-//            if days[indexPath.row].withoutTime() >= Date().withoutTime() {
-//                let newSelection = Selection()
-//                newSelection.date = days[indexPath.row]
-//                addToSelection(selectedDay: newSelection)
-////                calTVC.tableRowSelected(indexOfSelected: indexPath.row)  //TODO:  Send selectedDay instead of index
-//                calTVC.tableRowSelected(selectedDay: newSelection)
-//            }
             return
             
         default:
@@ -192,13 +183,6 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
             let collectionCellIndexToDeselect = IndexPath(row: collectionRowToDeselect, section: 0)
             calTVC.collectionView.deselectItem(at: collectionCellIndexToDeselect, animated: true)
         }
-        
-//        if (indexPath.section == POSITION_DAYS.SECTION) {
-//            let deselectedRow = Selection()
-//            deselectedRow.date = days[indexPath.row]
-//            removeFromSelection(deselectedDay: deselectedRow)
-//            calTVC.tableRowDeselected(indexOfDeselected: indexPath.row)
-//        }
     }
     
     func mealPlanSelected(selectedMealPlan: MealPlan) {
@@ -211,20 +195,6 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
             let tableIndexToSelect = IndexPath(row: tableRowToSelect, section: POSITION_DAYS.SECTION)
             self.tableView.selectRow(at: tableIndexToSelect, animated: true, scrollPosition: .none)
         }
-        
-        /*
-        if selectedDay.date.withoutTime() >= Date().withoutTime() {
-            addToSelection(selectedDay: selectedDay)
-            
-            let index = days.index(where: { (day) -> Bool in
-                day == selectedDay.date
-            })
-            if let selectedCell = index {
-                let rowToSelect = IndexPath(row: selectedCell, section: POSITION_DAYS.SECTION)
-                self.tableView.selectRow(at: rowToSelect, animated: true, scrollPosition: .none)
-            }
-        }
-        */
     }
     
     func dayCollectionCellDeselected(deselectedDay: Date) {
@@ -232,27 +202,14 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
             let tableIndexToDeselect = IndexPath(row: tableRowToDeselect, section: POSITION_DAYS.SECTION)
             self.tableView.deselectRow(at: tableIndexToDeselect, animated: true)
         }
-        
-        
-//        if deselectedDay.date.withoutTime() >= Date().withoutTime(){
-//            removeFromSelection(deselectedDay: deselectedDay)
-//
-//            let daysIndexToDeselect = days.index(where: { (day) -> Bool in
-//                day == deselectedDay.date
-//            })
-//            if let deselectedIndex = daysIndexToDeselect {
-//                let rowToDeselect = IndexPath(row: deselectedIndex, section: POSITION_DAYS.SECTION)
-//                self.tableView.deselectRow(at: rowToDeselect, animated: true)
-//            }
-//        }
     }
     
     
-    func addToSelection(selectedDay: Selection) {
+    func addToSelection(selectedDay: Selection) { //TODO:  need to call this after normal clicks on cells and rows.
         selectedDays.append(selectedDay)
     }
     
-    func removeFromSelection(deselectedDay: Selection) {
+    func removeFromSelection(deselectedDay: Selection) { //TODO:  need to call this after normal clicks on cells and rows.
         if let indexToRemove = selectedDays.index(where: { (selection) -> Bool in
             selection.date == deselectedDay.date
         }) {
