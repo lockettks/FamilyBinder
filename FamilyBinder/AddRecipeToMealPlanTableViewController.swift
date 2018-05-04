@@ -72,41 +72,19 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
             case POSITION_CALENDAR.SECTION:
                 pointInCollectionView = view.convert(adjustedPoint, to: calTVC.collectionView)
                 selectedIndexPathInInnerTable = calTVC.collectionView.indexPathForItem(at: pointInCollectionView)
-                
-                
-//                if let selectedDay = selectedIndexPathInInnerTable {
-//                    print("long press began at collection cell \(selectedDay) on date \(days[selectedDay.row]), location \(p)")
-//                }
-                if let menu = mealCircleMenuView {
-                    print("circle frame before setting touchpoint \(menu.frame)")
-                    menu.setTouchPoint(touchPoint: adjustedPoint)
-                    self.view.addSubview(menu)
-                    print("adjusted point is \(adjustedPoint) converted point is \(pointInCollectionView) and circle frame is \(menu.frame)")
-                }
-                
-                
+
             case POSITION_DAYS.SECTION:
                 selectedIndexPathInInnerTable = self.tableView.indexPathForRow(at: p)
-                if let selectedDay = selectedIndexPathInInnerTable {
-//                    pointInCollectionView = adjustedPoint
-//                    print("long press began at row \(selectedDay.row) on date \(days[selectedDay.row]), location \(p)")
-                    
-                    if let menu = mealCircleMenuView {
-                        menu.setTouchPoint(touchPoint: adjustedPoint)
-                        self.view.addSubview(menu)
-                    }
-                }
-                
                 
             default:
                 print("Long press outside of selectable area")
                 return
             }
             
-//            if let menu = mealCircleMenuView {
-//                menu.setTouchPoint(touchPoint: convertedPoint)
-//                self.view.addSubview(menu)
-//            }
+            if let menu = mealCircleMenuView {
+                menu.setTouchPoint(touchPoint: adjustedPoint)
+                self.view.addSubview(menu)
+            }
             
         } else if (longPressGesture.state == .changed) {
             //             TODO:  Remove need for adjusting position - maybe convert it to inner table view point?
@@ -119,13 +97,10 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
         }
         else if (longPressGesture.state == UIGestureRecognizerState.ended) {
             if let selectedDay = selectedIndexPathInInnerTable {
-//                print("final press ended at row \(selectedDay.row) on date \(days[(selectedDay.row)]), location \(p)")
-                //                let adjustedPoint = CGPoint(x: p.x, y: p.y + 64)
                 if let menu = mealCircleMenuView {
                     let pointInCircleMenuView = view.convert(adjustedPoint, to: menu)
                     if let selectedMealButton = menu.touchEnded(finalPosition: pointInCircleMenuView)
                     {
-//                        print("\n--->selected meal type \(selectedMealButton.id)")
                         addMealToSelections(selectedDate: days[selectedDay.row], mealType: MealType(rawValue: selectedMealButton.id))
                         updateTableForSelection(selectedDay: days[selectedDay.row])
                         if let collectionRowToSelect = mealPlanService.getIndex(forDate: days[selectedDay.row], fromDates: days) {
@@ -206,8 +181,6 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
     }
     
     
-    
-    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if mealTypeCircleButtons.count > 0 {
             dismissCircleMenu()
@@ -251,14 +224,9 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
     }
     
     
-    
-    
     func mealPlanSelected(selectedMealPlan: MealPlan) {
         self.selectedMealPlan = selectedMealPlan
     }
-    
-    
-    
     
     
     // MARK: - Navigation
@@ -276,7 +244,7 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
     
     @IBAction func addTapped(_ sender: Any) {
         for selectedDay in selectedDays {
-//            print("Selected \(selectedDay.date)")
+            print("Selected \(selectedDay.date)")
             mealPlanService.addRecipeToMealPlan(recipe: selectedRecipe, scheduledDate: selectedDay.date, mealPlan: selectedMealPlan)
         }
         dismiss(animated: true, completion: nil)
