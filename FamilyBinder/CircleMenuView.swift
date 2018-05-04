@@ -20,10 +20,12 @@ class CircleMenuView: UIView {
     let circleMenuService = CircleMenuService()
     var selectedButton: CircleButton?
 
+    init(ids: [String], fillColors: [CGColor], circleImages: [UIImage]?, circleRadius: CGFloat = 25.0) {
+//    init(touchPoint: CGPoint, ids: [String], fillColors: [CGColor], circleImages: [UIImage]?, circleRadius: CGFloat = 25.0) {
     
-    init(touchPoint: CGPoint, ids: [String], fillColors: [CGColor], circleImages: [UIImage]?, circleRadius: CGFloat = 25.0) {
-        let menuFrame = CGRect(x: touchPoint.x-self.frameWidth/2, y: touchPoint.y-self.frameHeight/2, width: self.frameWidth, height: self.frameHeight)
-        let menuCenter = CGPoint(x: frameWidth/2, y: frameHeight/2)
+//        let menuFrame = CGRect(x: 0, y: 0, width: self.frameWidth, height: self.frameHeight)
+//        let menuFrame = CGRect(x: touchPoint.x-self.frameWidth/2, y: touchPoint.y-self.frameHeight/2, width: self.frameWidth, height: self.frameHeight)
+//        let menuCenter = CGPoint(x: frameWidth/2, y: frameHeight/2)
         self.circleRadius = circleRadius
         self.fillColors = fillColors
         if let images = circleImages {
@@ -33,7 +35,9 @@ class CircleMenuView: UIView {
                 print("Missing images for circle menu")
             }
         }
-        super.init(frame: menuFrame)
+        super.init(frame: CGRect(x: 0, y: 0, width: self.frameWidth, height: self.frameHeight))
+//        super.init(frame: self.frame)
+//        super.init(frame: menuFrame)
         self.backgroundColor = UIColor.yellow
         for (index, fillColor) in self.fillColors.enumerated() {
             var circleButton : CircleButton
@@ -44,8 +48,16 @@ class CircleMenuView: UIView {
                 circleButton = CircleButton(id: ids[index], frame: circleFrame, fillColor: fillColor, circleImage: nil)
             }
             self.circleButtons.append(circleButton)
-            circleButton.center = circleMenuService.getCircleLocation(menuRadius: self.menuRadius, anchorPoint: menuCenter, totalCircleCount: Float(self.fillColors.count), circleInstanceNumber: Float(index))
+//            circleButton.center = circleMenuService.getCircleLocation(menuRadius: self.menuRadius, anchorPoint: menuCenter, totalCircleCount: Float(self.fillColors.count), circleInstanceNumber: Float(index))
             self.addSubview(circleButton)
+        }
+    }
+    
+    func setTouchPoint(touchPoint: CGPoint) {
+        self.frame = CGRect(x: touchPoint.x-self.frameWidth/2, y: touchPoint.y-self.frameHeight/2, width: self.frameWidth, height: self.frameHeight)
+        let menuCenter = CGPoint(x: frameWidth/2, y: frameHeight/2)
+        for (index, circleButton) in self.circleButtons.enumerated() {
+            circleButton.center = circleMenuService.getCircleLocation(menuRadius: self.menuRadius, anchorPoint: menuCenter, totalCircleCount: Float(self.fillColors.count), circleInstanceNumber: Float(index))
         }
     }
     

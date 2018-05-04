@@ -59,7 +59,6 @@ class CalendarTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColl
         cell.initWithModel(day: days[indexPath.row])
         backArrowBtn.isHidden = days[0] <= Date()
         cell.isUserInteractionEnabled = days[indexPath.row] >= Date()
-
         return cell
     }
     
