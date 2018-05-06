@@ -32,8 +32,6 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
     let circleMenuService = CircleMenuService()
     var mealTypeCircleButtons = [CircleButton]()
     var mealCircleMenuView : CircleMenuView?
-    //    var indexPathInOuterTable : IndexPath?
-    //    var selectedIndexPathInInnerTable : IndexPath?
     var initialPoint : CGPoint?
     
     
@@ -66,24 +64,8 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
     @objc func handleLongPress(longPressGesture:UILongPressGestureRecognizer){
         let currentPoint = longPressGesture.location(in: self.tableView)        
         let currentPointAdjusted = getPointAdjustedForTableView(selectedPoint: currentPoint)
-        //        indexPathInOuterTable = self.tableView.indexPathForRow(at: p)
-        
-        
         if (longPressGesture.state == UIGestureRecognizerState.began) {
             initialPoint = currentPoint
-            //            indexPathInOuterTable = self.tableView.indexPathForRow(at: currentPoint)
-            //            switch indexPathInOuterTable?.section {
-            //            case POSITION_CALENDAR.SECTION:
-            //                let pointInCollectionView = view.convert(adjustedPoint, to: calTVC.collectionView)
-            //                selectedIndexPathInInnerTable = calTVC.collectionView.indexPathForItem(at: pointInCollectionView)
-            //
-            //            case POSITION_DAYS.SECTION:
-            //                selectedIndexPathInInnerTable = self.tableView.indexPathForRow(at: p)
-            //
-            //            default:
-            //                print("Long press outside of selectable area")
-            //                return
-            //            }
             
             if let menu = mealCircleMenuView {
                 menu.setTouchPoint(touchPoint: currentPointAdjusted)
@@ -91,9 +73,7 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
             }
             
         } else if (longPressGesture.state == .changed) {
-            //             TODO:  Remove need for adjusting position - maybe convert it to inner table view point?
-            //            let adjustedPoint = CGPoint(x: p.x, y: p.y + 64)
-            
+            // TODO:  Remove need for adjusting position - maybe convert it to inner table view point?
             if let menu = mealCircleMenuView {
                 let pointInCircleMenuView = view.convert(currentPointAdjusted, to: menu)
                 menu.touchMoved(newPosition: pointInCircleMenuView)
@@ -196,7 +176,6 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
             self.tableView.deselectRow(at: tableIndexToDeselect, animated: true)
         }
     }
-    
     
     
     // Manage shared selections
