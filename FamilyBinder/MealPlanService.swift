@@ -33,7 +33,7 @@ class MealPlanService {
         return dates
     }
     
-    func addRecipeToMealPlan( recipe: Recipe, scheduledDate: Date, mealPlan: MealPlan ){
+    func addRecipeToMealPlan( recipe: Recipe, mealType: MealType?, scheduledDate: Date, mealPlan: MealPlan ){
         let newScheduledMeal = ScheduledMeal()
         let realmRecipe = realm.objects(Recipe.self).filter("id == %@", recipe.id)
         if realmRecipe.count > 0 {
@@ -41,6 +41,9 @@ class MealPlanService {
         } else {
             // User added a non-favorited recipe to meal plan
             newScheduledMeal.recipe = recipe.copy() as? Recipe
+        }
+        if let mealType = mealType {
+            newScheduledMeal.mealTypeRaw = mealType.rawValue
         }
         newScheduledMeal.scheduledDate = scheduledDate
         

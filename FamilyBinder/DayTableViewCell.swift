@@ -51,16 +51,19 @@ class DayTableViewCell: UITableViewCell {
         stack.distribution = .fill
         stack.spacing = 8
         
-        if let existingMealType = existingMeal.mealType {
-            let mealTypeLabel = UILabel()
-            mealTypeLabel.text = existingMealType.displayName()
-            stack.addArrangedSubview(mealTypeLabel)
-        }
         if let existingMealName = existingMeal.recipe?.title {
             let mealNameLabel = UILabel()
             mealNameLabel.text = existingMealName
             stack.addArrangedSubview(mealNameLabel)
         }
+        
+        if let existingMealType = existingMeal.mealType {
+            let mealTypeLabel = UILabel()
+            mealTypeLabel.textAlignment = NSTextAlignment.right
+            mealTypeLabel.text = existingMealType.displayName()
+            stack.addArrangedSubview(mealTypeLabel)
+        }
+
         
         return stack
     }

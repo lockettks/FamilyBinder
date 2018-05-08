@@ -27,7 +27,7 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
     
     let startDate = Date()
     var days = [Date]()
-    var selectedDays = [Selection]()
+    var selections = [Selection]()
     
     let circleMenuService = CircleMenuService()
     var mealTypeCircleButtons = [CircleButton]()
@@ -180,20 +180,29 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
     
     // Manage shared selections
     func addMealToSelections(selectedDate: Date, mealType: MealType?) {
-        
-        let newSelection = Selection()
-        newSelection.date = selectedDate
-        if let mealType = mealType {
-            newSelection.mealType = mealType
+        // Prevent a selection from being added twice- one from long press and other from normal table selection
+        if let sameDaySelection = selections.first(where: { $0.date == selectedDate}) {
+            // Recipe already added for this day, so only update the selection to add mealtype if it is provided
+            if let mealType = mealType {
+                sameDaySelection.mealType = mealType
+            }
+        } else {
+            // Recipe not added yet for this day, so append it like normal
+            let newSelection = Selection()
+            newSelection.date = selectedDate
+            if let mealType = mealType {
+                newSelection.mealType = mealType
+            }
+            selections.append(newSelection)
         }
-        selectedDays.append(newSelection)
+        
     }
     
     func removeFromSelection(deselectedDate: Date) {
-        if let indexToRemove = selectedDays.index(where: { (selection) -> Bool in
+        if let indexToRemove = selections.index(where: { (selection) -> Bool in
             selection.date == deselectedDate
         }) {
-            selectedDays.remove(at: indexToRemove)
+            selections.remove(at: indexToRemove)
         }
     }
     
@@ -260,9 +269,9 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
     }
     
     @IBAction func addTapped(_ sender: Any) {
-        for selectedDay in selectedDays {
-            print("Selected \(selectedDay.date)")
-            mealPlanService.addRecipeToMealPlan(recipe: selectedRecipe, scheduledDate: selectedDay.date, mealPlan: selectedMealPlan)
+        for selection in selections {
+            print("Selected \(selection.date)")
+            mealPlanService.addRecipeToMealPlan(recipe: selectedRecipe, mealType: selection.mealType, scheduledDate: selection.date, mealPlan: selectedMealPlan)
         }
         dismiss(animated: true, completion: nil)
     }
@@ -294,10 +303,11 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
             let existingMealsForDay: [ScheduledMeal]
             existingMealsForDay = Array(selectedMealPlan.meals.filter { $0.scheduledDate.withoutTime() == self.days[indexPath.row].withoutTime() })
             
+            existingMealsForDay.sort(by: {($0.mealType?.sortOrder() ?? 100) < ($1.mealType?.sortOrder() ?? 100)})
             cell.initWithModel(dayHeadline: days[indexPath.row], existingMeals: existingMealsForDay)
             
             if days[indexPath.row] >= Date() {
-                let isSelected = selectedDays.contains(where: { (selection) -> Bool in
+                let isSelected = selections.contains(where: { (selection) -> Bool in
                     selection.date == days[indexPath.row]
                 })
                 // check if any days are already selected

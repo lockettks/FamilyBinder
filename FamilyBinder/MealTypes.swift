@@ -27,4 +27,17 @@ enum MealType: String {
             return "Dinner"
         }
     }
+    
+    func sortOrder() -> Int {
+        switch self {
+        case .breakfast:
+            return 0
+        case .lunch:
+            return 1
+        case .snack:
+            return 2
+        case .dinner:
+            return 3
+        }
+    }
 }
