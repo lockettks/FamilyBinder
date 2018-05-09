@@ -195,7 +195,7 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
             }
             selections.append(newSelection)
         }
-        
+        self.tableView.reloadData()
     }
     
     func removeFromSelection(deselectedDate: Date) {
@@ -300,9 +300,17 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell3", for: indexPath) as! DayTableViewCell
             
-            let existingMealsForDay: [ScheduledMeal]
+            var existingMealsForDay: [ScheduledMeal]
             existingMealsForDay = Array(selectedMealPlan.meals.filter { $0.scheduledDate.withoutTime() == self.days[indexPath.row].withoutTime() })
             
+            // get other existing meals in the selections that have not yet been added to the meal plan
+            if let existingMealInSelections = selections.first(where: { $0.date.withoutTime() == self.days[indexPath.row].withoutTime()}) {
+                
+                if let mealNotYetOnMealPlan = ScheduledMeal(recipe: selectedRecipe, scheduledDate: existingMealInSelections.date, mealType: existingMealInSelections.mealType) {
+                    existingMealsForDay.append(mealNotYetOnMealPlan)
+                }
+            }
+
             existingMealsForDay.sort(by: {($0.mealType?.sortOrder() ?? 100) < ($1.mealType?.sortOrder() ?? 100)})
             cell.initWithModel(dayHeadline: days[indexPath.row], existingMeals: existingMealsForDay)
             
