@@ -270,6 +270,14 @@
          contextName = "DayTableViewCell.initWithModel(dayHeadline:existingMeals:):DayTableViewCell.swift">
       </ContextState>
       <ContextState
+         contextName = "CalendarDayCollectionViewCell.isSelected.didset:CalendarDayCollectionViewCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.isSelected">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "closure #1 in AddRecipeToMealPlanTableViewController.tableView(_:cellForRowAt:):AddRecipeToMealPlanTableViewController.swift">
          <PersistentStrings>
             <PersistentString

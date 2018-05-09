@@ -195,7 +195,8 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
             }
             selections.append(newSelection)
         }
-        self.tableView.reloadData()
+        self.tableView.reloadSections(IndexSet(integersIn: POSITION_DAYS.SECTION...POSITION_DAYS.SECTION), with: .automatic)
+
     }
     
     func removeFromSelection(deselectedDate: Date) {
