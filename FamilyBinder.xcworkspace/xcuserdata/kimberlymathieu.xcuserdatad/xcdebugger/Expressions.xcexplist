@@ -3,6 +3,14 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "CalendarTableViewCell.collectionView(_:didSelectItemAt:):CalendarTableViewCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "cell.isSelected">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "Instruction.init(json : JSON) -&gt; Instruction?:Instruction.swift">
       </ContextState>
       <ContextState
@@ -144,6 +152,9 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "AddRecipeToMealPlanTableViewController.dismissCircleMenu():AddRecipeToMealPlanTableViewController.swift">
+      </ContextState>
+      <ContextState
          contextName = "RecipeRouter.asURLRequest() throws -&gt; URLRequest:RecipeRouter.swift">
          <PersistentStrings>
             <PersistentString
@@ -256,6 +267,9 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "DayTableViewCell.initWithModel(dayHeadline:existingMeals:):DayTableViewCell.swift">
+      </ContextState>
+      <ContextState
          contextName = "closure #1 in AddRecipeToMealPlanTableViewController.tableView(_:cellForRowAt:):AddRecipeToMealPlanTableViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -344,6 +358,11 @@
       </ContextState>
       <ContextState
          contextName = "CalendarTableViewCell.collectionView(_:cellForItemAt:):CalendarTableViewCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "cell.isSelected">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "RecipesMasterViewController.recipesTypeSegCntrlChanged(UISegmentedControl) -&gt; ():RecipesMasterViewController.swift">
@@ -355,6 +374,9 @@
                value = "recipes">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "AddRecipeToMealPlanTableViewController.getSelectedIndexPath(selectedPoint:):AddRecipeToMealPlanTableViewController.swift">
       </ContextState>
       <ContextState
          contextName = "CalendarDayCollectionViewCell.initWithModel(day:):CalendarDayCollectionViewCell.swift">
@@ -487,6 +509,9 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "DayTableViewCell.createExistingMealStackView(existingMeal:):DayTableViewCell.swift">
+      </ContextState>
+      <ContextState
          contextName = "RecipeDetailViewController.backBtnPressed(Any) -&gt; ():RecipeDetailViewController.swift">
       </ContextState>
       <ContextState
@@ -536,6 +561,9 @@
                value = "lblMonth1ConLeft.isActive">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "AddRecipeToMealPlanTableViewController.addTapped(_:):AddRecipeToMealPlanTableViewController.swift">
       </ContextState>
       <ContextState
          contextName = "RecipeDetailViewController.(addRemoveRecipeFromFavorites() -&gt; ()).(closure #1):RecipeDetailViewController.swift">
@@ -672,6 +700,9 @@
       </ContextState>
       <ContextState
          contextName = "RecipeTableViewCell.awakeFromNib() -&gt; ():RecipeTableViewCell.swift">
+      </ContextState>
+      <ContextState
+         contextName = "AddRecipeToMealPlanTableViewController.addMealToSelections(selectedDate:mealType:):AddRecipeToMealPlanTableViewController.swift">
       </ContextState>
       <ContextState
          contextName = "RecipeDetailViewController.updateTabHeights(detailHeight:):RecipeDetailViewController.swift">

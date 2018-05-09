@@ -52,10 +52,10 @@ class CalendarDayCollectionViewCell: UICollectionViewCell {
         dateFormatter.dateFormat = "d"
         let date = dateFormatter.string(from: day)
         lblDate.text = date
-        let today = Date()
-        if (day < today) {
+        let today = NSCalendar.current.startOfDay(for: Date())
+        if (NSCalendar.current.startOfDay(for: day) < today) {
             lblDate.textColor = UIColor(hex: "C0C0C0")
-        } else if (day == today) {
+        } else if (NSCalendar.current.startOfDay(for: day) == today) {
             lblDate.font = lblDate.font.bold()
             lblDate.textColor = UIColor.black
         } else {

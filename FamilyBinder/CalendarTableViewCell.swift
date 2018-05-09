@@ -64,6 +64,7 @@ class CalendarTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColl
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! CalendarDayCollectionViewCell?
+        print("\(String(describing: cell?.lblDate.text)) is selected: \(String(describing: cell?.isSelected))")
         cell?.isSelected = true
         selectDayDelegate?.updateTableForSelection(selectedDay: days[indexPath.row])
     }
