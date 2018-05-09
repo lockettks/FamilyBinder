@@ -54,6 +54,8 @@ class DayTableViewCell: UITableViewCell {
         if let existingMealName = existingMeal.recipe?.title {
             let mealNameLabel = UILabel()
             mealNameLabel.text = existingMealName
+            mealNameLabel.numberOfLines = 0
+            mealNameLabel.lineBreakMode = .byWordWrapping
             stack.addArrangedSubview(mealNameLabel)
         }
         
@@ -61,6 +63,7 @@ class DayTableViewCell: UITableViewCell {
             let mealTypeLabel = UILabel()
             mealTypeLabel.textAlignment = NSTextAlignment.right
             mealTypeLabel.text = existingMealType.displayName()
+            mealTypeLabel.addConstraint(NSLayoutConstraint(item: mealTypeLabel, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 80))
             stack.addArrangedSubview(mealTypeLabel)
         }
 
