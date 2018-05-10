@@ -11,8 +11,8 @@ import UIKit
 class CircleMenuView: UIView {
     
     var circleRadius: CGFloat
-    let frameWidth = CGFloat(300)
-    let frameHeight = CGFloat(300)
+    let frameWidth = CGFloat(200)
+    let frameHeight = CGFloat(200)
     let menuRadius = Float(75.0)
     var fillColors: [CGColor]
     var images: [UIImage]?
@@ -53,12 +53,48 @@ class CircleMenuView: UIView {
         }
     }
     
-    func setTouchPoint(touchPoint: CGPoint) {
+    func setTouchPoint(touchPoint: CGPoint, containerView: UIView) {
         self.frame = CGRect(x: touchPoint.x-self.frameWidth/2, y: touchPoint.y-self.frameHeight/2, width: self.frameWidth, height: self.frameHeight)
         let menuCenter = CGPoint(x: frameWidth/2, y: frameHeight/2)
-        for (index, circleButton) in self.circleButtons.enumerated() {
-            circleButton.center = circleMenuService.getCircleLocation(menuRadius: self.menuRadius, anchorPoint: menuCenter, totalCircleCount: Float(self.fillColors.count), circleInstanceNumber: Float(index))
+        
+        var startPosition = -1.5
+            repeat {
+                var circleIntanceNumber = startPosition
+                for circleButton in self.circleButtons {
+                    circleButton.center = circleMenuService.getCircleLocation(menuRadius: self.menuRadius, anchorPoint: menuCenter, totalCircleCount: Float(self.circleButtons.count * 2), circleInstanceNumber: Float(circleIntanceNumber))
+                    circleIntanceNumber += 1
+                }
+                startPosition += 1
+            } while isOutsideContainer(containerView: containerView)
+            
+//            let circleConverted = self.convert(circleButton.frame, to: containerView)
+//            if !(containerView.frame.contains(circleConverted)) {
+//                print("\ncircleButton \(index) is partially outside")
+//            } else {
+//                print("\ncircleButton \(index) is 100% contained in parent")
+//            }
+        
+        
+
+        
+        if !(containerView.frame.contains(self.frame)) {
+            print("\nmenu is partially outside")
+        } else {
+            print("\nmenu is 100% contained in parent")
         }
+    }
+    
+    func isOutsideContainer(containerView: UIView) -> Bool {
+        var isOutside = false
+        for circleButton in self.circleButtons {
+            let circleConverted = self.convert(circleButton.frame, to: containerView)
+            if !(containerView.frame.contains(circleConverted)) {
+                isOutside = true
+                print("outside")
+                return isOutside
+            }
+        }
+        return isOutside
     }
     
     func touchMoved(newPosition: CGPoint) {

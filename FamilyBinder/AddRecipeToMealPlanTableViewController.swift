@@ -68,8 +68,16 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
             initialPoint = currentPoint
             
             if let menu = mealCircleMenuView {
-                menu.setTouchPoint(touchPoint: currentPointAdjusted)
+                menu.setTouchPoint(touchPoint: currentPointAdjusted, containerView: self.view)
                 self.view.addSubview(menu)
+//                print("menu frame: \(menu.frame)  self view bounds: \(self.view.bounds)")
+//                print("self view bounds intersect with menu frame \(self.view.bounds.intersection(menu.frame))")
+//
+//                if (!self.view.bounds.intersection(menu.frame).equalTo(menu.frame))
+//                {
+//                    print("menu is partially outside")
+//                }
+
             }
             
         } else if (longPressGesture.state == .changed) {

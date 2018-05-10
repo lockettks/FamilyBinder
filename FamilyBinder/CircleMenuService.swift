@@ -16,6 +16,7 @@ class CircleMenuService {
     func getCircleLocation(menuRadius: Float, anchorPoint: CGPoint, totalCircleCount: Float, circleInstanceNumber: Float) -> CGPoint {
         let x = CGFloat(Float(anchorPoint.x) + menuRadius * cosf(2 * circleInstanceNumber * Float.pi / totalCircleCount - Float.pi / 2))
         let y = CGFloat(Float(anchorPoint.y) + menuRadius * sinf(2 * circleInstanceNumber * Float.pi / totalCircleCount - Float.pi / 2))
+//        print("circle: \(circleInstanceNumber)  x: \(x)  y: \(y)")
         return CGPoint(x: x, y: y)
     }
     
