@@ -39,7 +39,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FamilyBinder/AddRecipeToMealPlanTableViewController.swift"
-            timestampString = "547797753.248469"
+            timestampString = "547798353.902634"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "304"
@@ -93,22 +93,6 @@
             startingLineNumber = "67"
             endingLineNumber = "67"
             landmarkName = "collectionView(_:didSelectItemAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FamilyBinder/CircleMenuView.swift"
-            timestampString = "547797753.248642"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
-            landmarkName = "setTouchPoint(touchPoint:containerView:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
