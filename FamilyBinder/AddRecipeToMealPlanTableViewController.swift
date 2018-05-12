@@ -70,14 +70,6 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
             if let menu = mealCircleMenuView {
                 menu.setTouchPoint(touchPoint: currentPointAdjusted, containerView: self.view)
                 self.view.addSubview(menu)
-//                print("menu frame: \(menu.frame)  self view bounds: \(self.view.bounds)")
-//                print("self view bounds intersect with menu frame \(self.view.bounds.intersection(menu.frame))")
-//
-//                if (!self.view.bounds.intersection(menu.frame).equalTo(menu.frame))
-//                {
-//                    print("menu is partially outside")
-//                }
-
             }
             
         } else if (longPressGesture.state == .changed) {
@@ -165,6 +157,7 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
         if let collectionRowToDeselect = mealPlanService.getIndex(forDate: days[indexPath.row], fromDates: days) {
             let collectionCellIndexToDeselect = IndexPath(row: collectionRowToDeselect, section: 0)
             calTVC.collectionView.deselectItem(at: collectionCellIndexToDeselect, animated: true)
+            self.tableView.reloadData()
         }
     }
     
@@ -182,6 +175,7 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
         if let tableRowToDeselect = mealPlanService.getIndex(forDate: deselectedDay, fromDates: days) {
             let tableIndexToDeselect = IndexPath(row: tableRowToDeselect, section: POSITION_DAYS.SECTION)
             self.tableView.deselectRow(at: tableIndexToDeselect, animated: true)
+            self.tableView.reloadData()
         }
     }
     
