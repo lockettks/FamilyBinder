@@ -47,7 +47,7 @@ class CircleMenuView: UIView {
     
     func setTouchPoint(touchPoint: CGPoint, containerView: UIView) {
         self.frame = CGRect(x: touchPoint.x-self.frameWidth/2, y: touchPoint.y-self.frameHeight/2, width: self.frameWidth, height: self.frameHeight)
-        var menuRadiusDuplicate = self.menuRadius
+        var menuSpacing = self.menuRadius
         let menuCenter = CGPoint(x: frameWidth/2, y: frameHeight/2)
         var circleSpacingFactor = 1.5 // higher = closer // pretty = 1.5
         var numberOfCirclesToFit = (Float(self.circleButtons.count) ) * Float(circleSpacingFactor)
@@ -59,7 +59,7 @@ class CircleMenuView: UIView {
             repeat {
                 var position = firstCirclePosition
                 for circleButton in self.circleButtons {
-                    circleButton.center = circleMenuService.getCircleLocation(menuRadius: menuRadiusDuplicate, anchorPoint: menuCenter, totalCircleCount: numberOfCirclesToFit-1, circleInstanceNumber: Float(position))
+                    circleButton.center = circleMenuService.getCircleLocation(menuRadius: menuSpacing, anchorPoint: menuCenter, totalCircleCount: numberOfCirclesToFit-1, circleInstanceNumber: Float(position))
                     //                    circleButton.center = circleMenuService.getCircleLocation(menuRadius: self.menuRadius, anchorPoint: menuCenter, totalCircleCount: Float(self.circleButtons.count * 2), circleInstanceNumber: Float(circleIntanceNumber)) //original.  works: count * 3
                     position += 1
                 }
@@ -69,12 +69,13 @@ class CircleMenuView: UIView {
                 if isRunOutOfPositions(firstCirclePosition: firstCirclePosition, maxPosition: maxPosition) {
                     print("CIRCLES CAN'T DISPLAY HERE.  breaks at position \(firstCirclePosition)")
                     circleSpacingFactor += 0.5
+                    menuSpacing += 10
                     numberOfCirclesToFit = (Float(self.circleButtons.count) ) * Float(circleSpacingFactor) //duplicate/reset
                     firstCirclePosition = numberOfCirclesToFit / Float(self.circleButtons.count) * -1 //duplicate/reset
                 }
                 
                 if isOverlappingCircles() {
-                    menuRadiusDuplicate += 10
+                    menuSpacing += 10
                 }
 
             } while (isOutsideContainer(containerView: containerView) && stop == false)
