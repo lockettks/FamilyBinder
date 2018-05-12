@@ -111,7 +111,7 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
     func getSelectedIndexPath(selectedPoint: CGPoint) -> IndexPath? {
         var selectedIndexPathInInnerTable = IndexPath()
         if let indexPathInOuterTable = self.tableView.indexPathForRow(at: selectedPoint) {
-            print("section \(indexPathInOuterTable.section)")
+//            print("section \(indexPathInOuterTable.section)")
             switch indexPathInOuterTable.section {
                 
             case POSITION_CALENDAR.SECTION:
