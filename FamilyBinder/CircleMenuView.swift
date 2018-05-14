@@ -45,7 +45,7 @@ class CircleMenuView: UIView {
         }
     }
     
-    func setTouchPoint(touchPoint: CGPoint, containerView: UIView) {
+    func setCircleMenuLocation(touchPoint: CGPoint, containerView: UIView) {
         self.frame = CGRect(x: touchPoint.x-self.frameWidth/2, y: touchPoint.y-self.frameHeight/2, width: self.frameWidth, height: self.frameHeight)
         var menuSpacing = self.menuRadius
         let menuCenter = CGPoint(x: frameWidth/2, y: frameHeight/2)

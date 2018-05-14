@@ -68,7 +68,7 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
         if (longPressGesture.state == UIGestureRecognizerState.began) {
             initialPoint = currentPoint
             if let menu = mealCircleMenuView {
-                menu.setTouchPoint(touchPoint: currentPointAdjusted, containerView: self.view)
+                menu.setCircleMenuLocation(touchPoint: currentPointAdjusted, containerView: self.view)
                 self.view.addSubview(menu)
             }
         } else if (longPressGesture.state == .changed) {
