@@ -50,29 +50,43 @@ class CircleMenuView: UIView {
         var menuSpacing = self.menuRadius
         let menuCenter = CGPoint(x: frameWidth/2, y: frameHeight/2)
         var circleSpacingFactor = Float(1.5)
-        var numberOfCirclesToFit = getInitialNumberOfCirclesToFit(circleSpacingFactor: circleSpacingFactor)
+        var numberOfCirclesToFit = getNumberOfCirclesToFit(circleSpacingFactor: circleSpacingFactor)
         var firstCirclePosition = getInitialFirstCirclePosition(numberOfCirclesToFit: numberOfCirclesToFit) //pretty = -1.5
         let maxPosition = numberOfCirclesToFit - 1 + Float(abs(firstCirclePosition))
         repeat {
             var position = firstCirclePosition
             for circleButton in self.circleButtons {
-                circleButton.center = circleMenuService.getCircleLocation(menuRadius: menuSpacing, anchorPoint: menuCenter, totalCircleCount: numberOfCirclesToFit-1, circleInstanceNumber: Float(position))
+                circleButton.center = self.circleMenuService.getCircleLocation(menuRadius: menuSpacing, anchorPoint: menuCenter, totalCircleCount: numberOfCirclesToFit-1, circleInstanceNumber: Float(position))
                 position += 1
             }
             firstCirclePosition += 0.5
             if isRunOutOfPositions(firstCirclePosition: firstCirclePosition, maxPosition: maxPosition) {
                 circleSpacingFactor += 0.5
                 menuSpacing += 10
-                numberOfCirclesToFit = getInitialNumberOfCirclesToFit(circleSpacingFactor: circleSpacingFactor) //duplicate/reset
+                numberOfCirclesToFit = getNumberOfCirclesToFit(circleSpacingFactor: circleSpacingFactor) //duplicate/reset
                 firstCirclePosition = getInitialFirstCirclePosition(numberOfCirclesToFit: numberOfCirclesToFit) //duplicate/reset
             }
             if isOverlappingCircles() {
                 menuSpacing += 10
             }
         } while isCircleOutsideContainer(containerView: containerView)
+        animateMenuOpen()
     }
     
-    func getInitialNumberOfCirclesToFit(circleSpacingFactor : Float) -> Float {
+    func animateMenuOpen() {
+        let menuCenter = CGPoint(x: frameWidth/2, y: frameHeight/2)
+        var delay = Double(0)
+        for circleButton in self.circleButtons {
+            let newCenter = circleButton.center
+            circleButton.center = menuCenter
+            UIView.animate(withDuration: 0.15, delay: delay, options: .curveEaseIn, animations: {
+                circleButton.center = newCenter
+            }, completion: nil)
+            delay += 0.03
+        }
+    }
+    
+    func getNumberOfCirclesToFit(circleSpacingFactor : Float) -> Float {
         return Float(self.circleButtons.count) * circleSpacingFactor
     }
     
@@ -102,7 +116,6 @@ class CircleMenuView: UIView {
             let circleConverted = self.convert(circleButton.frame, to: containerView)
             if !(containerView.frame.contains(circleConverted)) {
                 isOutside = true
-                print("outside")
                 return isOutside
             }
         }

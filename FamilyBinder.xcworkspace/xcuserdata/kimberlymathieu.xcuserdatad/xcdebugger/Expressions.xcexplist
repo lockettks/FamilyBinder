@@ -11,6 +11,20 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "CircleMenuView.setTouchPoint(touchPoint:containerView:):CircleMenuView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "circleButton.center">
+            </PersistentString>
+            <PersistentString
+               value = "self.center">
+            </PersistentString>
+            <PersistentString
+               value = "circleButton.frame">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "Instruction.init(json : JSON) -&gt; Instruction?:Instruction.swift">
       </ContextState>
       <ContextState
