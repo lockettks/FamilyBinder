@@ -87,10 +87,10 @@
                value = "ingredientsLabel.frame.size.height">
             </PersistentString>
             <PersistentString
-               value = "shadowBackgroundView.frame.size.height">
+               value = "instructionsLabel.frame.size.height">
             </PersistentString>
             <PersistentString
-               value = "instructionsLabel.frame.size.height">
+               value = "shadowBackgroundView.frame.size.height">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -120,6 +120,9 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "AddRecipeToMealPlanTableViewController.dismissCircleMenu():AddRecipeToMealPlanTableViewController.swift">
+      </ContextState>
+      <ContextState
          contextName = "RecipeDetailViewController.addRemoveRecipeFromFavorites() -&gt; ():RecipeDetailViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -129,7 +132,7 @@
                value = "self.detailItem.isFavorite">
             </PersistentString>
             <PersistentString
-               value = "self.detailItem.title">
+               value = "self.realm">
             </PersistentString>
             <PersistentString
                value = "favoritedRecipe.id">
@@ -147,12 +150,9 @@
                value = "self.detailItem">
             </PersistentString>
             <PersistentString
-               value = "self.realm">
+               value = "self.detailItem.title">
             </PersistentString>
          </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "AddRecipeToMealPlanTableViewController.dismissCircleMenu():AddRecipeToMealPlanTableViewController.swift">
       </ContextState>
       <ContextState
          contextName = "RecipeRouter.asURLRequest() throws -&gt; URLRequest:RecipeRouter.swift">
@@ -166,7 +166,7 @@
          contextName = "RecipeDetailViewController.updateHeights():RecipeDetailViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "recipeImg.frame.size.height">
+               value = "recipeTitleContainerView.frame.size.height">
             </PersistentString>
             <PersistentString
                value = "view.frame.size.height">
@@ -181,10 +181,10 @@
                value = "contentViewConstraint.constant">
             </PersistentString>
             <PersistentString
-               value = "recipeTabsContainerView.frame.size.height">
+               value = "recipeImg.frame.size.height">
             </PersistentString>
             <PersistentString
-               value = "recipeTitleContainerView.frame.size.height">
+               value = "recipeTabsContainerView.frame.size.height">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -220,13 +220,13 @@
          contextName = "AddToMealPlanTableViewController.tableView(UITableView, heightForRowAt : IndexPath) -&gt; CGFloat:AddToMealPlanTableViewController.swift">
          <PersistentStrings>
             <PersistentString
+               value = "indexPath.section">
+            </PersistentString>
+            <PersistentString
                value = "DATE_PICKER_POSITION">
             </PersistentString>
             <PersistentString
                value = "indexPath.row">
-            </PersistentString>
-            <PersistentString
-               value = "indexPath.section">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -248,10 +248,10 @@
                value = "collectionView.indexPathsForSelectedItems">
             </PersistentString>
             <PersistentString
-               value = "self.collectionView.frame.width">
+               value = "collectionView.frame.size.height">
             </PersistentString>
             <PersistentString
-               value = "collectionView.frame.size.height">
+               value = "self.collectionView.frame.width">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -259,10 +259,10 @@
          contextName = "AddRecipeToMealPlanTableViewController.tableView(_:didSelectRowAt:):AddRecipeToMealPlanTableViewController.swift">
       </ContextState>
       <ContextState
-         contextName = "AddRecipeToMealPlanTableViewController.btnWeekFrwdClicked(_:):AddRecipeToMealPlanTableViewController.swift">
+         contextName = "CalendarDayCollectionViewCell.isSelected.didset:CalendarDayCollectionViewCell.swift">
          <PersistentStrings>
             <PersistentString
-               value = "days">
+               value = "self.isSelected">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -270,10 +270,10 @@
          contextName = "DayTableViewCell.initWithModel(dayHeadline:existingMeals:):DayTableViewCell.swift">
       </ContextState>
       <ContextState
-         contextName = "CalendarDayCollectionViewCell.isSelected.didset:CalendarDayCollectionViewCell.swift">
+         contextName = "AddRecipeToMealPlanTableViewController.btnWeekFrwdClicked(_:):AddRecipeToMealPlanTableViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "self.isSelected">
+               value = "days">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -286,19 +286,27 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "AddRecipeToMealPlanTableViewController.scrollViewDidScroll(_:):AddRecipeToMealPlanTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "scrollView.contentOffset.y">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "RecipeDetailViewController.detailItem.didset:RecipeDetailViewController.swift">
       </ContextState>
       <ContextState
          contextName = "AddRecipeToMealPlanTableViewController.tableView(_:cellForRowAt:):AddRecipeToMealPlanTableViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "existingMeal">
+               value = "self.days[indexPath.row].withoutTime()">
             </PersistentString>
             <PersistentString
                value = "days[indexPath.row].withoutTime()">
             </PersistentString>
             <PersistentString
-               value = "self.days[indexPath.row].withoutTime()">
+               value = "existingMeal">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -354,15 +362,7 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "RecipeDetailViewController.configureView() -&gt; ():RecipeDetailViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "self.navigationController?.navigationBar">
-            </PersistentString>
-            <PersistentString
-               value = "recipeTitleView">
-            </PersistentString>
-         </PersistentStrings>
+         contextName = "AddRecipeToMealPlanTableViewController.getSelectedIndexPath(selectedPoint:):AddRecipeToMealPlanTableViewController.swift">
       </ContextState>
       <ContextState
          contextName = "CalendarTableViewCell.collectionView(_:cellForItemAt:):CalendarTableViewCell.swift">
@@ -384,7 +384,15 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "AddRecipeToMealPlanTableViewController.getSelectedIndexPath(selectedPoint:):AddRecipeToMealPlanTableViewController.swift">
+         contextName = "RecipeDetailViewController.configureView() -&gt; ():RecipeDetailViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.navigationController?.navigationBar">
+            </PersistentString>
+            <PersistentString
+               value = "recipeTitleView">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "CalendarDayCollectionViewCell.initWithModel(day:):CalendarDayCollectionViewCell.swift">
@@ -509,15 +517,15 @@
          contextName = "RecipesMasterViewController.(loadRecipes() -&gt; ()).(closure #1):RecipesMasterViewController.swift">
       </ContextState>
       <ContextState
+         contextName = "DayTableViewCell.createExistingMealStackView(existingMeal:):DayTableViewCell.swift">
+      </ContextState>
+      <ContextState
          contextName = "RecipeTitleViewController.configureView():RecipeTitleViewController.swift">
          <PersistentStrings>
             <PersistentString
                value = "testFavorite">
             </PersistentString>
          </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "DayTableViewCell.createExistingMealStackView(existingMeal:):DayTableViewCell.swift">
       </ContextState>
       <ContextState
          contextName = "RecipeDetailViewController.backBtnPressed(Any) -&gt; ():RecipeDetailViewController.swift">
@@ -529,6 +537,9 @@
          contextName = "AddRecipeToMealPlanTableViewController.handleLongPress(longPressGesture:):AddRecipeToMealPlanTableViewController.swift">
          <PersistentStrings>
             <PersistentString
+               value = "self.scrollVerticalOffset">
+            </PersistentString>
+            <PersistentString
                value = "indexPath.row">
             </PersistentString>
             <PersistentString
@@ -537,7 +548,7 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "MealPlansTableViewController.tableView(_:numberOfRowsInSection:):MealPlansTableViewController.swift">
+         contextName = "AddRecipeToMealPlanTableViewController.addTapped(_:):AddRecipeToMealPlanTableViewController.swift">
       </ContextState>
       <ContextState
          contextName = "RecipeDetailViewController.configureView():RecipeDetailViewController.swift">
@@ -571,13 +582,13 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "AddRecipeToMealPlanTableViewController.addTapped(_:):AddRecipeToMealPlanTableViewController.swift">
+         contextName = "MealPlansTableViewController.tableView(_:numberOfRowsInSection:):MealPlansTableViewController.swift">
       </ContextState>
       <ContextState
          contextName = "RecipeDetailViewController.(addRemoveRecipeFromFavorites() -&gt; ()).(closure #1):RecipeDetailViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "self.detailItem">
+               value = "self.detailItem?.id">
             </PersistentString>
             <PersistentString
                value = "recipeToDelete.title">
@@ -598,10 +609,10 @@
                value = "recipeToDelete">
             </PersistentString>
             <PersistentString
-               value = "test.id">
+               value = "self.detailItem">
             </PersistentString>
             <PersistentString
-               value = "self.detailItem?.id">
+               value = "test.id">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -631,7 +642,7 @@
                value = "self.detailItem">
             </PersistentString>
             <PersistentString
-               value = "self.detailItem.title">
+               value = "self.detailItem.id">
             </PersistentString>
             <PersistentString
                value = "copiedRecipe">
@@ -649,7 +660,7 @@
                value = "test.id">
             </PersistentString>
             <PersistentString
-               value = "self.detailItem.id">
+               value = "self.detailItem.title">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -657,13 +668,13 @@
          contextName = "RecipeDetailViewController.directionsTabPressed(_:):RecipeDetailViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "directionsViewContainer.subviews[0].frame.size">
-            </PersistentString>
-            <PersistentString
-               value = "sender.id">
+               value = "recipeDetailsView.frame.size.height">
             </PersistentString>
             <PersistentString
                value = "recipeTitleView.frame.size.height">
+            </PersistentString>
+            <PersistentString
+               value = "sender.id">
             </PersistentString>
             <PersistentString
                value = "recipeDetailsView.subviews[0].frame.size.height">
@@ -672,10 +683,10 @@
                value = "ingredientsTab.frame.size.height">
             </PersistentString>
             <PersistentString
-               value = "recipeDetailsView.subviews[1].frame.size.height">
+               value = "directionsViewContainer.subviews[0].frame.size">
             </PersistentString>
             <PersistentString
-               value = "recipeDetailsView.frame.size.height">
+               value = "recipeDetailsView.subviews[1].frame.size.height">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -716,7 +727,7 @@
          contextName = "RecipeDetailViewController.updateTabHeights(detailHeight:):RecipeDetailViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "recipeTabsContainerView.frame.size.height">
+               value = "recipeTitleContainerView.frame.size.height">
             </PersistentString>
             <PersistentString
                value = "contentView.frame.size.height">
@@ -725,10 +736,10 @@
                value = "contentViewConstraint.constant">
             </PersistentString>
             <PersistentString
-               value = "self.view.frame.size.height">
+               value = "recipeTabsContainerView.frame.size.height">
             </PersistentString>
             <PersistentString
-               value = "recipeTitleContainerView.frame.size.height">
+               value = "self.view.frame.size.height">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -753,7 +764,7 @@
          contextName = "RecipeTabsViewController.updateHeights():RecipeTabsViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "tabsContainerHeightConstraint.constant">
+               value = "directionsContainer.frame.size.height">
             </PersistentString>
             <PersistentString
                value = "view.frame.size.height">
@@ -765,7 +776,7 @@
                value = "ingredientsContainer.frame.size.height">
             </PersistentString>
             <PersistentString
-               value = "directionsContainer.frame.size.height">
+               value = "tabsContainerHeightConstraint.constant">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -776,13 +787,13 @@
          contextName = "AddToMealPlanTableViewController.tableView(UITableView, cellForRowAt : IndexPath) -&gt; UITableViewCell:AddToMealPlanTableViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "DATE_LABEL_POSITION.SECTION">
+               value = "indexPath.section">
             </PersistentString>
             <PersistentString
                value = "indexPath.row">
             </PersistentString>
             <PersistentString
-               value = "indexPath.section">
+               value = "DATE_LABEL_POSITION.SECTION">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -827,10 +838,10 @@
          contextName = "AppDelegate.application(UIApplication, didFinishLaunchingWithOptions : [UIApplicationLaunchOptionsKey : Any]?) -&gt; Bool:AppDelegate.swift">
          <PersistentStrings>
             <PersistentString
-               value = "tabController.viewControllers">
+               value = "splitViewController.viewControllers">
             </PersistentString>
             <PersistentString
-               value = "splitViewController.viewControllers">
+               value = "tabController.viewControllers">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

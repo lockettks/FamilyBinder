@@ -33,6 +33,7 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
     var mealTypeCircleButtons = [CircleButton]()
     var mealCircleMenuView : CircleMenuView?
     var initialPoint : CGPoint?
+    var scrollVerticalOffset = CGFloat(0.0)
     
     
     convenience init(){
@@ -62,18 +63,15 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
     }
     
     @objc func handleLongPress(longPressGesture:UILongPressGestureRecognizer){
-        let currentPoint = longPressGesture.location(in: self.tableView)        
+        var currentPoint = longPressGesture.location(in: self.tableView)
         let currentPointAdjusted = getPointAdjustedForTableView(selectedPoint: currentPoint)
         if (longPressGesture.state == UIGestureRecognizerState.began) {
             initialPoint = currentPoint
-            
             if let menu = mealCircleMenuView {
                 menu.setTouchPoint(touchPoint: currentPointAdjusted, containerView: self.view)
                 self.view.addSubview(menu)
             }
-            
         } else if (longPressGesture.state == .changed) {
-            // TODO:  Remove need for adjusting position - maybe convert it to inner table view point?
             if let menu = mealCircleMenuView {
                 let pointInCircleMenuView = view.convert(currentPointAdjusted, to: menu)
                 menu.touchMoved(newPosition: pointInCircleMenuView)
@@ -86,6 +84,7 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
                         let pointInCircleMenuView = view.convert(currentPointAdjusted, to: menu)
                         if let selectedMealButton = menu.touchEnded(finalPosition: pointInCircleMenuView)
                         {
+                            print("selected \(days[selectedIndex.row]) \(MealType(rawValue: selectedMealButton.id))")
                             addMealToSelections(selectedDate: days[selectedIndex.row], mealType: MealType(rawValue: selectedMealButton.id))
                             updateTableForSelection(selectedDay: days[selectedIndex.row])
                             if let collectionRowToSelect = mealPlanService.getIndex(forDate: days[selectedIndex.row], fromDates: days) {
@@ -103,14 +102,12 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
     func getSelectedIndexPath(selectedPoint: CGPoint) -> IndexPath? {
         var selectedIndexPathInInnerTable = IndexPath()
         if let indexPathInOuterTable = self.tableView.indexPathForRow(at: selectedPoint) {
-//            print("section \(indexPathInOuterTable.section)")
             switch indexPathInOuterTable.section {
                 
             case POSITION_CALENDAR.SECTION:
                 let adjustedSelectedPoint = getPointAdjustedForTableView(selectedPoint: selectedPoint)
                 let pointInCollectionView = view.convert(adjustedSelectedPoint, to: calTVC.collectionView)
                 selectedIndexPathInInnerTable = calTVC.collectionView.indexPathForItem(at: pointInCollectionView)!
-                
                 if let collectionRowToSelect = mealPlanService.getIndex(forDate: days[selectedIndexPathInInnerTable.row], fromDates: days) {
                     let collectionCellIndexToSelect = IndexPath(row: collectionRowToSelect, section: 0)
                     calTVC.collectionView.selectItem(at: collectionCellIndexToSelect, animated: true, scrollPosition: [])
@@ -128,7 +125,8 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
     }
     
     func getPointAdjustedForTableView(selectedPoint: CGPoint) -> CGPoint {
-        let adjustedPoint = CGPoint(x: selectedPoint.x, y: selectedPoint.y + 64)
+//        let adjustedPoint = CGPoint(x: selectedPoint.x, y: selectedPoint.y + 64)
+        let adjustedPoint = CGPoint(x: selectedPoint.x, y: selectedPoint.y - self.scrollVerticalOffset)
         return adjustedPoint
     }
     
@@ -211,9 +209,8 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
     
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if mealTypeCircleButtons.count > 0 {
-            dismissCircleMenu()
-        }
+        dismissCircleMenu()
+        self.scrollVerticalOffset = scrollView.contentOffset.y
     }
     
     @objc func dismissCircleMenu(){
