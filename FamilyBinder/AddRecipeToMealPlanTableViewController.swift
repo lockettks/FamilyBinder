@@ -63,23 +63,41 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
     }
     
     @objc func handleLongPress(longPressGesture:UILongPressGestureRecognizer){
+        var selectedIndex : IndexPath? = IndexPath()
+        var selectedCellRect : CGRect?
         var currentPoint = longPressGesture.location(in: self.tableView)
         let currentPointAdjusted = getPointAdjustedForTableView(selectedPoint: currentPoint)
         if (longPressGesture.state == UIGestureRecognizerState.began) {
             initialPoint = currentPoint
+            
+            if let initialPoint = initialPoint {
+                selectedIndex = getSelectedIndexPath(selectedPoint: initialPoint)
+                if let selectedIndex = selectedIndex {
+                    selectedCellRect = self.tableView.rectForRow(at: selectedIndex)
+                }
+                
+            }
             if let menu = mealCircleMenuView {
-                menu.setCircleMenuLocation(touchPoint: currentPointAdjusted, containerView: self.view)
+                menu.setCircleMenuLocation(touchPoint: currentPointAdjusted, containerView: self.view, sourceRect: selectedCellRect)
                 self.view.addSubview(menu)
             }
+
+                
+            
         } else if (longPressGesture.state == .changed) {
             if let menu = mealCircleMenuView {
                 let pointInCircleMenuView = view.convert(currentPointAdjusted, to: menu)
                 menu.touchMoved(newPosition: pointInCircleMenuView)
             }
+            
+
+            
         }
         else if (longPressGesture.state == UIGestureRecognizerState.ended) {
-            if let initialPoint = initialPoint {
-                if let selectedIndex = getSelectedIndexPath(selectedPoint: initialPoint) {
+//            if let initialPoint = initialPoint {
+//                if let selectedIndex = getSelectedIndexPath(selectedPoint: initialPoint) {
+            
+            if let selectedIndex = selectedIndex {
                     if let menu = mealCircleMenuView {
                         let pointInCircleMenuView = view.convert(currentPointAdjusted, to: menu)
                         if let selectedMealButton = menu.touchEnded(finalPosition: pointInCircleMenuView)
@@ -94,7 +112,8 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
                         }
                     }
                     dismissCircleMenu()
-                }
+//                }
+//            }
             }
         }
     }

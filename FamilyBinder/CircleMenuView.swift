@@ -11,8 +11,8 @@ import UIKit
 class CircleMenuView: UIView {
     
     var circleRadius: CGFloat
-    let frameWidth = CGFloat(200)
-    let frameHeight = CGFloat(200)
+    var frameWidth = CGFloat(200)
+    var frameHeight = CGFloat(200)
     var menuRadius = Float(90.0) // 75 //TODO:  Calculate this based on circle count- may need to be updated when placing circles
     var fillColors: [CGColor]
     var images: [UIImage]?
@@ -45,10 +45,14 @@ class CircleMenuView: UIView {
         }
     }
     
-    func setCircleMenuLocation(touchPoint: CGPoint, containerView: UIView) {
-        self.frame = CGRect(x: touchPoint.x-self.frameWidth/2, y: touchPoint.y-self.frameHeight/2, width: self.frameWidth, height: self.frameHeight)
+    func setCircleMenuLocation(touchPoint: CGPoint, containerView: UIView, sourceRect: CGRect?) {
+        self.frameWidth = containerView.frame.size.width
+        self.frameHeight = containerView.frame.size.height
+        self.frame = CGRect(x: 0, y: 0, width: self.frameWidth, height: self.frameHeight)
+//        self.frame = CGRect(x: touchPoint.x-self.frameWidth/2, y: touchPoint.y-self.frameHeight/2, width: self.frameWidth, height: self.frameHeight)
         var menuSpacing = self.menuRadius
-        let menuCenter = CGPoint(x: frameWidth/2, y: frameHeight/2)
+//        let menuCenter = CGPoint(x: frameWidth/2, y: frameHeight/2)
+        let menuCenter = touchPoint
         var circleSpacingFactor = Float(1.5)
         var numberOfCirclesToFit = getNumberOfCirclesToFit(circleSpacingFactor: circleSpacingFactor)
         var firstCirclePosition = getInitialFirstCirclePosition(numberOfCirclesToFit: numberOfCirclesToFit) //pretty = -1.5
@@ -70,11 +74,12 @@ class CircleMenuView: UIView {
                 menuSpacing += 10
             }
         } while isCircleOutsideContainer(containerView: containerView)
-        animateMenuOpen()
+        animateMenuOpen(origin: touchPoint)
     }
     
-    func animateMenuOpen() {
-        let menuCenter = CGPoint(x: frameWidth/2, y: frameHeight/2)
+    func animateMenuOpen(origin : CGPoint) {
+//        let menuCenter = CGPoint(x: frameWidth/2, y: frameHeight/2)
+        let menuCenter = origin
         var delay = Double(0)
         for circleButton in self.circleButtons {
             let newCenter = circleButton.center
