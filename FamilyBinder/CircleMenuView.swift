@@ -33,13 +33,27 @@ class CircleMenuView: UIView {
         super.init(frame: CGRect(x: 0, y: 0, width: self.frameWidth, height: self.frameHeight))
         
         self.backgroundColor = .clear
-        let blurEffect = UIBlurEffect(style: .regular)
+        let blurEffect = UIBlurEffect(style: .prominent)
         let blurView = UIVisualEffectView(effect: blurEffect)
         blurView.translatesAutoresizingMaskIntoConstraints = false
 //        self.insertSubview(blurView, at: 0)
         self.addSubview(blurView)
-        NSLayoutConstraint.activate([blurView.heightAnchor.constraint(equalTo: self.heightAnchor),
-                                     blurView.widthAnchor.constraint(equalTo: self.widthAnchor)])
+        NSLayoutConstraint.activate([
+            blurView.heightAnchor.constraint(equalTo: self.heightAnchor),
+            blurView.widthAnchor.constraint(equalTo: self.widthAnchor)
+            ])
+        
+        let vibrancyEffect = UIVibrancyEffect(blurEffect: blurEffect)
+        let vibrancyView = UIVisualEffectView(effect: vibrancyEffect)
+        vibrancyView.translatesAutoresizingMaskIntoConstraints = false
+        blurView.contentView.addSubview(vibrancyView)
+        
+        NSLayoutConstraint.activate([
+            vibrancyView.heightAnchor.constraint(equalTo: blurView.contentView.heightAnchor),
+            vibrancyView.widthAnchor.constraint(equalTo: blurView.contentView.widthAnchor),
+            vibrancyView.centerXAnchor.constraint(equalTo: blurView.contentView.centerXAnchor),
+            vibrancyView.centerYAnchor.constraint(equalTo: blurView.contentView.centerYAnchor)
+            ])
         
         for (index, fillColor) in self.fillColors.enumerated() {
             var circleButton : CircleButton
@@ -50,7 +64,8 @@ class CircleMenuView: UIView {
                 circleButton = CircleButton(id: ids[index], frame: circleFrame, fillColor: fillColor, circleImage: nil)
             }
             self.circleButtons.append(circleButton)
-            self.addSubview(circleButton)
+//            self.addSubview(circleButton)
+            vibrancyView.contentView.addSubview(circleButton)
         }
     }
     
