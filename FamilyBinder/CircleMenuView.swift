@@ -31,7 +31,16 @@ class CircleMenuView: UIView {
             }
         }
         super.init(frame: CGRect(x: 0, y: 0, width: self.frameWidth, height: self.frameHeight))
-        self.backgroundColor = UIColor.yellow
+        
+        self.backgroundColor = .clear
+        let blurEffect = UIBlurEffect(style: .regular)
+        let blurView = UIVisualEffectView(effect: blurEffect)
+        blurView.translatesAutoresizingMaskIntoConstraints = false
+//        self.insertSubview(blurView, at: 0)
+        self.addSubview(blurView)
+        NSLayoutConstraint.activate([blurView.heightAnchor.constraint(equalTo: self.heightAnchor),
+                                     blurView.widthAnchor.constraint(equalTo: self.widthAnchor)])
+        
         for (index, fillColor) in self.fillColors.enumerated() {
             var circleButton : CircleButton
             let circleFrame = CGRect(x: 0, y: 0, width: self.circleRadius * 2, height: self.circleRadius * 2)
