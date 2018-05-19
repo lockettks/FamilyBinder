@@ -990,6 +990,9 @@
          contextName = "CircleMenuView.setCircleMenuLocation(touchPoint:containerView:sourceRect:):CircleMenuView.swift">
          <PersistentStrings>
             <PersistentString
+               value = "self.frame">
+            </PersistentString>
+            <PersistentString
                value = "containerView.frame">
             </PersistentString>
          </PersistentStrings>

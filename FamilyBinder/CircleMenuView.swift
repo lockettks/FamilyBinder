@@ -11,16 +11,23 @@ import UIKit
 class CircleMenuView: UIView {
     
     var circleRadius: CGFloat
-    var frameWidth = CGFloat(200)
-    var frameHeight = CGFloat(200)
-    var menuRadius = Float(90.0) // 75 //TODO:  Calculate this based on circle count- may need to be updated when placing circles
+    var frameWidth: CGFloat
+    var frameHeight: CGFloat
+    var menuRadius = Float(90.0)
     var fillColors: [CGColor]
     var images: [UIImage]?
     var circleButtons = [CircleButton]()
     let circleMenuService = CircleMenuService()
-    var selectedButton: CircleButton?
+    let containerView: UIView
+    //    var selectedButton: CircleButton?
+    //    var path : UIBezierPath?
+    var blur = UIVisualEffectView()
+    var vibrancyView = UIVisualEffectView()
     
-    init(ids: [String], fillColors: [CGColor], circleImages: [UIImage]?, circleRadius: CGFloat = 30.0) {
+    init(ids: [String], fillColors: [CGColor], containerView: UIView, circleImages: [UIImage]?, circleRadius: CGFloat = 30.0) {
+        self.containerView = containerView
+        self.frameWidth = self.containerView.frame.size.width
+        self.frameHeight = self.containerView.frame.size.height
         self.circleRadius = circleRadius
         self.fillColors = fillColors
         if let images = circleImages {
@@ -30,30 +37,43 @@ class CircleMenuView: UIView {
                 print("Missing images for circle menu")
             }
         }
+        //        path = UIBezierPath()
         super.init(frame: CGRect(x: 0, y: 0, width: self.frameWidth, height: self.frameHeight))
         
         self.backgroundColor = .clear
-        let blurEffect = UIBlurEffect(style: .prominent)
-        let blurView = UIVisualEffectView(effect: blurEffect)
-        blurView.translatesAutoresizingMaskIntoConstraints = false
-//        self.insertSubview(blurView, at: 0)
-        self.addSubview(blurView)
-        NSLayoutConstraint.activate([
-            blurView.heightAnchor.constraint(equalTo: self.heightAnchor),
-            blurView.widthAnchor.constraint(equalTo: self.widthAnchor)
-            ])
-        
-        let vibrancyEffect = UIVibrancyEffect(blurEffect: blurEffect)
-        let vibrancyView = UIVisualEffectView(effect: vibrancyEffect)
-        vibrancyView.translatesAutoresizingMaskIntoConstraints = false
-        blurView.contentView.addSubview(vibrancyView)
-        
-        NSLayoutConstraint.activate([
-            vibrancyView.heightAnchor.constraint(equalTo: blurView.contentView.heightAnchor),
-            vibrancyView.widthAnchor.constraint(equalTo: blurView.contentView.widthAnchor),
-            vibrancyView.centerXAnchor.constraint(equalTo: blurView.contentView.centerXAnchor),
-            vibrancyView.centerYAnchor.constraint(equalTo: blurView.contentView.centerYAnchor)
-            ])
+        //        var vibrancyView = UIVisualEffectView()
+        if !UIAccessibilityIsReduceTransparencyEnabled() {
+            let blurEffect = UIBlurEffect(style: .prominent)
+            blur = UIVisualEffectView(effect: blurEffect)
+            
+            blur.frame = self.frame
+            blur.isUserInteractionEnabled = false
+            self.addSubview(blur)
+            
+            
+            
+            
+            
+            //            blur.translatesAutoresizingMaskIntoConstraints = false
+            //            //        self.insertSubview(blurView, at: 0)
+            //            self.addSubview(blur)
+            //            NSLayoutConstraint.activate([
+            //                blur.heightAnchor.constraint(equalTo: self.heightAnchor),
+            //                blur.widthAnchor.constraint(equalTo: self.widthAnchor)
+            //                ])
+            //
+            //            let vibrancyEffect = UIVibrancyEffect(blurEffect: blurEffect)
+            //            vibrancyView = UIVisualEffectView(effect: vibrancyEffect)
+            //            vibrancyView.translatesAutoresizingMaskIntoConstraints = false
+            //            blur.contentView.addSubview(vibrancyView)
+            //
+            //            NSLayoutConstraint.activate([
+            //                vibrancyView.heightAnchor.constraint(equalTo: blur.contentView.heightAnchor),
+            //                vibrancyView.widthAnchor.constraint(equalTo: blur.contentView.widthAnchor),
+            //                vibrancyView.centerXAnchor.constraint(equalTo: blur.contentView.centerXAnchor),
+            //                vibrancyView.centerYAnchor.constraint(equalTo: blur.contentView.centerYAnchor)
+            //                ])
+        }
         
         for (index, fillColor) in self.fillColors.enumerated() {
             var circleButton : CircleButton
@@ -64,18 +84,22 @@ class CircleMenuView: UIView {
                 circleButton = CircleButton(id: ids[index], frame: circleFrame, fillColor: fillColor, circleImage: nil)
             }
             self.circleButtons.append(circleButton)
-//            self.addSubview(circleButton)
-            vibrancyView.contentView.addSubview(circleButton)
+            
+            self.addSubview(circleButton)
+            //            if UIAccessibilityIsReduceTransparencyEnabled() {
+            //                self.addSubview(circleButton)
+            //            } else {
+            //                vibrancyView.contentView.addSubview(circleButton)
+            //            }
         }
     }
     
-    func setCircleMenuLocation(touchPoint: CGPoint, containerView: UIView, sourceRect: CGRect?) {
-        self.frameWidth = containerView.frame.size.width
-        self.frameHeight = containerView.frame.size.height
+    func setCircleMenuLocation(touchPoint: CGPoint, sourceRect: CGRect?) {
+        
         self.frame = CGRect(x: 0, y: 0, width: self.frameWidth, height: self.frameHeight)
-//        self.frame = CGRect(x: touchPoint.x-self.frameWidth/2, y: touchPoint.y-self.frameHeight/2, width: self.frameWidth, height: self.frameHeight)
+        //        self.frame = CGRect(x: touchPoint.x-self.frameWidth/2, y: touchPoint.y-self.frameHeight/2, width: self.frameWidth, height: self.frameHeight)
         var menuSpacing = self.menuRadius
-//        let menuCenter = CGPoint(x: frameWidth/2, y: frameHeight/2)
+        //        let menuCenter = CGPoint(x: frameWidth/2, y: frameHeight/2)
         let menuCenter = touchPoint
         var circleSpacingFactor = Float(1.5)
         var numberOfCirclesToFit = getNumberOfCirclesToFit(circleSpacingFactor: circleSpacingFactor)
@@ -97,12 +121,87 @@ class CircleMenuView: UIView {
             if isOverlappingCircles() {
                 menuSpacing += 10
             }
-        } while isCircleOutsideContainer(containerView: containerView)
+        } while isCircleOutsideContainer(containerView: self.containerView)
+        
+        
+        
+        
+        //        blur.frame = self.frame
+        //        blur.isUserInteractionEnabled = false
+        //        self.addSubview(blur)
+        //        let circleSize: CGFloat = 200
+        let path = UIBezierPath (
+            roundedRect: blur.frame,
+            cornerRadius: 0)
+        
+        //        let circle = UIBezierPath (
+        //            roundedRect: CGRect(origin: CGPoint(x:200, y: 300),
+        //                                size: CGSize (width: circleSize, height: circleSize)), cornerRadius: circleSize/2)
+        if let sourceRect = sourceRect {
+            let rectangle = createRectangle(windowRect: sourceRect)
+            
+            //        path.append(circle)
+            path.append(rectangle)
+            path.usesEvenOddFillRule = true
+            
+            let maskLayer = CAShapeLayer()
+            maskLayer.path = path.cgPath
+            maskLayer.fillRule = kCAFillRuleEvenOdd
+            
+            let borderLayer = CAShapeLayer()
+            //        borderLayer.path = circle.cgPath
+            borderLayer.path = rectangle.cgPath
+            borderLayer.strokeColor = UIColor.white.cgColor
+            borderLayer.fillColor = UIColor.clear.cgColor //Remember this line, it caused me some issues
+            borderLayer.lineWidth = 10
+            
+            let maskView = UIView(frame: self.frame)
+            maskView.backgroundColor = UIColor.black
+            maskView.layer.mask = maskLayer
+            
+            blur.layer.addSublayer(borderLayer)
+            print("test")
+        }
+        
+        //        if let sourceRect = sourceRect {
+        //            let path = createRectangle(windowRect: sourceRect)
+        //
+        //            let maskLayer = CAShapeLayer()
+        //            maskLayer.path = path.cgPath
+        //            maskLayer.fillRule = kCAFillRuleEvenOdd
+        //
+        //            let borderLayer = CAShapeLayer()
+        ////            borderLayer.path =
+        //
+        //            let maskView = UIView(frame: self.frame)
+        //            maskView.backgroundColor = UIColor.black
+        //            maskView.layer.mask = maskLayer
+        //
+        ////            blurView.mask = maskView
+        //            vibrancyView.mask = maskView
+        ////            vibrancyView.layer.mask = maskLayer
+        //        }
+        
         animateMenuOpen(origin: touchPoint)
     }
     
+    func createRectangle(windowRect: CGRect) -> UIBezierPath{
+        // create window to selected day
+        let path = UIBezierPath()
+        //        if let path = self.path {
+        path.move(to: windowRect.origin)
+        path.addLine(to: CGPoint(x: windowRect.origin.x + windowRect.size.width, y: windowRect.origin.y ))
+        path.addLine(to: CGPoint(x: windowRect.origin.x + windowRect.size.width, y: windowRect.origin.y + windowRect.size.height))
+        path.addLine(to: CGPoint(x: windowRect.origin.x, y: windowRect.origin.y + windowRect.size.height))
+        
+        
+        path.close()
+        //        }
+        return path
+    }
+    
     func animateMenuOpen(origin : CGPoint) {
-//        let menuCenter = CGPoint(x: frameWidth/2, y: frameHeight/2)
+        //        let menuCenter = CGPoint(x: frameWidth/2, y: frameHeight/2)
         let menuCenter = origin
         var delay = Double(0)
         for circleButton in self.circleButtons {

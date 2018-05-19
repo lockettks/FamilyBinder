@@ -59,7 +59,7 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
             let mealCircleImage = circleMenuService.getImageForMealTypeOn(mealType: mealType)
             mealCircleImages.append(mealCircleImage)
         }
-        mealCircleMenuView = CircleMenuView(ids: mealCircleIds, fillColors: testColors, circleImages: mealCircleImages)
+        mealCircleMenuView = CircleMenuView(ids: mealCircleIds, fillColors: testColors, containerView: self.view, circleImages: mealCircleImages)
     }
     
     @objc func handleLongPress(longPressGesture:UILongPressGestureRecognizer){
@@ -78,7 +78,7 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
                 
             }
             if let menu = mealCircleMenuView {
-                menu.setCircleMenuLocation(touchPoint: currentPointAdjusted, containerView: self.view, sourceRect: selectedCellRect)
+                menu.setCircleMenuLocation(touchPoint: currentPointAdjusted, sourceRect: selectedCellRect)
                 self.view.addSubview(menu)
             }
 
