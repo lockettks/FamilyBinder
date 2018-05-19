@@ -153,13 +153,15 @@ class CircleMenuView: UIView {
             borderLayer.path = rectangle.cgPath
             borderLayer.strokeColor = UIColor.white.cgColor
             borderLayer.fillColor = UIColor.clear.cgColor //Remember this line, it caused me some issues
-            borderLayer.lineWidth = 10
-            
-            let maskView = UIView(frame: self.frame)
-            maskView.backgroundColor = UIColor.black
-            maskView.layer.mask = maskLayer
-            
+            borderLayer.lineWidth = 5
             blur.layer.addSublayer(borderLayer)
+            
+//            let maskView = UIView(frame: self.frame)
+//            maskView.backgroundColor = UIColor.black
+//            maskView.layer.mask = maskLayer
+//            blur.mask = maskView
+            
+            blur.layer.mask = maskLayer
             print("test")
         }
         
