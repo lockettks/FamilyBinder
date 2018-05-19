@@ -74,6 +74,8 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
                 selectedIndex = getSelectedIndexPath(selectedPoint: initialPoint)
                 if let selectedIndex = selectedIndex {
                     selectedCellRect = self.tableView.rectForRow(at: selectedIndex)
+                    selectedCellRect = CGRect(origin: getPointAdjustedForTableView(selectedPoint: (selectedCellRect?.origin)!), size: (selectedCellRect?.size)!)
+                    //                    selectedCellRect = CGRect(origin: CGPoint(x: (selectedCellRect?.origin.x)!, y: (selectedCellRect?.origin.y)! + 64), size: (selectedCellRect?.size)!)
                 }
                 
             }
@@ -81,8 +83,8 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
                 menu.setCircleMenuLocation(touchPoint: currentPointAdjusted, sourceRect: selectedCellRect)
                 self.view.addSubview(menu)
             }
-
-                
+            
+            
             
         } else if (longPressGesture.state == .changed) {
             if let menu = mealCircleMenuView {
@@ -90,30 +92,30 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
                 menu.touchMoved(newPosition: pointInCircleMenuView)
             }
             
-
+            
             
         }
         else if (longPressGesture.state == UIGestureRecognizerState.ended) {
-//            if let initialPoint = initialPoint {
-//                if let selectedIndex = getSelectedIndexPath(selectedPoint: initialPoint) {
+            //            if let initialPoint = initialPoint {
+            //                if let selectedIndex = getSelectedIndexPath(selectedPoint: initialPoint) {
             
             if let selectedIndex = selectedIndex {
-                    if let menu = mealCircleMenuView {
-                        let pointInCircleMenuView = view.convert(currentPointAdjusted, to: menu)
-                        if let selectedMealButton = menu.touchEnded(finalPosition: pointInCircleMenuView)
-                        {
-                            print("selected \(days[selectedIndex.row]) \(MealType(rawValue: selectedMealButton.id))")
-                            addMealToSelections(selectedDate: days[selectedIndex.row], mealType: MealType(rawValue: selectedMealButton.id))
-                            updateTableForSelection(selectedDay: days[selectedIndex.row])
-                            if let collectionRowToSelect = mealPlanService.getIndex(forDate: days[selectedIndex.row], fromDates: days) {
-                                let collectionCellIndexToSelect = IndexPath(row: collectionRowToSelect, section: 0)
-                                calTVC.collectionView.selectItem(at: collectionCellIndexToSelect, animated: true, scrollPosition: [])
-                            }
+                if let menu = mealCircleMenuView {
+                    let pointInCircleMenuView = view.convert(currentPointAdjusted, to: menu)
+                    if let selectedMealButton = menu.touchEnded(finalPosition: pointInCircleMenuView)
+                    {
+                        print("selected \(days[selectedIndex.row]) \(MealType(rawValue: selectedMealButton.id))")
+                        addMealToSelections(selectedDate: days[selectedIndex.row], mealType: MealType(rawValue: selectedMealButton.id))
+                        updateTableForSelection(selectedDay: days[selectedIndex.row])
+                        if let collectionRowToSelect = mealPlanService.getIndex(forDate: days[selectedIndex.row], fromDates: days) {
+                            let collectionCellIndexToSelect = IndexPath(row: collectionRowToSelect, section: 0)
+                            calTVC.collectionView.selectItem(at: collectionCellIndexToSelect, animated: true, scrollPosition: [])
                         }
                     }
-                    dismissCircleMenu()
-//                }
-//            }
+                }
+                dismissCircleMenu()
+                //                }
+                //            }
             }
         }
     }
@@ -144,7 +146,7 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
     }
     
     func getPointAdjustedForTableView(selectedPoint: CGPoint) -> CGPoint {
-//        let adjustedPoint = CGPoint(x: selectedPoint.x, y: selectedPoint.y + 64)
+        //        let adjustedPoint = CGPoint(x: selectedPoint.x, y: selectedPoint.y + 64)
         let adjustedPoint = CGPoint(x: selectedPoint.x, y: selectedPoint.y - self.scrollVerticalOffset)
         return adjustedPoint
     }
@@ -215,7 +217,7 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
             selections.append(newSelection)
         }
         self.tableView.reloadSections(IndexSet(integersIn: POSITION_DAYS.SECTION...POSITION_DAYS.SECTION), with: .automatic)
-
+        
     }
     
     func removeFromSelection(deselectedDate: Date) {
@@ -329,7 +331,7 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
                     existingMealsForDay.append(mealNotYetOnMealPlan)
                 }
             }
-
+            
             existingMealsForDay.sort(by: {($0.mealType?.sortOrder() ?? 100) < ($1.mealType?.sortOrder() ?? 100)})
             cell.initWithModel(dayHeadline: days[indexPath.row], existingMeals: existingMealsForDay)
             

@@ -188,7 +188,8 @@ class CircleMenuView: UIView {
     func createRectangle(windowRect: CGRect) -> UIBezierPath{
         // create window to selected day
         let path = UIBezierPath()
-        //        if let path = self.path {
+//        let windowRect = CGRect(origin: CGPoint(x: windowRect.origin.x, y: windowRect.origin.y + 64), size: windowRect.size)
+        
         path.move(to: windowRect.origin)
         path.addLine(to: CGPoint(x: windowRect.origin.x + windowRect.size.width, y: windowRect.origin.y ))
         path.addLine(to: CGPoint(x: windowRect.origin.x + windowRect.size.width, y: windowRect.origin.y + windowRect.size.height))
@@ -196,7 +197,7 @@ class CircleMenuView: UIView {
         
         
         path.close()
-        //        }
+        
         return path
     }
     
