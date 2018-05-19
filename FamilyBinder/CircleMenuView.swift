@@ -19,8 +19,6 @@ class CircleMenuView: UIView {
     var circleButtons = [CircleButton]()
     let circleMenuService = CircleMenuService()
     let containerView: UIView
-    //    var selectedButton: CircleButton?
-    //    var path : UIBezierPath?
     var blur = UIVisualEffectView()
     var vibrancyView = UIVisualEffectView()
     
@@ -37,7 +35,6 @@ class CircleMenuView: UIView {
                 print("Missing images for circle menu")
             }
         }
-        //        path = UIBezierPath()
         super.init(frame: CGRect(x: 0, y: 0, width: self.frameWidth, height: self.frameHeight))
         
         self.backgroundColor = .clear
@@ -49,10 +46,6 @@ class CircleMenuView: UIView {
             blur.frame = self.frame
             blur.isUserInteractionEnabled = false
             self.addSubview(blur)
-            
-            
-            
-            
             
             //            blur.translatesAutoresizingMaskIntoConstraints = false
             //            //        self.insertSubview(blurView, at: 0)
@@ -97,13 +90,11 @@ class CircleMenuView: UIView {
     func setCircleMenuLocation(touchPoint: CGPoint, sourceRect: CGRect?) {
         
         self.frame = CGRect(x: 0, y: 0, width: self.frameWidth, height: self.frameHeight)
-        //        self.frame = CGRect(x: touchPoint.x-self.frameWidth/2, y: touchPoint.y-self.frameHeight/2, width: self.frameWidth, height: self.frameHeight)
         var menuSpacing = self.menuRadius
-        //        let menuCenter = CGPoint(x: frameWidth/2, y: frameHeight/2)
         let menuCenter = touchPoint
         var circleSpacingFactor = Float(1.5)
         var numberOfCirclesToFit = getNumberOfCirclesToFit(circleSpacingFactor: circleSpacingFactor)
-        var firstCirclePosition = getInitialFirstCirclePosition(numberOfCirclesToFit: numberOfCirclesToFit) //pretty = -1.5
+        var firstCirclePosition = getInitialFirstCirclePosition(numberOfCirclesToFit: numberOfCirclesToFit)
         let maxPosition = numberOfCirclesToFit - 1 + Float(abs(firstCirclePosition))
         repeat {
             var position = firstCirclePosition
@@ -115,32 +106,19 @@ class CircleMenuView: UIView {
             if isRunOutOfPositions(firstCirclePosition: firstCirclePosition, maxPosition: maxPosition) {
                 circleSpacingFactor += 0.5
                 menuSpacing += 10
-                numberOfCirclesToFit = getNumberOfCirclesToFit(circleSpacingFactor: circleSpacingFactor) //duplicate/reset
-                firstCirclePosition = getInitialFirstCirclePosition(numberOfCirclesToFit: numberOfCirclesToFit) //duplicate/reset
+                numberOfCirclesToFit = getNumberOfCirclesToFit(circleSpacingFactor: circleSpacingFactor)
+                firstCirclePosition = getInitialFirstCirclePosition(numberOfCirclesToFit: numberOfCirclesToFit)
             }
             if isOverlappingCircles() {
                 menuSpacing += 10
             }
         } while isCircleOutsideContainer(containerView: self.containerView)
         
-        
-        
-        
-        //        blur.frame = self.frame
-        //        blur.isUserInteractionEnabled = false
-        //        self.addSubview(blur)
-        //        let circleSize: CGFloat = 200
         let path = UIBezierPath (
             roundedRect: blur.frame,
             cornerRadius: 0)
-        
-        //        let circle = UIBezierPath (
-        //            roundedRect: CGRect(origin: CGPoint(x:200, y: 300),
-        //                                size: CGSize (width: circleSize, height: circleSize)), cornerRadius: circleSize/2)
         if let sourceRect = sourceRect {
             let rectangle = createRectangle(windowRect: sourceRect)
-            
-            //        path.append(circle)
             path.append(rectangle)
             path.usesEvenOddFillRule = true
             
@@ -149,17 +127,11 @@ class CircleMenuView: UIView {
             maskLayer.fillRule = kCAFillRuleEvenOdd
             
             let borderLayer = CAShapeLayer()
-            //        borderLayer.path = circle.cgPath
             borderLayer.path = rectangle.cgPath
             borderLayer.strokeColor = UIColor.white.cgColor
-            borderLayer.fillColor = UIColor.clear.cgColor //Remember this line, it caused me some issues
+            borderLayer.fillColor = UIColor.clear.cgColor
             borderLayer.lineWidth = 5
             blur.layer.addSublayer(borderLayer)
-            
-//            let maskView = UIView(frame: self.frame)
-//            maskView.backgroundColor = UIColor.black
-//            maskView.layer.mask = maskLayer
-//            blur.mask = maskView
             
             blur.layer.mask = maskLayer
             print("test")
@@ -188,10 +160,8 @@ class CircleMenuView: UIView {
     }
     
     func createRectangle(windowRect: CGRect) -> UIBezierPath{
-        // create window to selected day
+        // create window to view below
         let path = UIBezierPath()
-//        let windowRect = CGRect(origin: CGPoint(x: windowRect.origin.x, y: windowRect.origin.y + 64), size: windowRect.size)
-        
         path.move(to: windowRect.origin)
         path.addLine(to: CGPoint(x: windowRect.origin.x + windowRect.size.width, y: windowRect.origin.y ))
         path.addLine(to: CGPoint(x: windowRect.origin.x + windowRect.size.width, y: windowRect.origin.y + windowRect.size.height))
@@ -204,7 +174,6 @@ class CircleMenuView: UIView {
     }
     
     func animateMenuOpen(origin : CGPoint) {
-        //        let menuCenter = CGPoint(x: frameWidth/2, y: frameHeight/2)
         let menuCenter = origin
         var delay = Double(0)
         for circleButton in self.circleButtons {
