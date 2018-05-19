@@ -66,7 +66,7 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
         var selectedIndex : IndexPath? = IndexPath()
         var selectedCellRect : CGRect?
         var currentPoint = longPressGesture.location(in: self.tableView)
-        let currentPointAdjusted = getPointAdjustedForTableView(selectedPoint: currentPoint)
+        let currentPointAdjusted = getPointAdjustedForTableView(originalPoint: currentPoint)
         if (longPressGesture.state == UIGestureRecognizerState.began) {
             initialPoint = currentPoint
             
@@ -74,7 +74,7 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
                 selectedIndex = getSelectedIndexPath(selectedPoint: initialPoint)
                 if let selectedIndex = selectedIndex {
                     selectedCellRect = self.tableView.rectForRow(at: selectedIndex)
-                    selectedCellRect = CGRect(origin: getPointAdjustedForTableView(selectedPoint: (selectedCellRect?.origin)!), size: (selectedCellRect?.size)!)
+                    selectedCellRect = CGRect(origin: getPointAdjustedForTableView(originalPoint: (selectedCellRect?.origin)!), size: (selectedCellRect?.size)!)
                     //                    selectedCellRect = CGRect(origin: CGPoint(x: (selectedCellRect?.origin.x)!, y: (selectedCellRect?.origin.y)! + 64), size: (selectedCellRect?.size)!)
                 }
                 
@@ -126,7 +126,7 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
             switch indexPathInOuterTable.section {
                 
             case POSITION_CALENDAR.SECTION:
-                let adjustedSelectedPoint = getPointAdjustedForTableView(selectedPoint: selectedPoint)
+                let adjustedSelectedPoint = getPointAdjustedForTableView(originalPoint: selectedPoint)
                 let pointInCollectionView = view.convert(adjustedSelectedPoint, to: calTVC.collectionView)
                 selectedIndexPathInInnerTable = calTVC.collectionView.indexPathForItem(at: pointInCollectionView)!
                 if let collectionRowToSelect = mealPlanService.getIndex(forDate: days[selectedIndexPathInInnerTable.row], fromDates: days) {
@@ -145,9 +145,9 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
         return selectedIndexPathInInnerTable
     }
     
-    func getPointAdjustedForTableView(selectedPoint: CGPoint) -> CGPoint {
+    func getPointAdjustedForTableView(originalPoint: CGPoint) -> CGPoint {
         //        let adjustedPoint = CGPoint(x: selectedPoint.x, y: selectedPoint.y + 64)
-        let adjustedPoint = CGPoint(x: selectedPoint.x, y: selectedPoint.y - self.scrollVerticalOffset)
+        let adjustedPoint = CGPoint(x: originalPoint.x, y: originalPoint.y - self.scrollVerticalOffset)
         return adjustedPoint
     }
     
