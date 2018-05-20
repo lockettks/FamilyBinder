@@ -38,7 +38,6 @@ class CircleMenuView: UIView {
         super.init(frame: CGRect(x: 0, y: 0, width: self.frameWidth, height: self.frameHeight))
         
         self.backgroundColor = .clear
-        //        var vibrancyView = UIVisualEffectView()
         if !UIAccessibilityIsReduceTransparencyEnabled() {
             let blurEffect = UIBlurEffect(style: .prominent)
             blur = UIVisualEffectView(effect: blurEffect)
@@ -48,7 +47,6 @@ class CircleMenuView: UIView {
             self.addSubview(blur)
             
             blur.translatesAutoresizingMaskIntoConstraints = false
-            
             
             NSLayoutConstraint.activate([
                 blur.heightAnchor.constraint(equalTo: self.heightAnchor),
@@ -78,7 +76,6 @@ class CircleMenuView: UIView {
             }
             self.circleButtons.append(circleButton)
             
-//                        self.addSubview(circleButton)
             if UIAccessibilityIsReduceTransparencyEnabled() {
                 self.addSubview(circleButton)
             } else {
@@ -125,38 +122,9 @@ class CircleMenuView: UIView {
             let maskLayer = CAShapeLayer()
             maskLayer.path = path.cgPath
             maskLayer.fillRule = kCAFillRuleEvenOdd
-            
-            
-            //            let borderLayer = CAShapeLayer()
-            //            borderLayer.path = rectangle.cgPath
-            //            borderLayer.strokeColor = UIColor.white.cgColor
-            //            borderLayer.fillColor = UIColor.clear.cgColor
-            //            borderLayer.lineWidth = 5
-            //            blur.layer.addSublayer(borderLayer)
-            
             blur.layer.mask = maskLayer
-//            vibrancyView.layer.mask = maskLayer
             print("test")
         }
-        
-        //        if let sourceRect = sourceRect {
-        //            let path = createRectangle(windowRect: sourceRect)
-        //
-        //            let maskLayer = CAShapeLayer()
-        //            maskLayer.path = path.cgPath
-        //            maskLayer.fillRule = kCAFillRuleEvenOdd
-        //
-        //            let borderLayer = CAShapeLayer()
-        ////            borderLayer.path =
-        //
-        //            let maskView = UIView(frame: self.frame)
-        //            maskView.backgroundColor = UIColor.black
-        //            maskView.layer.mask = maskLayer
-        //
-        ////            blurView.mask = maskView
-        //            vibrancyView.mask = maskView
-        ////            vibrancyView.layer.mask = maskLayer
-        //        }
         
         animateMenuOpen(origin: touchPoint)
     }
