@@ -34,6 +34,7 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
     var mealCircleMenuView : CircleMenuView?
     var initialPoint : CGPoint?
     var scrollVerticalOffset = CGFloat(0.0)
+    var selectedIndex : IndexPath? = IndexPath()
     
     
     convenience init(){
@@ -63,7 +64,7 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
     }
     
     @objc func handleLongPress(longPressGesture:UILongPressGestureRecognizer){
-        var selectedIndex : IndexPath? = IndexPath()
+//        var selectedIndex : IndexPath? = IndexPath()
         var selectedCellRect : CGRect?
         var currentPoint = longPressGesture.location(in: self.tableView)
         let currentPointAdjusted = getPointAdjustedForTableView(originalPoint: currentPoint)
@@ -77,23 +78,16 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
                     selectedCellRect = CGRect(origin: getPointAdjustedForTableView(originalPoint: (selectedCellRect?.origin)!), size: (selectedCellRect?.size)!)
                     //                    selectedCellRect = CGRect(origin: CGPoint(x: (selectedCellRect?.origin.x)!, y: (selectedCellRect?.origin.y)! + 64), size: (selectedCellRect?.size)!)
                 }
-                
             }
             if let menu = mealCircleMenuView {
                 menu.setCircleMenuLocation(touchPoint: currentPointAdjusted, sourceRect: selectedCellRect)
                 self.view.addSubview(menu)
             }
-            
-            
-            
         } else if (longPressGesture.state == .changed) {
             if let menu = mealCircleMenuView {
                 let pointInCircleMenuView = view.convert(currentPointAdjusted, to: menu)
                 menu.touchMoved(newPosition: pointInCircleMenuView)
             }
-            
-            
-            
         }
         else if (longPressGesture.state == UIGestureRecognizerState.ended) {
             //            if let initialPoint = initialPoint {

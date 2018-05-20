@@ -84,6 +84,7 @@ class CircleMenuView: UIView {
         self.frame = CGRect(x: 0, y: 0, width: self.frameWidth, height: self.frameHeight)
         var menuSpacing = self.menuRadius
         if let sourceRect = sourceRect {
+            //TODO:  Prevent menu from overlapping text underneath it when touchpoint is on side
             menuCenter = CGPoint(x: touchPoint.x, y: sourceRect.origin.y - self.circleRadius + 5)
         } else {
             menuCenter = CGPoint(x: touchPoint.x, y: touchPoint.y - self.circleRadius)
