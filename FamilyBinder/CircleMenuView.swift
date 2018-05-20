@@ -75,20 +75,19 @@ class CircleMenuView: UIView {
                 circleButton = CircleButton(id: ids[index], frame: circleFrame, fillColor: fillColor, circleImage: nil)
             }
             self.circleButtons.append(circleButton)
-            
-            if UIAccessibilityIsReduceTransparencyEnabled() {
-                self.addSubview(circleButton)
-            } else {
-                vibrancyView.contentView.addSubview(circleButton)
-            }
+            self.addSubview(circleButton)
         }
     }
     
     func setCircleMenuLocation(touchPoint: CGPoint, sourceRect: CGRect?) {
-        
+        var menuCenter : CGPoint
         self.frame = CGRect(x: 0, y: 0, width: self.frameWidth, height: self.frameHeight)
         var menuSpacing = self.menuRadius
-        let menuCenter = touchPoint
+        if let sourceRect = sourceRect {
+            menuCenter = CGPoint(x: touchPoint.x, y: sourceRect.origin.y - self.circleRadius + 5)
+        } else {
+            menuCenter = CGPoint(x: touchPoint.x, y: touchPoint.y - self.circleRadius)
+        }
         var circleSpacingFactor = Float(1.5)
         var numberOfCirclesToFit = getNumberOfCirclesToFit(circleSpacingFactor: circleSpacingFactor)
         var firstCirclePosition = getInitialFirstCirclePosition(numberOfCirclesToFit: numberOfCirclesToFit)
@@ -138,8 +137,9 @@ class CircleMenuView: UIView {
         path.addLine(to: CGPoint(x: windowRect.origin.x + windowRect.size.width, y: windowRect.origin.y + windowRect.size.height))
         path.addLine(to: CGPoint(x: windowRect.origin.x, y: windowRect.origin.y + windowRect.size.height))
         
-        // TODO:  Not sure if I need this
-        //        let inset = CGFloat(10)  // Window needs to be smaller than the full width otherwise the blur view gets chopped off
+        // TODO:  Not sure if I need this:
+        // Window needs to be smaller than the full width otherwise the blur view gets chopped off
+        //        let inset = CGFloat(10)
         //        path.move(to: CGPoint(x: windowRect.origin.x + inset, y: windowRect.origin.y))
         //        path.addLine(to: CGPoint(x: windowRect.origin.x + windowRect.size.width - inset * 2, y: windowRect.origin.y ))
         //        path.addLine(to: CGPoint(x: windowRect.origin.x + windowRect.size.width - inset * 2, y: windowRect.origin.y + windowRect.size.height))
