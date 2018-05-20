@@ -47,25 +47,25 @@ class CircleMenuView: UIView {
             blur.isUserInteractionEnabled = false
             self.addSubview(blur)
             
-            //            blur.translatesAutoresizingMaskIntoConstraints = false
-            //            //        self.insertSubview(blurView, at: 0)
-            //            self.addSubview(blur)
-            //            NSLayoutConstraint.activate([
-            //                blur.heightAnchor.constraint(equalTo: self.heightAnchor),
-            //                blur.widthAnchor.constraint(equalTo: self.widthAnchor)
-            //                ])
-            //
-            //            let vibrancyEffect = UIVibrancyEffect(blurEffect: blurEffect)
-            //            vibrancyView = UIVisualEffectView(effect: vibrancyEffect)
-            //            vibrancyView.translatesAutoresizingMaskIntoConstraints = false
-            //            blur.contentView.addSubview(vibrancyView)
-            //
-            //            NSLayoutConstraint.activate([
-            //                vibrancyView.heightAnchor.constraint(equalTo: blur.contentView.heightAnchor),
-            //                vibrancyView.widthAnchor.constraint(equalTo: blur.contentView.widthAnchor),
-            //                vibrancyView.centerXAnchor.constraint(equalTo: blur.contentView.centerXAnchor),
-            //                vibrancyView.centerYAnchor.constraint(equalTo: blur.contentView.centerYAnchor)
-            //                ])
+            blur.translatesAutoresizingMaskIntoConstraints = false
+            
+            
+            NSLayoutConstraint.activate([
+                blur.heightAnchor.constraint(equalTo: self.heightAnchor),
+                blur.widthAnchor.constraint(equalTo: self.widthAnchor)
+                ])
+            
+            let vibrancyEffect = UIVibrancyEffect(blurEffect: blurEffect)
+            vibrancyView = UIVisualEffectView(effect: vibrancyEffect)
+            vibrancyView.translatesAutoresizingMaskIntoConstraints = false
+            blur.contentView.addSubview(vibrancyView)
+            
+            NSLayoutConstraint.activate([
+                vibrancyView.heightAnchor.constraint(equalTo: blur.contentView.heightAnchor),
+                vibrancyView.widthAnchor.constraint(equalTo: blur.contentView.widthAnchor),
+                vibrancyView.centerXAnchor.constraint(equalTo: blur.contentView.centerXAnchor),
+                vibrancyView.centerYAnchor.constraint(equalTo: blur.contentView.centerYAnchor)
+                ])
         }
         
         for (index, fillColor) in self.fillColors.enumerated() {
@@ -78,12 +78,12 @@ class CircleMenuView: UIView {
             }
             self.circleButtons.append(circleButton)
             
-            self.addSubview(circleButton)
-            //            if UIAccessibilityIsReduceTransparencyEnabled() {
-            //                self.addSubview(circleButton)
-            //            } else {
-            //                vibrancyView.contentView.addSubview(circleButton)
-            //            }
+//                        self.addSubview(circleButton)
+            if UIAccessibilityIsReduceTransparencyEnabled() {
+                self.addSubview(circleButton)
+            } else {
+                vibrancyView.contentView.addSubview(circleButton)
+            }
         }
     }
     
@@ -126,14 +126,16 @@ class CircleMenuView: UIView {
             maskLayer.path = path.cgPath
             maskLayer.fillRule = kCAFillRuleEvenOdd
             
-            let borderLayer = CAShapeLayer()
-            borderLayer.path = rectangle.cgPath
-            borderLayer.strokeColor = UIColor.white.cgColor
-            borderLayer.fillColor = UIColor.clear.cgColor
-            borderLayer.lineWidth = 5
-            blur.layer.addSublayer(borderLayer)
+            
+            //            let borderLayer = CAShapeLayer()
+            //            borderLayer.path = rectangle.cgPath
+            //            borderLayer.strokeColor = UIColor.white.cgColor
+            //            borderLayer.fillColor = UIColor.clear.cgColor
+            //            borderLayer.lineWidth = 5
+            //            blur.layer.addSublayer(borderLayer)
             
             blur.layer.mask = maskLayer
+//            vibrancyView.layer.mask = maskLayer
             print("test")
         }
         
@@ -162,11 +164,19 @@ class CircleMenuView: UIView {
     func createRectangle(windowRect: CGRect) -> UIBezierPath{
         // create window to view below
         let path = UIBezierPath()
+        
         path.move(to: windowRect.origin)
         path.addLine(to: CGPoint(x: windowRect.origin.x + windowRect.size.width, y: windowRect.origin.y ))
         path.addLine(to: CGPoint(x: windowRect.origin.x + windowRect.size.width, y: windowRect.origin.y + windowRect.size.height))
         path.addLine(to: CGPoint(x: windowRect.origin.x, y: windowRect.origin.y + windowRect.size.height))
         
+        // TODO:  Not sure if I need this
+        //        let inset = CGFloat(10)  // Window needs to be smaller than the full width otherwise the blur view gets chopped off
+        //        path.move(to: CGPoint(x: windowRect.origin.x + inset, y: windowRect.origin.y))
+        //        path.addLine(to: CGPoint(x: windowRect.origin.x + windowRect.size.width - inset * 2, y: windowRect.origin.y ))
+        //        path.addLine(to: CGPoint(x: windowRect.origin.x + windowRect.size.width - inset * 2, y: windowRect.origin.y + windowRect.size.height))
+        //        path.addLine(to: CGPoint(x: windowRect.origin.x + inset, y: windowRect.origin.y + windowRect.size.height))
+        //
         
         path.close()
         
