@@ -34,7 +34,8 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
     var mealCircleMenuView : CircleMenuView?
     var initialPoint : CGPoint?
     var scrollVerticalOffset = CGFloat(0.0)
-    var selectedIndex : IndexPath? = IndexPath()
+    var innerSelectedIndex : IndexPath? = IndexPath()
+    
     
     
     convenience init(){
@@ -64,44 +65,47 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
     }
     
     @objc func handleLongPress(longPressGesture:UILongPressGestureRecognizer){
-//        var selectedIndex : IndexPath? = IndexPath()
+        //        var selectedIndex : IndexPath? = IndexPath()
         var selectedCellRect : CGRect?
-        var currentPoint = longPressGesture.location(in: self.tableView)
+        let currentPoint = longPressGesture.location(in: self.tableView)
         let currentPointAdjusted = getPointAdjustedForTableView(originalPoint: currentPoint)
+        
         if (longPressGesture.state == UIGestureRecognizerState.began) {
-            initialPoint = currentPoint
-            
-            if let initialPoint = initialPoint {
-                selectedIndex = getSelectedIndexPath(selectedPoint: initialPoint)
-                if let selectedIndex = selectedIndex {
-                    selectedCellRect = self.tableView.rectForRow(at: selectedIndex)
-                    selectedCellRect = CGRect(origin: getPointAdjustedForTableView(originalPoint: (selectedCellRect?.origin)!), size: (selectedCellRect?.size)!)
-                    //                    selectedCellRect = CGRect(origin: CGPoint(x: (selectedCellRect?.origin.x)!, y: (selectedCellRect?.origin.y)! + 64), size: (selectedCellRect?.size)!)
+            self.initialPoint = currentPoint
+            if let initialPoint = self.initialPoint {
+                innerSelectedIndex = getInnerIndexPath(selectedPoint: initialPoint)
+                if let selectedInnerIndexPath = innerSelectedIndex {
+                    selectedCellRect = getCellRect(forInnerIndexPath: selectedInnerIndexPath, selectedPoint: initialPoint)
+                    
+                    //                    selectedCellRect = self.tableView.rectForRow(at: selectedIndex) //TODO: set this for calendar
+                    //                    selectedCellRect = CGRect(origin: getPointAdjustedForTableView(originalPoint: (selectedCellRect?.origin)!), size: (selectedCellRect?.size)!)
                 }
             }
             if let menu = mealCircleMenuView {
                 menu.setCircleMenuLocation(touchPoint: currentPointAdjusted, sourceRect: selectedCellRect)
                 self.view.addSubview(menu)
             }
+            
         } else if (longPressGesture.state == .changed) {
             if let menu = mealCircleMenuView {
                 let pointInCircleMenuView = view.convert(currentPointAdjusted, to: menu)
                 menu.touchMoved(newPosition: pointInCircleMenuView)
             }
         }
+            
         else if (longPressGesture.state == UIGestureRecognizerState.ended) {
             //            if let initialPoint = initialPoint {
             //                if let selectedIndex = getSelectedIndexPath(selectedPoint: initialPoint) {
             
-            if let selectedIndex = selectedIndex {
+            if let selectedInnerIndexPath = innerSelectedIndex {
                 if let menu = mealCircleMenuView {
                     let pointInCircleMenuView = view.convert(currentPointAdjusted, to: menu)
                     if let selectedMealButton = menu.touchEnded(finalPosition: pointInCircleMenuView)
                     {
-                        print("selected \(days[selectedIndex.row]) \(MealType(rawValue: selectedMealButton.id))")
-                        addMealToSelections(selectedDate: days[selectedIndex.row], mealType: MealType(rawValue: selectedMealButton.id))
-                        updateTableForSelection(selectedDay: days[selectedIndex.row])
-                        if let collectionRowToSelect = mealPlanService.getIndex(forDate: days[selectedIndex.row], fromDates: days) {
+                        print("selected \(days[selectedInnerIndexPath.row]) \(MealType(rawValue: selectedMealButton.id))")
+                        addMealToSelections(selectedDate: days[selectedInnerIndexPath.row], mealType: MealType(rawValue: selectedMealButton.id))
+                        updateTableForSelection(selectedDay: days[selectedInnerIndexPath.row])
+                        if let collectionRowToSelect = mealPlanService.getIndex(forDate: days[selectedInnerIndexPath.row], fromDates: days) {
                             let collectionCellIndexToSelect = IndexPath(row: collectionRowToSelect, section: 0)
                             calTVC.collectionView.selectItem(at: collectionCellIndexToSelect, animated: true, scrollPosition: [])
                         }
@@ -114,7 +118,24 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
         }
     }
     
-    func getSelectedIndexPath(selectedPoint: CGPoint) -> IndexPath? {
+    func getCellRect(forInnerIndexPath: IndexPath, selectedPoint: CGPoint) -> CGRect {
+        var cellRect = CGRect()
+        if let indexPathInOuterTable = self.tableView.indexPathForRow(at: selectedPoint) {
+            if indexPathInOuterTable.section == POSITION_CALENDAR.SECTION {
+                let theAttributes:UICollectionViewLayoutAttributes! = self.calTVC.collectionView.layoutAttributesForItem(at: forInnerIndexPath)
+                let originalCalendarRect = self.calTVC.collectionView.convert(theAttributes.frame, to: self.view)
+//                let adjustedCalendarRect = CGRect(origin: getPointAdjustedForTableView(originalPoint: (originalCalendarRect.origin)), size: (originalCalendarRect.size))
+                cellRect = originalCalendarRect
+            } else if indexPathInOuterTable.section == POSITION_DAYS.SECTION {
+                let originalCellRect = self.tableView.rectForRow(at: forInnerIndexPath)
+                cellRect = CGRect(origin: getPointAdjustedForTableView(originalPoint: (originalCellRect.origin)), size: (originalCellRect.size))
+            }
+        }
+        return cellRect
+    }
+    
+    
+    func getInnerIndexPath(selectedPoint: CGPoint) -> IndexPath? {
         var selectedIndexPathInInnerTable = IndexPath()
         if let indexPathInOuterTable = self.tableView.indexPathForRow(at: selectedPoint) {
             switch indexPathInOuterTable.section {
@@ -138,6 +159,19 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
         }
         return selectedIndexPathInInnerTable
     }
+    
+    //    func getOuterTableSection(forPoint: CGPoint) -> (SECTION: Int, ROW: Int)? {
+    //        if let indexPathInOuterTable = self.tableView.indexPathForRow(at: forPoint) {
+    //            switch indexPathInOuterTable.section {
+    //                case POSITION_CALENDAR.SECTION:
+    //                    return POSITION_CALENDAR
+    //                case POSITION_DAYS.SECTION:
+    //                    return POSITION_DAYS
+    //            default:
+    //                print("Long press outside of selectable area")
+    //                return nil
+    //            }
+    //    }
     
     func getPointAdjustedForTableView(originalPoint: CGPoint) -> CGPoint {
         //        let adjustedPoint = CGPoint(x: selectedPoint.x, y: selectedPoint.y + 64)
