@@ -68,7 +68,8 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
         //        var selectedIndex : IndexPath? = IndexPath()
         var selectedCellRect : CGRect?
         let currentPoint = longPressGesture.location(in: self.tableView)
-        let currentPointAdjusted = getPointAdjustedForTableView(originalPoint: currentPoint)
+//        let currentPointAdjusted = getPointAdjustedForTableView(originalPoint: currentPoint)
+        let currentPointAdjusted = self.tableView.convert(currentPoint, to: self.view)
         
         if (longPressGesture.state == UIGestureRecognizerState.began) {
             self.initialPoint = currentPoint
@@ -122,13 +123,11 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
         var cellRect = CGRect()
         if let indexPathInOuterTable = self.tableView.indexPathForRow(at: selectedPoint) {
             if indexPathInOuterTable.section == POSITION_CALENDAR.SECTION {
-                let theAttributes:UICollectionViewLayoutAttributes! = self.calTVC.collectionView.layoutAttributesForItem(at: forInnerIndexPath)
-                let originalCalendarRect = self.calTVC.collectionView.convert(theAttributes.frame, to: self.view)
-//                let adjustedCalendarRect = CGRect(origin: getPointAdjustedForTableView(originalPoint: (originalCalendarRect.origin)), size: (originalCalendarRect.size))
-                cellRect = originalCalendarRect
+                let originalCellRect = self.calTVC.collectionView.layoutAttributesForItem(at: forInnerIndexPath)?.frame
+                cellRect = self.calTVC.collectionView.convert(originalCellRect!, to: self.view)
             } else if indexPathInOuterTable.section == POSITION_DAYS.SECTION {
                 let originalCellRect = self.tableView.rectForRow(at: forInnerIndexPath)
-                cellRect = CGRect(origin: getPointAdjustedForTableView(originalPoint: (originalCellRect.origin)), size: (originalCellRect.size))
+                cellRect = self.tableView.convert(originalCellRect, to: self.view)
             }
         }
         return cellRect
@@ -141,7 +140,8 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
             switch indexPathInOuterTable.section {
                 
             case POSITION_CALENDAR.SECTION:
-                let adjustedSelectedPoint = getPointAdjustedForTableView(originalPoint: selectedPoint)
+                let adjustedSelectedPoint = self.tableView.convert(selectedPoint, to: self.view)
+//                let adjustedSelectedPoint = getPointAdjustedForTableView(originalPoint: selectedPoint)
                 let pointInCollectionView = view.convert(adjustedSelectedPoint, to: calTVC.collectionView)
                 selectedIndexPathInInnerTable = calTVC.collectionView.indexPathForItem(at: pointInCollectionView)!
                 if let collectionRowToSelect = mealPlanService.getIndex(forDate: days[selectedIndexPathInInnerTable.row], fromDates: days) {
@@ -160,24 +160,12 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
         return selectedIndexPathInInnerTable
     }
     
-    //    func getOuterTableSection(forPoint: CGPoint) -> (SECTION: Int, ROW: Int)? {
-    //        if let indexPathInOuterTable = self.tableView.indexPathForRow(at: forPoint) {
-    //            switch indexPathInOuterTable.section {
-    //                case POSITION_CALENDAR.SECTION:
-    //                    return POSITION_CALENDAR
-    //                case POSITION_DAYS.SECTION:
-    //                    return POSITION_DAYS
-    //            default:
-    //                print("Long press outside of selectable area")
-    //                return nil
-    //            }
-    //    }
     
-    func getPointAdjustedForTableView(originalPoint: CGPoint) -> CGPoint {
-        //        let adjustedPoint = CGPoint(x: selectedPoint.x, y: selectedPoint.y + 64)
-        let adjustedPoint = CGPoint(x: originalPoint.x, y: originalPoint.y - self.scrollVerticalOffset)
-        return adjustedPoint
-    }
+//    func getPointAdjustedForTableView(originalPoint: CGPoint) -> CGPoint {
+//        //        let adjustedPoint = CGPoint(x: selectedPoint.x, y: selectedPoint.y + 64)
+//        let adjustedPoint = CGPoint(x: originalPoint.x, y: originalPoint.y - self.scrollVerticalOffset)
+//        return adjustedPoint
+//    }
     
     // Handle selection/deselections on table
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
