@@ -115,6 +115,17 @@
       </ContextState>
       <ContextState
          contextName = "AddRecipeToMealPlanTableViewController.tableView(_:heightForRowAt:):AddRecipeToMealPlanTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "Date().withoutTime()">
+            </PersistentString>
+            <PersistentString
+               value = "days[indexPath.row]">
+            </PersistentString>
+            <PersistentString
+               value = "days[indexPath.row].withoutTime()">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "CircleButton.point(inside:with:):CircleButton.swift">
@@ -284,6 +295,11 @@
       </ContextState>
       <ContextState
          contextName = "DayTableViewCell.initWithModel(dayHeadline:existingMeals:):DayTableViewCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "lblDayHeading.text">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "AddRecipeToMealPlanTableViewController.btnWeekFrwdClicked(_:):AddRecipeToMealPlanTableViewController.swift">
@@ -316,13 +332,19 @@
          contextName = "AddRecipeToMealPlanTableViewController.tableView(_:cellForRowAt:):AddRecipeToMealPlanTableViewController.swift">
          <PersistentStrings>
             <PersistentString
+               value = "days[indexPath.row]">
+            </PersistentString>
+            <PersistentString
                value = "existingMeal">
+            </PersistentString>
+            <PersistentString
+               value = "cell.lblDayHeading.text">
             </PersistentString>
             <PersistentString
                value = "days[indexPath.row].withoutTime()">
             </PersistentString>
             <PersistentString
-               value = "self.days[indexPath.row].withoutTime()">
+               value = "Date()">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

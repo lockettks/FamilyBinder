@@ -219,7 +219,6 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
             selections.append(newSelection)
         }
         self.tableView.reloadSections(IndexSet(integersIn: POSITION_DAYS.SECTION...POSITION_DAYS.SECTION), with: .automatic)
-        
     }
     
     func removeFromSelection(deselectedDate: Date) {
@@ -337,7 +336,7 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
             existingMealsForDay.sort(by: {($0.mealType?.sortOrder() ?? 100) < ($1.mealType?.sortOrder() ?? 100)})
             cell.initWithModel(dayHeadline: days[indexPath.row], existingMeals: existingMealsForDay)
             
-            if days[indexPath.row] >= Date() {
+            if days[indexPath.row].withoutTime() >= Date().withoutTime() {
                 let isSelected = selections.contains(where: { (selection) -> Bool in
                     selection.date == days[indexPath.row]
                 })
@@ -369,11 +368,11 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
         case POSITION_CALENDAR.SECTION:
             height = 200
         case POSITION_DAYS.SECTION:
-            if days[indexPath.row] < Date() {
+            if days[indexPath.row].withoutTime() >= Date().withoutTime() {
+                height = UITableViewAutomaticDimension
+            } else {
                 // hide days in the past
                 height = 0
-            } else {
-                height = UITableViewAutomaticDimension
             }
         default:
             height = 44

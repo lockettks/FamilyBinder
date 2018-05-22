@@ -62,5 +62,6 @@ class CalendarDayCollectionViewCell: UICollectionViewCell {
             lblDate.font = lblDate.font.noBold()
             lblDate.textColor = UIColor.black
         }
+        self.isUserInteractionEnabled = day.withoutTime() >= Date().withoutTime()
     }
 }
