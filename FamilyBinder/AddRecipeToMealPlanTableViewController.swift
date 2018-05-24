@@ -94,17 +94,28 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
                     let pointInCircleMenuView = view.convert(currentPointAdjusted, to: menu)
                     if let selectedMealButton = menu.touchEnded(finalPosition: pointInCircleMenuView)
                     {
-                        mealTypeSelected(selectedMealButton: selectedMealButton, selectedInnerIndexPath: selectedInnerIndexPath)
+                        didSelectWithLongPress(selectedMealButton: selectedMealButton, selectedInnerIndexPath: selectedInnerIndexPath)
+                    } else {
+                        didSelectWithLongPress( selectedMealButton: nil, selectedInnerIndexPath: selectedInnerIndexPath)
                     }
+                    
                 }
+                //TODO:  If calendar is selected but no meal is selected, this day should be selected in days below
                 dismissCircleMenu()
             }
         }
     }
     
-    func mealTypeSelected(selectedMealButton: CircleButton, selectedInnerIndexPath: IndexPath){
-        print("selected \(days[selectedInnerIndexPath.row]) \(String(describing: MealType(rawValue: selectedMealButton.id)))")
-        addMealToSelections(selectedDate: days[selectedInnerIndexPath.row], mealType: MealType(rawValue: selectedMealButton.id))
+    
+    func didSelectWithLongPress(selectedMealButton: CircleButton?, selectedInnerIndexPath: IndexPath){
+        if let selectedMealButton = selectedMealButton {
+            print("selected \(days[selectedInnerIndexPath.row]) \(String(describing: MealType(rawValue: selectedMealButton.id) ))")
+            addMealToSelections(selectedDate: days[selectedInnerIndexPath.row], mealType: MealType(rawValue: selectedMealButton.id))
+        } else {
+            print("selected \(days[selectedInnerIndexPath.row]))")
+            addMealToSelections(selectedDate: days[selectedInnerIndexPath.row], mealType: nil)
+        }
+        
         updateTableForSelection(selectedDay: days[selectedInnerIndexPath.row])
         if let collectionRowToSelect = mealPlanService.getIndex(forDate: days[selectedInnerIndexPath.row], fromDates: days) {
             let collectionCellIndexToSelect = IndexPath(row: collectionRowToSelect, section: 0)
