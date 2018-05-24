@@ -44,7 +44,6 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Long Press
         let longPressGesture: UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
         longPressGesture.minimumPressDuration = 0.5
         longPressGesture.delegate = self as? UIGestureRecognizerDelegate
@@ -69,7 +68,6 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
         let currentPointInMainView = self.tableView.convert(currentPoint, to: self.view)
         
         if (longPressGesture.state == UIGestureRecognizerState.began) {
-            
             self.initialPoint = currentPoint
             selectedInnerIndexPath = getInnerIndexPath(selectedPoint: initialPoint)
             if let selectedInnerIndexPath = selectedInnerIndexPath {
@@ -79,44 +77,17 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
                 }
             }
             
-            //            if let menu = mealCircleMenuView {
-            //                menu.setCircleMenuLocation(touchPoint: currentPointAdjusted, sourceRect: selectedCellRect)
-            //                self.view.addSubview(menu)
-            //            }
-            
         } else if (longPressGesture.state == .changed) {
             longPressChanged(updatedLocation: currentPointInMainView)
-            //            if let menu = mealCircleMenuView {
-            //                let pointInCircleMenuView = view.convert(currentPointAdjusted, to: menu)
-            //                menu.touchMoved(newPosition: pointInCircleMenuView)
-            //            }
         }
             
         else if (longPressGesture.state == UIGestureRecognizerState.ended) {
             longPressEnded(endingLocation: currentPointInMainView)
-            //            if let selectedInnerIndexPath = innerSelectedIndex {
-            //                if let menu = mealCircleMenuView {
-            //                    let pointInCircleMenuView = view.convert(currentPointAdjusted, to: menu)
-            //                    if let selectedMealButton = menu.touchEnded(finalPosition: pointInCircleMenuView)
-            //                    {
-            //                        didSelectWithLongPress(selectedMealButton: selectedMealButton, selectedInnerIndexPath: selectedInnerIndexPath)
-            //                    } else {
-            //                        didSelectWithLongPress( selectedMealButton: nil, selectedInnerIndexPath: selectedInnerIndexPath)
-            //                    }
-            //
-            //                }
-            //                dismissCircleMenu()
-            //            }
             dismissCircleMenu()
         }
     }
     
     func longPressBegan(startingLocation: CGPoint, backgroundRect: CGRect) {
-        //        self.initialPoint = currentPoint
-        //        selectedInnerIndexPath = getInnerIndexPath(selectedPoint: initialPoint)
-        //        if let selectedInnerIndexPath = selectedInnerIndexPath {
-        //            selectedCellRect = getCellRect(forInnerIndexPath: selectedInnerIndexPath, selectedPoint: initialPoint)
-        //        }
         if let menu = mealCircleMenuView {
             menu.setCircleMenuLocation(touchPoint: startingLocation, sourceRect: backgroundRect)
             self.view.addSubview(menu)
@@ -140,9 +111,7 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
                 } else {
                     didSelectWithLongPress( selectedMealButton: nil, selectedInnerIndexPath: selectedInnerIndexPath)
                 }
-                
             }
-            //            dismissCircleMenu()
         }
     }
     
