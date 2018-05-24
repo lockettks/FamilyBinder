@@ -32,9 +32,9 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
     let circleMenuService = CircleMenuService()
     var mealTypeCircleButtons = [CircleButton]()
     var mealCircleMenuView : CircleMenuView?
-    var initialPoint : CGPoint?
+    var initialPoint = CGPoint(x: 0, y: 0)
     var scrollVerticalOffset = CGFloat(0.0)
-    var innerSelectedIndex : IndexPath? = IndexPath()
+    var selectedInnerIndexPath : IndexPath? = IndexPath()
     
     
     convenience init(){
@@ -66,46 +66,85 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
     @objc func handleLongPress(longPressGesture:UILongPressGestureRecognizer){
         var selectedCellRect : CGRect?
         let currentPoint = longPressGesture.location(in: self.tableView)
-        let currentPointAdjusted = self.tableView.convert(currentPoint, to: self.view)
+        let currentPointInMainView = self.tableView.convert(currentPoint, to: self.view)
         
         if (longPressGesture.state == UIGestureRecognizerState.began) {
+            
             self.initialPoint = currentPoint
-            if let initialPoint = self.initialPoint {
-                innerSelectedIndex = getInnerIndexPath(selectedPoint: initialPoint)
-                if let selectedInnerIndexPath = innerSelectedIndex {
-                    selectedCellRect = getCellRect(forInnerIndexPath: selectedInnerIndexPath, selectedPoint: initialPoint)
+            selectedInnerIndexPath = getInnerIndexPath(selectedPoint: initialPoint)
+            if let selectedInnerIndexPath = selectedInnerIndexPath {
+                selectedCellRect = getCellRect(forInnerIndexPath: selectedInnerIndexPath, selectedPoint: initialPoint)
+                if let selectedCellRect = selectedCellRect {
+                    longPressBegan(startingLocation: currentPoint, backgroundRect: selectedCellRect)
                 }
             }
-            if let menu = mealCircleMenuView {
-                menu.setCircleMenuLocation(touchPoint: currentPointAdjusted, sourceRect: selectedCellRect)
-                self.view.addSubview(menu)
-            }
+            
+            //            if let menu = mealCircleMenuView {
+            //                menu.setCircleMenuLocation(touchPoint: currentPointAdjusted, sourceRect: selectedCellRect)
+            //                self.view.addSubview(menu)
+            //            }
             
         } else if (longPressGesture.state == .changed) {
-            if let menu = mealCircleMenuView {
-                let pointInCircleMenuView = view.convert(currentPointAdjusted, to: menu)
-                menu.touchMoved(newPosition: pointInCircleMenuView)
-            }
+            longPressChanged(updatedLocation: currentPointInMainView)
+            //            if let menu = mealCircleMenuView {
+            //                let pointInCircleMenuView = view.convert(currentPointAdjusted, to: menu)
+            //                menu.touchMoved(newPosition: pointInCircleMenuView)
+            //            }
         }
             
         else if (longPressGesture.state == UIGestureRecognizerState.ended) {
-            if let selectedInnerIndexPath = innerSelectedIndex {
-                if let menu = mealCircleMenuView {
-                    let pointInCircleMenuView = view.convert(currentPointAdjusted, to: menu)
-                    if let selectedMealButton = menu.touchEnded(finalPosition: pointInCircleMenuView)
-                    {
-                        didSelectWithLongPress(selectedMealButton: selectedMealButton, selectedInnerIndexPath: selectedInnerIndexPath)
-                    } else {
-                        didSelectWithLongPress( selectedMealButton: nil, selectedInnerIndexPath: selectedInnerIndexPath)
-                    }
-                    
-                }
-                //TODO:  If calendar is selected but no meal is selected, this day should be selected in days below
-                dismissCircleMenu()
-            }
+            longPressEnded(endingLocation: currentPointInMainView)
+            //            if let selectedInnerIndexPath = innerSelectedIndex {
+            //                if let menu = mealCircleMenuView {
+            //                    let pointInCircleMenuView = view.convert(currentPointAdjusted, to: menu)
+            //                    if let selectedMealButton = menu.touchEnded(finalPosition: pointInCircleMenuView)
+            //                    {
+            //                        didSelectWithLongPress(selectedMealButton: selectedMealButton, selectedInnerIndexPath: selectedInnerIndexPath)
+            //                    } else {
+            //                        didSelectWithLongPress( selectedMealButton: nil, selectedInnerIndexPath: selectedInnerIndexPath)
+            //                    }
+            //
+            //                }
+            //                dismissCircleMenu()
+            //            }
+            dismissCircleMenu()
         }
     }
     
+    func longPressBegan(startingLocation: CGPoint, backgroundRect: CGRect) {
+        //        self.initialPoint = currentPoint
+        //        selectedInnerIndexPath = getInnerIndexPath(selectedPoint: initialPoint)
+        //        if let selectedInnerIndexPath = selectedInnerIndexPath {
+        //            selectedCellRect = getCellRect(forInnerIndexPath: selectedInnerIndexPath, selectedPoint: initialPoint)
+        //        }
+        if let menu = mealCircleMenuView {
+            menu.setCircleMenuLocation(touchPoint: startingLocation, sourceRect: backgroundRect)
+            self.view.addSubview(menu)
+        }
+    }
+    
+    func longPressChanged(updatedLocation: CGPoint){
+        if let menu = mealCircleMenuView {
+            let pointInCircleMenuView = view.convert(updatedLocation, to: menu)
+            menu.touchMoved(newPosition: pointInCircleMenuView)
+        }
+    }
+    
+    func longPressEnded(endingLocation: CGPoint){
+        if let selectedInnerIndexPath = selectedInnerIndexPath {
+            if let menu = mealCircleMenuView {
+                let pointInCircleMenuView = view.convert(endingLocation, to: menu)
+                if let selectedMealButton = menu.touchEnded(finalPosition: pointInCircleMenuView)
+                {
+                    didSelectWithLongPress(selectedMealButton: selectedMealButton, selectedInnerIndexPath: selectedInnerIndexPath)
+                } else {
+                    didSelectWithLongPress( selectedMealButton: nil, selectedInnerIndexPath: selectedInnerIndexPath)
+                }
+                
+            }
+            //            dismissCircleMenu()
+        }
+    }
     
     func didSelectWithLongPress(selectedMealButton: CircleButton?, selectedInnerIndexPath: IndexPath){
         if let selectedMealButton = selectedMealButton {
