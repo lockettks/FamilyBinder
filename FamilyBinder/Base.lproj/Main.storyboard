@@ -60,7 +60,7 @@
                                                     <constraint firstAttribute="height" constant="325" id="fGG-Zc-1Mt"/>
                                                 </constraints>
                                             </imageView>
-                                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pxe-2U-Wjp" userLabel="Title Container View">
+                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pxe-2U-Wjp" userLabel="Title Container View">
                                                 <rect key="frame" x="0.0" y="325" width="414" height="179"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="250" constant="179" id="BJH-Jb-UeR"/>
@@ -709,7 +709,44 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eQK-sE-g9s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3809" y="-405"/>
+            <point key="canvasLocation" x="3443" y="-576"/>
+        </scene>
+        <!--Schedule Option Table View Controller-->
+        <scene sceneID="1MB-Bi-olz">
+            <objects>
+                <tableViewController id="eOa-ap-ALp" customClass="ScheduleOptionTableViewController" customModule="FamilyBinder" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="c0x-X2-3te">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="UQs-fY-HhT" style="IBUITableViewCellStyleDefault" id="rjy-Yn-hKc">
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rjy-Yn-hKc" id="Kg9-JO-0h2">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Set now" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UQs-fY-HhT">
+                                            <rect key="frame" x="20" y="0.0" width="374" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="eOa-ap-ALp" id="QFF-sn-y4M"/>
+                            <outlet property="delegate" destination="eOa-ap-ALp" id="Rr4-fw-rfU"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aWi-nA-sFY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3442" y="144"/>
         </scene>
         <!--Add to Meal Plan-->
         <scene sceneID="FDl-Zx-v5x">
@@ -735,16 +772,16 @@
                                             <rect key="frame" x="0.0" y="0.0" width="376" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The awesome plan" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0zx-yC-2ZY" userLabel="Lbl Selected Meal Plan">
-                                                    <rect key="frame" x="254" y="13" width="117" height="20"/>
-                                                    <fontDescription key="fontDescription" name="BodoniSvtyTwoOSITCTT-Book" family="Bodoni 72 Oldstyle" pointSize="17"/>
-                                                    <color key="textColor" red="0.30980392159999998" green="0.36078431370000003" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selected Meal Plan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XwZ-te-WCD" userLabel="Lbl Meal Plan Label">
-                                                    <rect key="frame" x="19.999999999999993" y="13" width="119.33333333333331" height="21"/>
+                                                    <rect key="frame" x="19.999999999999993" y="12.666666666666664" width="119.33333333333331" height="21"/>
                                                     <fontDescription key="fontDescription" name="BodoniSvtyTwoOSITCTT-Book" family="Bodoni 72 Oldstyle" pointSize="17"/>
                                                     <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The awesome plan" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0zx-yC-2ZY" userLabel="Lbl Selected Meal Plan">
+                                                    <rect key="frame" x="251" y="13" width="117" height="20"/>
+                                                    <fontDescription key="fontDescription" name="BodoniSvtyTwoOSITCTT-Book" family="Bodoni 72 Oldstyle" pointSize="17"/>
+                                                    <color key="textColor" red="0.30980392159999998" green="0.36078431370000003" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -752,7 +789,7 @@
                                                 <constraint firstItem="0zx-yC-2ZY" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="OuV-7a-baR" secondAttribute="leadingMargin" id="5b9-DO-4Uo"/>
                                                 <constraint firstItem="XwZ-te-WCD" firstAttribute="top" secondItem="OuV-7a-baR" secondAttribute="topMargin" constant="2" id="CQS-PL-qaz"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="XwZ-te-WCD" secondAttribute="bottom" constant="-1" id="Jop-Rl-tHg"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="0zx-yC-2ZY" secondAttribute="trailing" constant="-3" id="WW7-zK-qKL"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="0zx-yC-2ZY" secondAttribute="trailing" id="WW7-zK-qKL"/>
                                                 <constraint firstItem="XwZ-te-WCD" firstAttribute="leading" secondItem="OuV-7a-baR" secondAttribute="leadingMargin" id="c6n-pG-kOL"/>
                                                 <constraint firstItem="XwZ-te-WCD" firstAttribute="centerY" secondItem="0zx-yC-2ZY" secondAttribute="centerY" id="lPE-o6-SiL"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="XwZ-te-WCD" secondAttribute="trailingMargin" id="nn8-7p-L6V"/>
@@ -791,8 +828,45 @@
                                             <outlet property="lblRecipeTitle" destination="LCj-5D-p9F" id="cDR-D2-6zA"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell5" id="mkw-AU-f2b" userLabel="Schedule Option Cell" customClass="ScheduleOptionSelectedTableViewCell" customModule="FamilyBinder" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="184.33333333333334" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mkw-AU-f2b" id="uGZ-8u-uIG">
+                                            <rect key="frame" x="0.0" y="0.0" width="376" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Schedule On Date(s)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gr4-f7-rov" userLabel="Lbl Meal Plan Label">
+                                                    <rect key="frame" x="20" y="11" width="134" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="134" id="ZzZ-BL-BRo"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="BodoniSvtyTwoOSITCTT-Book" family="Bodoni 72 Oldstyle" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selected Dates Below" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sz2-jL-sxU" userLabel="Lbl Selected Meal Plan">
+                                                    <rect key="frame" x="212" y="12" width="156" height="21"/>
+                                                    <fontDescription key="fontDescription" name="BodoniSvtyTwoOSITCTT-Book" family="Bodoni 72 Oldstyle" pointSize="17"/>
+                                                    <color key="textColor" red="0.30980392159999998" green="0.36078431370000003" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Sz2-jL-sxU" firstAttribute="bottom" secondItem="uGZ-8u-uIG" secondAttribute="bottomMargin" id="2WV-Rl-wra"/>
+                                                <constraint firstItem="Gr4-f7-rov" firstAttribute="top" secondItem="uGZ-8u-uIG" secondAttribute="topMargin" id="9CJ-gM-jIP"/>
+                                                <constraint firstItem="Sz2-jL-sxU" firstAttribute="leading" secondItem="Gr4-f7-rov" secondAttribute="trailing" constant="58" id="9ut-GQ-kdT"/>
+                                                <constraint firstItem="Gr4-f7-rov" firstAttribute="leading" secondItem="uGZ-8u-uIG" secondAttribute="leadingMargin" id="f3S-Oc-GuI"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Sz2-jL-sxU" secondAttribute="trailing" id="kuQ-g4-vW9"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Gr4-f7-rov" secondAttribute="bottom" constant="1" id="uNC-qw-2og"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="lblScheduleOption" destination="Sz2-jL-sxU" id="PsD-Kc-5iJ"/>
+                                            <segue destination="eOa-ap-ALp" kind="show" identifier="scheduleOptionSegue" trigger="accessoryAction" id="svB-cu-VDQ"/>
+                                        </connections>
+                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell2" rowHeight="210" id="r5O-ww-ca6" userLabel="Calendar Cell" customClass="CalendarTableViewCell" customModule="FamilyBinder" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="184.33333333333337" width="414" height="210"/>
+                                        <rect key="frame" x="0.0" y="228.33333333333337" width="414" height="210"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="r5O-ww-ca6" id="tk2-yl-zjD" userLabel="Calendar Content View">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="209.66666666666666"/>
@@ -950,7 +1024,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell3" rowHeight="117" id="gUs-Bd-lPA" userLabel="Days List Cell" customClass="DayTableViewCell" customModule="FamilyBinder" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="394.33333333333337" width="414" height="117"/>
+                                        <rect key="frame" x="0.0" y="438.33333333333337" width="414" height="117"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gUs-Bd-lPA" id="4qW-8p-Rs0" userLabel="Days List Content View">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="116.66666666666667"/>
@@ -1026,7 +1100,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vnN-I5-fg0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2996" y="-405"/>
+            <point key="canvasLocation" x="2528.985507246377" y="-439.4021739130435"/>
         </scene>
         <!--Directions View Controller-->
         <scene sceneID="dp7-fw-dPV">

@@ -132,23 +132,11 @@ class CircleMenuView: UIView {
     func createRectangle(windowRect: CGRect) -> UIBezierPath{
         // create window to view below
         let path = UIBezierPath()
-        
         path.move(to: windowRect.origin)
         path.addLine(to: CGPoint(x: windowRect.origin.x + windowRect.size.width, y: windowRect.origin.y ))
         path.addLine(to: CGPoint(x: windowRect.origin.x + windowRect.size.width, y: windowRect.origin.y + windowRect.size.height))
         path.addLine(to: CGPoint(x: windowRect.origin.x, y: windowRect.origin.y + windowRect.size.height))
-        
-        // TODO:  Not sure if I need this:
-        // Window needs to be smaller than the full width otherwise the blur view gets chopped off
-        //        let inset = CGFloat(10)
-        //        path.move(to: CGPoint(x: windowRect.origin.x + inset, y: windowRect.origin.y))
-        //        path.addLine(to: CGPoint(x: windowRect.origin.x + windowRect.size.width - inset * 2, y: windowRect.origin.y ))
-        //        path.addLine(to: CGPoint(x: windowRect.origin.x + windowRect.size.width - inset * 2, y: windowRect.origin.y + windowRect.size.height))
-        //        path.addLine(to: CGPoint(x: windowRect.origin.x + inset, y: windowRect.origin.y + windowRect.size.height))
-        //
-        
         path.close()
-        
         return path
     }
     

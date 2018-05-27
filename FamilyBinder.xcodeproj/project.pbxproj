@@ -47,6 +47,9 @@
 		956789B91F2FDA660070FEEB /* UserContextCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956789B81F2FDA660070FEEB /* UserContextCache.swift */; };
 		95CC0CBD1FCE882C0034E35D /* DayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CC0CBC1FCE882C0034E35D /* DayTableViewCell.swift */; };
 		95CC0CBF1FCFE7CE0034E35D /* RecipeTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CC0CBE1FCFE7CE0034E35D /* RecipeTitleTableViewCell.swift */; };
+		95EC2F3C20B75C2A0007AE9F /* ScheduleOptionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EC2F3B20B75C2A0007AE9F /* ScheduleOptionTableViewController.swift */; };
+		95EC2F3E20B762B40007AE9F /* ScheduleOptionSelectedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EC2F3D20B762B40007AE9F /* ScheduleOptionSelectedTableViewCell.swift */; };
+		95EC2F4420B9F4830007AE9F /* ScheduleOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EC2F4320B9F4830007AE9F /* ScheduleOption.swift */; };
 		95F0A2C4204C8F3500A0E064 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F0A2C3204C8F3500A0E064 /* User.swift */; };
 		95F0A2C6205A1B2400A0E064 /* MealPlanSelectedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F0A2C5205A1B2400A0E064 /* MealPlanSelectedTableViewCell.swift */; };
 		95F0A2C8205B36FF00A0E064 /* MealPlansTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F0A2C7205B36FF00A0E064 /* MealPlansTableViewController.swift */; };
@@ -98,6 +101,9 @@
 		956789B81F2FDA660070FEEB /* UserContextCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserContextCache.swift; sourceTree = "<group>"; };
 		95CC0CBC1FCE882C0034E35D /* DayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayTableViewCell.swift; sourceTree = "<group>"; };
 		95CC0CBE1FCFE7CE0034E35D /* RecipeTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTitleTableViewCell.swift; sourceTree = "<group>"; };
+		95EC2F3B20B75C2A0007AE9F /* ScheduleOptionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleOptionTableViewController.swift; sourceTree = "<group>"; };
+		95EC2F3D20B762B40007AE9F /* ScheduleOptionSelectedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleOptionSelectedTableViewCell.swift; sourceTree = "<group>"; };
+		95EC2F4320B9F4830007AE9F /* ScheduleOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleOption.swift; sourceTree = "<group>"; };
 		95F0A2C3204C8F3500A0E064 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		95F0A2C5205A1B2400A0E064 /* MealPlanSelectedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlanSelectedTableViewCell.swift; sourceTree = "<group>"; };
 		95F0A2C7205B36FF00A0E064 /* MealPlansTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlansTableViewController.swift; sourceTree = "<group>"; };
@@ -244,16 +250,35 @@
 		95CC0CC01FD125D60034E35D /* Add to Meal Plan */ = {
 			isa = PBXGroup;
 			children = (
+				95EC2F3F20B8F0B30007AE9F /* Meal Plan Cell */,
+				95EC2F4020B8F0C50007AE9F /* Schedule Option Cell */,
 				952BE9CC1FCB7E9000662ECA /* AddRecipeToMealPlanTableViewController.swift */,
 				953F5AD620706E8400CE290E /* MealPlanService.swift */,
 				95CC0CBE1FCFE7CE0034E35D /* RecipeTitleTableViewCell.swift */,
-				95F0A2C5205A1B2400A0E064 /* MealPlanSelectedTableViewCell.swift */,
-				95F0A2C7205B36FF00A0E064 /* MealPlansTableViewController.swift */,
 				952BE9CE1FCB830100662ECA /* CalendarTableViewCell.swift */,
 				952BE9C61FCA8D2400662ECA /* CalendarDayCollectionViewCell.swift */,
 				95CC0CBC1FCE882C0034E35D /* DayTableViewCell.swift */,
 			);
 			name = "Add to Meal Plan";
+			sourceTree = "<group>";
+		};
+		95EC2F3F20B8F0B30007AE9F /* Meal Plan Cell */ = {
+			isa = PBXGroup;
+			children = (
+				95F0A2C7205B36FF00A0E064 /* MealPlansTableViewController.swift */,
+				95F0A2C5205A1B2400A0E064 /* MealPlanSelectedTableViewCell.swift */,
+			);
+			name = "Meal Plan Cell";
+			sourceTree = "<group>";
+		};
+		95EC2F4020B8F0C50007AE9F /* Schedule Option Cell */ = {
+			isa = PBXGroup;
+			children = (
+				95EC2F3B20B75C2A0007AE9F /* ScheduleOptionTableViewController.swift */,
+				95EC2F3D20B762B40007AE9F /* ScheduleOptionSelectedTableViewCell.swift */,
+				95EC2F4320B9F4830007AE9F /* ScheduleOption.swift */,
+			);
+			name = "Schedule Option Cell";
 			sourceTree = "<group>";
 		};
 		95F0A2C92062DD1800A0E064 /* Recipe Details */ = {
@@ -413,6 +438,7 @@
 				95FA99AE1F50CADF0057B83F /* UIView.swift in Sources */,
 				954D7AB31F198CB3000480A7 /* RecipeDetailViewController.swift in Sources */,
 				95628D741F719FBF00566EF1 /* StringHelper.swift in Sources */,
+				95EC2F4420B9F4830007AE9F /* ScheduleOption.swift in Sources */,
 				956789941F2146B50070FEEB /* ScheduledMeal.swift in Sources */,
 				95F0A2C8205B36FF00A0E064 /* MealPlansTableViewController.swift in Sources */,
 				953F5AD720706E8400CE290E /* MealPlanService.swift in Sources */,
@@ -428,11 +454,13 @@
 				954D7ACB1F199034000480A7 /* SpoonacularAPIManager.swift in Sources */,
 				954D7ACF1F19DAD8000480A7 /* Recipe.swift in Sources */,
 				95628D6E1F7093CC00566EF1 /* UIColor.swift in Sources */,
+				95EC2F3E20B762B40007AE9F /* ScheduleOptionSelectedTableViewCell.swift in Sources */,
 				954D7AAF1F198CB3000480A7 /* AppDelegate.swift in Sources */,
 				95628D6A1F70596A00566EF1 /* RealmString.swift in Sources */,
 				95CC0CBD1FCE882C0034E35D /* DayTableViewCell.swift in Sources */,
 				952BE9C71FCA8D2400662ECA /* CalendarDayCollectionViewCell.swift in Sources */,
 				956789B91F2FDA660070FEEB /* UserContextCache.swift in Sources */,
+				95EC2F3C20B75C2A0007AE9F /* ScheduleOptionTableViewController.swift in Sources */,
 				954F755A20769D120062F995 /* UserService.swift in Sources */,
 				95F0A2C6205A1B2400A0E064 /* MealPlanSelectedTableViewCell.swift in Sources */,
 				956789981F2156190070FEEB /* MealPlan.swift in Sources */,

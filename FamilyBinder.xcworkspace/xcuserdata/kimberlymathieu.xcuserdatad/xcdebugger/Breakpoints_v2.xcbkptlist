@@ -38,13 +38,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FamilyBinder/CircleMenuView.swift"
-            timestampString = "548713981.335808"
+            filePath = "FamilyBinder/ScheduleOptionTableViewController.swift"
+            timestampString = "549088003.7063479"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
-            landmarkName = "setCircleMenuLocation(touchPoint:sourceRect:)"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

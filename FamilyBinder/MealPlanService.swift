@@ -66,7 +66,23 @@ class MealPlanService {
         return nil
     }
     
-    
+    func getImageForMealTypeOn(mealType: MealType) -> UIImage {
+        var mealTypeImage: UIImage
+        switch mealType {
+        case .breakfast :
+            mealTypeImage = #imageLiteral(resourceName: "breakfast_on")
+            
+        case .lunch :
+            mealTypeImage = #imageLiteral(resourceName: "lunch_on")
+            
+        case .dinner :
+            mealTypeImage = #imageLiteral(resourceName: "dinner_on")
+            
+        case .snack :
+            mealTypeImage = #imageLiteral(resourceName: "snack_on")
+        }
+        return mealTypeImage
+    }
     
 }
 

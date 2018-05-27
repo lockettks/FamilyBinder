@@ -9,14 +9,14 @@
 import UIKit
 import RealmSwift
 
-protocol MealPlanSelectedDelegate : class {
+protocol MealPlanDelegate : class {
     func mealPlanSelected(selectedMealPlan: MealPlan)
 }
 
 class MealPlansTableViewController: UITableViewController {
     
     var selectedMealPlan: MealPlan?
-    weak var mealPlanDelegate: MealPlanSelectedDelegate?
+    weak var mealPlanDelegate: MealPlanDelegate?
     
     
     let myMealPlans: Results<MealPlan> = {
@@ -71,6 +71,7 @@ class MealPlansTableViewController: UITableViewController {
 
     }
 
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

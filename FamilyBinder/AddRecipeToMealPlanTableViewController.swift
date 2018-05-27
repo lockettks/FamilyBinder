@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SelectDayDelegate, MealPlanSelectedDelegate {
+class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SelectDayDelegate, MealPlanDelegate, ScheduleOptionDelegate {
     @IBOutlet var tableView: UITableView!
     @IBOutlet var addBtn: UIBarButtonItem!
     
@@ -19,17 +19,18 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
     let mealPlanService = MealPlanService()
     var selectedRecipe = Recipe()
     var selectedMealPlan = MealPlan()
+    var selectedScheduleOption = ScheduleOption.now
     var existingScheduledMeals = [ScheduledMeal]()
     let POSITION_MEALPLAN = (SECTION: 0, ROW: 0)
-    let POSITION_RECIPE = (SECTION: 1, ROW: 0)
-    let POSITION_CALENDAR = (SECTION: 2, ROW: 0)
-    let POSITION_DAYS = (SECTION: 3, ROW: 0)
+    let POSITION_SCHEDULE_OPTION = (SECTION: 1, ROW: 0)
+    let POSITION_RECIPE = (SECTION: 2, ROW: 0)
+    let POSITION_CALENDAR = (SECTION: 3, ROW: 0)
+    let POSITION_DAYS = (SECTION: 4, ROW: 0)
     
     let startDate = Date()
     var days = [Date]()
     var selections = [Selection]()
     
-    let circleMenuService = CircleMenuService()
     var mealTypeCircleButtons = [CircleButton]()
     var mealCircleMenuView : CircleMenuView?
     var initialPoint = CGPoint(x: 0, y: 0)
@@ -52,11 +53,10 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
         // Meal Time Circle Menu
         let testColors = [UIColor.lightGray.cgColor, UIColor.lightGray.cgColor,UIColor.lightGray.cgColor, UIColor.lightGray.cgColor]
         var mealCircleIds = [String]()
-        
         var mealCircleImages = [UIImage]()
         for mealType in MealType.allTypes {
             mealCircleIds.append(mealType.rawValue)
-            let mealCircleImage = circleMenuService.getImageForMealTypeOn(mealType: mealType)
+            let mealCircleImage = mealPlanService.getImageForMealTypeOn(mealType: mealType)
             mealCircleImages.append(mealCircleImage)
         }
         mealCircleMenuView = CircleMenuView(ids: mealCircleIds, fillColors: testColors, containerView: self.view, circleImages: mealCircleImages)
@@ -179,6 +179,10 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
             self.performSegue(withIdentifier: "mealPlansSegue", sender: self)
             return
             
+        case POSITION_SCHEDULE_OPTION.SECTION:
+            self.performSegue(withIdentifier: "scheduleOptionSegue", sender: self)
+            return
+            
         case POSITION_DAYS.SECTION:
             addMealToSelections(selectedDate: days[indexPath.row], mealType: nil)
             if let collectionRowToSelect = mealPlanService.getIndex(forDate: days[indexPath.row], fromDates: days) {
@@ -291,16 +295,32 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
     }
     
     
+    // MARK: - Delegate Functions
     func mealPlanSelected(selectedMealPlan: MealPlan) {
         self.selectedMealPlan = selectedMealPlan
+        self.tableView.reloadData()
     }
     
+    func scheduleOptionSelected(selectedScheduleOption: ScheduleOption) {
+        self.selectedScheduleOption = selectedScheduleOption
+        self.tableView.reloadData()
+    }
+    
+//    func scheduleOptionSelected(selectedScheduleOption: ScheduleOption) {
+//        self.selectedScheduleOption = selectedScheduleOption
+//    }
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "mealPlansSegue") {
             let mealPlansTableViewController: MealPlansTableViewController = segue.destination as! MealPlansTableViewController
-            mealPlansTableViewController.selectedMealPlan = selectedMealPlan
+            mealPlansTableViewController.selectedMealPlan = self.selectedMealPlan
+        }
+        
+        if (segue.identifier == "scheduleOptionSegue") {
+            let scheduleOptionTableViewController: ScheduleOptionTableViewController = segue.destination as! ScheduleOptionTableViewController
+            scheduleOptionTableViewController.selectedScheduleOption = self.selectedScheduleOption
+            scheduleOptionTableViewController.scheduleOptionDelegate = self
         }
     }
     
@@ -329,6 +349,11 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
         case POSITION_RECIPE.SECTION:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath) as! RecipeTitleTableViewCell
             cell.initWithModel(model: selectedRecipe)
+            return cell
+            
+        case POSITION_SCHEDULE_OPTION.SECTION:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell5", for: indexPath) as! ScheduleOptionSelectedTableViewCell
+            cell.initWithModel(selectedScheduleOption: selectedScheduleOption)
             return cell
             
         case POSITION_CALENDAR.SECTION:
@@ -401,7 +426,7 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return 5
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

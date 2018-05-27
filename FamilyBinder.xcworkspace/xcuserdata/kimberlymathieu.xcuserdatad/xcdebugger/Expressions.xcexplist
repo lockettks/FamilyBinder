@@ -310,6 +310,20 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "ScheduleOptionTableViewController.tableView(_:cellForRowAt:):ScheduleOptionTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "selectedScheduleOption">
+            </PersistentString>
+            <PersistentString
+               value = "cell.isSelected">
+            </PersistentString>
+            <PersistentString
+               value = "scheduleOptions[indexPath.row]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "closure #1 in AddRecipeToMealPlanTableViewController.tableView(_:cellForRowAt:):AddRecipeToMealPlanTableViewController.swift">
          <PersistentStrings>
             <PersistentString
