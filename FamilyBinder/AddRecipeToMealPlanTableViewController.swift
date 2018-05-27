@@ -305,10 +305,7 @@ class AddRecipeToMealPlanTableViewController: UIViewController, UITableViewDataS
         self.selectedScheduleOption = selectedScheduleOption
         self.tableView.reloadData()
     }
-    
-//    func scheduleOptionSelected(selectedScheduleOption: ScheduleOption) {
-//        self.selectedScheduleOption = selectedScheduleOption
-//    }
+
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

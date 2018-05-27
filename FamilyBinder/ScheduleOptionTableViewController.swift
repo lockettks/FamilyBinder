@@ -47,8 +47,6 @@ class ScheduleOptionTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = scheduleOptions[indexPath.row].rawValue
-        
-//        cell.initWithModel(selectedScheduleOption: scheduleOptions[indexPath.row])
         cell.isSelected = scheduleOptions[indexPath.row] == selectedScheduleOption
         if cell.isSelected {
             cell.accessoryType = .checkmark
