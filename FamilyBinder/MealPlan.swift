@@ -10,9 +10,6 @@ import Foundation
 import RealmSwift
 
 class MealPlan : Object {
-    //TODO:  This is not a singleton, but a user can have multiple meal plans with start/end dates.
-    // need to update the model so that a user can have multiple meal plans with unique id's of start/end dates
-    // they can name the meal plan, rate it, see if they've made it before, share it, see if it trends
     static let sharedInstance = MealPlan()
     
     var meals = List<ScheduledMeal>()
