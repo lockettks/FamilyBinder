@@ -73,7 +73,7 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
                 showBlankSlateView()
             } else {
                 self.tableView.separatorStyle = .singleLine
-                hideBlankStlateView()
+                hideBlankSlateView()
             }
             tableView.reloadData()
         case 1:
@@ -82,7 +82,7 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
                 if (self.recipesTypeSegCntrl.selectedSegmentIndex == 1) {
                     self.recipes = recipesReceived
                     self.tableView.separatorStyle = .singleLine
-                    self.hideBlankStlateView()
+                    self.hideBlankSlateView()
                     self.tableView.reloadData()
                 }
             }
@@ -113,8 +113,8 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
         blankSlateView.heightAnchor.constraint(equalToConstant: 260.0).isActive = true
     }
     
-    func hideBlankStlateView() {
-        blankSlateView.removeFromSuperview()
+    func hideBlankSlateView() {
+        tableView.backgroundView = nil
     }
     
     // MARK: - Action Handlers
