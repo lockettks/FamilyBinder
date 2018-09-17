@@ -60,7 +60,7 @@
                                                     <constraint firstAttribute="height" constant="325" id="fGG-Zc-1Mt"/>
                                                 </constraints>
                                             </imageView>
-                                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pxe-2U-Wjp" userLabel="Title Container View">
+                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pxe-2U-Wjp" userLabel="Title Container View">
                                                 <rect key="frame" x="0.0" y="325" width="414" height="179"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="250" constant="179" id="BJH-Jb-UeR"/>
@@ -301,11 +301,63 @@
                     </view>
                     <navigationItem key="navigationItem" title="Recipes" id="mMZ-On-3ga"/>
                     <connections>
+                        <outlet property="blankSlateView" destination="XNt-Yg-mdJ" id="hDO-1D-eqh"/>
                         <outlet property="recipesTypeSegCntrl" destination="Wfz-3w-GtO" id="a74-Pl-3T0"/>
                         <outlet property="tableView" destination="r5Y-S6-f2D" id="YNP-Q4-NnP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e8d-J3-sD8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="XNt-Yg-mdJ">
+                    <rect key="frame" x="0.0" y="0.0" width="394" height="600"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="You don't have any favorited recipes yet." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fgD-xO-9ae">
+                            <rect key="frame" x="0.0" y="341" width="394" height="23"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                            <color key="textColor" red="0.33725490200000002" green="0.4039215686" blue="0.41568627450000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-red" translatesAutoresizingMaskIntoConstraints="NO" id="Hay-11-pa0">
+                            <rect key="frame" x="0.0" y="159" width="394" height="154"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="154" id="WDl-sP-0ES"/>
+                            </constraints>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dvv-gj-L0x">
+                            <rect key="frame" x="121" y="431" width="152" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="152" id="B4V-Pq-dC4"/>
+                                <constraint firstAttribute="height" constant="30" id="z1g-Wh-Q4P"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                            <state key="normal" title="Browse recipes">
+                                <color key="titleColor" red="0.75686274509999996" green="0.12941176469999999" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                    <real key="value" value="0.0"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="browseButtonTouched:" destination="T2h-0d-sGa" eventType="touchUpInside" id="HnS-NN-QYf"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="Hay-11-pa0" secondAttribute="bottom" priority="750" constant="287" id="HwR-IM-4oH"/>
+                        <constraint firstItem="fgD-xO-9ae" firstAttribute="top" secondItem="Hay-11-pa0" secondAttribute="bottom" constant="28" id="Xk1-4Y-8Ea"/>
+                        <constraint firstItem="Hay-11-pa0" firstAttribute="top" secondItem="XNt-Yg-mdJ" secondAttribute="top" constant="159" id="cE7-hH-ISZ"/>
+                        <constraint firstItem="Dvv-gj-L0x" firstAttribute="top" secondItem="fgD-xO-9ae" secondAttribute="bottom" constant="67" id="fU7-l7-EhK"/>
+                        <constraint firstItem="Hay-11-pa0" firstAttribute="leading" secondItem="XNt-Yg-mdJ" secondAttribute="leading" id="fyu-OK-9kB"/>
+                        <constraint firstAttribute="trailing" secondItem="Hay-11-pa0" secondAttribute="trailing" id="gwt-wh-szF"/>
+                        <constraint firstAttribute="trailing" secondItem="fgD-xO-9ae" secondAttribute="trailing" id="l4n-7d-oh6"/>
+                        <constraint firstItem="fgD-xO-9ae" firstAttribute="leading" secondItem="XNt-Yg-mdJ" secondAttribute="leading" id="mcn-97-aqe"/>
+                        <constraint firstItem="Dvv-gj-L0x" firstAttribute="centerX" secondItem="XNt-Yg-mdJ" secondAttribute="centerX" id="uf5-nh-BAI"/>
+                    </constraints>
+                </view>
             </objects>
             <point key="canvasLocation" x="707.24637681159425" y="-630.16304347826087"/>
         </scene>
@@ -1147,6 +1199,7 @@
     <resources>
         <image name="circleBackground" width="98" height="95"/>
         <image name="clock" width="27" height="27"/>
+        <image name="logo-red" width="455" height="327"/>
         <image name="mealPlan_Add" width="33" height="27"/>
         <image name="mealPlan_on" width="38" height="35"/>
         <image name="myRecipes_on" width="35" height="35"/>
@@ -1156,6 +1209,6 @@
         <image name="triangle_right" width="14" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Tll-UG-LXB"/>
+        <segue reference="fxG-aP-rG4"/>
     </inferredMetricsTieBreakers>
 </document>

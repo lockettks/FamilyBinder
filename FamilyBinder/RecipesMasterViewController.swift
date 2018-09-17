@@ -14,6 +14,7 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var recipesTypeSegCntrl: UISegmentedControl!
+    @IBOutlet var blankSlateView: UIView!
     
     
     // MARK: - Defaults
@@ -68,12 +69,20 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
         switch(recipesTypeSegCntrl.selectedSegmentIndex){
         case 0:
             self.recipes = userService.getFavoriteRecipes()
+            if self.recipes.count == 0 {
+                showBlankSlateView()
+            } else {
+                self.tableView.separatorStyle = .singleLine
+                hideBlankStlateView()
+            }
             tableView.reloadData()
         case 1:
             getRandomRecipes().then{ recipesReceived -> Void in
                 // Verify the tab hasn't changed before the promise is resolved
                 if (self.recipesTypeSegCntrl.selectedSegmentIndex == 1) {
                     self.recipes = recipesReceived
+                    self.tableView.separatorStyle = .singleLine
+                    self.hideBlankStlateView()
                     self.tableView.reloadData()
                 }
             }
@@ -92,6 +101,25 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
         }
     }
     
+    func showBlankSlateView() {
+        tableView.backgroundView = blankSlateView
+        self.tableView.separatorStyle = .none
+        
+        let margins = self.view.layoutMarginsGuide
+        blankSlateView.translatesAutoresizingMaskIntoConstraints = false
+        blankSlateView.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
+        blankSlateView.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
+        
+        blankSlateView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor).isActive = true
+        blankSlateView.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor).isActive = true
+        
+        
+        blankSlateView.heightAnchor.constraint(equalToConstant: 260.0).isActive = true
+    }
+    
+    func hideBlankStlateView() {
+        blankSlateView.removeFromSuperview()
+    }
     
     // MARK: - Action Handlers
     
@@ -99,6 +127,8 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
         loadRecipes()
     }
     
+    @IBAction func browseButtonTouched(_ sender: Any) {
+    }
     
     // MARK: - Segues
     
