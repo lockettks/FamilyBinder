@@ -18,7 +18,7 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
     
     
     // MARK: - Defaults
-    let NUMBER_OF_RECIPES = 10
+    let NUMBER_OF_RECIPES = 4
     let DEFAULT_SELECTED_ROW = 0
     let DEFAULT_SELECTED_TOGGLE = 0
     
