@@ -104,16 +104,12 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
     func showBlankSlateView() {
         tableView.backgroundView = blankSlateView
         self.tableView.separatorStyle = .none
-        
         let margins = self.view.layoutMarginsGuide
         blankSlateView.translatesAutoresizingMaskIntoConstraints = false
         blankSlateView.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
         blankSlateView.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
-        
         blankSlateView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor).isActive = true
         blankSlateView.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor).isActive = true
-        
-        
         blankSlateView.heightAnchor.constraint(equalToConstant: 260.0).isActive = true
     }
     
@@ -128,6 +124,8 @@ class RecipesMasterViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     @IBAction func browseButtonTouched(_ sender: Any) {
+        recipesTypeSegCntrl.selectedSegmentIndex = 1
+        loadRecipes()
     }
     
     // MARK: - Segues
